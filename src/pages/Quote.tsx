@@ -9,7 +9,7 @@ export default function Quote() {
     contactPerson: '',
     email: '',
     phone: '',
-    serviceRequired: 'Steel Engineering & Construction',
+        serviceRequired: 'Industrial Scrap Procurement & Processing',
     projectLocation: '',
     projectSize: '',
     timeline: '',
@@ -30,7 +30,7 @@ export default function Quote() {
         contactPerson: '',
         email: '',
         phone: '',
-        serviceRequired: 'Steel Engineering & Construction',
+    serviceRequired: 'Industrial Scrap Procurement & Processing',
         projectLocation: '',
         projectSize: '',
         timeline: '',
@@ -48,19 +48,19 @@ export default function Quote() {
 
   const steps = [
     {
-      title: 'Drawing Analysis & Tekla Check',
-      desc: 'Our design office reviews your PDF/DWG drawings, checking structural connections, loading capacities, and specifications against Indian standard design codes.',
-      time: 'Day 1 - Day 2'
+      title: 'Requirement Review',
+      desc: 'The relevant IRONEX division checks the available information - BOQ, drawings, material schedule, scaffolding quantity or scrap-lot details.',
+      time: 'Step 01'
     },
     {
-      title: 'Tonnage Optimization & Costing',
-      desc: 'We calculate precise steel tonnage and concrete volumes. By applying steel weight optimization algorithms, we identify cost savings for your project.',
-      time: 'Day 2 - Day 3'
+      title: 'Technical Clarification',
+      desc: 'Specifications, quantity, site access, timeline and commercial conditions are clarified before any proposal is prepared.',
+      time: 'Step 02'
     },
     {
-      title: 'Commercial Proposal Submission',
-      desc: 'You receive a itemized commercial bid, scheduling milestones, material test certificate guarantees (MTC), and quality assurance checks (QAP).',
-      time: 'Day 3 - Day 4'
+      title: 'Proposal or Inspection',
+      desc: 'IRONEX provides a quotation, confirms availability, requests additional information or schedules a site visit as needed.',
+      time: 'Step 03'
     }
   ];
 
@@ -76,7 +76,7 @@ export default function Quote() {
           <span className="text-xs font-bold uppercase tracking-widest text-secondary">Procurement Portal</span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">Request a Quote</h1>
           <p className="text-sm text-gray-300 max-w-2xl leading-relaxed">
-            Submit your project drawings, BOQs, or specifications. Our estimating department will prepare a detailed commercial bid.
+            Submit your BOQ, drawings, material schedule, scaffolding quantity or scrap-lot information. The relevant division will review it before responding.
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function Quote() {
                   </div>
                   <h3 className="text-base font-bold text-primary">Inquiry Submitted Successfully</h3>
                   <p className="text-xs text-gray-500 font-body leading-relaxed max-w-md mx-auto">
-                    Thank you. Your request has been logged by our estimation department. A structural engineer will contact your team within 24-48 business hours.
+                    Thank you. Your requirement has been routed to the relevant IRONEX division. We will review the information and respond with clarity on scope and availability.
                   </p>
                 </div>
               ) : (
@@ -160,11 +160,10 @@ export default function Quote() {
                         onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                         className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary"
                       >
-                        <option>Steel Engineering & Construction</option>
-                        <option>Site Transformation & Dismantling</option>
-                        <option>Project Materials & Access Supply</option>
-                        <option>Industrial Scrap Management</option>
-                        <option>Heavy Structural Fabrication</option>
+                        <option>Industrial Scrap Procurement & Processing</option>
+                        <option>Scaffolding & Formwork Systems</option>
+                        <option>Steel & Construction-Material Supply</option>
+                        <option>Structural Fabrication & Civil Works</option>
                       </select>
                     </div>
                     <div>
@@ -175,7 +174,7 @@ export default function Quote() {
                         value={formData.projectLocation}
                         onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })}
                         className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. Dahej GIDC, Gujarat"
+                        placeholder="e.g. Uran, Maharashtra"
                       />
                     </div>
                   </div>
@@ -213,7 +212,7 @@ export default function Quote() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary font-body resize-none" 
-                      placeholder="Detail any structural steel requirements, scaffold height setups, or dismantling targets..."
+                      placeholder="Detail the requirement - material specifications, scaffolding quantity, scrap-lot information or scope of execution..."
                     />
                   </div>
 
@@ -244,7 +243,7 @@ export default function Quote() {
                       type="submit"
                       className="w-full bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest py-4 rounded-xl transition-all duration-300 shadow-sm"
                     >
-                      Submit Bidding Inquiry
+                      Submit Requirement
                     </button>
                   </div>
                 </form>
@@ -254,10 +253,10 @@ export default function Quote() {
             {/* Right: Quotation Timeline & Illustrations */}
             <div className="lg:col-span-5 space-y-12">
               <div className="space-y-4">
-                <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Estimation Process</span>
-                <h2 className="text-2xl font-extrabold text-primary tracking-tight">How We Prepare Your Bid Proposal</h2>
+                <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Review Process</span>
+                <h2 className="text-2xl font-extrabold text-primary tracking-tight">How Your Requirement Is Reviewed</h2>
                 <p className="text-xs text-gray-500 font-body leading-relaxed">
-                  We process project pricing systematically to ensure we submit optimized, zero-deviation bids to corporate procurement committees.
+                  Each enquiry is routed to the relevant business division and reviewed for genuine feasibility before any commitment is made.
                 </p>
               </div>
 
@@ -288,9 +287,9 @@ export default function Quote() {
                   <ShieldCheck size={20} />
                 </div>
                 <div className="space-y-1.5">
-                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">MTC & Safety Clearance Assured</h4>
+                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Defined Responsibility for Every Enquiry</h4>
                   <p className="text-[10px] text-gray-500 leading-relaxed font-body">
-                    Every commercial estimation is structured upon trace steel certifications and follows strict BIS code requirements, ensuring zero safety compromises.
+                    When a requirement is outside our current capability, timeline or scope, we communicate it before making commitments. Honest capability comes before acceptance.
                   </p>
                 </div>
               </div>

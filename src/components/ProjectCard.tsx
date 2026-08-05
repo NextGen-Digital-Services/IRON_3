@@ -19,7 +19,6 @@ export default function ProjectCard({ image, name, location, category, year, pat
           src={image}
           alt={name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
         />
         {/* Default subtle gradient to ensure text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-0 transition-opacity duration-300" />

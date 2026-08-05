@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import {
   Factory,
-  FlaskConical,
   Zap,
   Boxes,
-  UtensilsCrossed,
-  Pill,
   Milestone,
-  Car,
+  Anchor,
+  ShieldCheck,
+  Building2,
   ArrowRight,
   Star,
   Building,
@@ -33,6 +32,14 @@ import projectImg from '../assets/industrial_project.jpg';
 import demolitionImg from '../assets/demolition.jpg';
 import scaffoldingImg from '../assets/scaffolding.jpg';
 import scrapImg from '../assets/scrap_processing.jpg';
+import scrapYardImg from '../assets/pexels_scrap_yard.jpg';
+import weldingImg from '../assets/pexels_welding.jpg';
+import siteScaffoldImg from '../assets/pexels_scaffolding.jpg';
+import steelCoilsImg from '../assets/pexels_steel_coils.jpg';
+import warehouseImg from '../assets/pexels_warehouse.jpg';
+import excavatorImg from '../assets/pexels_excavator.jpg';
+import steelFrameImg from '../assets/pexels_steel_structure.jpg';
+import welderImg from '../assets/pexels_welder.jpg';
 
 export default function Home() {
   const { setIsQuoteOpen } = useModal();
@@ -41,148 +48,139 @@ export default function Home() {
 
   const services = [
     {
-      title: 'Site Transformation & Resource Management',
-      description: 'Everything required to safely transform an existing industrial site through demolition, dismantling and professional material recovery.',
+      title: 'Industrial Scrap Procurement & Processing',
+      description: 'Direct purchase, lifting, segregation, processing and resale of industrial scrap to melting mills and factories - from auction participation to complete site clearance.',
       image: demolitionImg,
-      path: '/services#site-transformation',
+      path: '/capabilities#site-transformation',
       icon: <Wrench size={20} />,
       categories: [
         {
-          name: 'Demolition & Dismantling',
-          tagline: 'Clear the Existing. Prepare for What\'s Next.',
+          name: 'Scrap Procurement',
+          tagline: 'Direct Buyer. Evaluated Commercially.',
           services: [
-            'Industrial Structure Dismantling',
-            'Steel Shed Dismantling',
-            'Warehouse Dismantling',
-            'Selective Demolition',
-            'Machinery & Equipment Dismantling',
-            'Structural Modification & Removal'
+            'Government & PSU scrap auctions',
+            'Corporate & industrial scrap lots',
+            'Auction and tender participation',
+            'Lot inspection & material assessment',
+            'Commercial evaluation',
+            'Private industrial disposals'
           ]
         },
         {
-          name: 'Industrial Scrap Management',
-          tagline: 'Material Value, Managed Professionally.',
+          name: 'Scrap Processing & Lifting',
+          tagline: 'Lifted. Processed. Responsibly Resold.',
           services: [
-            'Ferrous Scrap Purchase',
-            'Non-Ferrous Scrap Purchase',
-            'Structural Steel Scrap',
-            'Machinery Scrap',
-            'Construction Scrap',
-            'Surplus & Obsolete Material',
-            'Scrap Segregation',
-            'Cutting & Downsizing',
-            'Periodic Scrap Management Contracts',
-            'Tender & Auction Procurement'
+            'Labour deployment',
+            'Dismantling & cutting',
+            'Machinery coordination',
+            'Loading & transportation',
+            'Segregation & processing',
+            'Onward resale'
           ]
         }
       ]
     },
     {
-      title: 'Project Materials & Access Systems',
-      description: 'Reliable supply of structural materials and temporary access systems to keep industrial and infrastructure projects moving efficiently.',
+      title: 'Scaffolding & Formwork Systems',
+      description: 'Manufacturing, rental and sales of scaffolding and formwork components with verified inventory, dispatch and replacement coordination.',
       image: scaffoldingImg,
-      path: '/services#project-materials',
+      path: '/capabilities#project-materials',
       icon: <Layers size={20} />,
       categories: [
         {
-          name: 'Iron, Steel & Building Material Supply',
-          tagline: 'Project-Ready Materials. Dependable Supply.',
+          name: 'Scaffolding & Formwork Products',
+          tagline: 'Reliable Access. Continuous Progress.',
           services: [
-            'Structural Steel',
-            'TMT Bars',
-            'Angles',
-            'Channels',
-            'Beams',
-            'Plates',
-            'Sheets',
-            'MS Pipes',
-            'GI Pipes',
-            'Hollow Sections',
-            'Roofing Sheets',
-            'Cement',
-            'Blocks',
-            'Welding Electrodes',
-            'Fasteners & Hardware',
-            'BOQ-Based Procurement',
-            'Bulk & Scheduled Supply'
+            'Cuplock verticals & ledgers',
+            'H-Frames',
+            'Cross braces',
+            'Walkway platforms',
+            'Adjustable props',
+            'Base jacks & U-head jacks',
+            'Joint pins',
+            'Staircase components',
+            'Fabricated accessories'
           ]
         },
         {
-          name: 'Scaffolding, Formwork & Access Solutions',
-          tagline: 'Reliable Access. Continuous Progress.',
+          name: 'Rental & Supply Models',
+          tagline: 'Flexible Deployment for Active Workfronts.',
           services: [
-            'Scaffolding Rental',
-            'Scaffolding Material Supply',
-            'Cuplock Scaffolding',
-            'H-Frame Scaffolding',
-            'Adjustable Props',
-            'Spans',
-            'Base Jacks',
-            'U-Head Jacks',
-            'Walkway Planks',
-            'Shuttering Plates',
-            'Couplers & Clamps'
+            'Long-term rental',
+            'Direct sale',
+            'Project-based supply',
+            'Additional quantity support',
+            'Custom manufacturing',
+            'Replacement coordination'
           ]
         }
       ]
     },
     {
-      title: 'Steel Engineering & Construction Execution',
-      description: 'End-to-end engineering solutions covering fabrication, construction, structural execution and industrial project support.',
+      title: 'Steel & Construction-Material Supply',
+      description: 'Specified correctly. Sourced responsibly. Delivered for execution. Supply of structural steel, pipes, sheets, TMT bars, construction materials and all roofing solutions to industrial buyers, builders, warehouses, fabricators and contractors.',
       image: heroImg,
-      path: '/services#steel-engineering',
+      path: '/capabilities#steel-engineering',
       icon: <Building size={20} />,
       categories: [
         {
-          name: 'Structural Steel & Fabrication',
+          name: 'Steel & Construction Materials',
+          tagline: 'Specified Correctly. Sourced Responsibly.',
+          services: [
+            'TMT bars',
+            'MS pipes, GI pipes & GP pipes',
+            'Angles, Channels & Beams',
+            'MS plates',
+            'GI sheets & colour-coated roofing sheets',
+            'UPVC sheets & cement sheets',
+            'Cement bags',
+            'Structural steel products',
+            'BOQ-based procurement',
+            'Scheduled deliveries'
+          ]
+        },
+        {
+          name: 'Supply Models',
+          tagline: 'Flexible Sourcing for Project and Recurring Needs.',
+          services: [
+            'Spot purchase',
+            'Project-based supply',
+            'Recurring monthly supply',
+            'BOQ-based procurement',
+            'Brand-specific sourcing',
+            'Scheduled deliveries'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Structural Fabrication & Civil Works',
+      description: 'From measurement and material to fabrication and site execution. Structural fabrication, industrial modifications, site erection and selected civil works connected through one execution process.',
+      image: projectImg,
+      path: '/capabilities#fabrication-civil',
+      icon: <Wrench size={20} />,
+      categories: [
+        {
+          name: 'Structural Fabrication',
           tagline: 'Fabricated for Purpose. Built for Performance.',
           services: [
-            'Structural Steel Fabrication',
-            'Industrial Sheds',
-            'Warehouses',
-            'Mezzanine Floors',
-            'Platforms & Walkways',
-            'Machine Frames',
-            'Equipment Supports',
-            'Storage Racks',
-            'Gates & Custom Steel Work',
-            'On-Site Welding',
-            'Structural Repair & Modification',
-            'Fabrication According to Drawings & Measurements'
+            'Structural steel fabrication',
+            'Industrial sheds',
+            'Platforms, walkways & staircases',
+            'Handrails & equipment supports',
+            'Pipe-support structures',
+            'Repairs & modifications',
+            'Structural strengthening'
           ]
         },
         {
-          name: 'Construction & Redevelopment',
-          tagline: 'From Cleared Ground to Working Asset.',
+          name: 'Civil Works & Execution',
+          tagline: 'From Foundation to Final Finish.',
           services: [
-            'Industrial Construction',
-            'Warehouse Construction',
-            'Factory Extensions',
-            'Civil Foundations',
-            'PCC Work',
-            'RCC Work',
-            'Flooring',
-            'Masonry',
-            'Plastering',
-            'Compound Walls',
-            'Drainage',
-            'Yard Development',
-            'Structural Modifications',
-            'Renovation & Redevelopment',
-            'Civil Works Connected with Steel Structures'
-          ]
-        },
-        {
-          name: 'Industrial Project Support',
-          tagline: 'Connected Support for Complex Sites.',
-          services: [
-            'Project-Based Procurement',
-            'Site Material Coordination',
-            'Maintenance Fabrication',
-            'Structural Repairs',
-            'Contractor Support',
-            'Custom Industrial Requirements',
-            'Combined Supply & Execution'
+            'Site erection',
+            'Foundations & pedestals',
+            'Industrial civil works',
+            'Selected commercial civil works'
           ]
         }
       ]
@@ -217,54 +215,54 @@ export default function Home() {
   ];
 
   const industries = [
-    { name: 'Manufacturing', icon: <Factory size={28} /> },
-    { name: 'Chemical & Pharma', icon: <FlaskConical size={28} /> },
-    { name: 'Power & Energy', icon: <Zap size={28} /> },
-    { name: 'Warehousing & Logistics', icon: <Boxes size={28} /> },
-    { name: 'Food Processing', icon: <UtensilsCrossed size={28} /> },
-    { name: 'Pharma & Biotech', icon: <Pill size={28} /> },
-    { name: 'Infrastructure & EPC', icon: <Milestone size={28} /> },
-    { name: 'Automobile & Heavy Eng.', icon: <Car size={28} /> },
+    { name: 'Ports & Logistics', icon: <Anchor size={28} /> },
+    { name: 'Industrial Manufacturing', icon: <Factory size={28} /> },
+    { name: 'Warehousing & Distribution', icon: <Boxes size={28} /> },
+    { name: 'Builders & Developers', icon: <Building2 size={28} /> },
+    { name: 'Infrastructure Contractors', icon: <Milestone size={28} /> },
+    { name: 'EPC Companies', icon: <Zap size={28} /> },
+    { name: 'Government & PSUs', icon: <ShieldCheck size={28} /> },
+    { name: 'Fabricators & Contractors', icon: <Wrench size={28} /> },
   ];
 
   const whyChooseUsPoints = [
     {
-      title: 'End-to-End Industrial Solutions',
-      description: 'We handle everything from site dismantling and demolition to raw material supply, structural engineering, and final turnkey construction.'
+      title: 'Integrated Industrial Platform',
+      description: 'Four divisions reduce the need to coordinate several disconnected vendors across material recovery, access systems, steel supply and execution.'
     },
     {
-      title: 'Experienced Engineering Team',
-      description: 'Over 15 years of industrial experience executing heavy fabrication, high-load steel assemblies, and complex plant layouts.'
+      title: '22+ Years of Operating Experience',
+      description: 'IRONEX is built on more than 22 years of family-led industrial experience across scrap, scaffolding, material supply, fabrication and civil works.'
     },
     {
-      title: 'Trusted by India\'s Leading Industries',
-      description: 'Preferred contractor for major corporate developers, state power grids, chemical giants, and infrastructure conglomerates.'
+      title: 'Physical Operating Resources',
+      description: 'The business is supported by inventory, workforce, vehicles and warehouse infrastructure around the Uran and Nhava Sheva industrial region.'
     },
     {
-      title: 'Modern Equipment & Skilled Workforce',
-      description: 'Equipped with automated CNC cutting lines, automatic SAW welding gantries, and certified site rigging specialists.'
+      title: 'Commercial & Operational Understanding',
+      description: 'We consider transport, labour, machinery, specifications, site access and execution conditions - not only the quoted rate.'
     },
     {
-      title: 'On-Time Project Delivery',
-      description: 'Strict critical-path tracking and project management ensures site transformation and construction finish on schedule.'
+      title: 'Strategic Industrial Location',
+      description: 'Our operational presence around Uran, Raigad, Thane and the Nhava Sheva region provides access to ports, warehouses and major industrial corridors.'
     },
     {
-      title: 'Safety & Quality Compliance',
-      description: 'Strict zero-harm policies under OSHA guidelines. ISO 9001:2015 certified plants with full raw material test certification.'
+      title: 'Defined Responsibility',
+      description: 'Each enquiry is routed to the relevant business division with clear commercial and operational ownership.'
     },
     {
-      title: 'Nationwide Industrial Operations',
-      description: 'Operating high-load steel fabrication yards and site rigging teams equipped to support infrastructure projects across India.'
+      title: 'Honest Capability',
+      description: 'When a requirement is outside our current capability, timeline or scope, we communicate it before making commitments.'
     }
   ];
 
   const steps = [
-    { step: '01', title: 'Consultation', desc: 'Understanding project scale, load requirements, timelines, and raw material preferences.' },
-    { step: '02', title: 'Design & Engineering', desc: 'Creation of detailed 3D Tekla structures, drawing reviews, and structural stability certifications.' },
-    { step: '03', title: 'Fabrication', desc: 'High-precision steel processing, shot blasting, priming, and quality welding at our plant.' },
-    { step: '04', title: 'Quality Check', desc: 'Non-Destructive Testing (NDT), ultrasonic tests on welds, and strict tolerance verification.' },
-    { step: '05', title: 'Installation & Erection', desc: 'On-site rigging, crane management, heavy steel assembly, and structural framing alignment.' },
-    { step: '06', title: 'Completion & Handover', desc: 'Final load-bearing checks, safety clearances, and handover of quality dossiers.' }
+    { step: '01', title: 'Share the Requirement', desc: 'Send the BOQ, drawings, material schedule, scaffolding quantity or scrap-lot information.' },
+    { step: '02', title: 'Requirement Review', desc: 'The relevant IRONEX division checks the available information.' },
+    { step: '03', title: 'Technical Clarification', desc: 'Specifications, quantity, site access, timeline and commercial conditions are clarified.' },
+    { step: '04', title: 'Proposal or Inspection', desc: 'IRONEX provides a quotation, confirms availability, requests additional information or schedules a site visit.' },
+    { step: '05', title: 'Commercial Confirmation', desc: 'Scope, rate, responsibilities, payment terms, transport and timelines are agreed.' },
+    { step: '06', title: 'Execution Coordination', desc: 'Dispatch, mobilisation, lifting, fabrication, rental or civil execution begins.' }
   ];
 
   const testimonials = [
@@ -292,12 +290,21 @@ export default function Home() {
   ];
 
   const galleryImages = [
-    { image: heroImg, title: 'Steel Fabrication Shop' },
-    { image: demolitionImg, title: 'Industrial Demolition Progress' },
-    { image: projectImg, title: 'PEB Warehouse Structures' },
-    { image: scaffoldingImg, title: 'Scaffolding & Access Systems' },
-    { image: scrapImg, title: 'Industrial Scrap Processing' },
-    { image: pebImg, title: 'Structural Erection Progress' }
+    { image: heroImg, title: 'CNC Profile Cutting Shop Floor' },
+    { image: demolitionImg, title: 'Heavy Excavator Demolition Works' },
+    { image: projectImg, title: 'Completed Warehousing Complex' },
+    { image: scaffoldingImg, title: 'Cuplock Scaffolding Systems' },
+    { image: scrapImg, title: 'Ferrous Metal Scrap Segregation' },
+    { image: pebImg, title: 'Structural Steel Column Erection' },
+    { image: factoryImg, title: 'Dahej Plant Structural Workshop' },
+    { image: scrapYardImg, title: 'Industrial Scrap Yard Operation' },
+    { image: weldingImg, title: 'Precision Welding Operations' },
+    { image: siteScaffoldImg, title: 'Scaffolding Access Systems in Operation' },
+    { image: steelCoilsImg, title: 'Steel Coil & Pipe Material Stockyard' },
+    { image: warehouseImg, title: 'Warehouse Storage & Logistics Yard' },
+    { image: excavatorImg, title: 'Controlled Structural Dismantling' },
+    { image: steelFrameImg, title: 'Steel Framing & PEB Structure' },
+    { image: welderImg, title: 'Fabrication Workshop in Progress' }
   ];
 
   return (
@@ -323,16 +330,20 @@ export default function Home() {
             <div className="lg:col-span-7 text-left space-y-8">
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#B86A3A]/10 border border-[#B86A3A]/30 text-secondary text-xs font-bold uppercase tracking-widest rounded-lg">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                Heavy Structural steel engineering & fabrication
+                Four Specialised Divisions. One Accountable Industrial Partner.
               </span>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
-                Engineering Steel <br />
-                <span className="text-secondary font-extrabold">That Builds Industries.</span>
+                Industrial Requirements Are Complex. <br />
+                <span className="text-secondary font-extrabold">Working With the Right Partner Should Not Be.</span>
               </h1>
               
               <p className="text-base sm:text-lg text-gray-300 font-body leading-relaxed max-w-2xl">
-                Delivering premium structural steel fabrication, industrial infrastructure, PEB buildings, heavy fabrication, and engineering solutions across India.
+                IRONEX Steel & Infra LLP brings together industrial scrap procurement, scaffolding manufacturing and rental, steel and construction-material supply, structural fabrication and civil execution under one operating platform. We help industries, ports, warehouses, infrastructure contractors and construction companies reduce coordination gaps, improve accountability and move requirements from enquiry to execution with greater control.
+              </p>
+              <p className="text-sm text-secondary font-semibold font-body -mt-6">
+                From recovering industrial material to supplying and building what comes next.
+                <span className="block text-gray-400 italic font-normal mt-1">Because delays need solutions, not stories.</span>
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -359,7 +370,6 @@ export default function Home() {
                   alt="PEB Structure Framing" 
                   className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500" 
                 />
-                <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors duration-300" />
               </div>
             </div>
 
@@ -369,6 +379,67 @@ export default function Home() {
 
       {/* 2. TRUST SECTION */}
       <TrustStats />
+
+      {/* 2A. THE GAP WE EXIST TO CLOSE */}
+      <section className="py-24 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">The Gap We Exist to Close</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">
+              Industry Does Not Have a Vendor Shortage. It Has an Accountability Shortage.
+            </h2>
+            <p className="text-sm text-gray-500 font-body leading-relaxed">
+              Industrial requirements rarely involve only one supplier or one contractor. A project may require steel, temporary access systems, structural fabrication, civil execution, transport coordination and removal of obsolete material - all within connected timelines. These responsibilities are commonly divided between unrelated companies. One supplier delivers steel. Another provides scaffolding. A third handles fabrication. Someone else lifts the scrap. When work slows, responsibility moves between vendors while the project remains where it was.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            {[
+              {
+                title: 'Fragmented Responsibility',
+                desc: 'Each party takes responsibility for one narrow scope. Nobody owns the gaps between scopes.'
+              },
+              {
+                title: 'Commitments Without Verification',
+                desc: 'Stock is promised before inventory is checked. Delivery is confirmed before transportation is arranged. Execution dates are offered before site conditions are understood.'
+              },
+              {
+                title: 'Incomplete Commercial Offers',
+                desc: 'Low quotations may exclude transport, machinery, loading, shortages, replacement material, waiting time, wastage or difficult site conditions.'
+              },
+              {
+                title: 'Poor Coordination',
+                desc: 'Material, manpower, machinery and site readiness are planned separately even though one delay affects the complete workfront.'
+              },
+              {
+                title: 'Reactive Communication',
+                desc: 'The client receives an explanation after the delay has already affected operations.'
+              }
+            ].map((gap, idx) => (
+              <div key={idx} className="bg-[#F7F8FA] border border-gray-200/60 p-8 rounded-xl text-left">
+                <span className="text-3xl font-extrabold text-secondary block mb-3">0{idx + 1}</span>
+                <h3 className="text-base font-bold text-primary mb-2">{gap.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed font-body">{gap.desc}</p>
+              </div>
+            ))}
+            <div className="bg-primary text-white p-8 rounded-xl text-left flex flex-col justify-center">
+              <h3 className="text-base font-bold mb-2">The Commercial Impact</h3>
+              <p className="text-[11px] text-gray-300 leading-relaxed font-body mb-4">
+                Poor coordination creates higher indirect costs, delayed workfronts, emergency purchases, material mismatch, transport rescheduling, repeated follow-ups, rework, responsibility disputes and delayed completion.
+              </p>
+              <p className="text-sm font-bold text-secondary leading-relaxed">
+                The quotation is the visible cost. Poor coordination is the expensive part nobody includes in it.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-gray-400 italic font-body mt-10">
+            The cheapest quotation remains cheap only until someone tries to execute it.
+          </p>
+
+        </div>
+      </section>
 
       {/* 2B. OUR TOP CLIENTS */}
       <section className="py-16 bg-white border-b border-gray-100 overflow-hidden">
@@ -420,7 +491,6 @@ export default function Home() {
                   alt="IRONEX Steel & Infra Manufacturing Facility Ahmedabad" 
                   className="w-full object-cover aspect-[4/3]"
                 />
-                <div className="absolute inset-0 bg-primary bg-opacity-10" />
               </div>
             </div>
 
@@ -433,7 +503,7 @@ export default function Home() {
                 Established Partners in Industrial Infrastructure
               </h2>
               <p className="text-sm text-gray-500 leading-relaxed font-body">
-                IRONEX Steel & Infra LLP is a leading engineering enterprise specializing in structural steel design, heavy fabrication, pre-engineered buildings (PEB), and civil infrastructure EPC contracting. Based out of Ahmedabad, Gujarat, we support manufacturing units, EPC developers, and infrastructure groups across India with premium steel solutions built for high load capacities and durability.
+                IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement, scaffolding systems, steel and construction-material supply, structural fabrication and civil works. Built on more than 22 years of family-led industrial experience, IRONEX combines established operational knowledge with a modern, structured and execution-focused approach - based out of Uran, Maharashtra.
               </p>
 
               {/* Mission, Vision, Values Grid */}
@@ -441,19 +511,19 @@ export default function Home() {
                 <div className="bg-white p-5 rounded-xl border border-gray-200/60 shadow-xs">
                   <h4 className="text-sm font-bold uppercase text-secondary mb-2">Our Mission</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    To deliver reliable, high-integrity structural steel and PEB frameworks using modern, certified engineering processes.
+                    To reduce operational fragmentation for industrial and construction clients through specialised capabilities, transparent communication, measurable capacity and responsible execution.
                   </p>
                 </div>
                 <div className="bg-white p-5 rounded-xl border border-gray-200/60 shadow-xs">
                   <h4 className="text-sm font-bold uppercase text-secondary mb-2">Our Vision</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    To serve as India's premier, go-to heavy fabrication and infrastructure partner for critical industrial complexes.
+                    To build a trusted industrial platform that connects material recovery, access systems, steel supply and physical execution under one accountable organisation.
                   </p>
                 </div>
                 <div className="bg-white p-5 rounded-xl border border-gray-200/60 shadow-xs">
                   <h4 className="text-sm font-bold uppercase text-secondary mb-2">Core Values</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">
-                    Precision engineering, strict safety protocols, absolute material transparency, and long-term client trust.
+                    Responsibility before excuses, capability before commitment, clarity before quotation, systems before scale, relationships beyond transactions, and long-term reputation.
                   </p>
                 </div>
               </div>
@@ -461,20 +531,20 @@ export default function Home() {
               {/* Aligned Statistics Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200/80">
                 <div>
-                  <span className="text-2xl font-bold text-primary block">45,000 MT</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Annual Capacity</span>
+                  <span className="text-2xl font-bold text-primary block">1,000+ MT</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Scaffolding Inventory</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-bold text-primary block">1,50,000 SF</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Fabrication Plant</span>
+                  <span className="text-2xl font-bold text-primary block">350+ MT</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Monthly Steel Supply</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-bold text-primary block">35+ Experts</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Engineering Team</span>
+                  <span className="text-2xl font-bold text-primary block">170+</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Project Engagements</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-bold text-primary block">100% Passed</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Quality Audits</span>
+                  <span className="text-2xl font-bold text-primary block">22+ Years</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Operating Legacy</span>
                 </div>
               </div>
 
@@ -489,9 +559,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Capabilities</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Our Capabilities</h2>
-            <p className="text-sm text-gray-500 font-body leading-relaxed">Delivering complete industrial solutions from demolition and material recovery to structural fabrication, construction and project execution.</p>
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Four Divisions</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Choose the Capability Your Requirement Needs.</h2>
+            <p className="text-sm text-gray-500 font-body leading-relaxed">Each IRONEX division is designed around a specific industrial problem. Select a division to review its services, capabilities, operating process and enquiry format.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
@@ -554,8 +624,8 @@ export default function Home() {
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Sectors We Support</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Industries We Serve</h2>
-            <p className="text-sm text-gray-500 font-body">Our steel structures form the backbone of critical industries requiring high loading limits, security, and customized framing.</p>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Built for Environments Where Delays Have Measurable Consequences.</h2>
+            <p className="text-sm text-gray-500 font-body">Supporting sectors where material availability, site access, safety, project coordination and operational continuity directly affect commercial performance.</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -590,16 +660,15 @@ export default function Home() {
                   alt="Industrial construction framing steel structural check" 
                   className="w-full object-cover aspect-[3/4]"
                 />
-                <div className="absolute inset-0 bg-primary bg-opacity-20" />
               </div>
             </div>
 
             {/* Right: Timeline Points */}
             <div className="lg:col-span-7 space-y-12 text-left">
               <div className="space-y-3">
-                <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Our Edge</span>
-                <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Why Corporate Partners Choose IRONEX</h2>
-                <p className="text-sm text-gray-500 font-body">We maintain rigorous production frameworks and quality control checkpoints that assure safety, reliability, and precision on every ton of steel processed.</p>
+                <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Why IRONEX</span>
+                <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Capability Creates Interest. Accountability Creates Trust.</h2>
+                <p className="text-sm text-gray-500 font-body">IRONEX combines physical operating resources, commercial and operational understanding, and defined responsibility to keep requirements moving from enquiry to execution.</p>
               </div>
 
               {/* Timeline Items */}
@@ -630,8 +699,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Execution Workflow</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Our Structured Project Process</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">A Clearer Start</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Good Execution Begins Before the Quotation.</h2>
             <p className="text-sm text-gray-500 font-body">From design checks to physical handover on site, we run a highly coordinated flow with client review stages.</p>
           </div>
 
@@ -654,6 +723,12 @@ export default function Home() {
                 <p className="text-[11px] text-gray-500 font-body leading-relaxed">{st.desc}</p>
               </div>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/25 px-4 py-2.5 rounded-lg">
+              Clear scope. Verified commitment. Planned execution. Accountability until completion.
+            </span>
           </div>
 
         </div>
@@ -682,10 +757,9 @@ export default function Home() {
                   src={gal.image} 
                   alt={gal.title} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
                 />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-primary bg-opacity-30 group-hover:bg-opacity-70 transition-all duration-300 flex flex-col justify-end p-6" />
+                {/* Hover overlay only - images stay fully visible */}
+                <div className="absolute inset-0 bg-transparent group-hover:bg-primary/70 transition-all duration-300 flex flex-col justify-end p-6" />
                 <div className="absolute bottom-6 left-6 text-left text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1 block">IRONEX Facilities</span>
                   <h4 className="text-lg font-bold font-heading">{gal.title}</h4>
@@ -752,10 +826,13 @@ export default function Home() {
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Ready to Build, Redevelop or Transform Your Industrial Project?
+            Let Us Understand What the Requirement Actually Needs.
           </h2>
           <p className="text-base text-gray-300 font-body max-w-3xl mx-auto leading-relaxed">
-            From demolition and scrap management to structural fabrication, material supply and complete industrial construction — IRONEX delivers reliable engineering solutions from start to finish.
+            Send your BOQ, material schedule, scaffolding quantity, project drawings or scrap-lot information. We will direct the enquiry to the relevant IRONEX division.
+          </p>
+          <p className="text-xs text-gray-400 italic font-body">
+            Not sure which division applies? Send the complete requirement. Internal coordination is our responsibility, not yours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <button
@@ -788,8 +865,8 @@ export default function Home() {
             <div className="lg:col-span-6 flex flex-col justify-between text-left">
               <div className="space-y-6">
                 <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Get In Touch</span>
-                <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Let's Discuss Your Industrial Project</h2>
-                <p className="text-sm text-gray-500 font-body">Submit structural drawings or tell us your requirements. Our estimation engineers will draw up detailed feasibility and pricing quotes.</p>
+                <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Discuss a Requirement With the Right Division</h2>
+                <p className="text-sm text-gray-500 font-body">Send your BOQ, drawings, material schedule, scaffolding quantity or scrap-lot information. The relevant IRONEX division will review the information before responding.</p>
                 
                 {/* Office Info details */}
                 <div className="space-y-4 pt-4 text-sm font-semibold text-primary font-body">
@@ -798,8 +875,8 @@ export default function Home() {
                       <MapPin size={18} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">Registered Corporate Office</h4>
-                      <p className="text-xs text-gray-500 mt-1 font-body">Plot 42-B, Industrial Area Phase II, Sector 5, Ahmedabad, Gujarat - 382480, India.</p>
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">Registered Office</h4>
+                      <p className="text-xs text-gray-500 mt-1 font-body">Uran, Maharashtra. Operational base: Uttarshiv, Uran region, Maharashtra.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -834,8 +911,8 @@ export default function Home() {
                     <div className="w-12 h-12 rounded-full bg-primary text-secondary border-2 border-white flex items-center justify-center font-bold text-xs shadow-md mx-auto">
                       <MapPin size={22} />
                     </div>
-                    <h4 className="text-sm font-bold text-primary font-heading">Ahmedabad GIDC Fabrication Yard</h4>
-                    <p className="text-xs text-gray-400 max-w-sm font-body">15km from central Ahmedabad. Dedicated transport routes for heavy ODC (Over Dimension Cargo) transit trailers.</p>
+                    <h4 className="text-sm font-bold text-primary font-heading">Uran Operating Region, Maharashtra</h4>
+                    <p className="text-xs text-gray-400 max-w-sm font-body">Operational presence around Uran, Raigad, Thane and the Nhava Sheva industrial region.</p>
                     <a
                       href="https://maps.google.com"
                       target="_blank"

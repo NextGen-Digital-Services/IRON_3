@@ -8,6 +8,14 @@ import factoryImg from '../assets/about_factory.jpg';
 import demolitionImg from '../assets/demolition.jpg';
 import scaffoldingImg from '../assets/scaffolding.jpg';
 import scrapImg from '../assets/scrap_processing.jpg';
+import scrapYardImg from '../assets/pexels_scrap_yard.jpg';
+import weldingImg from '../assets/pexels_welding.jpg';
+import siteScaffoldImg from '../assets/pexels_scaffolding.jpg';
+import steelCoilsImg from '../assets/pexels_steel_coils.jpg';
+import warehouseImg from '../assets/pexels_warehouse.jpg';
+import excavatorImg from '../assets/pexels_excavator.jpg';
+import steelFrameImg from '../assets/pexels_steel_structure.jpg';
+import welderImg from '../assets/pexels_welder.jpg';
 
 export default function Gallery() {
   const [filter, setFilter] = useState('All');
@@ -27,18 +35,18 @@ export default function Gallery() {
 
   const images = [
     { title: 'CNC Oxy Profile Cutting', category: 'Fabrication', img: heroImg },
-    { title: 'Heavy Excavator Demolition Works', category: 'Demolition', img: demolitionImg },
+    { title: 'Heavy Excavator Demolition Works', category: 'Demolition', img: excavatorImg },
     { title: 'Scaffolding Materials Stockyard', category: 'Scaffolding', img: scaffoldingImg },
     { title: 'Ferrous Metal scrap Segregation', category: 'Industrial Machinery', img: scrapImg },
     { title: 'Structural Steel Column Erection', category: 'Construction', img: pebImg },
     { title: 'Completed Warehousing Complex', category: 'Warehouses', img: projectImg },
     { title: 'Dahej Plant Outer Workshop', category: 'Structural Steel', img: factoryImg },
-    { title: 'Submerged Arc Welding column', category: 'Fabrication', img: heroImg },
+    { title: 'Submerged Arc Welding column', category: 'Fabrication', img: weldingImg },
     { title: 'Controlled Structural Dismantling', category: 'Demolition', img: demolitionImg },
-    { title: 'Cuplock Scaffolding rental setup', category: 'Scaffolding', img: scaffoldingImg },
+    { title: 'Cuplock Scaffolding rental setup', category: 'Scaffolding', img: siteScaffoldImg },
     { title: 'Hydraulic metal sorting crane', category: 'Heavy Equipment', img: scrapImg },
-    { title: 'High-Altitude framing rafter', category: 'Project Execution', img: pebImg },
-    { title: 'Logistics Distribution Yard', category: 'Warehouses', img: projectImg },
+    { title: 'High-Altitude framing rafter', category: 'Project Execution', img: steelFrameImg },
+    { title: 'Logistics Distribution Yard', category: 'Warehouses', img: warehouseImg },
     { title: 'Structural Mezzanine Assembly', category: 'Construction', img: factoryImg },
     { title: 'Automatic Radial Drilling Machine', category: 'Industrial Machinery', img: heroImg },
     { title: 'Concrete Base PCC Leveling', category: 'Construction', img: pebImg },
@@ -48,14 +56,14 @@ export default function Gallery() {
     { title: 'Factory boiler shed clearing', category: 'Demolition', img: demolitionImg },
     { title: 'Standing Seam Roof Installation', category: 'Project Execution', img: projectImg },
     { title: 'High-Strength anchor bolt check', category: 'Construction', img: pebImg },
-    { title: 'MS & GI Pipes warehouse supply', category: 'Structural Steel', img: scaffoldingImg },
+    { title: 'MS & GI Pipes warehouse supply', category: 'Structural Steel', img: steelCoilsImg },
     { title: 'Heavy Gantry Crane Erection', category: 'Heavy Equipment', img: demolitionImg },
     { title: 'CNC plasma profile cutter', category: 'Industrial Machinery', img: heroImg },
-    { title: 'Ferrous structural scrap buyback', category: 'Demolition', img: scrapImg },
+    { title: 'Ferrous structural scrap buyback', category: 'Demolition', img: scrapYardImg },
     { title: 'ISO multi-coat paint inspection', category: 'Project Execution', img: factoryImg },
-    { title: 'Cuplock scaffolding load-test', category: 'Scaffolding', img: scaffoldingImg },
-    { title: 'Finished steel platforms assembly', category: 'Fabrication', img: heroImg },
-    { title: 'Turnkey chemical plant delivery', category: 'Warehouses', img: projectImg }
+    { title: 'Cuplock scaffolding load-test', category: 'Scaffolding', img: siteScaffoldImg },
+    { title: 'Finished steel platforms assembly', category: 'Fabrication', img: welderImg },
+    { title: 'Turnkey chemical plant delivery', category: 'Warehouses', img: warehouseImg }
   ];
 
   const filteredImages = filter === 'All' 

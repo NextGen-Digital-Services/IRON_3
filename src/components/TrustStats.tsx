@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ShieldCheck, HardHat, Award, Users2 } from 'lucide-react';
+import { ShieldCheck, HardHat, Award, Layers } from 'lucide-react';
 
 interface StatItem {
   id: number;
@@ -13,29 +13,29 @@ export default function TrustStats() {
   const stats: StatItem[] = [
     {
       id: 1,
-      label: 'Years of Engineering Excellence',
-      value: 15,
+      label: 'Years of Industrial Operating Legacy',
+      value: 22,
       suffix: '+',
       icon: <Award className="text-secondary" size={32} />
     },
     {
       id: 2,
-      label: 'Industrial Projects Completed',
+      label: 'MT Total Scaffolding Inventory',
+      value: 1000,
+      suffix: '+',
+      icon: <Layers className="text-secondary" size={32} />
+    },
+    {
+      id: 3,
+      label: 'MT Monthly Steel-Supply Capability',
       value: 350,
       suffix: '+',
       icon: <HardHat className="text-secondary" size={32} />
     },
     {
-      id: 3,
-      label: 'Satisfied Corporate Clients',
-      value: 200,
-      suffix: '+',
-      icon: <Users2 className="text-secondary" size={32} />
-    },
-    {
       id: 4,
-      label: 'Qualified Industrial Partners',
-      value: 45,
+      label: 'Project Engagements',
+      value: 170,
       suffix: '+',
       icon: <ShieldCheck className="text-secondary" size={32} />
     }

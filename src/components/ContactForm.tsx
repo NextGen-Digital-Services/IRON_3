@@ -22,12 +22,10 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
   const [submitError, setSubmitError] = useState('');
 
   const servicesList = [
-    'Pre-Engineered Buildings (PEB)',
-    'Heavy Structural Fabrication',
-    'Structural Steel Works',
-    'Industrial Infrastructure & EPC',
-    'Custom Engineering & Design',
-    'Site Installation & Erection',
+    'Industrial Scrap Procurement & Processing',
+    'Scaffolding & Formwork Systems',
+    'Steel & Construction-Material Supply',
+    'Structural Fabrication & Civil Works',
     'General Inquiry'
   ];
 
@@ -104,7 +102,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
         </div>
         <h4 className="text-xl font-bold text-primary mb-2">Inquiry Submitted Successfully</h4>
         <p className="text-sm text-gray-500 max-w-md">
-          Thank you for reaching out to IRONEX Steel & Infra LLP. Our estimation team will review your requirements and respond with a formal proposal within 24-48 business hours.
+          Thank you for reaching out to IRONEX Steel & Infra LLP. The relevant division will review the information and respond with clarity on scope and availability.
         </p>
       </div>
     );
@@ -208,7 +206,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
             errors.service ? 'border-red-500' : 'border-gray-200'
           }`}
         >
-          <option value="">Select an engineering service...</option>
+          <option value="">Select a division...</option>
           {servicesList.map((service) => (
             <option key={service} value={service} className="text-primary font-semibold">
               {service}
@@ -229,7 +227,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
           rows={isModal ? 3 : 5}
           value={formData.message}
           onChange={handleChange}
-          placeholder="Please describe project scale, tonnages, dimensions, and erection requirements (if any)..."
+          placeholder="Please describe your requirement - BOQ, quantities, scaffolding scope, material specifications or scrap-lot information..."
           className={`w-full text-sm font-semibold bg-[#F7F8FA] border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors resize-y ${
             errors.message ? 'border-red-500' : 'border-gray-200'
           }`}

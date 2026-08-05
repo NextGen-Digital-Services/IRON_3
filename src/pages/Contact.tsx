@@ -41,18 +41,18 @@ export default function Contact() {
 
   const offices = [
     {
-      type: 'Registered Corporate Office',
-      city: 'Ahmedabad, Gujarat',
-      address: '402, Steel Tower, opposite GIDC Office, SG Highway, Ahmedabad - 380054',
+      type: 'Registered Office',
+      city: 'Uran, Maharashtra',
+      address: 'Uran, Raigad District, Maharashtra - India',
       hours: 'Mon - Sat: 09:30 AM - 06:30 PM (Sunday Closed)',
-      phone: '+91 79 4893 2810',
+      phone: '+91 98250 83920',
       email: 'corp@ironexsteel.com'
     },
     {
-      type: 'Primary Fabrication Plant & Material Yard',
-      city: 'Dahej SEZ, Gujarat',
-      address: 'Plot No. 12/B, GIDC Industrial Area Phase II, Dahej, District Bharuch - 392130',
-      hours: 'Mon - Sat: 08:00 AM - 08:00 PM (Operations 24/7 during Shutdowns)',
+      type: 'Operational Base & Material Yard',
+      city: 'Uttarshiv, Uran Region',
+      address: 'Uttarshiv, Uran, Raigad District, Maharashtra - India. Commercial galas, warehouse and open-yard capacity supporting the four divisions.',
+      hours: 'Mon - Sat: 08:00 AM - 08:00 PM (Sunday Closed)',
       phone: '+91 98250 83920',
       email: 'dahej@ironexsteel.com'
     }
@@ -60,24 +60,24 @@ export default function Contact() {
 
   const faqs = [
     {
-      q: 'What quality checks (QAP) do you execute on structural steel?',
-      a: 'We implement a standardized Quality Assurance Plan (QAP). This includes Non-Destructive Testing (NDT), ultrasonic testing of critical weld joints, dry film thickness (DFT) paint verification, dimensional tolerance inspections as per IS 7215, and verification of Mill Test Certificates (MTC) for all steel sections.'
+      q: 'How do I decide which IRONEX division to contact?',
+      a: 'Each requirement is routed to the relevant division. Industrial scrap procurement handles ferrous and non-ferrous scrap, scaffolding systems handles supply and rental, steel and construction-material supply handles pipes, structural steel and roofing, and fabrication & civil works handles structural and civil execution.'
     },
     {
-      q: 'How do you manage ODC transportation and site clearances?',
-      a: 'Our logistics team secures all necessary NHAI clearances and permits for Over-Dimensional Cargo (ODC). We coordinate escort vehicles, route assessments, and site clearances. This includes checking height parameters under overhead electrical cables and bridge capacity limits.'
+      q: 'What information should I share to get a response?',
+      a: 'Send your BOQ, drawings, material schedule, scaffolding quantity or scrap-lot information. The relevant division checks availability and feasibility before responding, and will request additional information if the scope is not clear.'
     },
     {
-      q: 'What is the typical bidding turnaround time?',
-      a: 'For standard BOQ-based steel material supply and scaffolding requests, we submit quotes within 24-48 business hours. For complex Pre-Engineered Building (PEB) design-build projects or heavy demolition scopes, our engineering team requires 3-5 days to optimize tonnage configurations.'
+      q: 'Does IRONEX quote on every requirement?',
+      a: 'No. When a requirement is outside our current capability, timeline or scope, we communicate it before making commitments. We prefer honest capability over unrealistic acceptance.'
     },
     {
-      q: 'Can you dismantle an old structure while another part of the plant operates?',
-      a: 'Yes. We specialize in controlled selective demolition within operating plants. We deploy shielding nets, spark protection curtains, and vibration monitoring devices. We plan high-risk rigging lifts during night shifts or scheduled shutdown windows to ensure zero impact on adjacent operating lines.'
+      q: 'Can I engage more than one division on a single project?',
+      a: 'Yes. Clients may engage one division independently or combine capabilities where the project requires connected execution - from recovering industrial material to supplying and building what comes next.'
     },
     {
-      q: 'What certificates do you supply with scaffolding rentals?',
-      a: 'Every scaffolding consignment is dispatched with material health clearances, load testing certificates, and safety guidelines. We ensure all cuplock verticals, adjustable props, walkway planks, and couplers conform to Bureau of Indian Standards (BIS) codes.'
+      q: 'Where does IRONEX operate?',
+      a: 'IRONEX is based in Uran, Maharashtra, with an operational presence around Uran, Raigad, Thane and the Nhava Sheva industrial region.'
     }
   ];
 
@@ -90,10 +90,10 @@ export default function Contact() {
           <img src={factoryImg} alt="Contact backdrop" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-secondary">Contact Us</span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">Get in Touch</h1>
+          <span className="text-xs font-bold uppercase tracking-widest text-secondary">Start With the Requirement</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">The Faster We Understand the Scope, The Faster We Can Give a Useful Response.</h1>
           <p className="text-sm text-gray-300 max-w-2xl leading-relaxed">
-            Reach out to our SG Highway corporate office or GIDC Dahej material yard. Our estimating engineers are ready to assist with your project needs.
+            Choose the relevant division, upload the available documents and share the essential commercial and technical details.
           </p>
         </div>
       </section>
@@ -108,9 +108,9 @@ export default function Contact() {
               
               <div className="space-y-4">
                 <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Offices</span>
-                <h2 className="text-2xl font-extrabold text-primary tracking-tight">Corporate Coordinates & Yards</h2>
+                <h2 className="text-2xl font-extrabold text-primary tracking-tight">Registered Office &amp; Operating Base</h2>
                 <p className="text-xs text-gray-500 font-body leading-relaxed">
-                  Connect with our team directly. We support site visits, drawing evaluations, and procurement meetings at our primary yards.
+                  Connect with our team directly. The relevant division reviews your requirement and responds with clarity on scope and availability.
                 </p>
               </div>
 
@@ -170,7 +170,10 @@ export default function Contact() {
 
             {/* Right Column: Contact form */}
             <div className="lg:col-span-7 bg-[#F7F8FA] p-8 rounded-xl border border-gray-250/50 shadow-xs">
-              <h3 className="text-lg font-bold text-primary mb-6">Send an Inquiry</h3>
+              <h3 className="text-lg font-bold text-primary mb-2">Send an Inquiry</h3>
+              <p className="text-xs text-gray-400 italic font-body mb-6">
+                A clear requirement produces a clearer response. Revolutionary, but effective.
+              </p>
               
               {submitted ? (
                 <div className="bg-white border border-secondary p-8 rounded-xl text-center space-y-4">
@@ -179,7 +182,7 @@ export default function Contact() {
                   </div>
                   <h4 className="text-base font-bold text-primary">Inquiry Sent Successfully</h4>
                   <p className="text-xs text-gray-500 font-body leading-relaxed max-w-sm mx-auto">
-                    Thank you for contacting us. Your message has been routed to our corporate relations office. We will reply within one business day.
+                    Thank you for contacting us. Your message has been routed to the relevant IRONEX division. We will review it and respond.
                   </p>
                 </div>
               ) : (
@@ -229,7 +232,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                         className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. Scrap Tender Bid"
+                        placeholder="e.g. Scaffolding Rental Enquiry"
                       />
                     </div>
                   </div>
@@ -267,14 +270,14 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white p-6 rounded-xl border border-gray-250/40 shadow-xs space-y-4 text-left">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Interactive Map</span>
-            <h3 className="text-sm font-bold text-primary uppercase tracking-wider">SG Highway Registered Corporate Office Location</h3>
+            <h3 className="text-sm font-bold text-primary uppercase tracking-wider">Uran Registered Office Location</h3>
             <div className="rounded-xl overflow-hidden h-72 bg-primary relative">
               <img src={projectImg} alt="Map representation placeholder" className="w-full h-full object-cover opacity-20 filter grayscale" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-150 text-center max-w-sm space-y-3">
                   <MapPin className="text-secondary mx-auto" size={24} />
                   <h4 className="text-xs font-bold text-primary uppercase tracking-wider">IRONEX STEEL & INFRA LLP</h4>
-                  <p className="text-[10px] text-gray-500 font-body">SG Highway, Ahmedabad, Gujarat, India</p>
+                  <p className="text-[10px] text-gray-500 font-body">Uran, Raigad District, Maharashtra, India</p>
                   <a 
                     href="https://maps.google.com" 
                     target="_blank" 
@@ -297,7 +300,7 @@ export default function Contact() {
           <div className="text-center space-y-3 max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Inquiry Support</span>
             <h2 className="text-3xl font-extrabold text-primary tracking-tight">Frequently Asked Questions</h2>
-            <p className="text-xs text-gray-500 font-body">Common operational and billing questions addressed by our contracting team.</p>
+            <p className="text-xs text-gray-500 font-body">Common questions on how enquiries are reviewed and routed across the four divisions.</p>
           </div>
 
           <div className="space-y-4">

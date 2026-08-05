@@ -12,40 +12,45 @@ export default function About() {
 
   const leadership = [
     {
-      name: 'R. K. Patel',
-      role: 'Managing Partner & Founder',
-      desc: 'Over 30 years of industrial steel production and project execution experience. Governs corporate strategy, compliance, and material sourcing pipelines.'
+      name: 'Soban Khan',
+      role: 'Business Focus: Industrial Scrap, Fabrication & Civil Works',
+      desc: 'Soban leads the development of IRONEX\u2019s industrial scrap and project-execution divisions, with responsibility for commercial growth, operational systems, partnerships and long-term strategy.'
     },
     {
-      name: 'Amit Patel',
-      role: 'Partner & Head of Engineering',
-      desc: 'M.Tech in Structural Engineering. Drives the design department, focusing on PEB optimization, Tekla 3D modeling, and Government structural vetting.'
+      name: 'Adnan Khan',
+      role: 'Business Focus: Scaffolding Manufacturing, Rental & Sales',
+      desc: 'Adnan leads scaffolding operations, including inventory deployment, customer coordination, manufacturing requirements, rental controls and division-level systems.'
+    },
+    {
+      name: 'Hasnan Khan',
+      role: 'Business Focus: Pipes, Steel, Roofing & Material Supply',
+      desc: 'Hasnan supports the development of IRONEX\u2019s material-supply division, including product sourcing, customer requirements, market development and commercial coordination.'
     }
   ];
 
   const milestones = [
-    { year: '2011', title: 'Founding & Fabrication Plant', desc: 'Established a 20,000 sq ft structural fabrication unit in Ahmedabad GIDC, Gujarat.' },
-    { year: '2016', title: 'ISO Certification & Scaling', desc: 'Achieved ISO 9001:2015 accreditation and scaled plant capacity to 15,000 MT annually.' },
-    { year: '2021', title: 'PEB & Access Systems Launch', desc: 'Introduced pre-engineered buildings division and expanded rental stockyard with 500+ tons of cuplock scaffolding.' },
-    { year: '2025', title: 'Dismantling & Redevelopment expansion', desc: 'Acquired heavy demolition machinery. Successfully executed multi-crore factory redevelopment clearing projects.' }
+    { year: '2004', title: 'Foundation of Family-Led Experience', desc: 'Years of practical operating experience began across industrial scrap, scaffolding, building-material supply, structural fabrication and civil execution.' },
+    { year: '2026', title: 'IRONEX Steel & Infra LLP Incorporated', desc: 'Incorporated in May 2026 to organise established capabilities under one defined identity and operating structure.' },
+    { year: '2026', title: 'Four Divisions Structured', desc: 'Industrial scrap procurement, scaffolding systems, material supply and fabrication & civil divisions established under one operating standard.' },
+    { year: '2026', title: 'System-Driven Execution', desc: 'Moving from person-dependent execution toward documented systems, specialised leadership and stronger compliance.' }
   ];
 
   const strengths = [
     {
-      title: 'End-to-End Industrial Execution',
-      desc: 'We are uniquely positioned in India to dismantle old factory assets, salvage scrap value, supply structural materials, and build next-generation pre-engineered steel facilities under a single contract.'
+      title: 'Integrated Industrial Platform',
+      desc: 'Four specialised divisions reduce the need to coordinate several disconnected vendors across scrap, scaffolding, material supply and execution.'
     },
     {
-      title: 'Certified Material Traceability',
-      desc: 'Every ton of structural steel, beam, plate, or pipe we process is backed by Mill Test Certificates (MTC). We source raw materials exclusively from primary suppliers like SAIL, JSW, and TATA.'
+      title: 'Physical Operating Resources',
+      desc: 'The business is supported by inventory, workforce, vehicles and warehouse infrastructure around the Uran and Nhava Sheva industrial region.'
     },
     {
-      title: 'Rigorous Quality Check (QAP)',
-      desc: 'Our quality controllers execute Non-Destructive Testing (NDT), ultrasonic testing of structural welds, dry film thickness checking on paint coatings, and strict dimensional tolerance audits.'
+      title: 'Commercial & Operational Understanding',
+      desc: 'We consider transport, labour, machinery, specifications, site access and execution conditions - not only the quoted rate.'
     },
     {
-      title: 'Advanced Engineering Technology',
-      desc: 'Our design office uses licensed Tekla Structures and STAAD.Pro to verify anchor-bolt orientations and load ratings, ensuring zero-clash assemblies during site erection.'
+      title: 'Defined Responsibility',
+      desc: 'Each enquiry is routed to the relevant business division, with clear ownership from review to completion.'
     }
   ];
 
@@ -58,10 +63,10 @@ export default function About() {
           <img src={factoryImg} alt="Factory backdrop" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-secondary">Who We Are</span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">About IRONEX Steel & Infra</h1>
+          <span className="text-xs font-bold uppercase tracking-widest text-secondary">Our Origin. Our Structure. Our Direction.</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">Built From Experience. Structured for What Comes Next.</h1>
           <p className="text-sm text-gray-300 max-w-2xl leading-relaxed">
-            Delivering stable structural frameworks, reliable materials, and safe demolition transformations for industrial projects across India.
+            IRONEX Steel & Infra LLP was formed to bring established industrial experience into a more structured, scalable and professionally managed organisation. The company operates through four specialised divisions serving the steel, construction and industrial value chain.
           </p>
         </div>
       </section>
@@ -74,24 +79,24 @@ export default function About() {
             {/* Overview Copy */}
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Overview</span>
-              <h2 className="text-3xl font-extrabold text-primary tracking-tight">Decades of Heavy Engineering Competence</h2>
+              <h2 className="text-3xl font-extrabold text-primary tracking-tight">Where Industrial Work Comes Together</h2>
               
               <div className="text-sm text-gray-500 space-y-5 font-body leading-relaxed">
-                <p>
-                  Founded in 2011 in Ahmedabad, Gujarat, IRONEX Steel & Infra LLP has grown from a specialized fabrication shop into a comprehensive, multi-disciplinary industrial contractor. Today, we cater to state-of-the-art process plants, warehousing hubs, power infrastructures, and chemical refineries with custom structural steel fabrications and turnkey civil execution.
-                </p>
-                <p>
-                  Our unique business model integrates three key phases of industrial development: Site Dismantling & Resource Management, Project Material Supply, and Steel Engineering. By handling both demolition of obsolete structures and the erection of modern Pre-Engineered Buildings (PEBs), we save corporate developers months in coordination schedules.
-                </p>
-                <p>
-                  Operating out of our primary fabrication plant and dedicated access material yards spanning over 1.5 Lakh square feet, our facility is equipped with automated CNC profile cutting tables, radial drilling machines, and automatic submerged arc welding (SAW) gantries. This high-capacity setup allows us to process up to 45,000 metric tons of steel annually.
-                </p>
-                <p>
-                  As an ISO 9001:2015 certified company, material safety and structural reliability are core to our identity. Every column, rafter, pylon, and platform is designed, fabricated, and tested strictly as per Bureau of Indian Standards (BIS) and American Welding Society (AWS) specifications, backed by a CRISIL SE 2B rating.
-                </p>
-                <p>
-                  Through long-term supply credentials with major industry leaders like Reliance, Tata, L&T, BPCL, and JSW, we have proven our capacity to execute multi-crore infrastructure works safely under challenging terrains. We remain committed to structural safety, safety compliance, and timely project delivery.
-                </p>
+                  <p>
+                    IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement and processing, scaffolding systems, steel and construction-material supply, structural fabrication and civil works. Built on more than 22 years of family-led industrial experience, IRONEX combines established operating knowledge with a modern, structured and execution-focused approach.
+                  </p>
+                  <p>
+                    IRONEX was formed to bring established industrial experience into a more structured, scalable and professionally managed organisation. The company operates through four specialised divisions serving the steel, construction and industrial value chain, based out of Uran, Maharashtra.
+                  </p>
+                  <p>
+                    That operating experience developed through real industrial environments - where commercial decisions, labour management, material movement, payment cycles and site conditions determine whether work succeeds. Much of this learning is practical, built on operating inside the market rather than observing it from outside.
+                  </p>
+                  <p>
+                    IRONEX was incorporated in May 2026 to organise these capabilities under one defined identity and operating structure. The objective is not to erase the past. It is to convert experience into a company that can grow through documented systems, specialised leadership, stronger compliance and disciplined execution.
+                  </p>
+                  <p>
+                    Clients may engage one division independently or combine multiple capabilities where the project requires connected execution - from recovering industrial material to supplying and building what comes next.
+                  </p>
               </div>
             </div>
 
@@ -99,23 +104,22 @@ export default function About() {
             <div className="lg:col-span-5 space-y-6 mt-4 lg:mt-0">
               <div className="rounded-xl overflow-hidden shadow-md border border-gray-150 relative">
                 <img src={projectImg} alt="Finished industrial complex layout" className="w-full aspect-[4/3] object-cover" />
-                <div className="absolute inset-0 bg-primary opacity-10" />
               </div>
               
               <div className="p-6 bg-[#F7F8FA] rounded-xl border border-gray-200/65 space-y-3">
-                <h4 className="text-xs font-bold text-primary uppercase tracking-widest">Quality Accreditations</h4>
+                <h4 className="text-xs font-bold text-primary uppercase tracking-widest">Operating Credentials</h4>
                 <ul className="space-y-2 text-xs font-semibold text-gray-500 font-body">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>ISO 9001:2015 Quality Management</span>
+                    <span>Four Specialised Business Divisions</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>CRISIL SE 2B Rating for Trust</span>
+                    <span>22+ Years of Family-Led Operating Legacy</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Standard QAP approved by IIT/NIT</span>
+                    <span>Uran &amp; Nhava Sheva Industrial Presence</span>
                   </li>
                 </ul>
               </div>
@@ -135,7 +139,7 @@ export default function About() {
               <span className="text-3xl font-extrabold text-secondary">01</span>
               <h3 className="text-base font-bold text-primary uppercase tracking-wider">Our Mission</h3>
               <p className="text-xs text-gray-500 leading-relaxed font-body">
-                To deliver robust, structural steel framing, reliable material supply, and site transformation services that ensure structural integrity, schedules optimization, and maximum ROI for our industrial clients.
+                To reduce operational fragmentation for industrial and construction clients through specialised capabilities, transparent communication, measurable capacity and responsible execution.
               </p>
             </div>
 
@@ -144,7 +148,7 @@ export default function About() {
               <span className="text-3xl font-extrabold text-secondary">02</span>
               <h3 className="text-base font-bold text-primary uppercase tracking-wider">Our Vision</h3>
               <p className="text-xs text-gray-500 leading-relaxed font-body">
-                To stand as India's premier, go-to heavy fabrication and redevelopment partner, capable of transforming complex, high-risk industrial sites into modern, operating infrastructure assets.
+                To build a trusted industrial platform that connects material recovery, access systems, steel supply and physical execution under one accountable organisation.
               </p>
             </div>
 
@@ -153,7 +157,7 @@ export default function About() {
               <span className="text-3xl font-extrabold text-secondary">03</span>
               <h3 className="text-base font-bold text-primary uppercase tracking-wider">Core Values</h3>
               <p className="text-xs text-gray-500 leading-relaxed font-body">
-                Governed by strict site safety protocols, absolute material transparency (MTC reports), engineering precision, and a zero-harm policy for site workers, operators, and environments.
+                Responsibility before excuses, capability before commitment, clarity before quotation, systems before scale, relationships beyond transactions and long-term reputation.
               </p>
             </div>
 
@@ -203,14 +207,14 @@ export default function About() {
             {/* Right Column Text */}
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Modern Infrastructure</span>
-              <h2 className="text-3xl font-extrabold text-primary tracking-tight">Equipped with Advanced Fabrication & Safety Technology</h2>
+              <h2 className="text-3xl font-extrabold text-primary tracking-tight">Operating Around Uran &amp; the Nhava Sheva Industrial Region</h2>
               
               <div className="text-sm text-gray-500 space-y-4 font-body leading-relaxed">
                 <p>
-                  Our primary manufacturing complex in GIDC Ahmedabad features overhead EOT cranes, radial drills, and automated submerged arc welding (SAW) columns. By employing automatic profile plasma cutting machinery, we maintain dimensional tolerance deviations strictly below 1.5mm.
+                  IRONEX operates through warehouse, commercial and open-yard infrastructure around Uran and the Nhava Sheva industrial region - supporting material storage, scaffolding inventory, scrap handling and fabrication activity.
                 </p>
                 <p>
-                  In terms of site safety, we follow global OHSAS guidelines. Every site erection project is managed by certified safety officers. We require full protective equipment (PPE), daily toolbox talk (TBT) briefings, safety mesh nets, fall arresters, and crane load verification audits before any lifting work.
+                  The operating setup includes commercial galas, warehouse areas and open-yard capacity. Division-level systems are being developed across inventory tracking, rental records, enquiry management, quotation controls and project costing to convert experience into repeatable execution.
                 </p>
               </div>
 
@@ -218,19 +222,19 @@ export default function About() {
               <div className="grid grid-cols-2 gap-4 text-xs font-semibold text-gray-500 pt-4 font-body">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-secondary shrink-0" />
-                  <span>Max element weight: 25 MT</span>
+                  <span>1,000+ MT scaffolding inventory</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-secondary shrink-0" />
-                  <span>Cranes lift capacity: Up to 250 MT</span>
+                  <span>350+ MT monthly steel-supply capability</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-secondary shrink-0" />
-                  <span>Non-Destructive Testing (NDT) standards</span>
+                  <span>300-500 MT monthly scrap-lot handling</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-secondary shrink-0" />
-                  <span>ISO 12944 Paint specifications</span>
+                  <span>100+ fabrication and civil assignments</span>
                 </div>
               </div>
             </div>
@@ -245,8 +249,8 @@ export default function About() {
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Milestones</span>
-            <h2 className="text-3xl font-extrabold text-primary tracking-tight">Our Growth Journey</h2>
-            <p className="text-sm text-gray-500 font-body">Tracing our progression from a local Ahmedabad GIDC fabrication shop to a nationwide heavy industrial contractor.</p>
+            <h2 className="text-3xl font-extrabold text-primary tracking-tight">Building on 22+ Years of Operating Experience</h2>
+            <p className="text-sm text-gray-500 font-body">From family-led industrial operations to a structured, four-division company around Uran, Maharashtra.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -267,8 +271,8 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Leadership</span>
-            <h2 className="text-3xl font-extrabold text-primary tracking-tight">Management & Founders</h2>
-            <p className="text-sm text-gray-500 font-body font-normal">Our operations are directed by senior industry professionals with decades of cumulative fabrication and infrastructure experience.</p>
+            <h2 className="text-3xl font-extrabold text-primary tracking-tight">Leadership &amp; Business Focus</h2>
+            <p className="text-sm text-gray-500 font-body font-normal">Three family-led leaders carrying forward more than 22 years of operating experience across the four business divisions.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
@@ -289,23 +293,20 @@ export default function About() {
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Execution Team</span>
-            <h2 className="text-3xl font-extrabold text-primary tracking-tight">Our Engineering Team at Work</h2>
-            <p className="text-sm text-gray-500 font-body">Engineers, site riggers, and operations managers coordinate safe executions on process sites.</p>
+            <h2 className="text-3xl font-extrabold text-primary tracking-tight">Our Execution Capability in Action</h2>
+            <p className="text-sm text-gray-500 font-body">Fabrication, material handling, site work and civil execution supported by operating resources around Uran.</p>
           </div>
 
           {/* Grids showing industrial actions */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="rounded-xl overflow-hidden aspect-[4/3] bg-primary relative group">
               <img src={pebImg} alt="Engineering structural erection" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-primary/25" />
             </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3] bg-primary relative group">
               <img src={demolitionImg} alt="Dismantling machinery work" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-primary/25" />
             </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3] bg-primary relative group">
               <img src={heroImg} alt="Welding shop fabrication progress" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-primary/25" />
             </div>
           </div>
 
@@ -321,10 +322,10 @@ export default function About() {
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           <h2 className="text-3xl font-extrabold text-white tracking-tight">
-            Partner with India's Certified Heavy Engineering Specialists
+            You Bring the Requirement. We Bring the Right Division.
           </h2>
           <p className="text-base text-gray-300 font-body max-w-3xl mx-auto leading-relaxed">
-            From industrial site transformation and material supply to heavy steel fabrication and turnkey execution, IRONEX delivers safety and Schedules compliance.
+            From material recovery and access systems to steel supply and physical execution, IRONEX delivers with defined responsibility across four specialised divisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <button

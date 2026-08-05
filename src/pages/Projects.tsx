@@ -197,7 +197,6 @@ export default function Projects() {
                 {/* Project Image */}
                 <div className="h-60 overflow-hidden relative shrink-0 bg-primary">
                   <img src={proj.image} alt={proj.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103" />
-                  <div className="absolute inset-0 bg-primary bg-opacity-25" />
                   <div className="absolute top-4 left-4 bg-white text-secondary font-bold text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-xs border border-gray-50">
                     {proj.category}
                   </div>

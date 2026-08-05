@@ -12,11 +12,10 @@ export default function Footer() {
   ];
 
   const services = [
-    { name: 'PEB Buildings', path: '/services#peb' },
-    { name: 'Heavy Fabrication', path: '/services#heavy' },
-    { name: 'Structural Steel Works', path: '/services#structural' },
-    { name: 'Industrial Infrastructures', path: '/services#infra' },
-    { name: 'Custom Engineering', path: '/services#engineering' },
+    { name: 'Scrap Procurement & Processing', path: '/capabilities#site-transformation' },
+    { name: 'Scaffolding & Formwork Systems', path: '/capabilities#project-materials' },
+    { name: 'Steel & Material Supply', path: '/capabilities#steel-engineering' },
+    { name: 'Fabrication & Civil Works', path: '/capabilities#fabrication-civil' },
   ];
 
   return (
@@ -42,17 +41,17 @@ export default function Footer() {
             </Link>
             
             <p className="text-sm text-gray-400 leading-relaxed font-body">
-              An ISO 9001:2015 Certified heavy structural steel fabrication and infrastructure EPC partner, delivering state-of-the-art PEB buildings, factories, and warehouses across India.
+              An integrated industrial company operating across scrap procurement, scaffolding systems, steel and material supply, and fabrication & civil works - built on more than 22 years of family-led industrial experience.
             </p>
             
             <div className="flex items-center gap-4 text-xs font-semibold text-gray-400">
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 border border-gray-800 rounded-lg">
                 <Shield size={12} className="text-secondary" />
-                <span>ISO 9001:2015</span>
+                <span>4 Divisions</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 border border-gray-800 rounded-lg">
                 <Star size={12} className="text-secondary fill-secondary" />
-                <span>CRISIL Rated</span>
+                <span>22+ Years Legacy</span>
               </div>
             </div>
           </div>
@@ -100,13 +99,13 @@ export default function Footer() {
           {/* Column 4: Contact & Location */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 border-b border-gray-800 pb-3">
-              Corporate Office
+              Registered Office
             </h4>
             
             <ul className="space-y-4 text-sm font-body text-gray-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary shrink-0 mt-0.5" />
-                <span>Plot 42-B, Industrial Area Phase II, Sector 5, Ahmedabad, Gujarat - 382480, India.</span>
+                <span>Uran, Maharashtra. Operational base: Uttarshiv, Uran region.</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-secondary shrink-0" />
@@ -134,6 +133,11 @@ export default function Footer() {
           </div>
 
         </div>
+
+        {/* Footer Closing Line */}
+        <p className="text-center text-xs text-gray-400 italic font-body mb-8">
+          IRONEX Steel &amp; Infra LLP - Where Strength Becomes Legacy.
+        </p>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-semibold uppercase tracking-wider">

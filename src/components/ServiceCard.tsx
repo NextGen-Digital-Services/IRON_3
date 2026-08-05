@@ -26,10 +26,9 @@ export default function ServiceCard({ image, title, description, path, icon, cat
           src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
         />
         {/* Subtle Dark Overlay */}
-        <div className="absolute inset-0 bg-primary bg-opacity-20 group-hover:bg-opacity-35 transition-all duration-300" />
+        <div className="absolute inset-0 bg-transparent group-hover:bg-primary/70 transition-all duration-300" />
         
         {/* Service Icon Badge */}
         <div className="absolute bottom-4 left-4 bg-white text-secondary p-3 rounded-xl shadow-md border border-gray-50 flex items-center justify-center">

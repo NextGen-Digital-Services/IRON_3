@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { 
-  Wrench, 
-  Layers, 
-  Building, 
-  CheckCircle2, 
-  TrendingUp, 
-  Workflow
+import {
+  Wrench,
+  Layers,
+  Building,
+  CheckCircle2,
+  TrendingUp
 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 
@@ -44,37 +43,37 @@ export default function Capabilities() {
           <img src={pebImg} alt="Capabilities background" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-secondary">Operational Divisions</span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">Our Industrial Capabilities</h1>
+          <span className="text-xs font-bold uppercase tracking-widest text-secondary">Four Specialised Business Divisions</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">Different Industrial Problems. One Operating Standard.</h1>
           <p className="text-sm text-gray-300 max-w-2xl leading-relaxed">
-            Delivering complete, highly coordinated industrial solutions from demolition and material recovery to structural fabrication, civil construction, and site execution.
+            Each IRONEX division is built around a defined requirement, specialised operating process and relevant commercial model. Clients may work with one division independently or use multiple divisions where the project requires connected capabilities.
           </p>
         </div>
       </section>
 
       {/* ==========================================
-          PILLAR 01: SITE TRANSFORMATION
+          DIVISION 01: INDUSTRIAL SCRAP
           ========================================== */}
       <section id="site-transformation" className="py-24 bg-white border-b border-gray-150 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Pillar Header */}
+          {/* Division Header */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16 pb-8 border-b border-gray-100 text-left">
             <div className="lg:col-span-7 space-y-4">
               <span className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/25 text-secondary text-[10px] font-bold uppercase tracking-widest rounded-lg">
                 <Wrench size={12} />
-                Pillar 01
+                Division 01
               </span>
               <h2 className="text-3xl font-extrabold text-primary tracking-tight">
-                Site Transformation & Resource Management
+                Industrial Scrap Procurement &amp; Processing
               </h2>
               <p className="text-sm text-gray-500 font-body leading-relaxed">
-                Everything required to safely transform an existing industrial site through demolition, dismantling, and professional material recovery. We prepare complex project zones for next-generation expansion.
+                Industrial scrap requires more than a price per kilogram. IRONEX participates as a direct buyer in government, PSU, corporate, industrial and private scrap auctions and tenders - purchasing scrap lots for our own account and coordinating inspection, commercial evaluation, lifting, segregation, processing, transportation and onward resale.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-xl overflow-hidden shadow-sm border border-gray-200">
-                <img src={demolitionImg} alt="Demolition site works" className="w-full h-48 object-cover" />
+                <img src={demolitionImg} alt="Scrap site works" className="w-full h-48 object-cover" />
               </div>
             </div>
           </div>
@@ -82,58 +81,7 @@ export default function Capabilities() {
           {/* Service Categories Breakdown */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
             
-            {/* Category 1: Demolition & Dismantling */}
-            <div className="space-y-6 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs">
-                    <Workflow size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-primary">Demolition & Dismantling</h3>
-                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Clear the Existing. Prepare for What's Next.</span>
-                  </div>
-                </div>
-                
-                <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
-                  At IRONEX, we execute heavy structural demolition and dismantling works under absolute engineering control. Our dismantling engineers conduct systematic risk analyses prior to clearing industrial sheds, factories, processing platforms, or obsolete plant frameworks. We utilize specialized hydraulic concrete shears, mechanical excavators, and ODC crane setups to drop components securely without affecting nearby operating lines.
-                </p>
-
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-semibold text-gray-500 font-body pt-3">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Industrial Structure Dismantling</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Steel Shed Dismantling</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Warehouse Dismantling</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Selective Site Demolition</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Machinery & Equipment Removal</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Structural Modifications</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Demolition Photo Embed */}
-              <div className="mt-8 rounded-xl overflow-hidden h-40 bg-primary">
-                <img src={scrapImg} alt="Scrap processing demolition" className="w-full h-full object-cover opacity-90" />
-              </div>
-            </div>
-
-            {/* Category 2: Industrial Scrap Management */}
+            {/* Category 1: Procurement & Processing */}
             <div className="space-y-6 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -141,13 +89,13 @@ export default function Capabilities() {
                     <TrendingUp size={20} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-primary">Industrial Scrap Management</h3>
+                    <h3 className="text-lg font-bold text-primary">Scrap Procurement &amp; Processing</h3>
                     <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Material Value, Managed Professionally.</span>
                   </div>
                 </div>
                 
                 <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
-                  Our metal recovery and scrap management division turns discarded factory materials and surplus metals into capital resources. We buy ferrous and non-ferrous construction scrap, old plant machinery, obsolete girders, and steel sheeting directly from site transformations. By providing on-site sorting, gas-cutting, and secure segregation machinery, we reduce project waste and ensure environmental compliance.
+                  IRONEX procures ferrous and non-ferrous industrial scrap from projects, dismantling works, manufacturing units and surplus stock. The division focuses on genuine capability, clear assessment and practical processing - sorting, segregating, cutting and packing scrap for onward movement to processors and end buyers.
                 </p>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-semibold text-gray-500 font-body pt-3">
@@ -157,7 +105,46 @@ export default function Capabilities() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Structural Steel Scrap Sourcing</span>
+                    <span>Scrap Segregation & Sorting</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                    <span>Cutting & Packing</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                    <span>Weighing & Valuation</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Scrap Photo Embed */}
+              <div className="mt-8 rounded-xl overflow-hidden h-40 bg-primary">
+                <img src={scrapImg} alt="Scrap processing" className="w-full h-full object-cover opacity-90" />
+              </div>
+            </div>
+
+            {/* Category 2: Dismantling, Buyback & Logistics */}
+            <div className="space-y-6 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs">
+                    <Wrench size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-primary">Dismantling, Buyback &amp; Logistics</h3>
+                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Clear the Existing. Recover the Value.</span>
+                  </div>
+                </div>
+                
+                <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
+                  The division takes up structure dismantling and demolition to recover industrial material, and buys back obsolete machinery, girders and steel sheeting. Collection is supported by vehicles and a defined network, with clear communication on what the division can commit to in terms of volumes, timelines and commercial terms.
+                </p>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-semibold text-gray-500 font-body pt-3">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                    <span>Structure Dismantling & Demolition</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary shrink-0" />
@@ -165,20 +152,16 @@ export default function Capabilities() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Surplus Material Segregation & Clearance</span>
+                    <span>Scrap Collection & Transport</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Periodic Scrap Management Contracts</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
-                    <span>Tender & Auction Sourcing Compliance</span>
+                    <span>Surplus Material Clearance</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Scrap Processing Photo Embed */}
+              {/* Demolition Photo Embed */}
               <div className="mt-8 rounded-xl overflow-hidden h-40 bg-primary">
                 <img src={demolitionImg} alt="Dismantled site" className="w-full h-full object-cover opacity-90" />
               </div>
@@ -186,13 +169,39 @@ export default function Capabilities() {
 
           </div>
 
+          {/* Important Clarification & Suitable Requirements */}
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-5">
+              <div className="bg-primary text-white p-8 rounded-xl border border-primary h-full">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-secondary block mb-3">Important Clarification</span>
+                <p className="text-sm leading-relaxed font-body">
+                  IRONEX does not operate auctions or provide scrap-disposal consultancy. It participates as a buyer.
+                </p>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <h3 className="text-base font-bold text-primary mb-4">Suitable Requirements</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-semibold text-gray-500 font-body">
+                {['Government scrap auctions','PSU scrap tenders','Corporate industrial scrap','Manufacturing-plant scrap','Machinery and structural scrap','Warehouse and logistics scrap','Private industrial disposals','Recurring scrap procurement'].map((req) => (
+                  <span key={req} className="flex items-center gap-2 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-2.5">
+                    <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                    {req}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* CTA Row */}
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center space-y-3">
+            <p className="text-xs text-gray-400 italic font-body">
+              The highest bid may win attention. The most prepared buyer completes the lifting.
+            </p>
             <button
               onClick={() => setIsQuoteOpen(true)}
               className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
             >
-              Consult site transformation
+              Submit Scrap-Lot Details
             </button>
           </div>
 
@@ -200,28 +209,28 @@ export default function Capabilities() {
       </section>
 
       {/* ==========================================
-          PILLAR 02: PROJECT MATERIALS
+          DIVISION 02: SCAFFOLDING & FORMWORK
           ========================================== */}
       <section id="project-materials" className="py-24 bg-[#F7F8FA] border-b border-gray-150 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Pillar Header */}
+          {/* Division Header */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16 pb-8 border-b border-gray-200 text-left">
             <div className="lg:col-span-7 space-y-4">
               <span className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/25 text-secondary text-[10px] font-bold uppercase tracking-widest rounded-lg">
                 <Layers size={12} />
-                Pillar 02
+                Division 02
               </span>
               <h2 className="text-3xl font-extrabold text-primary tracking-tight">
-                Project Materials & Access Systems
+                Scaffolding &amp; Formwork Systems
               </h2>
               <p className="text-sm text-gray-500 font-body leading-relaxed">
-                Reliable supply of structural materials and temporary access systems to keep industrial and infrastructure projects moving efficiently.
+                Reliable access systems for workfronts that cannot remain idle. IRONEX manufactures, rents and sells scaffolding and related systems for industrial, infrastructure, commercial and construction projects - with system type, component quantities, inventory availability, rental duration and dispatch requirements verified before commitment.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-xl overflow-hidden shadow-sm border border-gray-200">
-                <img src={scaffoldingImg} alt="Scaffolding access materials" className="w-full h-48 object-cover" />
+                <img src={scaffoldingImg} alt="Scaffolding access systems" className="w-full h-48 object-cover" />
               </div>
             </div>
           </div>
@@ -229,27 +238,27 @@ export default function Capabilities() {
           {/* Detailed Descriptions */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left mb-16">
             
-            {/* Category 1: Iron, Steel Supply */}
+            {/* Category 1: Scaffolding Supply & Sales */}
             <div className="space-y-4 bg-white p-8 rounded-xl border border-gray-100 shadow-xs">
-              <h3 className="text-lg font-bold text-primary">Iron, Steel & Building Material Supply</h3>
-              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">Project-Ready Materials. Dependable Supply.</span>
+              <h3 className="text-lg font-bold text-primary">Scaffolding Supply &amp; Sales</h3>
+              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">Rigid Access. Reliable Supply.</span>
               <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
-                We act as a direct procurement partner for heavy infrastructure builders. We source structural steel, TMT bars, angles, channels, plates, and hollow sections directly from primary steel manufacturers like SAIL, JSW, and TATA. This ensures absolute material grade verification and consistency in stress performance. We bid against BOQs and manage scheduling logistics to deliver materials directly to GIDC locations.
+                The division supplies new and sound reconditioned scaffolding equipment including cuplock systems, H-frames, pipes, walk planks and accessories. Material is checked before dispatch, and the division is straightforward about availability, rates and timelines before confirming an order.
               </p>
               <p className="text-xs text-gray-400 font-body italic leading-relaxed pt-1">
-                Typical Uses: Primary framing, roof purlins, heavy machinery foundations, compound walls, concrete slab reinforcements, and gantry frames.
+                Typical Uses: Construction access, high-elevation fitting, plastering and painting platforms, and temporary access structures.
               </p>
             </div>
 
-            {/* Category 2: Scaffolding access solutions */}
+            {/* Category 2: Scaffolding & Formwork Rental */}
             <div className="space-y-4 bg-white p-8 rounded-xl border border-gray-100 shadow-xs">
-              <h3 className="text-lg font-bold text-primary">Scaffolding, Formwork & Access Solutions</h3>
-              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">Reliable Access. Continuous Progress.</span>
+              <h3 className="text-lg font-bold text-primary">Scaffolding &amp; Formwork Rental Services</h3>
+              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">Inventory. Mobilisation. Recovery.</span>
               <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
-                Temporary access planning is critical to the safety of high-altitude structural installations. IRONEX offers premium scaffolding rentals and direct material sales. Our inventory includes cuplock scaffolding systems, H-frames, walk planks, shuttering plates, spans, adjustable base jacks, and safety couplers. All items undergo regular load tests to ensure they exceed safety regulations.
+                For projects that need temporary access without purchasing equipment, the division offers rental services backed by 1,000+ MT of scaffolding inventory. Rental includes defined quantities, agreed rates, mobilisation planning and clear commercial terms covering period, transport and responsibilities.
               </p>
               <p className="text-xs text-gray-400 font-body italic leading-relaxed pt-1">
-                Typical Uses: High-elevation rafter fitting, brickwork access, concrete column shuttering, ceiling piping maintenance, and temporary bridge supports.
+                Typical Uses: Slab support, column shuttering, ceiling maintenance access, and temporary bridge supports.
               </p>
             </div>
 
@@ -258,7 +267,7 @@ export default function Capabilities() {
           {/* Product Grid with Images and Explanations */}
           <div className="space-y-8 text-left mb-12">
             <h3 className="text-lg font-bold text-primary uppercase tracking-wider border-b border-gray-200 pb-3">
-              Scaffolding & Structural Products Grid
+              Scaffolding Equipment Range
             </h3>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -278,12 +287,12 @@ export default function Capabilities() {
               {/* Product 2 */}
               <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-xs flex flex-col justify-between h-72">
                 <div className="h-32 bg-primary">
-                  <img src={projectImg} alt="Structural steel plates" className="w-full h-full object-cover" />
+                  <img src={pebImg} alt="H-Frame scaffolding" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 flex-1 flex flex-col justify-between">
-                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Mild Steel Sections</h4>
-                  <p className="text-[10px] text-gray-500 leading-relaxed font-body mt-1 line-clamp-2">T-sections, channels, angles, and purlins for robust steel sheds.</p>
-                  <span className="text-[9px] font-bold text-secondary uppercase tracking-widest mt-2 block">Application: Roof Framing</span>
+                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">H-Frame Scaffolding</h4>
+                  <p className="text-[10px] text-gray-500 leading-relaxed font-body mt-1 line-clamp-2">Modular access towers for finishing, plastering and maintenance work.</p>
+                  <span className="text-[9px] font-bold text-secondary uppercase tracking-widest mt-2 block">Application: Maintenance Access</span>
                 </div>
               </div>
 
@@ -302,25 +311,48 @@ export default function Capabilities() {
               {/* Product 4 */}
               <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-xs flex flex-col justify-between h-72">
                 <div className="h-32 bg-primary">
-                  <img src={pebImg} alt="Structural pipes" className="w-full h-full object-cover" />
+                  <img src={projectImg} alt="Walk planks and couplers" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 flex-1 flex flex-col justify-between">
-                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">MS & GI Pipes</h4>
-                  <p className="text-[10px] text-gray-500 leading-relaxed font-body mt-1 line-clamp-2">Structural circular pipes for industrial liquid transits and support scaffolding.</p>
-                  <span className="text-[9px] font-bold text-secondary uppercase tracking-widest mt-2 block">Application: Utilities & Access</span>
+                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Walk Planks &amp; Couplers</h4>
+                  <p className="text-[10px] text-gray-500 leading-relaxed font-body mt-1 line-clamp-2">Secure working platforms and safety couplers for elevated work.</p>
+                  <span className="text-[9px] font-bold text-secondary uppercase tracking-widest mt-2 block">Application: Working Platforms</span>
                 </div>
               </div>
 
             </div>
           </div>
 
+          {/* Complete Product Range & Suitable Customers */}
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white border border-gray-200/60 rounded-xl p-6">
+              <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Complete Product Range</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Cuplock verticals','Cuplock ledgers','H-Frames','Cross braces','Walkway platforms','Adjustable props','Base jacks','U-head jacks','Joint pins','Staircase components','Fabricated accessories'].map((p) => (
+                  <span key={p} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{p}</span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white border border-gray-200/60 rounded-xl p-6">
+              <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Builders','EPC contractors','Industrial maintenance companies','Infrastructure contractors','Ports and logistics facilities','Warehouses','Project contractors'].map((c) => (
+                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* CTA Row */}
-          <div className="text-center">
+          <div className="mt-12 text-center space-y-3">
+            <p className="text-xs text-gray-400 italic font-body">
+              Scaffolding may be temporary. Its effect on safety and productivity is not.
+            </p>
             <button
               onClick={() => setIsQuoteOpen(true)}
               className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
             >
-              Request material quote
+              Check Scaffolding Availability
             </button>
           </div>
 
@@ -328,28 +360,150 @@ export default function Capabilities() {
       </section>
 
       {/* ==========================================
-          PILLAR 03: STEEL ENGINEERING
+          DIVISION 03: STEEL & MATERIAL SUPPLY
           ========================================== */}
       <section id="steel-engineering" className="py-24 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Pillar Header */}
+          {/* Division Header */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16 pb-8 border-b border-gray-100 text-left">
             <div className="lg:col-span-7 space-y-4">
               <span className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/25 text-secondary text-[10px] font-bold uppercase tracking-widest rounded-lg">
                 <Building size={12} />
-                Pillar 03
+                Division 03
               </span>
               <h2 className="text-3xl font-extrabold text-primary tracking-tight">
-                Steel Engineering & Construction Execution
+                Steel &amp; Construction-Material Supply
               </h2>
               <p className="text-sm text-gray-500 font-body leading-relaxed">
-                End-to-end engineering solutions covering fabrication, construction, structural execution and industrial project support.
+                Material supply starts with the correct specification. IRONEX supplies structural steel, pipes, sheets, TMT bars, construction materials and all roofing solutions - reviewing product, grade, size, thickness, brand, quantity and delivery requirement before issuing the commercial offer.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-xl overflow-hidden shadow-sm border border-gray-200">
-                <img src={heroImg} alt="Steel fabrication shop" className="w-full h-48 object-cover" />
+                <img src={heroImg} alt="Steel and material supply" className="w-full h-48 object-cover" />
+              </div>
+            </div>
+          </div>
+
+          {/* Detailed Descriptions */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left mb-16">
+            
+            {/* Category 1: Structural Steel & Pipes Supply */}
+            <div className="space-y-4 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 shadow-xs">
+              <h3 className="text-lg font-bold text-primary">Structural Steel &amp; Pipe Supply</h3>
+              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">Project-Ready Materials. Dependable Supply.</span>
+              <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
+                The division supplies structural steel, MS and GI pipes and related material against defined specifications and quantities. Enquiries are reviewed for genuine feasibility before quoting - covering sizes, grades, quantities, transport and delivery timelines.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-gray-500 font-body pt-3">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>Structural Steel Sections</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>MS &amp; GI Pipes</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>Specification-Based Supply</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>Delivery &amp; Transport Coordination</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Category 2: Roofing & Building Materials */}
+            <div className="space-y-4 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 shadow-xs">
+              <h3 className="text-lg font-bold text-primary">Roofing &amp; Building Materials</h3>
+              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">The Right Material. For the Right Job.</span>
+              <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
+                Beyond structural steel and pipes, the division supplies roofing sheets and building materials used in industrial, commercial and residential construction. Product clarity and honest capability come first - if a requirement is outside the division's current supply capacity, it is communicated before any commitment.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-gray-500 font-body pt-3">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>Roofing Sheets &amp; Accessories</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>Building &amp; Construction Materials</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>Product Availability Confirmation</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                  <span>Clear Rate &amp; Quantity Terms</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Service Models & Suitable Customers */}
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-[#F7F8FA] border border-gray-200/60 rounded-xl p-6">
+              <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Service Models</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Spot purchase','Project-based supply','Recurring monthly supply','BOQ-based procurement','Brand-specific sourcing','Scheduled deliveries','Industrial and contractor supply'].map((s) => (
+                  <span key={s} className="text-[10px] font-bold text-gray-500 bg-white border border-gray-200/60 rounded-lg px-3 py-1.5">{s}</span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-[#F7F8FA] border border-gray-200/60 rounded-xl p-6">
+              <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Builders and developers','Fabricators','Warehouses','Industrial plants','Infrastructure contractors','Retail and institutional buyers','EPC companies'].map((c) => (
+                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-white border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Row */}
+          <div className="mt-12 text-center space-y-3">
+            <p className="text-xs text-gray-400 italic font-body">
+              A material supplier should solve the requirement - not become another requirement to manage.
+            </p>
+            <button
+              onClick={() => setIsQuoteOpen(true)}
+              className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
+            >
+              Upload Your BOQ
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ==========================================
+          DIVISION 04: FABRICATION & CIVIL WORKS
+          ========================================== */}
+      <section id="fabrication-civil" className="py-24 bg-[#F7F8FA] scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Division Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16 pb-8 border-b border-gray-200 text-left">
+            <div className="lg:col-span-7 space-y-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/25 text-secondary text-[10px] font-bold uppercase tracking-widest rounded-lg">
+                <TrendingUp size={12} />
+                Division 04
+              </span>
+              <h2 className="text-3xl font-extrabold text-primary tracking-tight">
+                Structural Fabrication &amp; Civil Works
+              </h2>
+              <p className="text-sm text-gray-500 font-body leading-relaxed">
+                From drawings and measurements to physical execution. IRONEX connects site review, measurements, scope definition, material planning, fabrication and erection through one execution process.
+              </p>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                <img src={factoryImg} alt="Structural fabrication works" className="w-full h-48 object-cover" />
               </div>
             </div>
           </div>
@@ -357,66 +511,66 @@ export default function Capabilities() {
           {/* Service Categories Breakdown */}
           <div className="space-y-16 text-left">
             
-            {/* Category 1: Structural Steel & Fabrication */}
+            {/* Category 1: Structural Fabrication */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-4">
-                <h3 className="text-lg font-bold text-primary">Structural Steel & Fabrication</h3>
+                <h3 className="text-lg font-bold text-primary">Structural Fabrication</h3>
                 <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-2">Fabricated for Purpose. Built for Performance.</span>
                 <p className="text-xs text-gray-500 font-body leading-relaxed">
-                  Our fabrication plant handles high-precision steel processing, cutting, assembly, and welding under ISO certified protocols. We convert raw plates and rollings into heavy structural components (beams, columns, trusses, purlins). We verify every angle and splice against detailed engineering models to ensure zero-clash assemblies during field erection.
+                  The division takes up steel processing, cutting, assembly and welding to produce structural components - beams, columns, trusses, platforms and purlins - as per drawings and specifications. Practical engineering understanding is applied to every drawing review, with clear communication on what can be delivered and by when.
                 </p>
                 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-gray-500 font-body pt-2">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Tekla 3D Model Verification</span>
+                    <span>Drawing &amp; Specification Review</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Automatic Submerged Arc Welding (SAW)</span>
+                    <span>Steel Cutting, Assembly &amp; Welding</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Industrial Sheds & Warehouses</span>
+                    <span>Beams, Columns, Trusses &amp; Platforms</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Mezzanines, Platforms & Walkways</span>
+                    <span>On-Site &amp; Workshop Fabrication</span>
                   </li>
                 </ul>
               </div>
               <div className="lg:col-span-5">
                 <div className="rounded-xl overflow-hidden shadow-xs border border-gray-150 aspect-[16/9]">
-                  <img src={factoryImg} alt="Fabrication progress" className="w-full h-full object-cover" />
+                  <img src={projectImg} alt="Fabrication progress" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
 
-            {/* Category 2: Construction & Redevelopment */}
+            {/* Category 2: Civil Works & Execution */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-gray-100">
               <div className="lg:col-span-7 lg:order-last space-y-4">
-                <h3 className="text-lg font-bold text-primary">Construction & Redevelopment</h3>
-                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-2">From Cleared Ground to Working Asset.</span>
+                <h3 className="text-lg font-bold text-primary">Civil Works &amp; Execution</h3>
+                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-2">From Foundation to Final Finish.</span>
                 <p className="text-xs text-gray-500 font-body leading-relaxed">
-                  We bridge the gap between steel design and site civil contracting. Our construction division manages the preparation of structural foundations, site excavations, plain cement concrete (PCC) bases, reinforced concrete (RCC) columns, drainage networks, yard pavings, and structural masonry modifications. We coordinate civil foundations to fit the anchor-bolt coordinates of the fabricated steel columns perfectly.
+                  The division undertakes civil works and construction execution covering foundations, site works, structural and finishing activities. Scope, material responsibility, site access and timelines are agreed before work begins, and the client is updated through execution.
                 </p>
                 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-gray-500 font-body pt-2">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Heavy Civil foundations & RCC Columns</span>
+                    <span>Foundations &amp; Site Works</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>PCC Base Leveling & Concrete Flooring</span>
+                    <span>Structural &amp; Finishing Works</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Factory Extensions & Redevelopment Civil Works</span>
+                    <span>Industrial &amp; Commercial Civil Execution</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Industrial Drainage & Yard Developments</span>
+                    <span>Clear Scope &amp; Timeline Agreement</span>
                   </li>
                 </ul>
               </div>
@@ -427,50 +581,38 @@ export default function Capabilities() {
               </div>
             </div>
 
-            {/* Category 3: Industrial Project Support */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-gray-100">
-              <div className="lg:col-span-7 space-y-4">
-                <h3 className="text-lg font-bold text-primary">Industrial Project Support</h3>
-                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-2">Connected Support for Complex Sites.</span>
-                <p className="text-xs text-gray-500 font-body leading-relaxed">
-                  Industrial operations require regular maintenance shutdowns and structural reinforcements. We offer specialized contractor support that coordinates materials, fabrication, and site execution under tight deadlines. This covers pipeline rack repairs, machinery platform updates, safety catwalk extensions, and rapid custom engineering supports.
-                </p>
-                
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-gray-500 font-body pt-2">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Site Material Coordination & Procurement</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Maintenance Fabrication & Shutdown Support</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Catwalks, cat ladders & custom platforms</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-secondary" />
-                    <span>Emergency structural damage reinforcements</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="lg:col-span-5">
-                <div className="rounded-xl overflow-hidden shadow-xs border border-gray-150 aspect-[16/9]">
-                  <img src={projectImg} alt="Project support works" className="w-full h-full object-cover" />
-                </div>
+          </div>
+
+          {/* Capability Areas & Suitable Customers */}
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white border border-gray-200/60 rounded-xl p-6">
+              <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Capability Areas</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Structural steel fabrication','Industrial sheds','Platforms','Walkways','Staircases','Handrails','Equipment-support structures','Pipe-support structures','Repairs and modifications','Structural strengthening','Site erection','Foundations','Pedestals','Industrial civil works','Selected commercial civil works'].map((a) => (
+                  <span key={a} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{a}</span>
+                ))}
               </div>
             </div>
-
+            <div className="bg-white border border-gray-200/60 rounded-xl p-6">
+              <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Industrial plants','Ports','Logistics facilities','Warehouses','Builders','EPC contractors','Government contractors','Commercial project owners'].map((c) => (
+                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* CTA Row */}
-          <div className="mt-16 text-center">
+          <div className="mt-12 text-center space-y-3">
+            <p className="text-xs text-gray-400 italic font-body">
+              A structure is not complete because it looks correct on paper. It is complete when it performs correctly on site.
+            </p>
             <button
               onClick={() => setIsQuoteOpen(true)}
               className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
             >
-              Consult Project Execution
+              Submit Your Project Scope
             </button>
           </div>
 
