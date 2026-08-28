@@ -1,3 +1,4 @@
+import { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ModalProvider } from './context/ModalContext';
 
@@ -5,23 +6,33 @@ import { ModalProvider } from './context/ModalContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import LogoIntro from './components/intro/LogoIntro';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 // Pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Capabilities from './pages/Capabilities';
-import Projects from './pages/Projects';
 import Industries from './pages/Industries';
-import Gallery from './pages/Gallery';
 import Clients from './pages/Clients';
-import Contact from './pages/Contact';
 import Quote from './pages/Quote';
 
 export default function App() {
+  const [introComplete, setIntroComplete] = useState(false);
+
+  const handleIntroComplete = useCallback(() => {
+    setIntroComplete(true);
+  }, []);
+
   return (
     <ModalProvider>
       <BrowserRouter>
         <div className="flex flex-col min-h-screen bg-bg-light">
+          {/* Logo Intro - plays on every refresh */}
+          {!introComplete && (
+            <LogoIntro onComplete={handleIntroComplete} />
+          )}
+
           {/* ScrollToTop handles window positioning on route changes */}
           <ScrollToTop />
           
@@ -34,11 +45,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/capabilities" element={<Capabilities />} />
-              <Route path="/projects" element={<Projects />} />
               <Route path="/industries" element={<Industries />} />
-              <Route path="/gallery" element={<Gallery />} />
               <Route path="/clients" element={<Clients />} />
-              <Route path="/contact" element={<Contact />} />
               <Route path="/quote" element={<Quote />} />
               
               {/* Fallback to Home */}
@@ -48,6 +56,9 @@ export default function App() {
           
           {/* Footer */}
           <Footer />
+
+          {/* Floating WhatsApp Button */}
+          <FloatingWhatsApp />
         </div>
       </BrowserRouter>
     </ModalProvider>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ShieldCheck, HardHat, Award, Layers } from 'lucide-react';
+import { ShieldCheck, HardHat, Award, Layers, MapPin } from 'lucide-react';
 
 interface StatItem {
   id: number;
@@ -38,19 +38,26 @@ export default function TrustStats() {
       value: 170,
       suffix: '+',
       icon: <ShieldCheck className="text-secondary" size={32} />
+    },
+    {
+      id: 5,
+      label: 'Maharashtra-Wide Industrial Reach',
+      value: 1,
+      suffix: '',
+      icon: <MapPin className="text-secondary" size={32} />
     }
   ];
 
   return (
     <section className="bg-white border-y border-gray-100 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {stats.map((stat) => (
             <div 
               key={stat.id} 
               className="flex items-center gap-5 p-4 rounded-xl border border-transparent hover:border-gray-100 hover:shadow-xs transition-all duration-300"
             >
-              <div className="bg-[#F7F8FA] p-4 rounded-xl text-secondary shrink-0">
+              <div className="bg-[#F5F0EB] p-4 rounded-xl text-secondary shrink-0">
                 {stat.icon}
               </div>
               <div className="flex flex-col">

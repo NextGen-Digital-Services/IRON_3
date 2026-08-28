@@ -1,5 +1,7 @@
 import { CheckCircle2 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
+import { openWhatsApp } from '../lib/whatsapp';
+import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../config/contact';
 
 import factoryImg from '../assets/about_factory.jpg';
 import projectImg from '../assets/industrial_project.jpg';
@@ -66,7 +68,7 @@ export default function About() {
           <span className="text-xs font-bold uppercase tracking-widest text-secondary">Our Origin. Our Structure. Our Direction.</span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">Built From Experience. Structured for What Comes Next.</h1>
           <p className="text-sm text-gray-300 max-w-2xl leading-relaxed">
-            IRONEX Steel & Infra LLP was formed to bring established industrial experience into a more structured, scalable and professionally managed organisation. The company operates through four specialised divisions serving the steel, construction and industrial value chain.
+            IRONEX Steel & Infra LLP was formed to bring established industrial experience into a more structured, scalable and professionally managed organisation. The company operates through three specialised divisions serving the steel, construction and industrial value chain.
           </p>
         </div>
       </section>
@@ -83,10 +85,10 @@ export default function About() {
               
               <div className="text-sm text-gray-500 space-y-5 font-body leading-relaxed">
                   <p>
-                    IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement and processing, scaffolding systems, steel and construction-material supply, structural fabrication and civil works. Built on more than 22 years of family-led industrial experience, IRONEX combines established operating knowledge with a modern, structured and execution-focused approach.
+                    IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement and processing, scaffolding systems, steel and construction-material supply, structural fabrication and civil works. Built on more than 21 years of family-led industrial experience, IRONEX combines established operating knowledge with a modern, structured and execution-focused approach.
                   </p>
                   <p>
-                    IRONEX was formed to bring established industrial experience into a more structured, scalable and professionally managed organisation. The company operates through four specialised divisions serving the steel, construction and industrial value chain, based out of Uran, Maharashtra.
+                    IRONEX was formed to bring established industrial experience into a more structured, scalable and professionally managed organisation. The company operates through three specialised divisions serving the steel, construction and industrial value chain, based out of Uran, Maharashtra.
                   </p>
                   <p>
                     That operating experience developed through real industrial environments - where commercial decisions, labour management, material movement, payment cycles and site conditions determine whether work succeeds. Much of this learning is practical, built on operating inside the market rather than observing it from outside.
@@ -106,7 +108,7 @@ export default function About() {
                 <img src={projectImg} alt="Finished industrial complex layout" className="w-full aspect-[4/3] object-cover" />
               </div>
               
-              <div className="p-6 bg-[#F7F8FA] rounded-xl border border-gray-200/65 space-y-3">
+              <div className="p-6 bg-[#F5F0EB] rounded-xl border border-gray-200/65 space-y-3">
                 <h4 className="text-xs font-bold text-primary uppercase tracking-widest">Operating Credentials</h4>
                 <ul className="space-y-2 text-xs font-semibold text-gray-500 font-body">
                   <li className="flex items-center gap-2">
@@ -129,8 +131,73 @@ export default function About() {
         </div>
       </section>
 
+      {/* Why IRONEX Was Created */}
+      <section className="py-24 bg-[#F5F0EB] border-y border-gray-200/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start text-left">
+            
+            {/* Left: Problems */}
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Why IRONEX Was Created</span>
+              <h2 className="text-3xl font-extrabold text-primary tracking-tight">The Business Had Experience. It Needed an Institution.</h2>
+              
+              <div className="text-sm text-gray-500 space-y-4 font-body leading-relaxed">
+                <p>
+                  Family-run industrial businesses often become dependent on individual knowledge, verbal instructions and informal systems. That model may work at a smaller scale, but it creates limits:
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  'Information remains with individuals',
+                  'Responsibilities overlap',
+                  'Client communication becomes inconsistent',
+                  'Financial control becomes difficult',
+                  'Growth depends on personal supervision',
+                  'New employees take longer to become productive',
+                  'Operational knowledge is not documented'
+                ].map((problem, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <span className="text-secondary font-bold text-sm mt-0.5">→</span>
+                    <span className="text-xs text-gray-500 font-body">{problem}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-sm text-gray-500 font-body leading-relaxed pt-2">
+                IRONEX was created to move from person-dependent execution toward system-driven execution.
+              </p>
+            </div>
+
+            {/* Right: Strategic Objectives */}
+            <div className="lg:col-span-6 space-y-6">
+              <h3 className="text-base font-bold text-primary uppercase tracking-wider">Strategic Objectives</h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  'Define separate business divisions',
+                  'Assign clear leadership responsibility',
+                  'Document operating processes',
+                  'Improve financial and inventory controls',
+                  'Strengthen statutory compliance',
+                  'Build a recognisable industrial brand',
+                  'Prepare for larger corporate, government and PSU opportunities',
+                  'Create a platform capable of regional expansion'
+                ].map((objective, idx) => (
+                  <div key={idx} className="bg-white p-4 rounded-xl border border-gray-200/60 shadow-xs">
+                    <span className="text-2xl font-extrabold text-secondary block mb-1">0{idx + 1}</span>
+                    <p className="text-xs font-semibold text-primary">{objective}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Mission, Vision, Core Values */}
-      <section className="py-20 bg-[#F7F8FA] border-y border-gray-200/50">
+      <section className="py-20 bg-[#F5F0EB] border-y border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             
@@ -177,7 +244,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
             {strengths.map((st, idx) => (
-              <div key={idx} className="bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/60 hover:border-secondary transition-all duration-300">
+              <div key={idx} className="bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/60 hover:border-secondary transition-all duration-300">
                 <h3 className="text-base font-bold text-primary mb-2 flex items-center gap-2">
                   <CheckCircle2 className="text-secondary shrink-0" size={18} />
                   {st.title}
@@ -193,7 +260,7 @@ export default function About() {
       </section>
 
       {/* Modern Infrastructure & Safety Standards */}
-      <section className="py-24 bg-[#F7F8FA] border-y border-gray-200/50 text-left">
+      <section className="py-24 bg-[#F5F0EB] border-y border-gray-200/50 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -255,7 +322,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {milestones.map((mil, idx) => (
-              <div key={idx} className="bg-[#F7F8FA] p-6 rounded-xl border border-gray-200/50 text-left">
+              <div key={idx} className="bg-[#F5F0EB] p-6 rounded-xl border border-gray-200/50 text-left">
                 <span className="text-3xl font-extrabold text-secondary block mb-2">{mil.year}</span>
                 <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-2">{mil.title}</h4>
                 <p className="text-[11px] text-gray-500 leading-relaxed font-body">{mil.desc}</p>
@@ -267,12 +334,12 @@ export default function About() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-24 bg-[#F7F8FA] border-t border-gray-200">
+      <section className="py-24 bg-[#F5F0EB] border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Leadership</span>
             <h2 className="text-3xl font-extrabold text-primary tracking-tight">Leadership &amp; Business Focus</h2>
-            <p className="text-sm text-gray-500 font-body font-normal">Three family-led leaders carrying forward more than 22 years of operating experience across the four business divisions.</p>
+            <p className="text-sm text-gray-500 font-body font-normal">Three family-led leaders carrying forward more than 21 years of operating experience across the four business divisions.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
@@ -325,21 +392,21 @@ export default function About() {
             You Bring the Requirement. We Bring the Right Division.
           </h2>
           <p className="text-base text-gray-300 font-body max-w-3xl mx-auto leading-relaxed">
-            From material recovery and access systems to steel supply and physical execution, IRONEX delivers with defined responsibility across four specialised divisions.
+            From material recovery and access systems to steel supply and physical execution, IRONEX delivers with defined responsibility across three specialised divisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <button
               onClick={() => setIsQuoteOpen(true)}
-              className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 shadow-md"
+              className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-md"
             >
               Request a Quote
             </button>
-            <a
-              href="/contact"
-              className="bg-transparent border border-gray-400 hover:border-white text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 text-center"
+            <button
+              onClick={() => openWhatsApp(WHATSAPP_CONTACTS.GENERAL, WHATSAPP_MESSAGES.GENERAL_DEFAULT)}
+              className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-[#25D366] hover:text-white transition-all"
             >
               Contact Our Engineers
-            </a>
+            </button>
           </div>
         </div>
       </section>

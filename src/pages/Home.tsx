@@ -14,15 +14,17 @@ import {
   Layers,
   MapPin,
   Phone,
-  Mail
+  Mail,
+  CheckCircle2
 } from 'lucide-react';
 
 // Component Imports
 import TrustStats from '../components/TrustStats';
 import ServiceCard from '../components/ServiceCard';
-import ProjectCard from '../components/ProjectCard';
 import ContactForm from '../components/ContactForm';
 import { useModal } from '../context/ModalContext';
+import { openWhatsApp } from '../lib/whatsapp';
+import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../config/contact';
 
 // Asset Imports (resolves via Vite bundle)
 import heroImg from '../assets/industrial_hero.jpg';
@@ -31,15 +33,6 @@ import pebImg from '../assets/peb_construction.jpg';
 import projectImg from '../assets/industrial_project.jpg';
 import demolitionImg from '../assets/demolition.jpg';
 import scaffoldingImg from '../assets/scaffolding.jpg';
-import scrapImg from '../assets/scrap_processing.jpg';
-import scrapYardImg from '../assets/pexels_scrap_yard.jpg';
-import weldingImg from '../assets/pexels_welding.jpg';
-import siteScaffoldImg from '../assets/pexels_scaffolding.jpg';
-import steelCoilsImg from '../assets/pexels_steel_coils.jpg';
-import warehouseImg from '../assets/pexels_warehouse.jpg';
-import excavatorImg from '../assets/pexels_excavator.jpg';
-import steelFrameImg from '../assets/pexels_steel_structure.jpg';
-import welderImg from '../assets/pexels_welder.jpg';
 
 export default function Home() {
   const { setIsQuoteOpen } = useModal();
@@ -187,33 +180,6 @@ export default function Home() {
     }
   ];
 
-  const projects = [
-    {
-      name: 'Heavy Industrial Process Plant',
-      location: 'Dahej Industrial SEZ, Gujarat',
-      category: 'Industrial Plants & Heavy Structures',
-      year: '2025',
-      image: heroImg,
-      path: '/projects#process-plant'
-    },
-    {
-      name: 'Mega PEB Logistics Warehouse',
-      location: 'Bhiwandi Logistics Hub, Maharashtra',
-      category: 'PEB Warehouses & Material Supply',
-      year: '2024',
-      image: projectImg,
-      path: '/projects#peb-warehouse'
-    },
-    {
-      name: 'Power Plant Redevelopment & Demolition',
-      location: 'Trombay Power Complex, Mumbai',
-      category: 'Redevelopment & Scrap Management',
-      year: '2025',
-      image: demolitionImg,
-      path: '/projects#power-redevelopment'
-    }
-  ];
-
   const industries = [
     { name: 'Ports & Logistics', icon: <Anchor size={28} /> },
     { name: 'Industrial Manufacturing', icon: <Factory size={28} /> },
@@ -232,7 +198,7 @@ export default function Home() {
     },
     {
       title: '22+ Years of Operating Experience',
-      description: 'IRONEX is built on more than 22 years of family-led industrial experience across scrap, scaffolding, material supply, fabrication and civil works.'
+      description: 'IRONEX is built on more than 21 years of family-led industrial experience across scrap, scaffolding, material supply, fabrication and civil works.'
     },
     {
       title: 'Physical Operating Resources',
@@ -256,14 +222,6 @@ export default function Home() {
     }
   ];
 
-  const steps = [
-    { step: '01', title: 'Share the Requirement', desc: 'Send the BOQ, drawings, material schedule, scaffolding quantity or scrap-lot information.' },
-    { step: '02', title: 'Requirement Review', desc: 'The relevant IRONEX division checks the available information.' },
-    { step: '03', title: 'Technical Clarification', desc: 'Specifications, quantity, site access, timeline and commercial conditions are clarified.' },
-    { step: '04', title: 'Proposal or Inspection', desc: 'IRONEX provides a quotation, confirms availability, requests additional information or schedules a site visit.' },
-    { step: '05', title: 'Commercial Confirmation', desc: 'Scope, rate, responsibilities, payment terms, transport and timelines are agreed.' },
-    { step: '06', title: 'Execution Coordination', desc: 'Dispatch, mobilisation, lifting, fabrication, rental or civil execution begins.' }
-  ];
 
   const testimonials = [
     {
@@ -289,24 +247,6 @@ export default function Home() {
     }
   ];
 
-  const galleryImages = [
-    { image: heroImg, title: 'CNC Profile Cutting Shop Floor' },
-    { image: demolitionImg, title: 'Heavy Excavator Demolition Works' },
-    { image: projectImg, title: 'Completed Warehousing Complex' },
-    { image: scaffoldingImg, title: 'Cuplock Scaffolding Systems' },
-    { image: scrapImg, title: 'Ferrous Metal Scrap Segregation' },
-    { image: pebImg, title: 'Structural Steel Column Erection' },
-    { image: factoryImg, title: 'Dahej Plant Structural Workshop' },
-    { image: scrapYardImg, title: 'Industrial Scrap Yard Operation' },
-    { image: weldingImg, title: 'Precision Welding Operations' },
-    { image: siteScaffoldImg, title: 'Scaffolding Access Systems in Operation' },
-    { image: steelCoilsImg, title: 'Steel Coil & Pipe Material Stockyard' },
-    { image: warehouseImg, title: 'Warehouse Storage & Logistics Yard' },
-    { image: excavatorImg, title: 'Controlled Structural Dismantling' },
-    { image: steelFrameImg, title: 'Steel Framing & PEB Structure' },
-    { image: welderImg, title: 'Fabrication Workshop in Progress' }
-  ];
-
   return (
     <div className="bg-bg-light">
       
@@ -317,10 +257,10 @@ export default function Home() {
           <img 
             src={heroImg} 
             alt="Structural Steel Fabrication Shop Floor" 
-            className="w-full h-full object-cover opacity-35" 
+            className="w-full h-full object-cover" 
           />
-          {/* Rich Corporate Navy Overlay */}
-          <div className="absolute inset-0 bg-primary/80 mix-blend-multiply" />
+          {/* Light Translucent Navy Overlay */}
+          <div className="absolute inset-0 bg-primary/55" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32 w-full">
@@ -330,34 +270,37 @@ export default function Home() {
             <div className="lg:col-span-7 text-left space-y-8">
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#B86A3A]/10 border border-[#B86A3A]/30 text-secondary text-xs font-bold uppercase tracking-widest rounded-lg">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                Four Specialised Divisions. One Accountable Industrial Partner.
+                Recover Value | Enable Work | Supply Progress
               </span>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
-                Industrial Requirements Are Complex. <br />
-                <span className="text-secondary font-extrabold">Working With the Right Partner Should Not Be.</span>
+                Industry Runs On What Moves. <br />
+                <span className="text-secondary font-extrabold">And Pays For What Doesn't.</span>
               </h1>
               
-              <p className="text-base sm:text-lg text-gray-300 font-body leading-relaxed max-w-2xl">
-                IRONEX Steel & Infra LLP brings together industrial scrap procurement, scaffolding manufacturing and rental, steel and construction-material supply, structural fabrication and civil execution under one operating platform. We help industries, ports, warehouses, infrastructure contractors and construction companies reduce coordination gaps, improve accountability and move requirements from enquiry to execution with greater control.
+              <p className="text-base sm:text-lg text-white/90 font-body leading-relaxed max-w-2xl">
+                IRONEX STEEL & INFRA LLP is an industrial company based in Navi-Mumbai, Maharashtra, operating across Scrap Procurement &amp; Processing, Scaffolding &amp; Formwork, and Construction Material &amp; Steel Supply.
               </p>
-              <p className="text-sm text-secondary font-semibold font-body -mt-6">
-                From recovering industrial material to supplying and building what comes next.
-                <span className="block text-gray-400 italic font-normal mt-1">Because delays need solutions, not stories.</span>
+              <p className="text-sm text-white/80 font-body leading-relaxed max-w-2xl -mt-4">
+                We work at three critical points where material availability, movement and execution directly affect productivity, working capital and project continuity.
+              </p>
+              <p className="text-sm text-secondary font-semibold font-body -mt-4">
+                Industry Runs On Flow.
+                <span className="block text-white/60 italic font-normal mt-1">When Flow Breaks, Cost Begins.</span>
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <button
                   onClick={() => setIsQuoteOpen(true)}
-                  className="bg-secondary hover:bg-opacity-95 text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-300 shadow-lg text-center"
+                  className="btn-primary bg-secondary text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg text-center"
                 >
-                  Request a Quote
+                  Discuss Your Requirement
                 </button>
                 <Link
-                  to="/projects"
-                  className="bg-transparent border border-gray-400 hover:border-white text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-300 text-center"
+                  to="/capabilities"
+                  className="btn-outline bg-transparent border border-gray-400 text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl text-center"
                 >
-                  Our Projects
+                  Explore Our Businesses
                 </Link>
               </div>
             </div>
@@ -380,68 +323,179 @@ export default function Home() {
       {/* 2. TRUST SECTION */}
       <TrustStats />
 
-      {/* 2A. THE GAP WE EXIST TO CLOSE */}
+      {/* 2A. THE PROBLEM WE EXIST TO REDUCE */}
       <section className="py-24 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">The Gap We Exist to Close</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">The Problem We Exist to Reduce</span>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">
-              Industry Does Not Have a Vendor Shortage. It Has an Accountability Shortage.
+              Waiting Is Not Neutral.
             </h2>
             <p className="text-sm text-gray-500 font-body leading-relaxed">
-              Industrial requirements rarely involve only one supplier or one contractor. A project may require steel, temporary access systems, structural fabrication, civil execution, transport coordination and removal of obsolete material - all within connected timelines. These responsibilities are commonly divided between unrelated companies. One supplier delivers steel. Another provides scaffolding. A third handles fabrication. Someone else lifts the scrap. When work slows, responsibility moves between vendors while the project remains where it was.
+              Industrial delays rarely arrive with a separate invoice. Their cost appears elsewhere - in idle labour, blocked space, extended rentals, additional transport, delayed billing, rehandling and lost productivity. A seemingly small operational miss can quietly become a much larger commercial loss.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {[
-              {
-                title: 'Fragmented Responsibility',
-                desc: 'Each party takes responsibility for one narrow scope. Nobody owns the gaps between scopes.'
-              },
-              {
-                title: 'Commitments Without Verification',
-                desc: 'Stock is promised before inventory is checked. Delivery is confirmed before transportation is arranged. Execution dates are offered before site conditions are understood.'
-              },
-              {
-                title: 'Incomplete Commercial Offers',
-                desc: 'Low quotations may exclude transport, machinery, loading, shortages, replacement material, waiting time, wastage or difficult site conditions.'
-              },
-              {
-                title: 'Poor Coordination',
-                desc: 'Material, manpower, machinery and site readiness are planned separately even though one delay affects the complete workfront.'
-              },
-              {
-                title: 'Reactive Communication',
-                desc: 'The client receives an explanation after the delay has already affected operations.'
-              }
-            ].map((gap, idx) => (
-              <div key={idx} className="bg-[#F7F8FA] border border-gray-200/60 p-8 rounded-xl text-left">
-                <span className="text-3xl font-extrabold text-secondary block mb-3">0{idx + 1}</span>
-                <h3 className="text-base font-bold text-primary mb-2">{gap.title}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed font-body">{gap.desc}</p>
+              { title: 'Labour continues costing money.' },
+              { title: 'Equipment remains committed.' },
+              { title: 'Rental continues.' },
+              { title: 'Project sequences shift.' },
+              { title: 'Billing gets pushed.' },
+              { title: 'Working capital remains blocked.' },
+              { title: 'Industrial space stays occupied.' },
+              { title: 'Management time gets consumed in follow-up.' }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl text-left">
+                <span className="text-secondary font-bold text-sm mb-2">→</span>
+                <p className="text-xs text-gray-600 leading-relaxed font-body font-semibold">{item.title}</p>
               </div>
             ))}
             <div className="bg-primary text-white p-8 rounded-xl text-left flex flex-col justify-center">
-              <h3 className="text-base font-bold mb-2">The Commercial Impact</h3>
+              <h3 className="text-base font-bold mb-2">That Is the Problem IRONEX Is Built Around.</h3>
               <p className="text-[11px] text-gray-300 leading-relaxed font-body mb-4">
-                Poor coordination creates higher indirect costs, delayed workfronts, emergency purchases, material mismatch, transport rescheduling, repeated follow-ups, rework, responsibility disputes and delayed completion.
+                We operate at three points where timing and material directly affect operational performance:
               </p>
-              <p className="text-sm font-bold text-secondary leading-relaxed">
-                The quotation is the visible cost. Poor coordination is the expensive part nobody includes in it.
-              </p>
+              <ul className="space-y-2 text-xs text-secondary font-semibold">
+                <li>Material that needs to move out.</li>
+                <li>Access that needs to be available.</li>
+                <li>Material that needs to move in.</li>
+              </ul>
             </div>
           </div>
 
-          <p className="text-center text-xs text-gray-400 italic font-body mt-10">
-            The cheapest quotation remains cheap only until someone tries to execute it.
-          </p>
+          <div className="text-center mt-10">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/25 px-4 py-2.5 rounded-lg">
+              Objective is Simple: To Keep industrial requirements commercially controlled and operationally moving.
+            </span>
+          </div>
 
         </div>
       </section>
 
-      {/* 2B. OUR TOP CLIENTS */}
+      {/* 3. OUR THREE BUSINESSES */}
+      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Our Three Businesses</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Three Different Requirements. One Industrial Discipline.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'RECOVER',
+                subtitle: 'Scrap Procurement & Processing',
+                desc: 'IRONEX procures, lifts, segregates and commercially recovers ferrous, non-ferrous, machinery and other industrial surplus material through direct procurement, corporate disposals, auctions and other commercially viable channels.',
+                tagline: 'Industrial value does not disappear when equipment becomes scrap. It changes form.',
+                cta: 'Explore Scrap',
+                path: '/capabilities#site-transformation'
+              },
+              {
+                step: '02',
+                title: 'ACCESS',
+                subtitle: 'Scaffolding & Formwork',
+                desc: 'IRONEX provides scaffolding systems, components and accessories on rental and sale for construction, industrial, infrastructure, warehouse and maintenance requirements.',
+                tagline: 'A working site needs more than tonnes of scaffolding. It needs a complete working system.',
+                cta: 'Explore Scaffolding',
+                path: '/capabilities#project-materials'
+              },
+              {
+                step: '03',
+                title: 'SUPPLY',
+                subtitle: 'Construction Material & Steel Supply',
+                desc: 'IRONEX supplies steel, structural sections, pipes, plates, TMT, roofing systems and Other construction materials for industrial, contractor and project requirements.',
+                tagline: 'Procurement is not complete when the order is placed. It is complete when the requirement is fulfilled.',
+                cta: 'Explore Material Supply',
+                path: '/capabilities#steel-engineering'
+              }
+            ].map((biz, idx) => (
+              <div key={idx} className="bg-white border border-gray-200/60 p-8 rounded-xl text-left hover:shadow-xs transition-all duration-300 flex flex-col">
+                <span className="text-3xl font-extrabold text-secondary block mb-2">{biz.step}</span>
+                <h3 className="text-xl font-bold text-primary mb-1">{biz.title}</h3>
+                <span className="text-[10px] font-bold text-secondary uppercase tracking-widest block mb-4">{biz.subtitle}</span>
+                <p className="text-xs text-gray-500 leading-relaxed font-body mb-4 flex-1">{biz.desc}</p>
+                <p className="text-[11px] text-gray-400 italic font-body mb-6">"{biz.tagline}"</p>
+                <div className="flex flex-col gap-3">
+                  <Link
+                    to={biz.path}
+                    className="inline-flex items-center gap-2 bg-secondary text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl text-center w-fit"
+                  >
+                    {biz.cta}
+                    <ArrowRight size={14} />
+                  </Link>
+                  <button
+                    onClick={() => {
+                      const division = idx === 0 ? 'SCRAP' : idx === 1 ? 'SCAFFOLDING' : 'MATERIAL_SUPPLY';
+                      const msg = idx === 0 ? WHATSAPP_MESSAGES.SCRAP_DEFAULT : idx === 1 ? WHATSAPP_MESSAGES.SCAFFOLDING_DEFAULT : WHATSAPP_MESSAGES.SUPPLY_DEFAULT;
+                      openWhatsApp(WHATSAPP_CONTACTS[division], msg);
+                    }}
+                    className="inline-flex items-center gap-2 border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl text-center w-fit hover:bg-[#25D366] hover:text-white transition-all"
+                  >
+                    WhatsApp {biz.title}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 2B. PROOF BEFORE PROMISE */}
+      <section className="py-24 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Proof Before Promise</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Industrial Trust Should Be Visible.</h2>
+            <p className="text-sm text-gray-500 font-body leading-relaxed">
+              Anyone can describe themselves as reliable, experienced or customer-focused. We would rather make those claims easier to verify.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { stat: '21+ Years', label: 'Underlying family industrial operating experience' },
+              { stat: '~1000+ MT', label: 'Owned scaffolding inventory' },
+              { stat: '~650+ MT', label: 'Scaffolding currently deployed on rent' },
+              { stat: '~400+ MT', label: 'Monthly Construction Material Supply Capacity' }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-8 rounded-xl text-center">
+                <span className="text-3xl font-extrabold text-secondary block mb-2">{item.stat}</span>
+                <p className="text-xs text-gray-500 font-body leading-relaxed">{item.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              'Industrial Premises & Yard Infrastructure',
+              'Operational Vehicles & Material Movement Capability',
+              'Domestic Procurement Network',
+              'Developing International Sourcing Capability'
+            ].map((capability, idx) => (
+              <div key={idx} className="flex items-center gap-3 bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl">
+                <CheckCircle2 size={14} className="text-secondary shrink-0" />
+                <span className="text-xs font-semibold text-primary">{capability}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/25 px-4 py-2.5 rounded-lg">
+              What The Website Should Show: Real material. Real inventory. Real vehicles. Real yards. Real dispatches. Real people. Real work.
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 2C. OUR TOP CLIENTS */}
       <section className="py-16 bg-white border-b border-gray-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Trusted By Industry Leaders</span>
@@ -453,7 +507,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="relative w-full overflow-hidden py-6 bg-[#F7F8FA] border-y border-gray-200/50 flex items-center">
+        <div className="relative w-full overflow-hidden py-6 bg-[#F5F0EB] border-y border-gray-200/50 flex items-center">
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none hidden sm:block" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none hidden sm:block" />
           
@@ -479,7 +533,7 @@ export default function Home() {
       </section>
 
       {/* 3. ABOUT SECTION */}
-      <section className="py-24 bg-[#F7F8FA] border-b border-gray-100">
+      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -488,7 +542,7 @@ export default function Home() {
               <div className="relative rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-white">
                 <img 
                   src={factoryImg} 
-                  alt="IRONEX Steel & Infra Manufacturing Facility Ahmedabad" 
+                  alt="IRONEX Steel & Infra Manufacturing Facility Navi Mumbai" 
                   className="w-full object-cover aspect-[4/3]"
                 />
               </div>
@@ -503,7 +557,7 @@ export default function Home() {
                 Established Partners in Industrial Infrastructure
               </h2>
               <p className="text-sm text-gray-500 leading-relaxed font-body">
-                IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement, scaffolding systems, steel and construction-material supply, structural fabrication and civil works. Built on more than 22 years of family-led industrial experience, IRONEX combines established operational knowledge with a modern, structured and execution-focused approach - based out of Uran, Maharashtra.
+                IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement, scaffolding systems, steel and construction-material supply, structural fabrication and civil works. Built on more than 21 years of family-led industrial experience, IRONEX combines established operational knowledge with a modern, structured and execution-focused approach - based out of Uran, Maharashtra.
               </p>
 
               {/* Mission, Vision, Values Grid */}
@@ -531,20 +585,20 @@ export default function Home() {
               {/* Aligned Statistics Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200/80">
                 <div>
-                  <span className="text-2xl font-bold text-primary block">1,000+ MT</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Scaffolding Inventory</span>
+                  <span className="text-2xl font-bold text-primary block">21+ Years</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Underlying Family Industrial Experience</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-bold text-primary block">350+ MT</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Monthly Steel Supply</span>
+                  <span className="text-2xl font-bold text-primary block">~1000+ MT</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Owned Scaffolding Inventory</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-bold text-primary block">170+</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Project Engagements</span>
+                  <span className="text-2xl font-bold text-primary block">~650+ MT</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Scaffolding Deployed on Rent</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-bold text-primary block">22+ Years</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Operating Legacy</span>
+                  <span className="text-2xl font-bold text-primary block">~400+ MT</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Monthly Supply Capacity</span>
                 </div>
               </div>
 
@@ -559,7 +613,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Four Divisions</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Three Businesses</span>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Choose the Capability Your Requirement Needs.</h2>
             <p className="text-sm text-gray-500 font-body leading-relaxed">Each IRONEX division is designed around a specific industrial problem. Select a division to review its services, capabilities, operating process and enquiry format.</p>
           </div>
@@ -582,37 +636,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. FEATURED PROJECTS */}
-      <section className="py-24 bg-[#F7F8FA] border-b border-gray-100">
+      {/* 4A. CONNECTED CAPABILITIES */}
+      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div className="text-left max-w-2xl space-y-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Project Portfolio</span>
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Executed Heavy Structural Developments</h2>
-              <p className="text-sm text-gray-500 font-body">A selection of recent logistics hubs, process factories, and infrastructure works completed for top corporate clients across India.</p>
-            </div>
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl transition-all duration-300 shrink-0"
-            >
-              <span>View All Projects</span>
-              <ArrowRight size={14} />
-            </Link>
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Why Three Businesses Matter</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">One Business Solves a Requirement. Three Businesses Solve the Gaps Around It.</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                name={project.name}
-                location={project.location}
-                category={project.category}
-                year={project.year}
-                image={project.image}
-                path={project.path}
-              />
+          {/* Project Lifecycle */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Remove What Is No Longer Required',
+                desc: 'Industrial scrap and obsolete material are evaluated, purchased, lifted and processed.',
+                icon: <Wrench size={24} />
+              },
+              {
+                step: '02',
+                title: 'Supply What Comes Next',
+                desc: 'Steel, pipes, structural sections, sheets, roofing and construction materials are sourced and delivered.',
+                icon: <Building size={24} />
+              },
+              {
+                step: '03',
+                title: 'Provide Access and Support',
+                desc: 'Scaffolding and formwork systems support construction, maintenance and industrial operations.',
+                icon: <Layers size={24} />
+              },
+              {
+                step: '04',
+                title: 'Execute the Physical Work',
+                desc: 'Structures, modifications, fabrication and civil requirements are completed on site.',
+                icon: <Factory size={24} />
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white border border-gray-200/60 p-8 rounded-xl text-left hover:shadow-xs transition-all duration-300">
+                <div className="bg-primary text-secondary p-3 rounded-xl w-fit mb-4">
+                  {item.icon}
+                </div>
+                <span className="text-2xl font-extrabold text-secondary block mb-2">{item.step}</span>
+                <h3 className="text-sm font-bold text-primary mb-2 uppercase tracking-wider">{item.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed font-body">{item.desc}</p>
+              </div>
             ))}
+          </div>
+
+          <div className="text-center mt-12 space-y-2">
+            <p className="text-sm font-bold text-primary">
+              From removing what is no longer required to supplying and building what comes next.
+            </p>
+            <p className="text-xs text-gray-400 italic font-body">
+              Three businesses also mean three fewer conversations beginning with, "You will need to contact someone else for that."
+            </p>
           </div>
 
         </div>
@@ -632,7 +710,7 @@ export default function Home() {
             {industries.map((ind, index) => (
               <div 
                 key={index} 
-                className="bg-[#F7F8FA] border border-gray-200/60 p-6 rounded-xl hover:border-secondary hover:shadow-xs transition-all duration-300 text-left group"
+                className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl hover:border-secondary hover:shadow-xs transition-all duration-300 text-left group"
               >
                 <div className="text-primary group-hover:text-secondary transition-colors mb-4 shrink-0">
                   {ind.icon}
@@ -647,8 +725,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 6A. CAPABILITY PREVIEW */}
+      <section className="py-24 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Operating Capability</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Capability Is More Than a List of Services.</h2>
+            <p className="text-sm text-gray-500 font-body leading-relaxed">IRONEX combines operating assets, industrial experience, manpower, inventory, supplier relationships and project understanding.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {[
+              'Warehouse and yard infrastructure',
+              'Scaffolding manufacturing and inventory',
+              'Material sourcing and supply network',
+              'Scrap lifting and segregation capability',
+              'Fabrication and welding resources',
+              'Vehicles and transport coordination',
+              'Industrial workforce',
+              'Project and site-execution experience',
+              'Local industrial access',
+              'Multi-division coordination'
+            ].map((capability, idx) => (
+              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl text-center hover:border-secondary hover:shadow-xs transition-all duration-300">
+                <span className="text-[10px] font-bold text-primary uppercase tracking-wider leading-tight block">{capability}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/capabilities"
+              className="btn-primary inline-flex items-center gap-2 bg-primary text-white font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl"
+            >
+              <span>Explore Our Capabilities</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
       {/* 7. WHY CHOOSE US */}
-      <section className="py-24 bg-[#F7F8FA] border-b border-gray-100">
+      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -676,7 +796,7 @@ export default function Home() {
                 {whyChooseUsPoints.map((point, index) => (
                   <div key={index} className="relative">
                     {/* Circle Node */}
-                    <div className="absolute -left-[31px] top-1 bg-[#F7F8FA] border-2 border-secondary w-[10px] h-[10px] rounded-full" />
+                    <div className="absolute -left-[31px] top-1 bg-[#F5F0EB] border-2 border-secondary w-[10px] h-[10px] rounded-full" />
                     
                     <h3 className="text-base font-bold text-primary mb-1">
                       {point.title}
@@ -694,31 +814,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. WORKING PROCESS */}
+      {/* 8. HOW IRONEX THINKS */}
       <section className="py-24 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">A Clearer Start</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Good Execution Begins Before the Quotation.</h2>
-            <p className="text-sm text-gray-500 font-body">From design checks to physical handover on site, we run a highly coordinated flow with client review stages.</p>
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">How IRONEX Thinks About Business</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">The Rate Is Only One Part Of The Transaction.</h2>
+            <p className="text-sm text-gray-500 font-body">Industrial transactions are judged by the commercial outcome, not the quotation alone. Before committing, we consider the factors that determine whether a requirement can actually be executed properly.</p>
           </div>
 
-          {/* Timeline Grid (Horizontal for desktop, vertical for mobile) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: 'Availability', desc: 'Is the required material genuinely accessible?' },
+              { title: 'Specification', desc: 'Are the correct product, grade, dimensions and quantity understood?' },
+              { title: 'Logistics', desc: 'How will the material move from source to destination?' },
+              { title: 'Timing', desc: 'When is it actually required?' },
+              { title: 'Commercial Viability', desc: 'Does the transaction make economic sense after the real operating costs are considered?' },
+              { title: 'Closure', desc: 'How will quantities, weights, returns, acknowledgements and documentation be reconciled?' }
+            ].map((factor, idx) => (
+              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl text-left">
+                <span className="text-2xl font-extrabold text-secondary block mb-2">0{idx + 1}</span>
+                <h3 className="text-sm font-bold text-primary mb-2 uppercase tracking-wider">{factor.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed font-body">{factor.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/25 px-4 py-2.5 rounded-lg">
+              That discipline applies differently across each IRONEX business.
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 8B. FROM REQUIREMENT TO EXECUTION */}
+      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">From Requirement to Execution</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Fewer Assumptions Before Work Begins.</h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 relative">
-            {/* Connecting Line (Desktop Only) */}
             <div className="absolute top-[38px] left-[5%] right-[5%] h-0.5 bg-gray-200 hidden lg:block z-0" />
             
-            {steps.map((st, index) => (
+            {[
+              { step: '01', title: 'Understand', desc: 'Requirement, quantity, specification, location and timeline.' },
+              { step: '02', title: 'Evaluate', desc: 'Availability, operating requirements, logistics and commercial feasibility.' },
+              { step: '03', title: 'Commit', desc: 'Clarify scope, quantity and commercial terms.' },
+              { step: '04', title: 'Prepare', desc: 'Arrange material, vehicles, manpower and documentation.' },
+              { step: '05', title: 'Execute', desc: 'Supply, mobilisation or lifting takes place.' },
+              { step: '06', title: 'Close', desc: 'Complete delivery, weighment, acknowledgement or reconciliation as applicable.' }
+            ].map((st, index) => (
               <div 
                 key={index} 
-                className="bg-[#F7F8FA] border border-gray-200/50 p-6 rounded-xl relative z-10 text-left hover:border-secondary hover:shadow-xs transition-all duration-300"
+                className="bg-white border border-gray-200/50 p-6 rounded-xl relative z-10 text-left hover:border-secondary hover:shadow-xs transition-all duration-300"
               >
-                {/* Step circle */}
                 <div className="w-10 h-10 rounded-full bg-primary text-white border-2 border-white flex items-center justify-center font-bold text-xs shadow-sm mb-4">
                   {st.step}
                 </div>
-                
                 <h3 className="text-xs font-bold text-primary uppercase tracking-wider mb-2">{st.title}</h3>
                 <p className="text-[11px] text-gray-500 font-body leading-relaxed">{st.desc}</p>
               </div>
@@ -727,45 +885,8 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/25 px-4 py-2.5 rounded-lg">
-              Clear scope. Verified commitment. Planned execution. Accountability until completion.
+              Execution becomes easier when ambiguity is removed early.
             </span>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 9. GALLERY SECTION */}
-      <section className="py-24 bg-[#F7F8FA] border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Media Center</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Factory & Project Gallery</h2>
-            <p className="text-sm text-gray-500 font-body">Visual proof of our state-of-the-art machinery, production floors, fabrication standards, and completed project locations.</p>
-          </div>
-
-          {/* Gallery Masonry-like Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((gal, index) => (
-              <div 
-                key={index} 
-                className={`relative rounded-xl overflow-hidden group shadow-sm bg-primary ${
-                  index % 3 === 0 ? 'h-[360px]' : 'h-[280px]'
-                }`}
-              >
-                <img 
-                  src={gal.image} 
-                  alt={gal.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Hover overlay only - images stay fully visible */}
-                <div className="absolute inset-0 bg-transparent group-hover:bg-primary/70 transition-all duration-300 flex flex-col justify-end p-6" />
-                <div className="absolute bottom-6 left-6 text-left text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1 block">IRONEX Facilities</span>
-                  <h4 className="text-lg font-bold font-heading">{gal.title}</h4>
-                </div>
-              </div>
-            ))}
           </div>
 
         </div>
@@ -785,7 +906,7 @@ export default function Home() {
             {testimonials.map((test, index) => (
               <div 
                 key={index} 
-                className="bg-[#F7F8FA] border border-gray-200/50 p-8 rounded-xl text-left flex flex-col justify-between hover:shadow-xs transition-shadow duration-300"
+                className="bg-[#F5F0EB] border border-gray-200/50 p-8 rounded-xl text-left flex flex-col justify-between hover:shadow-xs transition-shadow duration-300"
               >
                 <div className="space-y-4">
                   {/* Rating Stars */}
@@ -817,6 +938,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 9B. WHERE WE OPERATE */}
+      <section className="py-24 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Where We Operate</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Positioned Close To Industrial Movement.</h2>
+            <p className="text-sm text-gray-500 font-body">IRONEX operates from Navi-Mumbai, with practical access to the wider industrial, port and logistics ecosystem.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {['Nhava Sheva', 'JNPT', 'Navi Mumbai', 'Panvel', 'Raigad', 'Mumbai', 'Thane', 'Bhiwandi'].map((location) => (
+              <div key={location} className="bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl text-center hover:border-secondary hover:shadow-xs transition-all duration-300">
+                <MapPin size={16} className="text-secondary mx-auto mb-2" />
+                <span className="text-xs font-bold text-primary uppercase tracking-wider">{location}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-xs text-gray-400 italic font-body mt-8">
+            Our location keeps us close to ports, warehouses, logistics facilities, industrial yards, manufacturing units, construction corridors and infrastructure activity.
+          </p>
+
+        </div>
+      </section>
+
+      {/* 10. HOME CTA */}
+      <section className="py-24 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          <div className="space-y-6">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Start With The Details</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">If The Requirement Is Real, Start With The Details.</h2>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
+            {[
+              'Have industrial scrap to dispose?',
+              'Need scaffolding for a project?',
+              'Sourcing steel or construction materials?'
+            ].map((question, idx) => (
+              <div key={idx} className="flex items-center gap-3 bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl">
+                <span className="text-secondary font-bold text-sm">→</span>
+                <span className="text-xs font-semibold text-primary">{question}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 space-y-2">
+            <p className="text-base font-bold text-primary">
+              Send us the requirement. We will begin with the technical, commercial and operational details that determine whether we can execute it properly.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+            <button
+              onClick={() => setIsQuoteOpen(true)}
+              className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-md cursor-pointer"
+            >
+              Send Your Requirement
+            </button>
+            <button
+              onClick={() => openWhatsApp(WHATSAPP_CONTACTS.GENERAL, WHATSAPP_MESSAGES.GENERAL_HERO)}
+              className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl cursor-pointer hover:bg-[#25D366] hover:text-white transition-all"
+            >
+              WhatsApp IRONEX
+            </button>
+          </div>
+
+        </div>
+      </section>
+
       {/* 10B. CALL TO ACTION SECTION */}
       <section className="py-20 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-15">
@@ -837,10 +1030,16 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <button
               onClick={() => setIsQuoteOpen(true)}
-              className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 shadow-md cursor-pointer"
+              className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-md cursor-pointer"
             >
-              Request a Quote
+              Start Your Enquiry
             </button>
+            <Link
+              to="/capabilities"
+              className="btn-outline bg-transparent border border-gray-400 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl cursor-pointer text-center"
+            >
+              Choose a Division
+            </Link>
             <a
               href="#contact-section-anchor"
               onClick={(e) => {
@@ -848,16 +1047,16 @@ export default function Home() {
                 const el = document.getElementById('contact-section-anchor');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-transparent border border-gray-400 hover:border-white text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 cursor-pointer text-center"
+              className="btn-outline bg-transparent border border-gray-400 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl cursor-pointer text-center"
             >
-              Talk to Our Team
+              Speak With Our Team
             </a>
           </div>
         </div>
       </section>
 
       {/* 11. CONTACT SECTION */}
-      <section className="py-24 bg-[#F7F8FA]" id="contact-section-anchor">
+      <section className="py-24 bg-[#F5F0EB]" id="contact-section-anchor">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
             
@@ -903,7 +1102,7 @@ export default function Home() {
               {/* Structured Premium Map Mock Card */}
               <div className="bg-white rounded-xl border border-gray-200/60 shadow-sm overflow-hidden h-60 mt-8 relative flex items-center justify-center">
                 {/* Clean Blueprint/Grid styled Map Mock */}
-                <div className="absolute inset-0 bg-[#F7F8FA] flex flex-col items-center justify-center p-6 text-center border-b border-gray-100">
+                <div className="absolute inset-0 bg-[#F5F0EB] flex flex-col items-center justify-center p-6 text-center border-b border-gray-100">
                   {/* Grid background simulation */}
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:24px_24px] opacity-25" />
                   

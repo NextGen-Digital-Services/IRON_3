@@ -1,21 +1,29 @@
 import { Link } from 'react-router-dom';
-import { Building2, Phone, Mail, MapPin, Shield, Star, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Shield, Star } from 'lucide-react';
 
 export default function Footer() {
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Infrastructure', path: '/infrastructure' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Contact', path: '/contact' },
+  const companyLinks = [
+    { name: 'About IRONEX', path: '/about' },
+    { name: 'Leadership', path: '/about#leadership' },
+    { name: 'Vision', path: '/about#vision' },
+    { name: 'Capabilities', path: '/capabilities' },
   ];
 
-  const services = [
-    { name: 'Scrap Procurement & Processing', path: '/capabilities#site-transformation' },
+  const divisions = [
+    { name: 'Industrial Scrap Procurement', path: '/capabilities#site-transformation' },
     { name: 'Scaffolding & Formwork Systems', path: '/capabilities#project-materials' },
     { name: 'Steel & Material Supply', path: '/capabilities#steel-engineering' },
     { name: 'Fabrication & Civil Works', path: '/capabilities#fabrication-civil' },
+  ];
+
+  const exploreLinks = [
+    { name: 'Industries', path: '/industries' },
+  ];
+
+  const complianceLinks = [
+    { name: 'Privacy Policy', path: '#' },
+    { name: 'Terms of Use', path: '#' },
+    { name: 'Disclaimer', path: '#' },
   ];
 
   return (
@@ -27,9 +35,11 @@ export default function Footer() {
           {/* Column 1: Company Profile */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3">
-              <div className="bg-secondary text-white p-2.5 rounded-xl">
-                <Building2 size={24} className="text-white" />
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="IRONEX Logo" 
+                className="h-10 w-auto"
+              />
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-white leading-none">
                   IRON<span className="text-secondary">EX</span>
@@ -41,28 +51,28 @@ export default function Footer() {
             </Link>
             
             <p className="text-sm text-gray-400 leading-relaxed font-body">
-              An integrated industrial company operating across scrap procurement, scaffolding systems, steel and material supply, and fabrication & civil works - built on more than 22 years of family-led industrial experience.
+              An integrated industrial company operating across scrap procurement, scaffolding systems, steel and material supply - built on more than 21 years of family-led industrial experience.
             </p>
             
             <div className="flex items-center gap-4 text-xs font-semibold text-gray-400">
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 border border-gray-800 rounded-lg">
                 <Shield size={12} className="text-secondary" />
-                <span>4 Divisions</span>
+                <span>3 Businesses</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 border border-gray-800 rounded-lg">
                 <Star size={12} className="text-secondary fill-secondary" />
-                <span>22+ Years Legacy</span>
+                <span>21+ Years Legacy</span>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Company Links */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 border-b border-gray-800 pb-3">
-              Quick Links
+              Company
             </h4>
             <ul className="space-y-3 text-sm">
-              {quickLinks.map((link) => (
+              {companyLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.path}
@@ -76,62 +86,98 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Services */}
+          {/* Column 3: Divisions */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 border-b border-gray-800 pb-3">
-              Core Services
+              Divisions
             </h4>
             <ul className="space-y-3 text-sm">
-              {services.map((service) => (
-                <li key={service.name}>
+              {divisions.map((division) => (
+                <li key={division.name}>
                   <Link
-                    to={service.path}
+                    to={division.path}
                     className="flex items-center group text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     <span className="mr-1 group-hover:translate-x-1 transition-transform duration-200">→</span>
-                    {service.name}
+                    {division.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Contact & Location */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 border-b border-gray-800 pb-3">
-              Registered Office
-            </h4>
-            
-            <ul className="space-y-4 text-sm font-body text-gray-400">
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-secondary shrink-0 mt-0.5" />
-                <span>Uran, Maharashtra. Operational base: Uttarshiv, Uran region.</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-secondary shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
-                  +91 98765 43210
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-secondary shrink-0" />
-                <a href="mailto:info@ironexsteel.com" className="hover:text-white transition-colors">
-                  info@ironexsteel.com
-                </a>
-              </li>
-            </ul>
+          {/* Column 4: Explore + Contact */}
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 border-b border-gray-800 pb-3">
+                Explore
+              </h4>
+              <ul className="space-y-3 text-sm">
+                {exploreLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
+                      className="flex items-center group text-gray-400 hover:text-white transition-colors duration-200"
+                    >
+                      <span className="mr-1 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-            <div className="pt-2">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-white hover:text-secondary transition-colors"
-              >
-                <span>Find Us On Map</span>
-                <ArrowUpRight size={14} />
-              </a>
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6 border-b border-gray-800 pb-3">
+                Registered Office
+              </h4>
+              <ul className="space-y-3 text-sm font-body text-gray-400">
+                <li className="flex items-start gap-3">
+                  <MapPin size={16} className="text-secondary shrink-0 mt-0.5" />
+                  <span>Uran, Maharashtra. Operational base: Uttarshiv, Uran region.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone size={16} className="text-secondary shrink-0" />
+                  <div className="flex flex-col gap-1">
+                    <a href="tel:+919324448080" className="hover:text-white transition-colors">
+                      +91 9324448080 (Scrap)
+                    </a>
+                    <a href="tel:+919321028080" className="hover:text-white transition-colors">
+                      +91 9321028080 (Scaffolding)
+                    </a>
+                    <a href="tel:+919231318080" className="hover:text-white transition-colors">
+                      +91 9231318080 (Supply)
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail size={16} className="text-secondary shrink-0" />
+                  <a href="mailto:info@ironex.com" className="hover:text-white transition-colors">
+                    info@ironex.com
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
+        </div>
+
+        {/* Compliance Row */}
+        <div className="border-t border-gray-800 pt-8 mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-6 text-xs text-gray-500 font-semibold uppercase tracking-wider">
+              {complianceLinks.map((link) => (
+                <a key={link.name} href={link.path} className="hover:text-white transition-colors">
+                  {link.name}
+                </a>
+              ))}
+            </div>
+            <div className="flex items-center gap-4 text-xs text-gray-500 font-semibold">
+              <span>GST: 27AABFI1234N1Z5</span>
+              <span className="text-gray-700">|</span>
+              <span>LLP: AAB-1234</span>
+            </div>
+          </div>
         </div>
 
         {/* Footer Closing Line */}
@@ -142,11 +188,6 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-semibold uppercase tracking-wider">
           <p>© {new Date().getFullYear()} IRONEX Steel & Infra LLP. All Rights Reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
-          </div>
         </div>
       </div>
     </footer>

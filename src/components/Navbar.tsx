@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Building2, Phone, Mail, Clock } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Mail, Clock } from 'lucide-react';
 import ContactForm from './ContactForm';
 import { useModal } from '../context/ModalContext';
 
@@ -32,21 +32,18 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
+    { name: 'About IRONEX', path: '/about' },
     {
       name: 'Capabilities',
       path: '/capabilities',
       dropdown: [
-        { name: 'Site Transformation', path: '/capabilities#site-transformation' },
-        { name: 'Project Materials', path: '/capabilities#project-materials' },
-        { name: 'Steel Engineering', path: '/capabilities#steel-engineering' },
+        { name: 'Scrap Procurement & Processing', path: '/capabilities#site-transformation' },
+        { name: 'Scaffolding & Formwork Systems', path: '/capabilities#project-materials' },
+        { name: 'Steel & Material Supply', path: '/capabilities#steel-engineering' },
+        { name: 'Fabrication & Civil Works', path: '/capabilities#fabrication-civil' },
       ]
     },
-    { name: 'Projects', path: '/projects' },
     { name: 'Industries', path: '/industries' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Clients', path: '/clients' },
-    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -58,9 +55,9 @@ export default function Navbar() {
             <Phone size={12} className="text-secondary" />
             <span>+91 98765 43210</span>
           </a>
-          <a href="mailto:info@ironexsteel.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
+          <a href="mailto:info@ironex.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
             <Mail size={12} className="text-secondary" />
-            <span>info@ironexsteel.com</span>
+            <span>info@ironex.com</span>
           </a>
         </div>
         <div className="flex items-center gap-2">
@@ -79,9 +76,11 @@ export default function Navbar() {
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group focus:outline-none">
-              <div className="bg-primary text-white p-2.5 rounded-xl transition-transform duration-300 group-hover:scale-105">
-                <Building2 size={24} className="text-secondary" />
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="IRONEX Steel & Infra LLP Logo" 
+                className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold tracking-tight text-primary leading-none">
                   IRON<span className="text-secondary">EX</span>
@@ -125,12 +124,12 @@ export default function Navbar() {
 
                   {/* Dropdown Menu */}
                   {link.dropdown && activeDropdown === link.name && (
-                    <div className="absolute left-0 mt-2 w-56 rounded-xl bg-white shadow-lg border border-gray-100 py-3 z-50 animate-fade-in">
+                    <div className="absolute left-0 mt-2 w-64 rounded-xl bg-white shadow-lg border border-gray-100 py-3 z-50 animate-fade-in">
                       {link.dropdown.map((subItem) => (
                         <HashLink
                           key={subItem.name}
                           to={subItem.path}
-                          className="block px-4 py-2 text-xs font-semibold text-primary hover:bg-[#F7F8FA] hover:text-secondary transition-colors"
+                          className="block px-4 py-2 text-xs font-semibold text-primary hover:bg-[#F5F0EB] hover:text-secondary transition-colors"
                         >
                           {subItem.name}
                         </HashLink>
@@ -145,9 +144,9 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center">
               <Link
                 to="/quote"
-                className="bg-secondary hover:bg-opacity-90 text-white font-semibold text-sm px-6 py-2.5 rounded-xl transition-all duration-300 shadow-sm text-center focus:outline-none"
+                className="btn-primary bg-secondary text-white font-semibold text-sm px-6 py-2.5 rounded-xl shadow-sm text-center focus:outline-none"
               >
-                Get Quote
+                Discuss a Requirement
               </Link>
             </div>
 
@@ -176,9 +175,11 @@ export default function Navbar() {
           {/* Drawer Body */}
           <div className="fixed right-0 top-0 bottom-0 w-80 bg-white shadow-xl flex flex-col z-40 p-6">
             <div className="flex justify-between items-center mb-8">
-              <span className="text-xl font-bold tracking-tight text-primary">
-                IRON<span className="text-secondary">EX</span>
-              </span>
+              <img 
+                src="/logo.png" 
+                alt="IRONEX Logo" 
+                className="h-8 w-auto"
+              />
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-primary hover:text-secondary focus:outline-none"
@@ -242,9 +243,9 @@ export default function Navbar() {
               <Link
                 to="/quote"
                 onClick={() => setIsOpen(false)}
-                className="block w-full bg-secondary hover:bg-opacity-90 text-white font-semibold py-3 rounded-xl transition-all duration-300 text-center shadow-sm"
+                className="btn-primary block w-full bg-secondary text-white font-semibold py-3 rounded-xl text-center shadow-sm"
               >
-                Get Quote
+                Discuss a Requirement
               </Link>
             </div>
           </div>
@@ -262,8 +263,8 @@ export default function Navbar() {
             {/* Header */}
             <div className="bg-primary px-6 py-4 flex justify-between items-center border-b border-gray-800">
               <div>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">Request A Business Quote</h3>
-                <p className="text-xs text-gray-400 mt-1">Submit your engineering and infrastructure requirements.</p>
+                <h3 className="text-lg font-bold text-white uppercase tracking-wider">Discuss a Requirement</h3>
+                <p className="text-xs text-gray-400 mt-1">Share your BOQ, drawings, material schedule or project scope.</p>
               </div>
               <button
                 onClick={() => setIsQuoteOpen(false)}

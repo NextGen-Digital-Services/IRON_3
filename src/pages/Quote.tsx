@@ -87,7 +87,7 @@ export default function Quote() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start text-left">
             
             {/* Left: Request Form */}
-            <div className="lg:col-span-7 bg-[#F7F8FA] p-8 rounded-xl border border-gray-250/50 shadow-xs">
+            <div className="lg:col-span-7 bg-[#F5F0EB] p-8 rounded-xl border border-gray-250/50 shadow-xs">
               <h2 className="text-xl font-bold text-primary mb-6">Industrial Project Inquiry Form</h2>
               
               {submitted ? (
@@ -241,7 +241,7 @@ export default function Quote() {
                   <div className="pt-2">
                     <button 
                       type="submit"
-                      className="w-full bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest py-4 rounded-xl transition-all duration-300 shadow-sm"
+                      className="btn-primary w-full bg-secondary text-white font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-sm"
                     >
                       Submit Requirement
                     </button>
@@ -282,7 +282,7 @@ export default function Quote() {
               </div>
 
               {/* Quality & safety commitment badge */}
-              <div className="p-6 bg-[#F7F8FA] rounded-xl border border-gray-200/50 flex gap-4 items-start text-left">
+              <div className="p-6 bg-[#F5F0EB] rounded-xl border border-gray-200/50 flex gap-4 items-start text-left">
                 <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs shrink-0 mt-1">
                   <ShieldCheck size={20} />
                 </div>

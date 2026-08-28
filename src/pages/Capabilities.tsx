@@ -8,6 +8,8 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
+import { openWhatsApp } from '../lib/whatsapp';
+import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../config/contact';
 
 // Assets
 import heroImg from '../assets/industrial_hero.jpg';
@@ -82,7 +84,7 @@ export default function Capabilities() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
             
             {/* Category 1: Procurement & Processing */}
-            <div className="space-y-6 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
+            <div className="space-y-6 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs">
@@ -125,7 +127,7 @@ export default function Capabilities() {
             </div>
 
             {/* Category 2: Dismantling, Buyback & Logistics */}
-            <div className="space-y-6 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
+            <div className="space-y-6 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs">
@@ -183,7 +185,7 @@ export default function Capabilities() {
               <h3 className="text-base font-bold text-primary mb-4">Suitable Requirements</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-semibold text-gray-500 font-body">
                 {['Government scrap auctions','PSU scrap tenders','Corporate industrial scrap','Manufacturing-plant scrap','Machinery and structural scrap','Warehouse and logistics scrap','Private industrial disposals','Recurring scrap procurement'].map((req) => (
-                  <span key={req} className="flex items-center gap-2 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-2.5">
+                  <span key={req} className="flex items-center gap-2 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-2.5">
                     <CheckCircle2 size={14} className="text-secondary shrink-0" />
                     {req}
                   </span>
@@ -197,12 +199,20 @@ export default function Capabilities() {
             <p className="text-xs text-gray-400 italic font-body">
               The highest bid may win attention. The most prepared buyer completes the lifting.
             </p>
-            <button
-              onClick={() => setIsQuoteOpen(true)}
-              className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
-            >
-              Submit Scrap-Lot Details
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => setIsQuoteOpen(true)}
+                className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl"
+              >
+                Submit Scrap-Lot Details
+              </button>
+              <button
+                onClick={() => openWhatsApp(WHATSAPP_CONTACTS.SCRAP, WHATSAPP_MESSAGES.SCRAP_DEFAULT)}
+                className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-[#25D366] hover:text-white transition-all"
+              >
+                WhatsApp Scrap Division
+              </button>
+            </div>
           </div>
 
         </div>
@@ -211,7 +221,7 @@ export default function Capabilities() {
       {/* ==========================================
           DIVISION 02: SCAFFOLDING & FORMWORK
           ========================================== */}
-      <section id="project-materials" className="py-24 bg-[#F7F8FA] border-b border-gray-150 scroll-mt-20">
+      <section id="project-materials" className="py-24 bg-[#F5F0EB] border-b border-gray-150 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Division Header */}
@@ -329,7 +339,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Complete Product Range</h4>
               <div className="flex flex-wrap gap-2">
                 {['Cuplock verticals','Cuplock ledgers','H-Frames','Cross braces','Walkway platforms','Adjustable props','Base jacks','U-head jacks','Joint pins','Staircase components','Fabricated accessories'].map((p) => (
-                  <span key={p} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{p}</span>
+                  <span key={p} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{p}</span>
                 ))}
               </div>
             </div>
@@ -337,7 +347,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
               <div className="flex flex-wrap gap-2">
                 {['Builders','EPC contractors','Industrial maintenance companies','Infrastructure contractors','Ports and logistics facilities','Warehouses','Project contractors'].map((c) => (
-                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
+                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
                 ))}
               </div>
             </div>
@@ -348,12 +358,20 @@ export default function Capabilities() {
             <p className="text-xs text-gray-400 italic font-body">
               Scaffolding may be temporary. Its effect on safety and productivity is not.
             </p>
-            <button
-              onClick={() => setIsQuoteOpen(true)}
-              className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
-            >
-              Check Scaffolding Availability
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => setIsQuoteOpen(true)}
+                className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl"
+              >
+                Check Scaffolding Availability
+              </button>
+              <button
+                onClick={() => openWhatsApp(WHATSAPP_CONTACTS.SCAFFOLDING, WHATSAPP_MESSAGES.SCAFFOLDING_DEFAULT)}
+                className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-[#25D366] hover:text-white transition-all"
+              >
+                WhatsApp Scaffolding Division
+              </button>
+            </div>
           </div>
 
         </div>
@@ -390,7 +408,7 @@ export default function Capabilities() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left mb-16">
             
             {/* Category 1: Structural Steel & Pipes Supply */}
-            <div className="space-y-4 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 shadow-xs">
+            <div className="space-y-4 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 shadow-xs">
               <h3 className="text-lg font-bold text-primary">Structural Steel &amp; Pipe Supply</h3>
               <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">Project-Ready Materials. Dependable Supply.</span>
               <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
@@ -417,7 +435,7 @@ export default function Capabilities() {
             </div>
 
             {/* Category 2: Roofing & Building Materials */}
-            <div className="space-y-4 bg-[#F7F8FA] p-8 rounded-xl border border-gray-200/50 shadow-xs">
+            <div className="space-y-4 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 shadow-xs">
               <h3 className="text-lg font-bold text-primary">Roofing &amp; Building Materials</h3>
               <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">The Right Material. For the Right Job.</span>
               <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
@@ -447,7 +465,7 @@ export default function Capabilities() {
 
           {/* Service Models & Suitable Customers */}
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-[#F7F8FA] border border-gray-200/60 rounded-xl p-6">
+            <div className="bg-[#F5F0EB] border border-gray-200/60 rounded-xl p-6">
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Service Models</h4>
               <div className="flex flex-wrap gap-2">
                 {['Spot purchase','Project-based supply','Recurring monthly supply','BOQ-based procurement','Brand-specific sourcing','Scheduled deliveries','Industrial and contractor supply'].map((s) => (
@@ -455,7 +473,7 @@ export default function Capabilities() {
                 ))}
               </div>
             </div>
-            <div className="bg-[#F7F8FA] border border-gray-200/60 rounded-xl p-6">
+            <div className="bg-[#F5F0EB] border border-gray-200/60 rounded-xl p-6">
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
               <div className="flex flex-wrap gap-2">
                 {['Builders and developers','Fabricators','Warehouses','Industrial plants','Infrastructure contractors','Retail and institutional buyers','EPC companies'].map((c) => (
@@ -470,12 +488,20 @@ export default function Capabilities() {
             <p className="text-xs text-gray-400 italic font-body">
               A material supplier should solve the requirement - not become another requirement to manage.
             </p>
-            <button
-              onClick={() => setIsQuoteOpen(true)}
-              className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
-            >
-              Upload Your BOQ
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => setIsQuoteOpen(true)}
+                className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl"
+              >
+                Upload Your BOQ
+              </button>
+              <button
+                onClick={() => openWhatsApp(WHATSAPP_CONTACTS.MATERIAL_SUPPLY, WHATSAPP_MESSAGES.SUPPLY_DEFAULT)}
+                className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-[#25D366] hover:text-white transition-all"
+              >
+                WhatsApp Material Supply
+              </button>
+            </div>
           </div>
 
         </div>
@@ -484,7 +510,7 @@ export default function Capabilities() {
       {/* ==========================================
           DIVISION 04: FABRICATION & CIVIL WORKS
           ========================================== */}
-      <section id="fabrication-civil" className="py-24 bg-[#F7F8FA] scroll-mt-20">
+      <section id="fabrication-civil" className="py-24 bg-[#F5F0EB] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Division Header */}
@@ -589,7 +615,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Capability Areas</h4>
               <div className="flex flex-wrap gap-2">
                 {['Structural steel fabrication','Industrial sheds','Platforms','Walkways','Staircases','Handrails','Equipment-support structures','Pipe-support structures','Repairs and modifications','Structural strengthening','Site erection','Foundations','Pedestals','Industrial civil works','Selected commercial civil works'].map((a) => (
-                  <span key={a} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{a}</span>
+                  <span key={a} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{a}</span>
                 ))}
               </div>
             </div>
@@ -597,7 +623,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
               <div className="flex flex-wrap gap-2">
                 {['Industrial plants','Ports','Logistics facilities','Warehouses','Builders','EPC contractors','Government contractors','Commercial project owners'].map((c) => (
-                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F7F8FA] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
+                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
                 ))}
               </div>
             </div>
@@ -608,12 +634,112 @@ export default function Capabilities() {
             <p className="text-xs text-gray-400 italic font-body">
               A structure is not complete because it looks correct on paper. It is complete when it performs correctly on site.
             </p>
-            <button
-              onClick={() => setIsQuoteOpen(true)}
-              className="bg-secondary hover:bg-opacity-95 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300"
-            >
-              Submit Your Project Scope
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => setIsQuoteOpen(true)}
+                className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl"
+              >
+                Submit Your Project Scope
+              </button>
+              <button
+                onClick={() => openWhatsApp(WHATSAPP_CONTACTS.FABRICATION_CIVIL, WHATSAPP_MESSAGES.FABRICATION_DEFAULT)}
+                className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-[#25D366] hover:text-white transition-all"
+              >
+                WhatsApp Fabrication & Civil
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ==========================================
+          CAPABILITY PILLARS
+          ========================================== */}
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">The Resources Behind the Services</span>
+            <h2 className="text-3xl font-extrabold text-primary tracking-tight">Capability Is What Remains After the Presentation Ends.</h2>
+            <p className="text-sm text-gray-500 font-body leading-relaxed">IRONEX combines industrial experience, operating assets, inventory, workforce, supplier relationships and project coordination capability.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Operational Infrastructure',
+                desc: 'IRONEX operates through warehouse, commercial and open-yard infrastructure supporting material storage, scaffolding, scrap handling and fabrication activity.'
+              },
+              {
+                title: 'Scaffolding Inventory',
+                desc: 'The scaffolding division manages approximately 1,000+ MT of total inventory, with a substantial quantity deployed across active rental requirements.'
+              },
+              {
+                title: 'Material-Supply Network',
+                desc: 'The company sources steel and construction materials through manufacturer, distributor and market relationships, supporting project and recurring requirements.'
+              },
+              {
+                title: 'Scrap Handling',
+                desc: 'IRONEX is structured to evaluate and handle industrial scrap lots involving labour, vehicles, machinery, segregation and transportation.'
+              },
+              {
+                title: 'Fabrication Resources',
+                desc: 'Fabrication activity is supported through skilled welding, cutting, assembly and site-installation capability.'
+              },
+              {
+                title: 'Vehicles and Logistics',
+                desc: 'Operational vehicles and transport coordination support material movement, rental dispatches, scrap lifting and project mobilisation.'
+              },
+              {
+                title: 'Workforce',
+                desc: 'The company is supported by operational staff, labour, fabrication resources and division-level management.'
+              },
+              {
+                title: 'Commercial Understanding',
+                desc: 'Capability includes the ability to assess rates, transport, labour, handling, wastage, project timelines and working-capital requirements.'
+              },
+              {
+                title: 'Local Industrial Access',
+                desc: 'The Uran and Nhava Sheva region provides access to ports, terminals, warehouses, logistics parks and industrial customers.'
+              },
+              {
+                title: 'Multi-Division Coordination',
+                desc: 'IRONEX can connect supply, rental, lifting and execution requirements where multiple capabilities are commercially and operationally relevant.'
+              }
+            ].map((pillar, idx) => (
+              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl text-left hover:shadow-xs hover:border-secondary transition-all duration-300">
+                <span className="text-2xl font-extrabold text-secondary block mb-2">0{idx + 1}</span>
+                <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-2">{pillar.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed font-body">{pillar.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* System Capability */}
+          <div className="mt-16 bg-primary text-white p-8 rounded-xl">
+            <h3 className="text-base font-bold uppercase tracking-wider mb-6">Systems Being Developed</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              {[
+                'Inventory tracking',
+                'Rental dispatch and return records',
+                'Client and enquiry management',
+                'Quotation controls',
+                'Purchase-order tracking',
+                'Payment follow-up',
+                'Project costing',
+                'Vehicle and dispatch coordination',
+                'Vendor database',
+                'Documented SOPs',
+                'Safety and compliance documentation',
+                'Division-level reporting'
+              ].map((system, idx) => (
+                <div key={idx} className="flex items-center gap-2 bg-gray-900 border border-gray-800 rounded-lg px-3 py-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+                  <span className="text-[10px] font-semibold text-gray-300">{system}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
