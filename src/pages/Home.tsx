@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Factory,
   Zap,
@@ -8,21 +11,15 @@ import {
   ShieldCheck,
   Building2,
   ArrowRight,
-  Star,
-  Building,
   Wrench,
-  Layers,
   MapPin,
-  Phone,
-  Mail,
   CheckCircle2
 } from 'lucide-react';
 
-// Component Imports
-import TrustStats from '../components/TrustStats';
-import ServiceCard from '../components/ServiceCard';
-import ContactForm from '../components/ContactForm';
+gsap.registerPlugin(ScrollTrigger);
+
 import { useModal } from '../context/ModalContext';
+import Reveal from '../components/Reveal';
 import { openWhatsApp } from '../lib/whatsapp';
 import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../config/contact';
 
@@ -31,154 +28,85 @@ import heroImg from '../assets/industrial_hero.jpg';
 import factoryImg from '../assets/about_factory.jpg';
 import pebImg from '../assets/peb_construction.jpg';
 import projectImg from '../assets/industrial_project.jpg';
-import demolitionImg from '../assets/demolition.jpg';
-import scaffoldingImg from '../assets/scaffolding.jpg';
+
+// Client Logo Imports
+import allcargoLogo from '/logos/allcargo.png';
+import bpclLogo from '/logos/bpcl.png';
+import ongcLogo from '/logos/ongc.png';
+import jpnaLogo from '/logos/jpna.png';
+import lodhaLogo from '/logos/lodha.png';
+import runwalLogo from '/logos/runwal.png';
+import tacImgLogo from '/logos/tata.svg';
+import relianceLogo from '/logos/reliance.svg';
+import jswLogo from '/logos/jsw.png';
+import lntLogo from '/logos/lnt.png';
 
 export default function Home() {
   const { setIsQuoteOpen } = useModal();
 
-  // Subtle Framer Motion Variants for Clean B2B animations
+  useEffect(() => {
+    const mm = gsap.matchMedia();
 
-  const services = [
-    {
-      title: 'Industrial Scrap Procurement & Processing',
-      description: 'Direct purchase, lifting, segregation, processing and resale of industrial scrap to melting mills and factories - from auction participation to complete site clearance.',
-      image: demolitionImg,
-      path: '/capabilities#site-transformation',
-      icon: <Wrench size={20} />,
-      categories: [
-        {
-          name: 'Scrap Procurement',
-          tagline: 'Direct Buyer. Evaluated Commercially.',
-          services: [
-            'Government & PSU scrap auctions',
-            'Corporate & industrial scrap lots',
-            'Auction and tender participation',
-            'Lot inspection & material assessment',
-            'Commercial evaluation',
-            'Private industrial disposals'
-          ]
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Problem section cascade
+      gsap.set('.gs-problem-label, .gs-problem-copy, .gs-problem-card, .gs-problem-solution, .gs-problem-objective', { opacity: 0 });
+      gsap.set('.gs-problem-headline span', { yPercent: 110 });
+
+      const problemTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#problem-section',
+          start: 'top 70%',
+          once: true,
         },
-        {
-          name: 'Scrap Processing & Lifting',
-          tagline: 'Lifted. Processed. Responsibly Resold.',
-          services: [
-            'Labour deployment',
-            'Dismantling & cutting',
-            'Machinery coordination',
-            'Loading & transportation',
-            'Segregation & processing',
-            'Onward resale'
-          ]
-        }
-      ]
-    },
-    {
-      title: 'Scaffolding & Formwork Systems',
-      description: 'Manufacturing, rental and sales of scaffolding and formwork components with verified inventory, dispatch and replacement coordination.',
-      image: scaffoldingImg,
-      path: '/capabilities#project-materials',
-      icon: <Layers size={20} />,
-      categories: [
-        {
-          name: 'Scaffolding & Formwork Products',
-          tagline: 'Reliable Access. Continuous Progress.',
-          services: [
-            'Cuplock verticals & ledgers',
-            'H-Frames',
-            'Cross braces',
-            'Walkway platforms',
-            'Adjustable props',
-            'Base jacks & U-head jacks',
-            'Joint pins',
-            'Staircase components',
-            'Fabricated accessories'
-          ]
+      });
+
+      problemTl
+        .to('.gs-problem-label', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' })
+        .to('.gs-problem-headline span', { yPercent: 0, duration: 0.7, ease: 'power4.out' }, '-=0.3')
+        .to('.gs-problem-copy', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.45')
+        .fromTo(
+          '.gs-problem-card',
+          { opacity: 0, y: 42 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.55,
+            ease: 'power3.out',
+            stagger: { each: 0.08, from: 'start' },
+          },
+          '-=0.2'
+        )
+        .to('.gs-problem-solution', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.2')
+        .to('.gs-problem-objective', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3');
+
+      // Requirement to Execution timeline
+      const rtwCards = gsap.utils.toArray<HTMLElement>('.rtw-step');
+      gsap.set('.rtw-line', { scaleX: 0, transformOrigin: 'left center' });
+      if (rtwCards.length) {
+        gsap.set(rtwCards, { opacity: 0, y: 40 });
+      }
+
+      const rtwTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#rtw-steps',
+          start: 'top 75%',
+          once: true,
         },
-        {
-          name: 'Rental & Supply Models',
-          tagline: 'Flexible Deployment for Active Workfronts.',
-          services: [
-            'Long-term rental',
-            'Direct sale',
-            'Project-based supply',
-            'Additional quantity support',
-            'Custom manufacturing',
-            'Replacement coordination'
-          ]
-        }
-      ]
-    },
-    {
-      title: 'Steel & Construction-Material Supply',
-      description: 'Specified correctly. Sourced responsibly. Delivered for execution. Supply of structural steel, pipes, sheets, TMT bars, construction materials and all roofing solutions to industrial buyers, builders, warehouses, fabricators and contractors.',
-      image: heroImg,
-      path: '/capabilities#steel-engineering',
-      icon: <Building size={20} />,
-      categories: [
-        {
-          name: 'Steel & Construction Materials',
-          tagline: 'Specified Correctly. Sourced Responsibly.',
-          services: [
-            'TMT bars',
-            'MS pipes, GI pipes & GP pipes',
-            'Angles, Channels & Beams',
-            'MS plates',
-            'GI sheets & colour-coated roofing sheets',
-            'UPVC sheets & cement sheets',
-            'Cement bags',
-            'Structural steel products',
-            'BOQ-based procurement',
-            'Scheduled deliveries'
-          ]
-        },
-        {
-          name: 'Supply Models',
-          tagline: 'Flexible Sourcing for Project and Recurring Needs.',
-          services: [
-            'Spot purchase',
-            'Project-based supply',
-            'Recurring monthly supply',
-            'BOQ-based procurement',
-            'Brand-specific sourcing',
-            'Scheduled deliveries'
-          ]
-        }
-      ]
-    },
-    {
-      title: 'Structural Fabrication & Civil Works',
-      description: 'From measurement and material to fabrication and site execution. Structural fabrication, industrial modifications, site erection and selected civil works connected through one execution process.',
-      image: projectImg,
-      path: '/capabilities#fabrication-civil',
-      icon: <Wrench size={20} />,
-      categories: [
-        {
-          name: 'Structural Fabrication',
-          tagline: 'Fabricated for Purpose. Built for Performance.',
-          services: [
-            'Structural steel fabrication',
-            'Industrial sheds',
-            'Platforms, walkways & staircases',
-            'Handrails & equipment supports',
-            'Pipe-support structures',
-            'Repairs & modifications',
-            'Structural strengthening'
-          ]
-        },
-        {
-          name: 'Civil Works & Execution',
-          tagline: 'From Foundation to Final Finish.',
-          services: [
-            'Site erection',
-            'Foundations & pedestals',
-            'Industrial civil works',
-            'Selected commercial civil works'
-          ]
-        }
-      ]
-    }
-  ];
+      });
+
+      rtwTl
+        .to('.rtw-line', { scaleX: 1, duration: 0.9, ease: 'power2.inOut' })
+        .to(rtwCards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
+          stagger: 0.1,
+        }, '-=0.5');
+    });
+
+    return () => mm.revert();
+  }, []);
 
   const industries = [
     { name: 'Ports & Logistics', icon: <Anchor size={28} /> },
@@ -222,31 +150,6 @@ export default function Home() {
     }
   ];
 
-
-  const testimonials = [
-    {
-      review: "IRONEX delivered the entire structural steel framework for our Ahmedabad plant. Their adherence to Quality Assurance plans and dimensional accuracy was absolute. Extremely trustworthy vendor.",
-      name: "R. K. Shah",
-      designation: "General Manager (Projects)",
-      company: "Gujarat Chemical Enterprises Ltd.",
-      rating: 5
-    },
-    {
-      review: "Building a 1,20,000 sq ft logistics warehouse under tight rains was a massive challenge. IRONEX's PEB design team optimized the steel tonnage without compromising structural load-bearing limits. Saved us lakhs.",
-      name: "H. S. Oberoi",
-      designation: "Director of Logistics Infrastructure",
-      company: "North Star Warehousing Parks",
-      rating: 5
-    },
-    {
-      review: "Their safety standards during structural erection on our power project site were exemplary. Certified welders, regular safety checks, and zero incidents. Highly recommend them for heavy fabrication.",
-      name: "V. Prasanna",
-      designation: "Project Head (EPC Contracting)",
-      company: "Sterling Power Grid Corp",
-      rating: 5
-    }
-  ];
-
   return (
     <div className="bg-bg-light">
       
@@ -263,6 +166,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-primary/55" />
         </div>
 
+        <Reveal className="w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
@@ -318,55 +222,67 @@ export default function Home() {
 
           </div>
         </div>
+        </Reveal>
       </section>
 
-      {/* 2. TRUST SECTION */}
-      <TrustStats />
-
       {/* 2A. THE PROBLEM WE EXIST TO REDUCE */}
-      <section className="py-24 bg-white border-b border-gray-100">
+      <section className="py-24 bg-white border-b border-gray-100" id="problem-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">The Problem We Exist to Reduce</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">
-              Waiting Is Not Neutral.
+
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary block gs-problem-label">The Problem We Exist to Reduce</span>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight gs-problem-headline overflow-hidden">
+              <span className="inline-block">Waiting Is Not Neutral.</span>
             </h2>
-            <p className="text-sm text-gray-500 font-body leading-relaxed">
+            <p className="text-sm text-gray-500 font-body leading-relaxed gs-problem-copy">
               Industrial delays rarely arrive with a separate invoice. Their cost appears elsewhere - in idle labour, blocked space, extended rentals, additional transport, delayed billing, rehandling and lost productivity. A seemingly small operational miss can quietly become a much larger commercial loss.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {/* Problem cards - highlighted */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch" id="problem-grid">
             {[
-              { title: 'Labour continues costing money.' },
-              { title: 'Equipment remains committed.' },
-              { title: 'Rental continues.' },
-              { title: 'Project sequences shift.' },
-              { title: 'Billing gets pushed.' },
-              { title: 'Working capital remains blocked.' },
-              { title: 'Industrial space stays occupied.' },
-              { title: 'Management time gets consumed in follow-up.' }
+              { title: 'Labour keeps costing money even when the work stands still.' },
+              { title: 'Equipment and machinery remain committed to a site that cannot proceed.' },
+              { title: 'Rental charges keep running on scaffolding and access systems.' },
+              { title: 'Project sequences shift, pushing every milestone that follows.' },
+              { title: 'Billing gets pushed out, so cash keeps waiting too.' },
+              { title: 'Working capital stays locked inside material and equipment.' },
+              { title: 'Industrial space stays occupied by material that has stopped moving.' },
+              { title: 'Management time gets consumed chasing follow-ups instead of execution.' }
             ].map((item, idx) => (
-              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl text-left">
-                <span className="text-secondary font-bold text-sm mb-2">→</span>
-                <p className="text-xs text-gray-600 leading-relaxed font-body font-semibold">{item.title}</p>
+              <div key={idx} className="gs-problem-card relative bg-[#FDF3F0] border-l-4 border-[#D8583C] border border-gray-100 rounded-lg p-5 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
+                <span className="text-[#D8583C] font-extrabold text-2xl block mb-2 leading-none">0{idx + 1}</span>
+                <p className="text-sm text-gray-700 leading-relaxed font-body font-semibold">{item.title}</p>
               </div>
             ))}
-            <div className="bg-primary text-white p-8 rounded-xl text-left flex flex-col justify-center">
-              <h3 className="text-base font-bold mb-2">That Is the Problem IRONEX Is Built Around.</h3>
-              <p className="text-[11px] text-gray-300 leading-relaxed font-body mb-4">
+          </div>
+
+          {/* IRONEX solution highlight */}  
+          <div className="gs-problem-solution mt-8 bg-primary text-white rounded-xl p-8 md:p-10 text-left flex flex-col md:flex-row md:items-center gap-6 shadow-lg">
+            <div className="flex-1">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-secondary block mb-2">That Is the Problem IRONEX Is Built Around</span>
+              <p className="text-sm text-gray-300 leading-relaxed font-body">
                 We operate at three points where timing and material directly affect operational performance:
               </p>
-              <ul className="space-y-2 text-xs text-secondary font-semibold">
-                <li>Material that needs to move out.</li>
-                <li>Access that needs to be available.</li>
-                <li>Material that needs to move in.</li>
-              </ul>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="bg-white/10 border border-white/20 rounded-lg p-4 text-center min-w-[140px]">
+                <p className="text-secondary font-extrabold text-2xl leading-none">01</p>
+                <p className="text-xs text-white mt-2 font-semibold">Material that needs to move out.</p>
+              </div>
+              <div className="bg-white/10 border border-white/20 rounded-lg p-4 text-center min-w-[140px]">
+                <p className="text-secondary font-extrabold text-2xl leading-none">02</p>
+                <p className="text-xs text-white mt-2 font-semibold">Access that needs to be available.</p>
+              </div>
+              <div className="bg-white/10 border border-white/20 rounded-lg p-4 text-center min-w-[140px]">
+                <p className="text-secondary font-extrabold text-2xl leading-none">03</p>
+                <p className="text-xs text-white mt-2 font-semibold">Material that needs to move in.</p>
+              </div>
             </div>
           </div>
 
-          <div className="text-center mt-10">
+          <div className="gs-problem-objective text-center mt-10">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/25 px-4 py-2.5 rounded-lg">
               Objective is Simple: To Keep industrial requirements commercially controlled and operationally moving.
             </span>
@@ -377,6 +293,7 @@ export default function Home() {
 
       {/* 3. OUR THREE BUSINESSES */}
       <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -444,10 +361,12 @@ export default function Home() {
           </div>
 
         </div>
+        </Reveal>
       </section>
 
       {/* 2B. PROOF BEFORE PROMISE */}
       <section className="py-24 bg-white border-b border-gray-100">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -493,10 +412,12 @@ export default function Home() {
           </div>
 
         </div>
+        </Reveal>
       </section>
 
       {/* 2C. OUR TOP CLIENTS */}
       <section className="py-16 bg-white border-b border-gray-100 overflow-hidden">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Trusted By Industry Leaders</span>
           <h2 className="text-2xl lg:text-3xl font-extrabold text-primary tracking-tight">
@@ -506,26 +427,59 @@ export default function Home() {
             Delivering engineering, fabrication, demolition and industrial support solutions to some of India's most respected organizations.
           </p>
         </div>
+        </Reveal>
 
-        <div className="relative w-full overflow-hidden py-6 bg-[#F5F0EB] border-y border-gray-200/50 flex items-center">
+        <div className="relative w-full overflow-hidden py-8 bg-white border-y border-gray-200/50 flex items-center">
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none hidden sm:block" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none hidden sm:block" />
           
-          <div className="animate-marquee flex gap-16 items-center">
-            {['Allcargo Logistics', 'BPCL', 'ONGC', 'JNPA', 'Lodha', 'Runwal', 'Tata', 'Reliance', 'Jaigarh Port (JSW)', 'L&T'].map((client, idx) => (
+          <div className="animate-marquee flex gap-14 items-center">
+            {[
+              { img: allcargoLogo, name: 'Allcargo Logistics' },
+              { img: bpclLogo, name: 'BPCL' },
+              { img: ongcLogo, name: 'ONGC' },
+              { img: jpnaLogo, name: 'JNPA' },
+              { img: lodhaLogo, name: 'Lodha' },
+              { img: runwalLogo, name: 'Runwal' },
+              { img: tacImgLogo, name: 'Tata' },
+              { img: relianceLogo, name: 'Reliance' },
+              { img: jswLogo, name: 'JSW' },
+              { img: lntLogo, name: 'L&T' }
+            ].map((client, idx) => (
               <div 
                 key={`client-1-${idx}`} 
-                className="text-gray-400 hover:text-secondary transition-colors font-heading text-sm lg:text-base font-bold uppercase tracking-widest px-4 select-none whitespace-nowrap cursor-default"
+                className="flex flex-col items-center gap-2 px-2 text-center select-none whitespace-nowrap cursor-default"
               >
-                {client}
+                <img 
+                  src={client.img} 
+                  alt={`${client.name} logo`}
+                  className="max-h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                />
+                <span className="text-[10px] text-gray-400 font-heading font-bold uppercase tracking-widest">{client.name}</span>
               </div>
             ))}
-            {['Allcargo Logistics', 'BPCL', 'ONGC', 'JNPA', 'Lodha', 'Runwal', 'Tata', 'Reliance', 'Jaigarh Port (JSW)', 'L&T'].map((client, idx) => (
+            {[
+              { img: allcargoLogo, name: 'Allcargo Logistics' },
+              { img: bpclLogo, name: 'BPCL' },
+              { img: ongcLogo, name: 'ONGC' },
+              { img: jpnaLogo, name: 'JNPA' },
+              { img: lodhaLogo, name: 'Lodha' },
+              { img: runwalLogo, name: 'Runwal' },
+              { img: tacImgLogo, name: 'Tata' },
+              { img: relianceLogo, name: 'Reliance' },
+              { img: jswLogo, name: 'JSW' },
+              { img: lntLogo, name: 'L&T' }
+            ].map((client, idx) => (
               <div 
                 key={`client-2-${idx}`} 
-                className="text-gray-400 hover:text-secondary transition-colors font-heading text-sm lg:text-base font-bold uppercase tracking-widest px-4 select-none whitespace-nowrap cursor-default"
+                className="flex flex-col items-center gap-2 px-2 text-center select-none whitespace-nowrap cursor-default"
               >
-                {client}
+                <img 
+                  src={client.img} 
+                  alt={`${client.name} logo`}
+                  className="max-h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                />
+                <span className="text-[10px] text-gray-400 font-heading font-bold uppercase tracking-widest">{client.name}</span>
               </div>
             ))}
           </div>
@@ -534,6 +488,7 @@ export default function Home() {
 
       {/* 3. ABOUT SECTION */}
       <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -582,122 +537,16 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Aligned Statistics Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200/80">
-                <div>
-                  <span className="text-2xl font-bold text-primary block">21+ Years</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Underlying Family Industrial Experience</span>
-                </div>
-                <div>
-                  <span className="text-2xl font-bold text-primary block">~1000+ MT</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Owned Scaffolding Inventory</span>
-                </div>
-                <div>
-                  <span className="text-2xl font-bold text-primary block">~650+ MT</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Scaffolding Deployed on Rent</span>
-                </div>
-                <div>
-                  <span className="text-2xl font-bold text-primary block">~400+ MT</span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mt-1">Monthly Supply Capacity</span>
-                </div>
-              </div>
-
             </div>
 
           </div>
         </div>
-      </section>
-
-      {/* 4. CAPABILITIES SECTION */}
-      <section className="py-24 bg-white border-b border-gray-100" id="services">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Three Businesses</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Choose the Capability Your Requirement Needs.</h2>
-            <p className="text-sm text-gray-500 font-body leading-relaxed">Each IRONEX division is designed around a specific industrial problem. Select a division to review its services, capabilities, operating process and enquiry format.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                title={service.title}
-                description={service.description}
-                image={service.image}
-                path={service.path}
-                icon={service.icon}
-                categories={service.categories}
-                buttonText="Explore Services"
-              />
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4A. CONNECTED CAPABILITIES */}
-      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Why Three Businesses Matter</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">One Business Solves a Requirement. Three Businesses Solve the Gaps Around It.</h2>
-          </div>
-
-          {/* Project Lifecycle */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Remove What Is No Longer Required',
-                desc: 'Industrial scrap and obsolete material are evaluated, purchased, lifted and processed.',
-                icon: <Wrench size={24} />
-              },
-              {
-                step: '02',
-                title: 'Supply What Comes Next',
-                desc: 'Steel, pipes, structural sections, sheets, roofing and construction materials are sourced and delivered.',
-                icon: <Building size={24} />
-              },
-              {
-                step: '03',
-                title: 'Provide Access and Support',
-                desc: 'Scaffolding and formwork systems support construction, maintenance and industrial operations.',
-                icon: <Layers size={24} />
-              },
-              {
-                step: '04',
-                title: 'Execute the Physical Work',
-                desc: 'Structures, modifications, fabrication and civil requirements are completed on site.',
-                icon: <Factory size={24} />
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white border border-gray-200/60 p-8 rounded-xl text-left hover:shadow-xs transition-all duration-300">
-                <div className="bg-primary text-secondary p-3 rounded-xl w-fit mb-4">
-                  {item.icon}
-                </div>
-                <span className="text-2xl font-extrabold text-secondary block mb-2">{item.step}</span>
-                <h3 className="text-sm font-bold text-primary mb-2 uppercase tracking-wider">{item.title}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed font-body">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12 space-y-2">
-            <p className="text-sm font-bold text-primary">
-              From removing what is no longer required to supplying and building what comes next.
-            </p>
-            <p className="text-xs text-gray-400 italic font-body">
-              Three businesses also mean three fewer conversations beginning with, "You will need to contact someone else for that."
-            </p>
-          </div>
-
-        </div>
+        </Reveal>
       </section>
 
       {/* 6. INDUSTRIES WE SERVE */}
       <section className="py-24 bg-white border-b border-gray-100">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -723,52 +572,12 @@ export default function Home() {
           </div>
 
         </div>
-      </section>
-
-      {/* 6A. CAPABILITY PREVIEW */}
-      <section className="py-24 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Operating Capability</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Capability Is More Than a List of Services.</h2>
-            <p className="text-sm text-gray-500 font-body leading-relaxed">IRONEX combines operating assets, industrial experience, manpower, inventory, supplier relationships and project understanding.</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[
-              'Warehouse and yard infrastructure',
-              'Scaffolding manufacturing and inventory',
-              'Material sourcing and supply network',
-              'Scrap lifting and segregation capability',
-              'Fabrication and welding resources',
-              'Vehicles and transport coordination',
-              'Industrial workforce',
-              'Project and site-execution experience',
-              'Local industrial access',
-              'Multi-division coordination'
-            ].map((capability, idx) => (
-              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl text-center hover:border-secondary hover:shadow-xs transition-all duration-300">
-                <span className="text-[10px] font-bold text-primary uppercase tracking-wider leading-tight block">{capability}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              to="/capabilities"
-              className="btn-primary inline-flex items-center gap-2 bg-primary text-white font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl"
-            >
-              <span>Explore Our Capabilities</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-
-        </div>
+        </Reveal>
       </section>
 
       {/* 7. WHY CHOOSE US */}
       <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -812,10 +621,12 @@ export default function Home() {
 
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* 8. HOW IRONEX THINKS */}
       <section className="py-24 bg-white border-b border-gray-100">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -848,6 +659,7 @@ export default function Home() {
           </div>
 
         </div>
+        </Reveal>
       </section>
 
       {/* 8B. FROM REQUIREMENT TO EXECUTION */}
@@ -859,8 +671,8 @@ export default function Home() {
             <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Fewer Assumptions Before Work Begins.</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 relative">
-            <div className="absolute top-[38px] left-[5%] right-[5%] h-0.5 bg-gray-200 hidden lg:block z-0" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 relative" id="rtw-steps">
+            <div className="rtw-line absolute top-[38px] left-[5%] right-[5%] h-0.5 bg-gray-200 hidden lg:block z-0" />
             
             {[
               { step: '01', title: 'Understand', desc: 'Requirement, quantity, specification, location and timeline.' },
@@ -872,7 +684,7 @@ export default function Home() {
             ].map((st, index) => (
               <div 
                 key={index} 
-                className="bg-white border border-gray-200/50 p-6 rounded-xl relative z-10 text-left hover:border-secondary hover:shadow-xs transition-all duration-300"
+                className="rtw-step bg-white border border-gray-200/50 p-6 rounded-xl relative z-10 text-left hover:border-secondary hover:shadow-xs transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-full bg-primary text-white border-2 border-white flex items-center justify-center font-bold text-xs shadow-sm mb-4">
                   {st.step}
@@ -892,54 +704,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. TESTIMONIALS SECTION */}
-      <section className="py-24 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Client Reviews</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Feedback From Corporate Leaders</h2>
-            <p className="text-sm text-gray-500 font-body">What project heads, plant managers, and construction developers say about partnering with IRONEX.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((test, index) => (
-              <div 
-                key={index} 
-                className="bg-[#F5F0EB] border border-gray-200/50 p-8 rounded-xl text-left flex flex-col justify-between hover:shadow-xs transition-shadow duration-300"
-              >
-                <div className="space-y-4">
-                  {/* Rating Stars */}
-                  <div className="flex gap-1">
-                    {[...Array(test.rating)].map((_, i) => (
-                      <Star key={i} size={14} className="text-secondary fill-secondary animate-pulse" />
-                    ))}
-                  </div>
-                  <p className="text-xs text-gray-600 font-body leading-relaxed italic">
-                    "{test.review}"
-                  </p>
-                </div>
-                
-                <div className="border-t border-gray-200/60 pt-5 mt-6 flex items-center gap-4">
-                  {/* Client Initials Circle */}
-                  <div className="w-10 h-10 rounded-full bg-primary text-secondary flex items-center justify-center font-bold text-xs shrink-0 shadow-sm border border-gray-100">
-                    {test.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-primary">{test.name}</h4>
-                    <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">{test.designation}</p>
-                    <p className="text-[10px] text-secondary font-bold uppercase tracking-wider">{test.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
       {/* 9B. WHERE WE OPERATE */}
       <section className="py-24 bg-white border-b border-gray-100">
+        <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -962,52 +729,7 @@ export default function Home() {
           </p>
 
         </div>
-      </section>
-
-      {/* 10. HOME CTA */}
-      <section className="py-24 bg-white border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          
-          <div className="space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Start With The Details</span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">If The Requirement Is Real, Start With The Details.</h2>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
-            {[
-              'Have industrial scrap to dispose?',
-              'Need scaffolding for a project?',
-              'Sourcing steel or construction materials?'
-            ].map((question, idx) => (
-              <div key={idx} className="flex items-center gap-3 bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl">
-                <span className="text-secondary font-bold text-sm">→</span>
-                <span className="text-xs font-semibold text-primary">{question}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 space-y-2">
-            <p className="text-base font-bold text-primary">
-              Send us the requirement. We will begin with the technical, commercial and operational details that determine whether we can execute it properly.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <button
-              onClick={() => setIsQuoteOpen(true)}
-              className="btn-primary bg-secondary text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-md cursor-pointer"
-            >
-              Send Your Requirement
-            </button>
-            <button
-              onClick={() => openWhatsApp(WHATSAPP_CONTACTS.GENERAL, WHATSAPP_MESSAGES.GENERAL_HERO)}
-              className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl cursor-pointer hover:bg-[#25D366] hover:text-white transition-all"
-            >
-              WhatsApp IRONEX
-            </button>
-          </div>
-
-        </div>
+        </Reveal>
       </section>
 
       {/* 10B. CALL TO ACTION SECTION */}
@@ -1017,6 +739,7 @@ export default function Home() {
         </div>
         <div className="absolute inset-0 bg-primary/70 mix-blend-multiply" />
         
+        <Reveal>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Let Us Understand What the Requirement Actually Needs.
@@ -1040,102 +763,15 @@ export default function Home() {
             >
               Choose a Division
             </Link>
-            <a
-              href="#contact-section-anchor"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById('contact-section-anchor');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="btn-outline bg-transparent border border-gray-400 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl cursor-pointer text-center"
+            <button
+              onClick={() => openWhatsApp(WHATSAPP_CONTACTS.GENERAL, WHATSAPP_MESSAGES.GENERAL_DEFAULT)}
+              className="btn-outline bg-transparent border border-[#25D366] text-[#25D366] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl cursor-pointer text-center hover:bg-[#25D366] hover:text-white transition-all"
             >
-              Speak With Our Team
-            </a>
+              WhatsApp IRONEX
+            </button>
           </div>
         </div>
-      </section>
-
-      {/* 11. CONTACT SECTION */}
-      <section className="py-24 bg-[#F5F0EB]" id="contact-section-anchor">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
-            
-            {/* Left: Info + Map Placeholder */}
-            <div className="lg:col-span-6 flex flex-col justify-between text-left">
-              <div className="space-y-6">
-                <span className="text-xs font-bold uppercase tracking-widest text-secondary block">Get In Touch</span>
-                <h2 className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight">Discuss a Requirement With the Right Division</h2>
-                <p className="text-sm text-gray-500 font-body">Send your BOQ, drawings, material schedule, scaffolding quantity or scrap-lot information. The relevant IRONEX division will review the information before responding.</p>
-                
-                {/* Office Info details */}
-                <div className="space-y-4 pt-4 text-sm font-semibold text-primary font-body">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white p-3 border border-gray-200/60 rounded-xl text-secondary shadow-sm">
-                      <MapPin size={18} />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">Registered Office</h4>
-                      <p className="text-xs text-gray-500 mt-1 font-body">Uran, Maharashtra. Operational base: Uttarshiv, Uran region, Maharashtra.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white p-3 border border-gray-200/60 rounded-xl text-secondary shadow-sm">
-                      <Phone size={18} />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">Phone Contact</h4>
-                      <p className="text-xs text-gray-500 mt-1 hover:text-secondary transition-colors font-body">+91 98765 43210 / +91 79 2345 6789</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white p-3 border border-gray-200/60 rounded-xl text-secondary shadow-sm">
-                      <Mail size={18} />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">Email Correspondence</h4>
-                      <p className="text-xs text-gray-500 mt-1 hover:text-secondary transition-colors font-body">info@ironexsteel.com / sales@ironexsteel.com</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Structured Premium Map Mock Card */}
-              <div className="bg-white rounded-xl border border-gray-200/60 shadow-sm overflow-hidden h-60 mt-8 relative flex items-center justify-center">
-                {/* Clean Blueprint/Grid styled Map Mock */}
-                <div className="absolute inset-0 bg-[#F5F0EB] flex flex-col items-center justify-center p-6 text-center border-b border-gray-100">
-                  {/* Grid background simulation */}
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:24px_24px] opacity-25" />
-                  
-                  <div className="relative z-10 space-y-2">
-                    <div className="w-12 h-12 rounded-full bg-primary text-secondary border-2 border-white flex items-center justify-center font-bold text-xs shadow-md mx-auto">
-                      <MapPin size={22} />
-                    </div>
-                    <h4 className="text-sm font-bold text-primary font-heading">Uran Operating Region, Maharashtra</h4>
-                    <p className="text-xs text-gray-400 max-w-sm font-body">Operational presence around Uran, Raigad, Thane and the Nhava Sheva industrial region.</p>
-                    <a
-                      href="https://maps.google.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-secondary hover:text-primary transition-colors pt-2 focus:outline-none"
-                    >
-                      <span>Open Google Maps Directions</span>
-                      <ArrowRight size={12} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Contact Form */}
-            <div className="lg:col-span-6 bg-white border border-gray-200/60 rounded-xl shadow-sm p-8">
-              <h3 className="text-lg font-bold text-primary uppercase tracking-wider border-b border-gray-100 pb-3 mb-6">
-                Technical RFP / Inquiry Request
-              </h3>
-              <ContactForm />
-            </div>
-
-          </div>
-        </div>
+        </Reveal>
       </section>
 
     </div>
