@@ -57,7 +57,7 @@ export default function TrustStats() {
               key={stat.id} 
               className="flex items-center gap-5 p-4 rounded-xl border border-transparent hover:border-gray-100 hover:shadow-xs transition-all duration-300"
             >
-              <div className="bg-[#F5F0EB] p-4 rounded-xl text-secondary shrink-0">
+              <div className="bg-bg-light p-4 rounded-xl text-secondary shrink-0">
                 {stat.icon}
               </div>
               <div className="flex flex-col">

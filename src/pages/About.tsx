@@ -108,7 +108,7 @@ export default function About() {
                 <img src={projectImg} alt="Finished industrial complex layout" className="w-full aspect-[4/3] object-cover" />
               </div>
               
-              <div className="p-6 bg-[#F5F0EB] rounded-xl border border-gray-200/65 space-y-3">
+              <div className="p-6 bg-bg-light rounded-xl border border-gray-200/65 space-y-3">
                 <h4 className="text-xs font-bold text-primary uppercase tracking-widest">Operating Credentials</h4>
                 <ul className="space-y-2 text-xs font-semibold text-gray-500 font-body">
                   <li className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export default function About() {
       </section>
 
       {/* Why IRONEX Was Created */}
-      <section className="py-24 bg-[#F5F0EB] border-y border-gray-200/50">
+      <section className="py-24 bg-bg-light border-y border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start text-left">
             
@@ -197,7 +197,7 @@ export default function About() {
       </section>
 
       {/* Mission, Vision, Core Values */}
-      <section className="py-20 bg-[#F5F0EB] border-y border-gray-200/50">
+      <section className="py-20 bg-bg-light border-y border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             
@@ -244,7 +244,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
             {strengths.map((st, idx) => (
-              <div key={idx} className="bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/60 hover:border-secondary transition-all duration-300">
+              <div key={idx} className="bg-bg-light p-8 rounded-xl border border-gray-200/60 hover:border-secondary transition-all duration-300">
                 <h3 className="text-base font-bold text-primary mb-2 flex items-center gap-2">
                   <CheckCircle2 className="text-secondary shrink-0" size={18} />
                   {st.title}
@@ -260,7 +260,7 @@ export default function About() {
       </section>
 
       {/* Modern Infrastructure & Safety Standards */}
-      <section className="py-24 bg-[#F5F0EB] border-y border-gray-200/50 text-left">
+      <section className="py-24 bg-bg-light border-y border-gray-200/50 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -322,7 +322,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {milestones.map((mil, idx) => (
-              <div key={idx} className="bg-[#F5F0EB] p-6 rounded-xl border border-gray-200/50 text-left">
+              <div key={idx} className="bg-bg-light p-6 rounded-xl border border-gray-200/50 text-left">
                 <span className="text-3xl font-extrabold text-secondary block mb-2">{mil.year}</span>
                 <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-2">{mil.title}</h4>
                 <p className="text-[11px] text-gray-500 leading-relaxed font-body">{mil.desc}</p>
@@ -334,7 +334,7 @@ export default function About() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-24 bg-[#F5F0EB] border-t border-gray-200">
+      <section className="py-24 bg-bg-light border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Leadership</span>

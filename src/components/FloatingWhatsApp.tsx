@@ -10,7 +10,7 @@ export default function FloatingWhatsApp() {
     const phone = WHATSAPP_CONTACTS[division];
     const message = division === 'GENERAL'
       ? WHATSAPP_MESSAGES.GENERAL_DEFAULT
-      : `Hello IRONEX, I would like to discuss a requirement related to the ${division.replace('_', ' ').toLowerCase()} division.`;
+      : `Hello IRONEX, I would like to get a quote for the ${division.replace('_', ' ').toLowerCase()} division.`;
     openWhatsApp(phone, message);
   };
 

@@ -1,7 +1,16 @@
 import { useState } from 'react';
-import { FileText, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { FileText, ShieldCheck, CheckCircle2, MapPin } from 'lucide-react';
 
 import heroImg from '../assets/industrial_hero.jpg';
+import { WHATSAPP_CONTACTS } from '../config/contact';
+import { openWhatsApp } from '../lib/whatsapp';
+
+const DIVISION_CONTACTS: Record<string, string> = {
+  'Industrial Scrap Procurement & Processing': WHATSAPP_CONTACTS.SCRAP,
+  'Scaffolding & Formwork Systems': WHATSAPP_CONTACTS.SCAFFOLDING,
+  'Steel & Construction-Material Supply': WHATSAPP_CONTACTS.MATERIAL_SUPPLY,
+  'Structural Fabrication & Civil Works': WHATSAPP_CONTACTS.FABRICATION_CIVIL,
+};
 
 export default function Quote() {
   const [formData, setFormData] = useState({
@@ -21,7 +30,9 @@ export default function Quote() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API Submission
+    const message = buildWhatsAppMessage(formData);
+    const phone = DIVISION_CONTACTS[formData.serviceRequired] || WHATSAPP_CONTACTS.GENERAL;
+    openWhatsApp(phone, message);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -30,7 +41,7 @@ export default function Quote() {
         contactPerson: '',
         email: '',
         phone: '',
-    serviceRequired: 'Industrial Scrap Procurement & Processing',
+        serviceRequired: 'Industrial Scrap Procurement & Processing',
         projectLocation: '',
         projectSize: '',
         timeline: '',
@@ -64,6 +75,28 @@ export default function Quote() {
     }
   ];
 
+  function buildWhatsAppMessage(data: typeof formData): string {
+    const lines = [
+      '*NEW QUOTE REQUEST \\u2014 IRONEX*',
+      '',
+      `*Division:* ${data.serviceRequired}`,
+      `*Company:* ${data.companyName}`,
+      `*Contact Person:* ${data.contactPerson}`,
+      `*Email:* ${data.email}`,
+      `*Phone:* ${data.phone}`,
+      `*Project Location:* ${data.projectLocation}`,
+      `*Project Size / Tonnage:* ${data.projectSize}`,
+      `*Timeline:* ${data.timeline}`,
+      '',
+      `*Requirement Details:*`,
+      data.message,
+    ];
+    if (data.drawing) {
+      lines.push('', `*Attachment:* ${data.drawing.name}`);
+    }
+    return lines.join('\n');
+  }
+
   return (
     <div className="bg-bg-light">
       
@@ -87,7 +120,7 @@ export default function Quote() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start text-left">
             
             {/* Left: Request Form */}
-            <div className="lg:col-span-7 bg-[#F5F0EB] p-8 rounded-xl border border-gray-250/50 shadow-xs">
+            <div className="lg:col-span-7 bg-bg-light p-8 rounded-xl border border-gray-250/50 shadow-xs">
               <h2 className="text-xl font-bold text-primary mb-6">Industrial Project Inquiry Form</h2>
               
               {submitted ? (
@@ -282,7 +315,7 @@ export default function Quote() {
               </div>
 
               {/* Quality & safety commitment badge */}
-              <div className="p-6 bg-[#F5F0EB] rounded-xl border border-gray-200/50 flex gap-4 items-start text-left">
+              <div className="p-6 bg-bg-light rounded-xl border border-gray-200/50 flex gap-4 items-start text-left">
                 <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs shrink-0 mt-1">
                   <ShieldCheck size={20} />
                 </div>
@@ -292,6 +325,25 @@ export default function Quote() {
                     When a requirement is outside our current capability, timeline or scope, we communicate it before making commitments. Honest capability comes before acceptance.
                   </p>
                 </div>
+              </div>
+
+              {/* Office Location Map */}
+              <div className="overflow-hidden rounded-xl border border-gray-200/60 bg-white shadow-xs">
+                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+                  <div className="text-left">
+                    <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Office Location</h4>
+                    <p className="text-[10px] text-gray-500 font-body mt-0.5">Uran, Maharashtra - Operational Base</p>
+                  </div>
+                  <MapPin size={18} className="text-secondary shrink-0" />
+                </div>
+                <iframe
+                  title="IRONEX Office Location - Uran, Maharashtra"
+                  src="https://www.google.com/maps?q=Uran%2C%20Maharashtra%2C%20India&z=11&output=embed"
+                  className="w-full h-72 border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
             </div>
 

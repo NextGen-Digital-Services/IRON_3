@@ -130,7 +130,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
             value={formData.fullName}
             onChange={handleChange}
             placeholder="John Doe"
-            className={`w-full text-sm font-semibold bg-[#F5F0EB] border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors ${
+            className={`w-full text-sm font-semibold bg-bg-light border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors ${
               errors.fullName ? 'border-red-500' : 'border-gray-200'
             }`}
           />
@@ -149,7 +149,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
             value={formData.email}
             onChange={handleChange}
             placeholder="john.doe@company.com"
-            className={`w-full text-sm font-semibold bg-[#F5F0EB] border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors ${
+            className={`w-full text-sm font-semibold bg-bg-light border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors ${
               errors.email ? 'border-red-500' : 'border-gray-200'
             }`}
           />
@@ -168,7 +168,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
             value={formData.phone}
             onChange={handleChange}
             placeholder="+91 XXXXX XXXXX"
-            className={`w-full text-sm font-semibold bg-[#F5F0EB] border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors ${
+            className={`w-full text-sm font-semibold bg-bg-light border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors ${
               errors.phone ? 'border-red-500' : 'border-gray-200'
             }`}
           />
@@ -187,7 +187,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
             value={formData.company}
             onChange={handleChange}
             placeholder="e.g. Acme Infra Ltd"
-            className="w-full text-sm font-semibold bg-[#F5F0EB] border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors"
+            className="w-full text-sm font-semibold bg-bg-light border border-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors"
           />
         </div>
       </div>
@@ -202,7 +202,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
           name="service"
           value={formData.service}
           onChange={handleChange}
-          className={`w-full text-sm font-semibold bg-[#F5F0EB] border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors appearance-none ${
+          className={`w-full text-sm font-semibold bg-bg-light border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors appearance-none ${
             errors.service ? 'border-red-500' : 'border-gray-200'
           }`}
         >
@@ -228,7 +228,7 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
           value={formData.message}
           onChange={handleChange}
           placeholder="Please describe your requirement - BOQ, quantities, scaffolding scope, material specifications or scrap-lot information..."
-          className={`w-full text-sm font-semibold bg-[#F5F0EB] border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors resize-y ${
+          className={`w-full text-sm font-semibold bg-bg-light border px-4 py-3 rounded-xl focus:outline-none focus:border-secondary transition-colors resize-y ${
             errors.message ? 'border-red-500' : 'border-gray-200'
           }`}
         />

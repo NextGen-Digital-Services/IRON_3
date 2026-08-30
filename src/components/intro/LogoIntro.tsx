@@ -21,26 +21,12 @@ export default function LogoIntro({ onComplete }: LogoIntroProps) {
         transition: 'opacity 0.8s ease-in-out',
       }}
     >
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center">
         <img
           src="/logo.png"
           alt="IRONEX Steel & Infra LLP Logo"
-          className="h-20 w-auto"
+          className="h-36 w-auto"
         />
-        <div className="text-center">
-          <h1
-            className="text-2xl sm:text-3xl font-extrabold tracking-tight"
-            style={{ fontFamily: "'Poppins', sans-serif", color: '#B86A3A' }}
-          >
-            IRON<span style={{ color: '#0D2443' }}>EX</span>
-          </h1>
-          <p
-            className="text-xs sm:text-sm font-medium uppercase tracking-[0.3em] mt-1"
-            style={{ fontFamily: "'Poppins', sans-serif", color: '#666' }}
-          >
-            Steel & Infra LLP
-          </p>
-        </div>
       </div>
     </div>
   );

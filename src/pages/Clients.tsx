@@ -66,7 +66,7 @@ export default function Clients() {
                 <img src={pebImg} alt="PEB Construction site" className="w-full aspect-[4/3] object-cover" />
               </div>
               
-              <div className="p-6 bg-[#F5F0EB] rounded-xl border border-gray-200 space-y-4">
+              <div className="p-6 bg-bg-light rounded-xl border border-gray-200 space-y-4">
                 <h4 className="text-xs font-bold text-primary uppercase tracking-widest flex items-center gap-2">
                   <Handshake className="text-secondary" size={16} />
                   Cooperation Guidelines
@@ -94,7 +94,7 @@ export default function Clients() {
       </section>
 
       {/* Grayscale Client Logos Section */}
-      <section className="py-24 bg-[#F5F0EB] border-y border-gray-200/60">
+      <section className="py-24 bg-bg-light border-y border-gray-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
           
           <div className="space-y-3 max-w-2xl mx-auto">

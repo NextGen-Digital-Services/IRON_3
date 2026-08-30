@@ -1,15 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0D2443;
-  --color-secondary: #B86A3A;
-  --color-bg-light: #F5F0EB;
-  --color-text-dark: #1B1B1B;
-  --color-gray-light: #E5E7EB;
-  --color-offwhite: #F5F0EB;
-  --color-offwhite-dark: #EDE6DF;
+  /* Deep graphite / steel navy - hero, dark feature sections, footer */
+  --color-primary: #0D131C;
+  --color-primary-light: #1A2638;
+  --color-primary-soft: #111827;
 
-  --font-heading: 'Poppins', sans-serif;
+  /* Copper accent - selective highlights only */
+  --color-secondary: #B85C2C;
+  --color-secondary-light: #C86B35;
+
+  /* Warm architectural neutrals */
+  --color-bg-light: #F4F1EC;
+  --color-bg-card: #FAF8F4;
+  --color-border-line: #D9D3CA;
+  --color-text-dark: #151A22;
+  --color-text-muted: #6F6A63;
+  --color-text-light: #F3EFE8;
+  --color-gray-light: #D9D3CA;
+  --color-offwhite: #F4F1EC;
+  --color-offwhite-dark: #EDE7DF;
+
+  /* Warm stone neutral scale - harmonises all existing gray-* utilities */
+  --color-gray-50: #FAF8F4;
+  --color-gray-100: #F2EEE7;
+  --color-gray-150: #E9E4DB;
+  --color-gray-200: #D9D3CA;
+  --color-gray-250: #D9D3CA;
+  --color-gray-300: #C6BFB4;
+  --color-gray-400: #A59D91;
+  --color-gray-500: #6F6A63;
+  --color-gray-600: #5B5650;
+  --color-gray-700: #443F39;
+  --color-gray-800: #2C2924;
+  --color-gray-900: #1B1915;
+
+  /* Warm off-white (no pure white) */
+  --color-white: #FCFBF8;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', sans-serif;
 
   --radius-custom: 12px;
@@ -18,15 +47,15 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #F5F0EB;
-    color: #1B1B1B;
+    background-color: #F4F1EC;
+    color: #151A22;
     overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
-    color: #0D2443;
+    color: #0D131C;
   }
 }
 
@@ -35,14 +64,14 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F0EB;
+  background: #F4F1EC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B86A3A;
+  background: #B85C2C;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0D2443;
+  background: #0D131C;
 }
 
 /* Smooth active state borders */
@@ -50,7 +79,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .service-card-hover:hover {
-  box-shadow: 0 10px 30px -10px rgba(13, 36, 67, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(13, 19, 28, 0.15);
 }
 
 /* Button hover animations */
@@ -69,11 +98,11 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-outline:hover {
-  background-color: #0D2443;
-  border-color: #0D2443;
-  color: white;
+  background-color: #0D131C;
+  border-color: #0D131C;
+  color: #FCFBF8;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(13, 36, 67, 0.3);
+  box-shadow: 0 8px 25px -5px rgba(13, 19, 28, 0.3);
 }
 .btn-outline:active {
   transform: translateY(0);
@@ -85,7 +114,7 @@
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 35px -10px rgba(13, 36, 67, 0.15);
+  box-shadow: 0 12px 35px -10px rgba(13, 19, 28, 0.15);
 }
 
 /* Marquee Slider Animation */

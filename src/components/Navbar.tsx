@@ -129,7 +129,7 @@ export default function Navbar() {
                         <HashLink
                           key={subItem.name}
                           to={subItem.path}
-                          className="block px-4 py-2 text-xs font-semibold text-primary hover:bg-[#F5F0EB] hover:text-secondary transition-colors"
+                          className="block px-4 py-2 text-xs font-semibold text-primary hover:bg-bg-light hover:text-secondary transition-colors"
                         >
                           {subItem.name}
                         </HashLink>
@@ -146,7 +146,7 @@ export default function Navbar() {
                 to="/quote"
                 className="btn-primary bg-secondary text-white font-semibold text-sm px-6 py-2.5 rounded-xl shadow-sm text-center focus:outline-none"
               >
-                Discuss a Requirement
+                Get a Quote
               </Link>
             </div>
 
@@ -245,7 +245,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="btn-primary block w-full bg-secondary text-white font-semibold py-3 rounded-xl text-center shadow-sm"
               >
-                Discuss a Requirement
+                Get a Quote
               </Link>
             </div>
           </div>
@@ -263,7 +263,7 @@ export default function Navbar() {
             {/* Header */}
             <div className="bg-primary px-6 py-4 flex justify-between items-center border-b border-gray-800">
               <div>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">Discuss a Requirement</h3>
+                <h3 className="text-lg font-bold text-white uppercase tracking-wider">Get a Quote</h3>
                 <p className="text-xs text-gray-400 mt-1">Share your BOQ, drawings, material schedule or project scope.</p>
               </div>
               <button

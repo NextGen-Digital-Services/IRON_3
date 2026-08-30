@@ -162,8 +162,8 @@ export default function Home() {
             alt="Structural Steel Fabrication Shop Floor" 
             className="w-full h-full object-cover" 
           />
-          {/* Light Translucent Navy Overlay */}
-          <div className="absolute inset-0 bg-primary/55" />
+          {/* Readable Navy Gradient Overlay (darker on text side) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/65 to-primary/30" />
         </div>
 
         <Reveal className="w-full">
@@ -172,11 +172,6 @@ export default function Home() {
             
             {/* Left Content */}
             <div className="lg:col-span-7 text-left space-y-8">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#B86A3A]/10 border border-[#B86A3A]/30 text-secondary text-xs font-bold uppercase tracking-widest rounded-lg">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                Recover Value | Enable Work | Supply Progress
-              </span>
-              
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
                 Industry Runs On What Moves. <br />
                 <span className="text-secondary font-extrabold">And Pays For What Doesn't.</span>
@@ -198,7 +193,7 @@ export default function Home() {
                   onClick={() => setIsQuoteOpen(true)}
                   className="btn-primary bg-secondary text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg text-center"
                 >
-                  Discuss Your Requirement
+                  Get a Quote
                 </button>
                 <Link
                   to="/capabilities"
@@ -251,8 +246,8 @@ export default function Home() {
               { title: 'Industrial space stays occupied by material that has stopped moving.' },
               { title: 'Management time gets consumed chasing follow-ups instead of execution.' }
             ].map((item, idx) => (
-              <div key={idx} className="gs-problem-card relative bg-[#FDF3F0] border-l-4 border-[#D8583C] border border-gray-100 rounded-lg p-5 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
-                <span className="text-[#D8583C] font-extrabold text-2xl block mb-2 leading-none">0{idx + 1}</span>
+              <div key={idx} className="gs-problem-card relative bg-[#FBEDE1] border-l-4 border-secondary border border-gray-100 rounded-lg p-5 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
+                <span className="text-secondary font-extrabold text-2xl block mb-2 leading-none">0{idx + 1}</span>
                 <p className="text-sm text-gray-700 leading-relaxed font-body font-semibold">{item.title}</p>
               </div>
             ))}
@@ -292,7 +287,7 @@ export default function Home() {
       </section>
 
       {/* 3. OUR THREE BUSINESSES */}
-      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+      <section className="py-24 bg-bg-light border-b border-gray-100">
         <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -384,7 +379,7 @@ export default function Home() {
               { stat: '~650+ MT', label: 'Scaffolding currently deployed on rent' },
               { stat: '~400+ MT', label: 'Monthly Construction Material Supply Capacity' }
             ].map((item, idx) => (
-              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-8 rounded-xl text-center">
+              <div key={idx} className="bg-bg-light border border-gray-200/60 p-8 rounded-xl text-center">
                 <span className="text-3xl font-extrabold text-secondary block mb-2">{item.stat}</span>
                 <p className="text-xs text-gray-500 font-body leading-relaxed">{item.label}</p>
               </div>
@@ -398,7 +393,7 @@ export default function Home() {
               'Domestic Procurement Network',
               'Developing International Sourcing Capability'
             ].map((capability, idx) => (
-              <div key={idx} className="flex items-center gap-3 bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl">
+              <div key={idx} className="flex items-center gap-3 bg-bg-light border border-gray-200/60 p-4 rounded-xl">
                 <CheckCircle2 size={14} className="text-secondary shrink-0" />
                 <span className="text-xs font-semibold text-primary">{capability}</span>
               </div>
@@ -487,7 +482,7 @@ export default function Home() {
       </section>
 
       {/* 3. ABOUT SECTION */}
-      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+      <section className="py-24 bg-bg-light border-b border-gray-100">
         <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -559,7 +554,7 @@ export default function Home() {
             {industries.map((ind, index) => (
               <div 
                 key={index} 
-                className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl hover:border-secondary hover:shadow-xs transition-all duration-300 text-left group"
+                className="bg-bg-light border border-gray-200/60 p-6 rounded-xl hover:border-secondary hover:shadow-xs transition-all duration-300 text-left group"
               >
                 <div className="text-primary group-hover:text-secondary transition-colors mb-4 shrink-0">
                   {ind.icon}
@@ -576,7 +571,7 @@ export default function Home() {
       </section>
 
       {/* 7. WHY CHOOSE US */}
-      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+      <section className="py-24 bg-bg-light border-b border-gray-100">
         <Reveal>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -605,7 +600,7 @@ export default function Home() {
                 {whyChooseUsPoints.map((point, index) => (
                   <div key={index} className="relative">
                     {/* Circle Node */}
-                    <div className="absolute -left-[31px] top-1 bg-[#F5F0EB] border-2 border-secondary w-[10px] h-[10px] rounded-full" />
+                    <div className="absolute -left-[31px] top-1 bg-bg-light border-2 border-secondary w-[10px] h-[10px] rounded-full" />
                     
                     <h3 className="text-base font-bold text-primary mb-1">
                       {point.title}
@@ -644,7 +639,7 @@ export default function Home() {
               { title: 'Commercial Viability', desc: 'Does the transaction make economic sense after the real operating costs are considered?' },
               { title: 'Closure', desc: 'How will quantities, weights, returns, acknowledgements and documentation be reconciled?' }
             ].map((factor, idx) => (
-              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl text-left">
+              <div key={idx} className="bg-bg-light border border-gray-200/60 p-6 rounded-xl text-left">
                 <span className="text-2xl font-extrabold text-secondary block mb-2">0{idx + 1}</span>
                 <h3 className="text-sm font-bold text-primary mb-2 uppercase tracking-wider">{factor.title}</h3>
                 <p className="text-xs text-gray-500 leading-relaxed font-body">{factor.desc}</p>
@@ -663,7 +658,7 @@ export default function Home() {
       </section>
 
       {/* 8B. FROM REQUIREMENT TO EXECUTION */}
-      <section className="py-24 bg-[#F5F0EB] border-b border-gray-100">
+      <section className="py-24 bg-bg-light border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -717,7 +712,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {['Nhava Sheva', 'JNPT', 'Navi Mumbai', 'Panvel', 'Raigad', 'Mumbai', 'Thane', 'Bhiwandi'].map((location) => (
-              <div key={location} className="bg-[#F5F0EB] border border-gray-200/60 p-4 rounded-xl text-center hover:border-secondary hover:shadow-xs transition-all duration-300">
+              <div key={location} className="bg-bg-light border border-gray-200/60 p-4 rounded-xl text-center hover:border-secondary hover:shadow-xs transition-all duration-300">
                 <MapPin size={16} className="text-secondary mx-auto mb-2" />
                 <span className="text-xs font-bold text-primary uppercase tracking-wider">{location}</span>
               </div>

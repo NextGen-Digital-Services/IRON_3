@@ -84,7 +84,7 @@ export default function Capabilities() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
             
             {/* Category 1: Procurement & Processing */}
-            <div className="space-y-6 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
+            <div className="space-y-6 bg-bg-light p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs">
@@ -127,7 +127,7 @@ export default function Capabilities() {
             </div>
 
             {/* Category 2: Dismantling, Buyback & Logistics */}
-            <div className="space-y-6 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
+            <div className="space-y-6 bg-bg-light p-8 rounded-xl border border-gray-200/50 flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs">
@@ -185,7 +185,7 @@ export default function Capabilities() {
               <h3 className="text-base font-bold text-primary mb-4">Suitable Requirements</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-semibold text-gray-500 font-body">
                 {['Government scrap auctions','PSU scrap tenders','Corporate industrial scrap','Manufacturing-plant scrap','Machinery and structural scrap','Warehouse and logistics scrap','Private industrial disposals','Recurring scrap procurement'].map((req) => (
-                  <span key={req} className="flex items-center gap-2 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-2.5">
+                  <span key={req} className="flex items-center gap-2 bg-bg-light border border-gray-200/60 rounded-lg px-3 py-2.5">
                     <CheckCircle2 size={14} className="text-secondary shrink-0" />
                     {req}
                   </span>
@@ -221,7 +221,7 @@ export default function Capabilities() {
       {/* ==========================================
           DIVISION 02: SCAFFOLDING & FORMWORK
           ========================================== */}
-      <section id="project-materials" className="py-24 bg-[#F5F0EB] border-b border-gray-150 scroll-mt-20">
+      <section id="project-materials" className="py-24 bg-bg-light border-b border-gray-150 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Division Header */}
@@ -339,7 +339,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Complete Product Range</h4>
               <div className="flex flex-wrap gap-2">
                 {['Cuplock verticals','Cuplock ledgers','H-Frames','Cross braces','Walkway platforms','Adjustable props','Base jacks','U-head jacks','Joint pins','Staircase components','Fabricated accessories'].map((p) => (
-                  <span key={p} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{p}</span>
+                  <span key={p} className="text-[10px] font-bold text-gray-500 bg-bg-light border border-gray-200/60 rounded-lg px-3 py-1.5">{p}</span>
                 ))}
               </div>
             </div>
@@ -347,7 +347,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
               <div className="flex flex-wrap gap-2">
                 {['Builders','EPC contractors','Industrial maintenance companies','Infrastructure contractors','Ports and logistics facilities','Warehouses','Project contractors'].map((c) => (
-                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
+                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-bg-light border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
                 ))}
               </div>
             </div>
@@ -408,7 +408,7 @@ export default function Capabilities() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left mb-16">
             
             {/* Category 1: Structural Steel & Pipes Supply */}
-            <div className="space-y-4 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 shadow-xs">
+            <div className="space-y-4 bg-bg-light p-8 rounded-xl border border-gray-200/50 shadow-xs">
               <h3 className="text-lg font-bold text-primary">Structural Steel &amp; Pipe Supply</h3>
               <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">Project-Ready Materials. Dependable Supply.</span>
               <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
@@ -435,7 +435,7 @@ export default function Capabilities() {
             </div>
 
             {/* Category 2: Roofing & Building Materials */}
-            <div className="space-y-4 bg-[#F5F0EB] p-8 rounded-xl border border-gray-200/50 shadow-xs">
+            <div className="space-y-4 bg-bg-light p-8 rounded-xl border border-gray-200/50 shadow-xs">
               <h3 className="text-lg font-bold text-primary">Roofing &amp; Building Materials</h3>
               <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block -mt-1">The Right Material. For the Right Job.</span>
               <p className="text-xs text-gray-500 font-body leading-relaxed pt-2">
@@ -465,7 +465,7 @@ export default function Capabilities() {
 
           {/* Service Models & Suitable Customers */}
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-[#F5F0EB] border border-gray-200/60 rounded-xl p-6">
+            <div className="bg-bg-light border border-gray-200/60 rounded-xl p-6">
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Service Models</h4>
               <div className="flex flex-wrap gap-2">
                 {['Spot purchase','Project-based supply','Recurring monthly supply','BOQ-based procurement','Brand-specific sourcing','Scheduled deliveries','Industrial and contractor supply'].map((s) => (
@@ -473,7 +473,7 @@ export default function Capabilities() {
                 ))}
               </div>
             </div>
-            <div className="bg-[#F5F0EB] border border-gray-200/60 rounded-xl p-6">
+            <div className="bg-bg-light border border-gray-200/60 rounded-xl p-6">
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
               <div className="flex flex-wrap gap-2">
                 {['Builders and developers','Fabricators','Warehouses','Industrial plants','Infrastructure contractors','Retail and institutional buyers','EPC companies'].map((c) => (
@@ -510,7 +510,7 @@ export default function Capabilities() {
       {/* ==========================================
           DIVISION 04: FABRICATION & CIVIL WORKS
           ========================================== */}
-      <section id="fabrication-civil" className="py-24 bg-[#F5F0EB] scroll-mt-20">
+      <section id="fabrication-civil" className="py-24 bg-bg-light scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Division Header */}
@@ -615,7 +615,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Capability Areas</h4>
               <div className="flex flex-wrap gap-2">
                 {['Structural steel fabrication','Industrial sheds','Platforms','Walkways','Staircases','Handrails','Equipment-support structures','Pipe-support structures','Repairs and modifications','Structural strengthening','Site erection','Foundations','Pedestals','Industrial civil works','Selected commercial civil works'].map((a) => (
-                  <span key={a} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{a}</span>
+                  <span key={a} className="text-[10px] font-bold text-gray-500 bg-bg-light border border-gray-200/60 rounded-lg px-3 py-1.5">{a}</span>
                 ))}
               </div>
             </div>
@@ -623,7 +623,7 @@ export default function Capabilities() {
               <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">Suitable Customers</h4>
               <div className="flex flex-wrap gap-2">
                 {['Industrial plants','Ports','Logistics facilities','Warehouses','Builders','EPC contractors','Government contractors','Commercial project owners'].map((c) => (
-                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
+                  <span key={c} className="text-[10px] font-bold text-gray-500 bg-bg-light border border-gray-200/60 rounded-lg px-3 py-1.5">{c}</span>
                 ))}
               </div>
             </div>
@@ -708,7 +708,7 @@ export default function Capabilities() {
                 desc: 'IRONEX can connect supply, rental, lifting and execution requirements where multiple capabilities are commercially and operationally relevant.'
               }
             ].map((pillar, idx) => (
-              <div key={idx} className="bg-[#F5F0EB] border border-gray-200/60 p-6 rounded-xl text-left hover:shadow-xs hover:border-secondary transition-all duration-300">
+              <div key={idx} className="bg-bg-light border border-gray-200/60 p-6 rounded-xl text-left hover:shadow-xs hover:border-secondary transition-all duration-300">
                 <span className="text-2xl font-extrabold text-secondary block mb-2">0{idx + 1}</span>
                 <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-2">{pillar.title}</h3>
                 <p className="text-xs text-gray-500 leading-relaxed font-body">{pillar.desc}</p>

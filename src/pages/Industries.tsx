@@ -251,7 +251,7 @@ export default function Industries() {
                     <span className="text-[9px] font-bold text-secondary uppercase tracking-widest block mb-2">Common Challenges</span>
                     <div className="flex flex-wrap gap-1.5">
                       {ind.challenges.slice(0, 4).map((challenge, cidx) => (
-                        <span key={cidx} className="text-[9px] font-semibold text-gray-500 bg-[#F5F0EB] border border-gray-200/60 rounded px-2 py-1">
+                        <span key={cidx} className="text-[9px] font-semibold text-gray-500 bg-bg-light border border-gray-200/60 rounded px-2 py-1">
                           {challenge}
                         </span>
                       ))}

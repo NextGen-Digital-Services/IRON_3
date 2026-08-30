@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-primary text-gray-300 pt-16 pb-8 border-t border-gray-800">
+    <footer className="bg-[#080C12] text-gray-300 pt-16 pb-8 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -36,7 +36,7 @@ export default function Footer() {
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3">
               <img 
-                src="/logo.png" 
+                src="/footer-logo.png" 
                 alt="IRONEX Logo" 
                 className="h-10 w-auto"
               />
