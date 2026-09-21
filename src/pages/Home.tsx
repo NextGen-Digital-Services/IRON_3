@@ -130,7 +130,7 @@ export default function Home() {
           <div className="absolute left-[58%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[83%] top-0 bottom-0 w-px bg-white/[0.04]" />
         </div>
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-24 lg:py-32 w-full">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-20 sm:py-24 lg:py-32 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             <div className="lg:col-span-7 text-left space-y-8">
               <span className="hero-reveal eyebrow">IRONEX Steel & Infra LLP</span>
@@ -166,23 +166,23 @@ export default function Home() {
       </section>
 
       {/* THE WAITING PROBLEM — CINEMATIC STATEMENT */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#07101A] overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[85vh] flex items-center bg-[#07101A] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img ref={waitingImgRef} src={factoryImg} alt="" className="w-full h-full object-cover opacity-30 origin-center" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#07101A]/90 via-[#07101A]/60 to-[#07101A]/40" />
         </div>
 
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-24 lg:py-32 w-full">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-16 sm:py-24 lg:py-32 w-full">
           <Reveal>
-            <span className="eyebrow block mb-10 text-[#C66B45]">The Real Cost</span>
+            <span className="eyebrow block mb-6 sm:mb-10 text-[#C66B45]">The Real Cost</span>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-5xl lg:text-7xl xl:text-8xl font-black text-[#F4F1EA] leading-[0.95] tracking-tight">
+            <p className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-[#F4F1EA] leading-[0.95] tracking-tight">
               The site stops.
             </p>
           </Reveal>
           <Reveal delay={0.35}>
-            <p className="text-5xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tight mt-2">
+            <p className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tight mt-2">
               <span className="text-[#F4F1EA]">The costs </span>
               <span className="text-[#C66B45]">don't.</span>
             </p>
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       {/* THREE DIVISIONS */}
-      <section className="py-24 lg:py-32 bg-[#F3F0E9]">
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="mb-16 lg:mb-24">
@@ -208,7 +208,7 @@ export default function Home() {
               { num: '03', label: 'SUPPLY', title: 'Construction Material & Steel Supply', desc: 'IRONEX supplies steel, structural sections, pipes, plates, TMT, roofing systems and other construction materials for industrial, contractor and project requirements.', path: '/capabilities/steel', img: heroImg },
             ].map((biz, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
-                <Link to={biz.path} className="group block bg-[#F3F0E9] p-8 lg:p-10 text-left hover:bg-[#07101A] transition-all duration-500 relative overflow-hidden min-h-[420px] flex flex-col">
+                <Link to={biz.path} className="group block bg-[#F3F0E9] p-6 sm:p-8 lg:p-10 text-left hover:bg-[#07101A] transition-all duration-500 relative overflow-hidden min-h-[320px] sm:min-h-[420px] flex flex-col">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                     <img src={biz.img} alt="" className="w-full h-full object-cover opacity-15" />
                   </div>
@@ -245,7 +245,7 @@ export default function Home() {
       </section>
 
       {/* DARK STATEMENT */}
-      <section className="py-24 lg:py-32 bg-[#07101A] relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#07101A] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#C66B45]/[0.03] rounded-full blur-[120px]" />
         </div>
@@ -261,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="py-24 lg:py-32 bg-[#F3F0E9]">
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="mb-16">
@@ -277,10 +277,10 @@ export default function Home() {
               { stat: '~400+', label: 'MT', sub: 'monthly supply capacity' },
             ].map((item, idx) => (
               <Reveal key={idx} delay={idx * 0.08}>
-                <div className="bg-[#F3F0E9] p-8 lg:p-10 text-left">
-                  <span className="text-3xl lg:text-4xl font-extrabold text-[#C66B45] tracking-tight">{item.stat}</span>
-                  <span className="text-lg font-extrabold text-[#101820] ml-1">{item.label}</span>
-                  <p className="text-[10px] text-[#6B6560] uppercase tracking-[0.15em] font-bold mt-3 block">{item.sub}</p>
+                <div className="bg-[#F3F0E9] p-5 sm:p-8 lg:p-10 text-left">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#C66B45] tracking-tight">{item.stat}</span>
+                  <span className="text-base sm:text-lg font-extrabold text-[#101820] ml-1">{item.label}</span>
+                  <p className="text-[9px] sm:text-[10px] text-[#6B6560] uppercase tracking-[0.15em] font-bold mt-3 block">{item.sub}</p>
                 </div>
               </Reveal>
             ))}
@@ -289,7 +289,7 @@ export default function Home() {
       </section>
 
       {/* PROCESS GRID */}
-      <section className="py-24 lg:py-32 bg-[#F3F0E9]">
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="mb-16">
@@ -307,7 +307,7 @@ export default function Home() {
               { step: '06', title: 'CLOSE', desc: 'Complete delivery, weighment, acknowledgement or reconciliation.' },
             ].map((st, idx) => (
               <Reveal key={idx} delay={idx * 0.06}>
-                <div className="rtw-step bg-[#F3F0E9] p-8 lg:p-10 text-left group hover:bg-[#07101A] transition-all duration-500">
+                <div className="rtw-step bg-[#F3F0E9] p-6 sm:p-8 lg:p-10 text-left group hover:bg-[#07101A] transition-all duration-500">
                   <span className="text-2xl lg:text-3xl font-extrabold text-[#C66B45] block mb-4">{st.step}</span>
                   <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] mb-3 transition-colors duration-500">{st.title}</h3>
                   <p className="text-xs text-[#6B6560] group-hover:text-[#F4F1EA]/50 leading-relaxed font-body transition-colors duration-500">{st.desc}</p>
@@ -319,8 +319,8 @@ export default function Home() {
       </section>
 
       {/* CLIENT LOGOS */}
-      <section className="py-20 bg-[#F3F0E9] border-t border-[#D5D0C7]">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 mb-12 text-center">
+      <section className="py-12 sm:py-20 bg-[#F3F0E9] border-t border-[#D5D0C7]">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 mb-8 sm:mb-12 text-center">
           <span className="eyebrow block mb-4">Trusted Partners</span>
           <h2 className="text-xl lg:text-2xl font-extrabold text-[#101820] tracking-tight">Trusted by India's Leading Industrial Companies</h2>
         </div>
@@ -338,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="py-24 lg:py-32 bg-[#F3F0E9]">
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-5">
@@ -379,7 +379,7 @@ export default function Home() {
       </section>
 
       {/* WHERE WE OPERATE */}
-      <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
+      <section className="py-16 sm:py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="mb-12">
@@ -399,7 +399,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 lg:py-32 bg-[#07101A] relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#07101A] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img src={projectImg} alt="" className="w-full h-full object-cover" />
         </div>
