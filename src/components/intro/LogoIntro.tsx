@@ -1,33 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 
 interface LogoIntroProps {
   onComplete: () => void;
 }
 
 export default function LogoIntro({ onComplete }: LogoIntroProps) {
-  const [visible, setVisible] = useState(false);
+  const [fading, setFading] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const t1 = setTimeout(() => setVisible(true), 100);
-    const t2 = setTimeout(() => onComplete(), 3000);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, [onComplete]);
+  const handleEnd = () => {
+    setFading(true);
+    setTimeout(onComplete, 1000);
+  };
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0a0f]"
-      style={{
-        opacity: visible ? 1 : 0,
-        transition: 'opacity 0.8s ease-in-out',
-      }}
+      className={`fixed inset-0 z-[9999] bg-[#07101A] flex items-center justify-center transition-opacity duration-1000 ${fading ? 'opacity-0' : 'opacity-100'}`}
     >
-      <div className="flex flex-col items-center">
-        <img
-          src="/logo.png"
-          alt="IRONEX Steel & Infra LLP Logo"
-          className="h-36 w-auto"
-        />
-      </div>
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        playsInline
+        onEnded={handleEnd}
+        className="w-full h-full object-cover"
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
     </div>
   );
 }
