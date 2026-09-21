@@ -14,10 +14,10 @@ export function getWhatsAppForRoute(pathname: string, hash?: string): keyof type
     }
   }
 
-  if (pathname.includes('scrap') || pathname.includes('capabilities#site-transformation')) return 'SCRAP';
-  if (pathname.includes('scaffolding') || pathname.includes('capabilities#project-materials')) return 'SCAFFOLDING';
-  if (pathname.includes('supply') || pathname.includes('capabilities#steel-engineering')) return 'MATERIAL_SUPPLY';
-  if (pathname.includes('fabrication') || pathname.includes('civil') || pathname.includes('capabilities#fabrication-civil')) return 'FABRICATION_CIVIL';
+  if (pathname.includes('scrap')) return 'SCRAP';
+  if (pathname.includes('scaffolding')) return 'SCAFFOLDING';
+  if (pathname.includes('supply') || pathname.includes('steel')) return 'MATERIAL_SUPPLY';
+  if (pathname.includes('fabrication') || pathname.includes('civil')) return 'FABRICATION_CIVIL';
 
   return 'GENERAL';
 }

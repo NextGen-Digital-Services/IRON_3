@@ -13,6 +13,10 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Home from './pages/Home';
 import About from './pages/About';
 import Capabilities from './pages/Capabilities';
+import ScrapProcurement from './pages/capabilities/ScrapProcurement';
+import ScaffoldingFormwork from './pages/capabilities/ScaffoldingFormwork';
+import SteelSupply from './pages/capabilities/SteelSupply';
+import FabricationCivil from './pages/capabilities/FabricationCivil';
 import Industries from './pages/Industries';
 import Clients from './pages/Clients';
 import Quote from './pages/Quote';
@@ -45,6 +49,10 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/capabilities" element={<Capabilities />} />
+              <Route path="/capabilities/scrap" element={<ScrapProcurement />} />
+              <Route path="/capabilities/scaffolding" element={<ScaffoldingFormwork />} />
+              <Route path="/capabilities/steel" element={<SteelSupply />} />
+              <Route path="/capabilities/fabrication" element={<FabricationCivil />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/clients" element={<Clients />} />
               <Route path="/quote" element={<Quote />} />

@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { FileText, ShieldCheck, CheckCircle2, MapPin } from 'lucide-react';
+﻿import { useState } from 'react';
+import { CheckCircle2 } from 'lucide-react';
 
-import heroImg from '../assets/industrial_hero.jpg';
 import { WHATSAPP_CONTACTS } from '../config/contact';
 import { openWhatsApp } from '../lib/whatsapp';
 
@@ -13,344 +12,89 @@ const DIVISION_CONTACTS: Record<string, string> = {
 };
 
 export default function Quote() {
-  const [formData, setFormData] = useState({
-    companyName: '',
-    contactPerson: '',
-    email: '',
-    phone: '',
-        serviceRequired: 'Industrial Scrap Procurement & Processing',
-    projectLocation: '',
-    projectSize: '',
-    timeline: '',
-    message: '',
-    drawing: null as File | null
-  });
-
+  const [formData, setFormData] = useState({ companyName: '', contactPerson: '', email: '', phone: '', serviceRequired: 'Industrial Scrap Procurement & Processing', projectLocation: '', projectSize: '', timeline: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = buildWhatsAppMessage(formData);
+    const lines = ['*NEW QUOTE REQUEST — IRONEX*', '', `*Division:* ${formData.serviceRequired}`, `*Company:* ${formData.companyName}`, `*Contact:* ${formData.contactPerson}`, `*Email:* ${formData.email}`, `*Phone:* ${formData.phone}`, `*Location:* ${formData.projectLocation}`, `*Size:* ${formData.projectSize}`, `*Timeline:* ${formData.timeline}`, '', `*Details:*`, formData.message];
     const phone = DIVISION_CONTACTS[formData.serviceRequired] || WHATSAPP_CONTACTS.GENERAL;
-    openWhatsApp(phone, message);
+    openWhatsApp(phone, lines.join('\n'));
     setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        companyName: '',
-        contactPerson: '',
-        email: '',
-        phone: '',
-        serviceRequired: 'Industrial Scrap Procurement & Processing',
-        projectLocation: '',
-        projectSize: '',
-        timeline: '',
-        message: '',
-        drawing: null
-      });
-    }, 4000);
+    setTimeout(() => { setSubmitted(false); setFormData({ companyName: '', contactPerson: '', email: '', phone: '', serviceRequired: 'Industrial Scrap Procurement & Processing', projectLocation: '', projectSize: '', timeline: '', message: '' }); }, 4000);
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFormData({ ...formData, drawing: e.target.files[0] });
-    }
-  };
-
-  const steps = [
-    {
-      title: 'Requirement Review',
-      desc: 'The relevant IRONEX division checks the available information - BOQ, drawings, material schedule, scaffolding quantity or scrap-lot details.',
-      time: 'Step 01'
-    },
-    {
-      title: 'Technical Clarification',
-      desc: 'Specifications, quantity, site access, timeline and commercial conditions are clarified before any proposal is prepared.',
-      time: 'Step 02'
-    },
-    {
-      title: 'Proposal or Inspection',
-      desc: 'IRONEX provides a quotation, confirms availability, requests additional information or schedules a site visit as needed.',
-      time: 'Step 03'
-    }
-  ];
-
-  function buildWhatsAppMessage(data: typeof formData): string {
-    const lines = [
-      '*NEW QUOTE REQUEST \\u2014 IRONEX*',
-      '',
-      `*Division:* ${data.serviceRequired}`,
-      `*Company:* ${data.companyName}`,
-      `*Contact Person:* ${data.contactPerson}`,
-      `*Email:* ${data.email}`,
-      `*Phone:* ${data.phone}`,
-      `*Project Location:* ${data.projectLocation}`,
-      `*Project Size / Tonnage:* ${data.projectSize}`,
-      `*Timeline:* ${data.timeline}`,
-      '',
-      `*Requirement Details:*`,
-      data.message,
-    ];
-    if (data.drawing) {
-      lines.push('', `*Attachment:* ${data.drawing.name}`);
-    }
-    return lines.join('\n');
-  }
+  const inputClass = "w-full bg-white border border-[#D5D0C7] px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[#C66B45] transition-colors";
 
   return (
-    <div className="bg-bg-light">
-      
-      {/* Hero Banner */}
-      <section className="bg-primary py-24 text-left relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img src={heroImg} alt="Quotation backdrop" className="w-full h-full object-cover" />
+    <div className="bg-[#F3F0E9]">
+      <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
+          <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />
+          <div className="absolute left-[58%] top-0 bottom-0 w-px bg-white/[0.04]" />
+          <div className="absolute left-[83%] top-0 bottom-0 w-px bg-white/[0.04]" />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-secondary">Procurement Portal</span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">Request a Quote</h1>
-          <p className="text-sm text-gray-300 max-w-2xl leading-relaxed">
-            Submit your BOQ, drawings, material schedule, scaffolding quantity or scrap-lot information. The relevant division will review it before responding.
-          </p>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10">
+          <span className="eyebrow block mb-6">Procurement Portal</span>
+          <h1 className="heading-editorial text-[#F4F1EA] max-w-4xl">Request a Quote.</h1>
+          <p className="text-sm text-[#F4F1EA]/40 mt-6 max-w-xl font-body">Submit your BOQ, drawings, material schedule or project scope. The relevant division will review it before responding.</p>
         </div>
       </section>
 
-      {/* Quote Form & Timeline */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start text-left">
-            
-            {/* Left: Request Form */}
-            <div className="lg:col-span-7 bg-bg-light p-8 rounded-xl border border-gray-250/50 shadow-xs">
-              <h2 className="text-xl font-bold text-primary mb-6">Industrial Project Inquiry Form</h2>
-              
+      <section className="py-24 bg-[#F3F0E9]">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-7 bg-[#F3F0E9] border border-[#D5D0C7] p-8">
+              <h2 className="text-xl font-extrabold text-[#101820] mb-6">Industrial Project Inquiry Form</h2>
               {submitted ? (
-                <div className="bg-white border border-secondary p-8 rounded-xl text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center mx-auto">
-                    <CheckCircle2 size={24} />
-                  </div>
-                  <h3 className="text-base font-bold text-primary">Inquiry Submitted Successfully</h3>
-                  <p className="text-xs text-gray-500 font-body leading-relaxed max-w-md mx-auto">
-                    Thank you. Your requirement has been routed to the relevant IRONEX division. We will review the information and respond with clarity on scope and availability.
-                  </p>
+                <div className="bg-white border border-[#C66B45] p-8 text-center space-y-4">
+                  <CheckCircle2 size={24} className="text-[#C66B45] mx-auto" />
+                  <h3 className="text-base font-bold text-[#101820]">Inquiry Submitted Successfully</h3>
+                  <p className="text-xs text-[#6B6560] font-body">Thank you. Your requirement has been routed to the relevant IRONEX division.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Company Name *</label>
-                      <input 
-                        type="text" 
-                        required 
-                        value={formData.companyName}
-                        onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. Sterling Power Corp"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Contact Person *</label>
-                      <input 
-                        type="text" 
-                        required 
-                        value={formData.contactPerson}
-                        onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. Amit Sen"
-                      />
-                    </div>
+                    <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Company Name *</label><input type="text" required value={formData.companyName} onChange={(e) => setFormData({ ...formData, companyName: e.target.value })} className={inputClass} placeholder="e.g. Sterling Power Corp" /></div>
+                    <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Contact Person *</label><input type="text" required value={formData.contactPerson} onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })} className={inputClass} placeholder="Full name" /></div>
+                    <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Email *</label><input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputClass} placeholder="name@company.com" /></div>
+                    <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Phone *</label><input type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={inputClass} placeholder="+91 XXXXX XXXXX" /></div>
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Corporate Email *</label>
-                      <input 
-                        type="email" 
-                        required 
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. purchasing@sterling.com"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Phone Number *</label>
-                      <input 
-                        type="tel" 
-                        required 
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. +91 98765 43210"
-                      />
-                    </div>
+                  <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Division *</label><select required value={formData.serviceRequired} onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })} className={inputClass}>{['Industrial Scrap Procurement & Processing', 'Scaffolding & Formwork Systems', 'Steel & Construction-Material Supply', 'Structural Fabrication & Civil Works'].map((s) => <option key={s} value={s}>{s}</option>)}</select></div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Location</label><input type="text" value={formData.projectLocation} onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })} className={inputClass} placeholder="City / Site" /></div>
+                    <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Project Size</label><input type="text" value={formData.projectSize} onChange={(e) => setFormData({ ...formData, projectSize: e.target.value })} className={inputClass} placeholder="e.g. 50 MT" /></div>
+                    <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Timeline</label><input type="text" value={formData.timeline} onChange={(e) => setFormData({ ...formData, timeline: e.target.value })} className={inputClass} placeholder="e.g. 2 weeks" /></div>
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Service Required *</label>
-                      <select 
-                        value={formData.serviceRequired}
-                        onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary"
-                      >
-                        <option>Industrial Scrap Procurement & Processing</option>
-                        <option>Scaffolding & Formwork Systems</option>
-                        <option>Steel & Construction-Material Supply</option>
-                        <option>Structural Fabrication & Civil Works</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Project Location *</label>
-                      <input 
-                        type="text" 
-                        required 
-                        value={formData.projectLocation}
-                        onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. Uran, Maharashtra"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Project Size / Tonnage *</label>
-                      <input 
-                        type="text" 
-                        required 
-                        value={formData.projectSize}
-                        onChange={(e) => setFormData({ ...formData, projectSize: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. 45,000 sq ft / 500 MT"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Timeline Requirements *</label>
-                      <input 
-                        type="text" 
-                        required 
-                        value={formData.timeline}
-                        onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary" 
-                        placeholder="e.g. 6 Months / Immediate"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Project Message / Specifications *</label>
-                    <textarea 
-                      required 
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-secondary font-body resize-none" 
-                      placeholder="Detail the requirement - material specifications, scaffolding quantity, scrap-lot information or scope of execution..."
-                    />
-                  </div>
-
-                  {/* File Upload Block */}
-                  <div>
-                    <label className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Upload Drawings / BOQ (PDF/DWG/ZIP) *</label>
-                    <div className="bg-white border border-dashed border-gray-300 rounded-xl p-6 text-center space-y-2 hover:border-secondary transition-colors duration-300 relative">
-                      <input 
-                        type="file" 
-                        onChange={handleFileChange}
-                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" 
-                        accept=".pdf,.dwg,.zip,.rar"
-                      />
-                      <FileText className="text-gray-400 mx-auto" size={24} />
-                      <div className="text-[11px] text-gray-500 font-body font-semibold">
-                        {formData.drawing ? (
-                          <span className="text-secondary">{formData.drawing.name}</span>
-                        ) : (
-                          <span>Click to browse or drag your drawing file here</span>
-                        )}
-                      </div>
-                      <span className="text-[9px] text-gray-400 block font-body">Max file size: 25MB</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <button 
-                      type="submit"
-                      className="btn-primary w-full bg-secondary text-white font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-sm"
-                    >
-                      Submit Requirement
-                    </button>
-                  </div>
+                  <div><label className="text-[10px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Requirement Details *</label><textarea required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={inputClass + " resize-y"} placeholder="BOQ, specifications, drawings, scope..." /></div>
+                  <button type="submit" className="w-full bg-[#C66B45] text-[#F4F1EA] font-bold text-[10px] uppercase tracking-[0.15em] px-6 py-4 hover:bg-[#D47B55] transition-colors">Submit Project Requirements</button>
                 </form>
               )}
             </div>
-
-            {/* Right: Quotation Timeline & Illustrations */}
-            <div className="lg:col-span-5 space-y-12">
-              <div className="space-y-4">
-                <span className="text-xs font-bold uppercase tracking-widest text-secondary block font-heading">Our Review Process</span>
-                <h2 className="text-2xl font-extrabold text-primary tracking-tight">How Your Requirement Is Reviewed</h2>
-                <p className="text-xs text-gray-500 font-body leading-relaxed">
-                  Each enquiry is routed to the relevant business division and reviewed for genuine feasibility before any commitment is made.
-                </p>
-              </div>
-
-              {/* Vertical timeline illustration */}
-              <div className="space-y-8 relative pl-6 border-l border-gray-150 text-left">
-                {steps.map((st, idx) => (
-                  <div key={idx} className="relative space-y-2">
-                    {/* Circle marker */}
-                    <div className="absolute -left-[31px] top-0 w-3 h-3 rounded-full bg-secondary border border-white" />
-                    
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-primary uppercase tracking-wider">{st.title}</h4>
-                      <span className="text-[9px] font-bold text-secondary uppercase tracking-widest bg-secondary/10 px-2 py-0.5 rounded-lg border border-secondary/15">
-                        {st.time}
-                      </span>
-                    </div>
-                    
-                    <p className="text-[11px] text-gray-500 leading-relaxed font-body">
-                      {st.desc}
-                    </p>
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#101820]">How We Respond</h3>
+                {[{ step: '01', title: 'Requirement Review', desc: 'The relevant division checks the available information — BOQ, drawings, material schedule, scaffolding quantity or scrap-lot details.' }, { step: '02', title: 'Technical Clarification', desc: 'Specifications, quantity, site access, timeline and commercial conditions are clarified before any proposal is prepared.' }, { step: '03', title: 'Proposal or Inspection', desc: 'IRONEX provides a quotation, confirms availability, requests additional information or schedules a site visit as needed.' }].map((st) => (
+                  <div key={st.step} className="flex gap-4">
+                    <span className="text-2xl font-extrabold text-[#C66B45] shrink-0">{st.step}</span>
+                    <div><h4 className="text-sm font-bold text-[#101820] mb-1">{st.title}</h4><p className="text-[11px] text-[#6B6560] font-body leading-relaxed">{st.desc}</p></div>
                   </div>
                 ))}
               </div>
-
-              {/* Quality & safety commitment badge */}
-              <div className="p-6 bg-bg-light rounded-xl border border-gray-200/50 flex gap-4 items-start text-left">
-                <div className="bg-primary text-secondary p-3 rounded-xl shadow-xs shrink-0 mt-1">
-                  <ShieldCheck size={20} />
+              <div className="bg-[#07101A] p-6 space-y-4">
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C66B45]">Need Immediate Assistance?</h4>
+                <p className="text-[11px] text-[#F4F1EA]/40 font-body leading-relaxed">For urgent requirements, reach us directly by phone or WhatsApp.</p>
+                <div className="space-y-2">
+                  <a href="tel:+919324448080" className="block text-[11px] text-[#F4F1EA]/50 hover:text-[#C66B45] transition-colors">+91 9324448080 (Scrap)</a>
+                  <a href="tel:+919321028080" className="block text-[11px] text-[#F4F1EA]/50 hover:text-[#C66B45] transition-colors">+91 9321028080 (Scaffolding)</a>
+                  <a href="tel:+919231318080" className="block text-[11px] text-[#F4F1EA]/50 hover:text-[#C66B45] transition-colors">+91 9231318080 (Supply)</a>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Defined Responsibility for Every Enquiry</h4>
-                  <p className="text-[10px] text-gray-500 leading-relaxed font-body">
-                    When a requirement is outside our current capability, timeline or scope, we communicate it before making commitments. Honest capability comes before acceptance.
-                  </p>
-                </div>
-              </div>
-
-              {/* Office Location Map */}
-              <div className="overflow-hidden rounded-xl border border-gray-200/60 bg-white shadow-xs">
-                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
-                  <div className="text-left">
-                    <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Office Location</h4>
-                    <p className="text-[10px] text-gray-500 font-body mt-0.5">Uran, Maharashtra - Operational Base</p>
-                  </div>
-                  <MapPin size={18} className="text-secondary shrink-0" />
-                </div>
-                <iframe
-                  title="IRONEX Office Location - Uran, Maharashtra"
-                  src="https://www.google.com/maps?q=Uran%2C%20Maharashtra%2C%20India&z=11&output=embed"
-                  className="w-full h-72 border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
     </div>
   );
 }

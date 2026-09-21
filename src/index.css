@@ -1,123 +1,188 @@
 @import "tailwindcss";
 
 @theme {
-  /* Deep graphite / steel navy - hero, dark feature sections, footer */
-  --color-primary: #0D131C;
-  --color-primary-light: #1A2638;
-  --color-primary-soft: #111827;
+  /* Premium industrial dark backgrounds */
+  --color-primary: #07101A;
+  --color-primary-light: #09131E;
+  --color-primary-soft: #0B1520;
 
-  /* Copper accent - selective highlights only */
-  --color-secondary: #B85C2C;
-  --color-secondary-light: #C86B35;
+  /* Copper/rust accent - used sparingly */
+  --color-secondary: #C66B45;
+  --color-secondary-light: #D47B55;
 
-  /* Warm architectural neutrals */
-  --color-bg-light: #F4F1EC;
-  --color-bg-card: #FAF8F4;
-  --color-border-line: #D9D3CA;
-  --color-text-dark: #151A22;
-  --color-text-muted: #6F6A63;
-  --color-text-light: #F3EFE8;
-  --color-gray-light: #D9D3CA;
-  --color-offwhite: #F4F1EC;
-  --color-offwhite-dark: #EDE7DF;
+  /* Warm ivory light backgrounds */
+  --color-bg-light: #F3F0E9;
+  --color-bg-card: #F5F2EB;
+  --color-border-line: #D5D0C7;
 
-  /* Warm stone neutral scale - harmonises all existing gray-* utilities */
-  --color-gray-50: #FAF8F4;
-  --color-gray-100: #F2EEE7;
-  --color-gray-150: #E9E4DB;
-  --color-gray-200: #D9D3CA;
-  --color-gray-250: #D9D3CA;
-  --color-gray-300: #C6BFB4;
-  --color-gray-400: #A59D91;
-  --color-gray-500: #6F6A63;
-  --color-gray-600: #5B5650;
-  --color-gray-700: #443F39;
-  --color-gray-800: #2C2924;
-  --color-gray-900: #1B1915;
+  /* Text colors */
+  --color-text-dark: #101820;
+  --color-text-muted: #6B6560;
+  --color-text-light: #F4F1EA;
 
-  /* Warm off-white (no pure white) */
+  /* Warm stone neutrals */
+  --color-gray-50: #F5F2EB;
+  --color-gray-100: #EDE8DF;
+  --color-gray-150: #E3DDD4;
+  --color-gray-200: #D5D0C7;
+  --color-gray-250: #D5D0C7;
+  --color-gray-300: #C4BEB4;
+  --color-gray-400: #9E9890;
+  --color-gray-500: #6B6560;
+  --color-gray-600: #555049;
+  --color-gray-700: #3E3A35;
+  --color-gray-800: #262320;
+  --color-gray-900: #151210;
+
   --color-white: #FCFBF8;
+  --color-offwhite: #F3F0E9;
+  --color-offwhite-dark: #E8E4DB;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', sans-serif;
+  /* Typography */
+  --font-heading: 'Inter', 'Manrope', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
 
-  --radius-custom: 12px;
+  --radius-custom: 2px;
 }
 
 @layer base {
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: #F4F1EC;
-    color: #151A22;
-    overflow-x: hidden;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F3F0E9;
+    color: #101820;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    color: #0D131C;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    color: #101820;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: rgba(198, 107, 69, 0.2);
+    color: #101820;
   }
 }
 
-/* Custom CSS Scrollbar and utilities */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4F1EC;
+  background: #F3F0E9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B85C2C;
-  border-radius: 4px;
+  background: #C66B45;
+  border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0D131C;
+  background: #07101A;
 }
 
-/* Smooth active state borders */
-.service-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.service-card-hover:hover {
-  box-shadow: 0 10px 30px -10px rgba(13, 19, 28, 0.15);
+/* Structural border utility */
+.border-structural {
+  border: 1px solid #D5D0C7;
 }
 
-/* Button hover animations */
+.border-structural-dark {
+  border: 1px solid rgba(244, 241, 234, 0.08);
+}
+
+/* Button styles */
 .btn-primary {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
 }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(184, 106, 58, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px -8px rgba(198, 107, 69, 0.35);
 }
 .btn-primary:active {
   transform: translateY(0);
 }
 
 .btn-outline {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .btn-outline:hover {
-  background-color: #0D131C;
-  border-color: #0D131C;
-  color: #FCFBF8;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(13, 19, 28, 0.3);
+  background-color: #07101A;
+  border-color: #07101A;
+  color: #F4F1EA;
+  transform: translateY(-1px);
 }
 .btn-outline:active {
   transform: translateY(0);
 }
 
-/* Card hover effects */
-.card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px -10px rgba(13, 19, 28, 0.15);
+/* Editorial section transitions */
+.section-dark {
+  background-color: #07101A;
+  color: #F4F1EA;
 }
 
-/* Marquee Slider Animation */
+.section-light {
+  background-color: #F3F0E9;
+  color: #101820;
+}
+
+/* Copper text utility */
+.text-copper {
+  color: #C66B45;
+}
+
+/* Grid line decoration */
+.grid-line {
+  position: absolute;
+  background: rgba(244, 241, 234, 0.06);
+}
+
+.grid-line-v {
+  width: 1px;
+  top: 0;
+  bottom: 0;
+}
+
+.grid-line-h {
+  height: 1px;
+  left: 0;
+  right: 0;
+}
+
+/* Image hover - premium slow scale */
+.img-hover {
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.img-hover:hover {
+  transform: scale(1.03);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Marquee */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -125,17 +190,62 @@
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 35s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Editorial number marker */
+.editorial-num {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1;
+  color: #C66B45;
+  letter-spacing: -0.03em;
 }
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+
+/* Thin copper rule */
+.copper-rule {
+  width: 40px;
+  height: 1px;
+  background: #C66B45;
+}
+
+.copper-rule-v {
+  width: 1px;
+  height: 40px;
+  background: #C66B45;
+}
+
+/* Eyebrow label */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C66B45;
+}
+
+/* Editorial heading large */
+.heading-editorial {
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+/* Card no-shadow editorial */
+.card-editorial {
+  border: 1px solid #D5D0C7;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.card-editorial:hover {
+  border-color: #C66B45;
+  background-color: #07101A;
+  color: #F4F1EA;
+}
+.card-editorial:hover .editorial-num {
+  color: #C66B45;
 }

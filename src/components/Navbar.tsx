@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail, Clock } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import ContactForm from './ContactForm';
 import { useModal } from '../context/ModalContext';
 
@@ -11,110 +11,97 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  // Close mobile drawer on route change
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
   }, [location]);
 
-  // Track scroll position for header shadow/height transition
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 40);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About IRONEX', path: '/about' },
+    { name: 'About', path: '/about' },
+    {
+      name: 'Access',
+      path: '/capabilities/scaffolding',
+    },
+    {
+      name: 'Supply',
+      path: '/capabilities/steel',
+    },
     {
       name: 'Capabilities',
       path: '/capabilities',
       dropdown: [
-        { name: 'Scrap Procurement & Processing', path: '/capabilities#site-transformation' },
-        { name: 'Scaffolding & Formwork Systems', path: '/capabilities#project-materials' },
-        { name: 'Steel & Material Supply', path: '/capabilities#steel-engineering' },
-        { name: 'Fabrication & Civil Works', path: '/capabilities#fabrication-civil' },
+        { name: 'Scrap Procurement', path: '/capabilities/scrap' },
+        { name: 'Scaffolding & Formwork', path: '/capabilities/scaffolding' },
+        { name: 'Steel & Material Supply', path: '/capabilities/steel' },
+        { name: 'Fabrication & Civil', path: '/capabilities/fabrication' },
       ]
     },
     { name: 'Industries', path: '/industries' },
+    { name: 'Contact', path: '/quote' },
   ];
 
   return (
     <>
-      {/* Top Utility Bar */}
-      <div className="bg-primary text-gray-300 text-xs py-2 px-4 md:px-8 flex justify-between items-center border-b border-gray-800 hidden sm:flex">
-        <div className="flex items-center gap-6">
-          <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-secondary transition-colors">
-            <Phone size={12} className="text-secondary" />
-            <span>+91 98765 43210</span>
-          </a>
-          <a href="mailto:info@ironex.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
-            <Mail size={12} className="text-secondary" />
-            <span>info@ironex.com</span>
-          </a>
-        </div>
-        <div className="flex items-center gap-2">
-          <Clock size={12} className="text-secondary" />
-          <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
-        </div>
-      </div>
-
-      {/* Main Sticky Navbar */}
-      <nav
-        className={`sticky top-0 z-40 bg-white transition-all duration-300 border-b border-gray-100 ${
-          isScrolled ? 'py-3 shadow-md' : 'py-5 shadow-sm'
+      {/* Main Header */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? 'bg-[#07101A]/95 backdrop-blur-md border-b border-white/[0.06]'
+            : 'bg-[#07101A]'
         }`}
+        style={{ height: isScrolled ? '52px' : '56px' }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group focus:outline-none">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 h-full">
+          <div className="flex justify-between items-center h-full">
+            
+            {/* Left: Logo */}
+            <Link to="/" className="flex items-center gap-2.5 group focus:outline-none shrink-0">
               <img 
                 src="/logo.png" 
-                alt="IRONEX Steel & Infra LLP Logo" 
-                className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+                alt="IRONEX" 
+                className="h-8 w-auto brightness-125 contrast-125 opacity-95 group-hover:opacity-100 transition-opacity duration-300"
               />
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold tracking-tight text-primary leading-none">
-                  IRON<span className="text-secondary">EX</span>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-sm font-extrabold tracking-[-0.02em] text-[#F4F1EA] leading-none">
+                  IRONEX
                 </span>
-                <span className="text-[10px] font-semibold tracking-[0.25em] text-gray-500 uppercase leading-none mt-1">
-                  Steel & Infra LLP
+                <span className="text-[8px] font-semibold tracking-[0.15em] text-[#F4F1EA]/40 uppercase leading-none hidden sm:inline">
+                  Steel & Infra
                 </span>
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            {/* Center: Navigation */}
+            <nav className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <div
                   key={link.name}
-                  className="relative group py-2"
+                  className="relative"
                   onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
                   onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
                 >
                   {link.dropdown ? (
-                    <button
-                      className="flex items-center gap-1 text-sm font-semibold text-primary hover:text-secondary transition-colors focus:outline-none py-1"
-                    >
+                    <button className="flex items-center gap-1 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F4F1EA]/60 hover:text-[#C66B45] transition-colors duration-300 focus:outline-none">
                       {link.name}
-                      <ChevronDown size={14} className="transition-transform duration-250 group-hover:rotate-180 text-gray-400" />
+                      <ChevronDown size={12} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
                     </button>
                   ) : (
                     <NavLink
                       to={link.path}
                       className={({ isActive }) =>
-                        `text-sm font-semibold transition-colors py-1 ${
+                        `px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 ${
                           isActive
-                            ? 'text-secondary border-b-2 border-secondary'
-                            : 'text-primary hover:text-secondary'
+                            ? 'text-[#C66B45]'
+                            : 'text-[#F4F1EA]/60 hover:text-[#C66B45]'
                         }`
                       }
                     >
@@ -122,159 +109,142 @@ export default function Navbar() {
                     </NavLink>
                   )}
 
-                  {/* Dropdown Menu */}
+                  {/* Dropdown */}
                   {link.dropdown && activeDropdown === link.name && (
-                    <div className="absolute left-0 mt-2 w-64 rounded-xl bg-white shadow-lg border border-gray-100 py-3 z-50 animate-fade-in">
-                      {link.dropdown.map((subItem) => (
-                        <HashLink
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block px-4 py-2 text-xs font-semibold text-primary hover:bg-bg-light hover:text-secondary transition-colors"
-                        >
-                          {subItem.name}
-                        </HashLink>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Right Action Button */}
-            <div className="hidden lg:flex items-center">
-              <Link
-                to="/quote"
-                className="btn-primary bg-secondary text-white font-semibold text-sm px-6 py-2.5 rounded-xl shadow-sm text-center focus:outline-none"
-              >
-                Get a Quote
-              </Link>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-primary hover:text-secondary focus:outline-none p-2 rounded-lg"
-                aria-label="Toggle Menu"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation Drawer */}
-        <div
-          className={`lg:hidden fixed inset-0 z-30 transform transition-transform duration-300 ease-in-out ${
-            isOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
-          {/* Overlay */}
-          <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsOpen(false)} />
-          
-          {/* Drawer Body */}
-          <div className="fixed right-0 top-0 bottom-0 w-80 bg-white shadow-xl flex flex-col z-40 p-6">
-            <div className="flex justify-between items-center mb-8">
-              <img 
-                src="/logo.png" 
-                alt="IRONEX Logo" 
-                className="h-8 w-auto"
-              />
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-primary hover:text-secondary focus:outline-none"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            <div className="flex-1 overflow-y-auto space-y-4">
-              {navLinks.map((link) => (
-                <div key={link.name} className="border-b border-gray-100 pb-2">
-                  {link.dropdown ? (
-                    <div>
-                      <button
-                        onClick={() => setActiveDropdown(activeDropdown === link.name ? null : link.name)}
-                        className="flex justify-between items-center w-full text-base font-semibold text-primary py-2 hover:text-secondary"
-                      >
-                        <span>{link.name}</span>
-                        <ChevronDown
-                          size={18}
-                          className={`transition-transform duration-200 ${
-                            activeDropdown === link.name ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
-                      <div
-                        className={`pl-4 space-y-2 mt-1 overflow-hidden transition-all duration-300 ${
-                          activeDropdown === link.name ? 'max-h-60 opacity-100 py-1' : 'max-h-0 opacity-0'
-                        }`}
-                      >
-                        {link.dropdown.map((subItem) => (
-                          <HashLink
-                            key={subItem.name}
-                            to={subItem.path}
-                            onClick={() => setIsOpen(false)}
-                            className="block text-sm text-gray-600 hover:text-secondary py-1"
+                    <div className="absolute left-0 top-full pt-2 w-56 z-50">
+                      <div className="bg-[#09131E] border border-white/[0.06] py-2 shadow-2xl">
+                        {link.dropdown.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            to={sub.path}
+                            className="block px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#F4F1EA]/50 hover:text-[#C66B45] hover:bg-white/[0.03] transition-all duration-200"
                           >
-                            {subItem.name}
-                          </HashLink>
+                            {sub.name}
+                          </Link>
                         ))}
                       </div>
                     </div>
-                  ) : (
-                    <NavLink
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className={({ isActive }) =>
-                        `block text-base font-semibold py-2 transition-colors ${
-                          isActive ? 'text-secondary' : 'text-primary hover:text-secondary'
-                        }`
-                      }
-                    >
-                      {link.name}
-                    </NavLink>
                   )}
                 </div>
               ))}
-            </div>
+            </nav>
 
-            <div className="mt-8">
+            {/* Right: CTA */}
+            <div className="hidden lg:flex items-center">
               <Link
                 to="/quote"
-                onClick={() => setIsOpen(false)}
-                className="btn-primary block w-full bg-secondary text-white font-semibold py-3 rounded-xl text-center shadow-sm"
+                className="px-5 py-2 text-[10px] font-bold uppercase tracking-[0.15em] bg-[#C66B45] text-[#F4F1EA] hover:bg-[#D47B55] transition-colors duration-300"
               >
-                Get a Quote
+                Start a Project
               </Link>
             </div>
+
+            {/* Mobile: Hamburger */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden text-[#F4F1EA]/70 hover:text-[#C66B45] focus:outline-none p-1"
+              aria-label="Menu"
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
-      </nav>
 
-      {/* Reusable Quote Modal */}
+        {/* Bottom border line */}
+        <div className={`absolute bottom-0 left-0 right-0 h-px bg-white/[0.06] transition-opacity duration-500 ${isScrolled ? 'opacity-0' : 'opacity-100'}`} />
+      </header>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`lg:hidden fixed inset-0 z-40 transition-all duration-400 ${
+          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-[#07101A]/80 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+        
+        {/* Drawer */}
+        <div className={`absolute right-0 top-0 bottom-0 w-72 bg-[#09131E] border-l border-white/[0.06] flex flex-col transition-transform duration-400 ease-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}>
+          <div className="flex justify-between items-center px-5 h-14 border-b border-white/[0.06]">
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#F4F1EA]/50">Menu</span>
+            <button onClick={() => setIsOpen(false)} className="text-[#F4F1EA]/50 hover:text-[#C66B45]">
+              <X size={18} />
+            </button>
+          </div>
+
+          <nav className="flex-1 overflow-y-auto py-4">
+            {navLinks.map((link) => (
+              <div key={link.name}>
+                {link.dropdown ? (
+                  <>
+                    <button
+                      onClick={() => setActiveDropdown(activeDropdown === link.name ? null : link.name)}
+                      className="flex justify-between items-center w-full px-5 py-3 text-[11px] font-bold uppercase tracking-[0.12em] text-[#F4F1EA]/60 hover:text-[#C66B45] transition-colors"
+                    >
+                      {link.name}
+                      <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === link.name ? 'max-h-60' : 'max-h-0'}`}>
+                      {link.dropdown.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          to={sub.path}
+                          onClick={() => setIsOpen(false)}
+                          className="block pl-8 pr-5 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-5 py-3 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors border-b border-white/[0.04] ${
+                        isActive ? 'text-[#C66B45]' : 'text-[#F4F1EA]/60 hover:text-[#C66B45]'
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          <div className="px-5 py-5 border-t border-white/[0.06]">
+            <Link
+              to="/quote"
+              onClick={() => setIsOpen(false)}
+              className="block w-full py-3 text-center text-[10px] font-bold uppercase tracking-[0.15em] bg-[#C66B45] text-[#F4F1EA] hover:bg-[#D47B55] transition-colors"
+            >
+              Start a Project
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Spacer for fixed header */}
+      <div className="h-14" />
+
+      {/* Quote Modal */}
       {isQuoteOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Overlay */}
-          <div className="fixed inset-0 bg-primary bg-opacity-70 backdrop-blur-xs transition-opacity" onClick={() => setIsQuoteOpen(false)} />
-          
-          {/* Modal Container */}
-          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full z-10 overflow-hidden relative border border-gray-100 flex flex-col max-h-[90vh]">
-            {/* Header */}
-            <div className="bg-primary px-6 py-4 flex justify-between items-center border-b border-gray-800">
+          <div className="fixed inset-0 bg-[#07101A]/80 backdrop-blur-sm transition-opacity" onClick={() => setIsQuoteOpen(false)} />
+          <div className="bg-[#F3F0E9] shadow-2xl max-w-2xl w-full z-10 overflow-hidden relative border border-[#D5D0C7] flex flex-col max-h-[90vh]">
+            <div className="bg-[#07101A] px-6 py-4 flex justify-between items-center border-b border-white/[0.06]">
               <div>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">Get a Quote</h3>
-                <p className="text-xs text-gray-400 mt-1">Share your BOQ, drawings, material schedule or project scope.</p>
+                <h3 className="text-sm font-extrabold text-[#F4F1EA] uppercase tracking-[0.12em]">Get a Quote</h3>
+                <p className="text-[10px] text-[#F4F1EA]/40 mt-1 tracking-wide">Share your project details and we will connect you with the right division.</p>
               </div>
-              <button
-                onClick={() => setIsQuoteOpen(false)}
-                className="text-gray-400 hover:text-white transition-colors p-1"
-              >
-                <X size={20} />
+              <button onClick={() => setIsQuoteOpen(false)} className="text-[#F4F1EA]/40 hover:text-[#C66B45] transition-colors">
+                <X size={18} />
               </button>
             </div>
-            
-            {/* Form Content */}
             <div className="p-6 overflow-y-auto">
               <ContactForm isModal={true} onSuccess={() => setIsQuoteOpen(false)} />
             </div>
@@ -282,28 +252,5 @@ export default function Navbar() {
         </div>
       )}
     </>
-  );
-}
-
-// Simple internal helper component to handle hash linking for dropdowns without extra libraries if needed
-function HashLink({ to, className, children, onClick }: { to: string; className: string; children: React.ReactNode; onClick?: () => void }) {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (onClick) onClick();
-    if (to.includes('#')) {
-      const [path, hash] = to.split('#');
-      if (window.location.pathname === path) {
-        e.preventDefault();
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-  };
-
-  return (
-    <Link to={to} className={className} onClick={handleClick}>
-      {children}
-    </Link>
   );
 }

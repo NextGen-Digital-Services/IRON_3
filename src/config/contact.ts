@@ -14,10 +14,10 @@ export const PHONE_CONTACTS = {
 };
 
 export const DIVISION_CONTACT_MAP: Record<string, keyof typeof WHATSAPP_CONTACTS> = {
-  '/capabilities#site-transformation': 'SCRAP',
-  '/capabilities#project-materials': 'SCAFFOLDING',
-  '/capabilities#steel-engineering': 'MATERIAL_SUPPLY',
-  '/capabilities#fabrication-civil': 'FABRICATION_CIVIL',
+  '/capabilities/scrap': 'SCRAP',
+  '/capabilities/scaffolding': 'SCAFFOLDING',
+  '/capabilities/steel': 'MATERIAL_SUPPLY',
+  '/capabilities/fabrication': 'FABRICATION_CIVIL',
 };
 
 export const WHATSAPP_MESSAGES = {
