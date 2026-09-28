@@ -4,6 +4,42 @@ import demolitionImg from '../assets/demolition.jpg';
 import scaffoldingImg from '../assets/scaffolding.jpg';
 import heroImg from '../assets/industrial_hero.jpg';
 import factoryImg from '../assets/about_factory.jpg';
+import HeroBackground from '../components/HeroBackground';
+import scrap1 from '../assets/scrap_01.jpg';
+import scrap2 from '../assets/scrap_02.jpg';
+import scrap3 from '../assets/scrap_03.jpg';
+import scrap4 from '../assets/scrap_04.jpg';
+import scaf1 from '../assets/scaffolding_01.jpg';
+import scaf2 from '../assets/scaffolding_02.jpg';
+import scaf3 from '../assets/scaffolding_03.jpg';
+import scaf4 from '../assets/scaffolding_04.jpg';
+import steel1 from '../assets/steel_01.jpg';
+import steel2 from '../assets/steel_02.jpg';
+import steel3 from '../assets/steel_03.jpg';
+import steel4 from '../assets/steel_04.jpg';
+import fab1 from '../assets/fab_01.jpg';
+import fab2 from '../assets/fab_02.jpg';
+import fab3 from '../assets/fab_03.jpg';
+import fab4 from '../assets/fab_04.jpg';
+
+const heroImages = [
+  { src: scrap1, alt: 'Scrap yard with claw excavator' },
+  { src: scrap2, alt: 'Scrap metal pile in front of a factory' },
+  { src: scrap3, alt: 'Industrial scrap yard with crane' },
+  { src: scrap4, alt: 'Train car in a scrap metal yard' },
+  { src: scaf1, alt: 'Facade scaffolding on a high-rise' },
+  { src: scaf2, alt: 'Scaffolding around an industrial silo' },
+  { src: scaf3, alt: 'Workers on site scaffolding' },
+  { src: scaf4, alt: 'Structural scaffolding from below' },
+  { src: steel1, alt: 'Metal bars, pipes and tubing in storage' },
+  { src: steel2, alt: 'Pipes and reservoirs of a factory' },
+  { src: steel3, alt: 'Large industrial pipes and tanks' },
+  { src: steel4, alt: 'Steel pipes under a factory ceiling' },
+  { src: fab1, alt: 'Welder at work in a modern facility' },
+  { src: fab2, alt: 'Welder working in a dark workshop' },
+  { src: fab3, alt: 'Close-up of a welder during work' },
+  { src: fab4, alt: 'Artisan welding metal in a workshop' },
+];
 
 const divisions = [
   { num: '01', title: 'Industrial Scrap Procurement & Processing', desc: 'IRONEX participates as a direct buyer in government, PSU, corporate, industrial and private scrap auctions and tenders.', icon: Wrench, path: '/capabilities/scrap', img: demolitionImg, tagline: 'Material Value, Managed Professionally.' },
@@ -17,6 +53,7 @@ export default function Capabilities() {
     <div className="bg-[#F3F0E9]">
       {/* Hero */}
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={heroImages} interval={3500} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

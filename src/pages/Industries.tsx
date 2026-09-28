@@ -1,4 +1,6 @@
-﻿import { Building2, Layers, Workflow, Anchor, TrendingUp, Zap, Truck, Cpu, ArrowRight } from 'lucide-react';
+﻿import HeroBackground from '../components/HeroBackground';
+import industriesHero from '../assets/industries.jpg';
+import { Building2, Layers, Workflow, Anchor, TrendingUp, Zap, Truck, Cpu, ArrowRight } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 import factoryImg from '../assets/about_factory.jpg';
 import projectImg from '../assets/industrial_project.jpg';
@@ -22,6 +24,7 @@ export default function Industries() {
   return (
     <div className="bg-[#F3F0E9]">
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={[{ src: industriesHero, alt: 'Industrial warehouse interior with stacked steel' }]} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

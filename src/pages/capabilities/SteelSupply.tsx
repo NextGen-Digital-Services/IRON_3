@@ -2,12 +2,25 @@
 import { openWhatsApp } from '../../lib/whatsapp';
 import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../../config/contact';
 import heroImg from '../../assets/industrial_hero.jpg';
+import HeroBackground from '../../components/HeroBackground';
+import steel1 from '../../assets/steel_01.jpg';
+import steel2 from '../../assets/steel_02.jpg';
+import steel3 from '../../assets/steel_03.jpg';
+import steel4 from '../../assets/steel_04.jpg';
+
+const heroImages = [
+  { src: steel1, alt: 'Metal bars, pipes and tubing in storage' },
+  { src: steel2, alt: 'Pipes and reservoirs of a factory' },
+  { src: steel3, alt: 'Large industrial pipes and tanks' },
+  { src: steel4, alt: 'Steel pipes under a factory ceiling' },
+];
 
 export default function SteelSupply() {
   const { setIsQuoteOpen } = useModal();
   return (
     <div className="bg-[#F3F0E9]">
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={heroImages} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

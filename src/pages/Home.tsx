@@ -19,6 +19,18 @@ import pebImg from '../assets/peb_construction.jpg';
 import projectImg from '../assets/industrial_project.jpg';
 import scaffoldingImg from '../assets/scaffolding.jpg';
 import demolitionImg from '../assets/demolition.jpg';
+import HeroBackground from '../components/HeroBackground';
+import homeHero1 from '../assets/home_01.jpg';
+import homeHero2 from '../assets/home_02.jpg';
+import homeHero3 from '../assets/home_03.jpg';
+import homeHero4 from '../assets/home_04.jpg';
+
+const heroImages = [
+  { src: homeHero1, alt: 'Industrial construction site with concrete columns' },
+  { src: homeHero2, alt: 'Construction site with steel framework and cranes' },
+  { src: homeHero3, alt: 'Industrial crane in a steel factory yard' },
+  { src: homeHero4, alt: 'Aerial view of an industrial factory' },
+];
 
 import allcargoLogo from '/logos/allcargo.png';
 import bpclLogo from '/logos/bpcl.png';
@@ -120,10 +132,7 @@ export default function Home() {
 
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-screen flex items-center bg-[#07101A] overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroImg} alt="" className="w-full h-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07101A] via-[#07101A]/80 to-[#07101A]/40" />
-        </div>
+        <HeroBackground className="absolute inset-0 z-0" images={heroImages} interval={5000} />
         <div className="absolute inset-0 z-[1] pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

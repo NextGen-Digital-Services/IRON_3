@@ -1,4 +1,6 @@
-﻿import { useModal } from '../context/ModalContext';
+﻿import HeroBackground from '../components/HeroBackground';
+import clientsHero from '../assets/clients.jpg';
+import { useModal } from '../context/ModalContext';
 import pebImg from '../assets/peb_construction.jpg';
 
 export default function Clients() {
@@ -8,6 +10,7 @@ export default function Clients() {
   return (
     <div className="bg-[#F3F0E9]">
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={[{ src: clientsHero, alt: 'Aerial view of an industrial storage facility' }]} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

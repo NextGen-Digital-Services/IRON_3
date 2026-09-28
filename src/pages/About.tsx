@@ -1,4 +1,6 @@
-﻿import { CheckCircle2 } from 'lucide-react';
+﻿import HeroBackground from '../components/HeroBackground';
+import aboutHero from '../assets/about.jpg';
+import { CheckCircle2 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 import { openWhatsApp } from '../lib/whatsapp';
 import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../config/contact';
@@ -25,6 +27,7 @@ export default function About() {
     <div className="bg-[#F3F0E9]">
       {/* Hero */}
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={[{ src: aboutHero, alt: 'Industrial plant under clear sky' }]} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

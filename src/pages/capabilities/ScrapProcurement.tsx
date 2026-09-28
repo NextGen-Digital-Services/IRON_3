@@ -1,4 +1,16 @@
 ﻿import demolitionImg from '../../assets/demolition.jpg';
+import HeroBackground from '../../components/HeroBackground';
+import scrap1 from '../../assets/scrap_01.jpg';
+import scrap2 from '../../assets/scrap_02.jpg';
+import scrap3 from '../../assets/scrap_03.jpg';
+import scrap4 from '../../assets/scrap_04.jpg';
+
+const heroImages = [
+  { src: scrap1, alt: 'Scrap yard with claw excavator' },
+  { src: scrap2, alt: 'Scrap metal pile in front of a factory' },
+  { src: scrap3, alt: 'Industrial scrap yard with crane' },
+  { src: scrap4, alt: 'Train car in a scrap metal yard' },
+];
 import { useModal } from '../../context/ModalContext';
 import { openWhatsApp } from '../../lib/whatsapp';
 import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../../config/contact';
@@ -8,6 +20,7 @@ export default function ScrapProcurement() {
   return (
     <div className="bg-[#F3F0E9]">
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={heroImages} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

@@ -11,9 +11,17 @@ type SlideshowProps = {
   images: SlideshowImage[];
   interval?: number;
   className?: string;
+  showControls?: boolean;
+  overlay?: boolean;
 };
 
-export default function Slideshow({ images, interval = 5000, className = '' }: SlideshowProps) {
+export default function Slideshow({
+  images,
+  interval = 5000,
+  className = '',
+  showControls = true,
+  overlay = true,
+}: SlideshowProps) {
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [inView, setInView] = useState(true);
@@ -53,9 +61,9 @@ export default function Slideshow({ images, interval = 5000, className = '' }: S
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden bg-[#07101A] group ${className}`}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      className={`overflow-hidden bg-[#07101A] group ${/\b(absolute|fixed|sticky)\b/.test(className) ? '' : 'relative'} ${className}`}
+      onMouseEnter={showControls ? () => setPaused(true) : undefined}
+      onMouseLeave={showControls ? () => setPaused(false) : undefined}
     >
       {images.map((image, i) => {
         const active = i === index;
@@ -81,48 +89,52 @@ export default function Slideshow({ images, interval = 5000, className = '' }: S
         );
       })}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-[#07101A]/85 via-[#07101A]/10 to-transparent pointer-events-none" />
+      {overlay && (
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07101A]/85 via-[#07101A]/10 to-transparent pointer-events-none" />
+      )}
 
-      <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="h-px w-full bg-white/15 overflow-hidden">
-          <div
-            key={index}
-            className="h-px w-full bg-[#C66B45] origin-left"
-            style={
-              reduce || paused
-                ? { transform: 'scaleX(0)' }
-                : { animation: `slideshow-progress ${interval}ms linear forwards` }
-            }
-          />
-        </div>
-        <div className="flex items-end justify-between gap-4 px-4 sm:px-5 py-4">
-          <div className="min-w-0">
-            <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C66B45] truncate">
-              {images[index].tag ?? ''}
-            </span>
-            <span className="mt-1 block text-[10px] font-bold tracking-[0.2em] text-[#F4F1EA] tabular-nums">
-              {String(index + 1).padStart(2, '0')}
-              <span className="text-[#F4F1EA]/40"> / {String(images.length).padStart(2, '0')}</span>
-            </span>
+      {showControls && (
+        <div className="absolute inset-x-0 bottom-0 z-10">
+          <div className="h-px w-full bg-white/15 overflow-hidden">
+            <div
+              key={index}
+              className="h-px w-full bg-[#C66B45] origin-left"
+              style={
+                reduce || paused
+                  ? { transform: 'scaleX(0)' }
+                  : { animation: `slideshow-progress ${interval}ms linear forwards` }
+              }
+            />
           </div>
-          <div className="flex shrink-0 gap-1.5">
-            {images.map((image, i) => (
-              <button
-                key={image.src}
-                type="button"
-                onClick={() => setIndex(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                aria-current={i === index}
-                className={`h-1 transition-all duration-300 ${
-                  i === index
-                    ? 'w-7 bg-[#C66B45]'
-                    : 'w-3 bg-white/30 hover:bg-white/70'
-                }`}
-              />
-            ))}
+          <div className="flex items-end justify-between gap-4 px-4 sm:px-5 py-4">
+            <div className="min-w-0">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C66B45] truncate">
+                {images[index].tag ?? ''}
+              </span>
+              <span className="mt-1 block text-[10px] font-bold tracking-[0.2em] text-[#F4F1EA] tabular-nums">
+                {String(index + 1).padStart(2, '0')}
+                <span className="text-[#F4F1EA]/40"> / {String(images.length).padStart(2, '0')}</span>
+              </span>
+            </div>
+            <div className="flex shrink-0 gap-1.5">
+              {images.map((image, i) => (
+                <button
+                  key={image.src}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  aria-current={i === index}
+                  className={`h-1 transition-all duration-300 ${
+                    i === index
+                      ? 'w-7 bg-[#C66B45]'
+                      : 'w-3 bg-white/30 hover:bg-white/70'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

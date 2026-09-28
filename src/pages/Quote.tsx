@@ -1,4 +1,6 @@
-﻿import { useState } from 'react';
+﻿import HeroBackground from '../components/HeroBackground';
+import quoteHero from '../assets/quote.jpg';
+import { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
 import { WHATSAPP_CONTACTS } from '../config/contact';
@@ -29,6 +31,7 @@ export default function Quote() {
   return (
     <div className="bg-[#F3F0E9]">
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={[{ src: quoteHero, alt: 'Team reviewing construction plans on site' }]} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />

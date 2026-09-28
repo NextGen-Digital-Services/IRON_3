@@ -1,4 +1,4 @@
-﻿import Slideshow from '../../components/Slideshow';
+﻿import HeroBackground from '../../components/HeroBackground';
 import scaffoldingImg from '../../assets/scaffolding_01.jpg';
 import scaffoldingImg2 from '../../assets/scaffolding_02.jpg';
 import scaffoldingImg3 from '../../assets/scaffolding_03.jpg';
@@ -26,6 +26,7 @@ export default function ScaffoldingFormwork() {
   return (
     <div className="bg-[#F3F0E9]">
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={slideshowImages} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />
@@ -59,8 +60,7 @@ export default function ScaffoldingFormwork() {
               </div>
             </div>
             <div className="lg:col-span-5">
-              <Slideshow images={slideshowImages} interval={4500} className="w-full aspect-[4/5] lg:aspect-[3/4]" />
-              <p className="text-[10px] text-[#6B6560] font-body uppercase tracking-[0.15em] mt-3">Scaffolding systems in the field — looping sequence</p>
+              <img src={scaffoldingImg} alt="Scaffolding" className="w-full aspect-[4/3] object-cover" />
             </div>
           </div>
           <div className="mt-12 bg-[#07101A] p-8 flex flex-col sm:flex-row gap-6 items-center justify-between">

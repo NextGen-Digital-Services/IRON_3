@@ -3,12 +3,25 @@ import { openWhatsApp } from '../../lib/whatsapp';
 import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../../config/contact';
 import factoryImg from '../../assets/about_factory.jpg';
 import pebImg from '../../assets/peb_construction.jpg';
+import HeroBackground from '../../components/HeroBackground';
+import fab1 from '../../assets/fab_01.jpg';
+import fab2 from '../../assets/fab_02.jpg';
+import fab3 from '../../assets/fab_03.jpg';
+import fab4 from '../../assets/fab_04.jpg';
+
+const heroImages = [
+  { src: fab1, alt: 'Welder at work in a modern facility' },
+  { src: fab2, alt: 'Welder working in a dark workshop' },
+  { src: fab3, alt: 'Close-up of a welder during work' },
+  { src: fab4, alt: 'Artisan welding metal in a workshop' },
+];
 
 export default function FabricationCivil() {
   const { setIsQuoteOpen } = useModal();
   return (
     <div className="bg-[#F3F0E9]">
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
+        <HeroBackground images={heroImages} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
           <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />
