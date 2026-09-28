@@ -1,8 +1,25 @@
-﻿import scaffoldingImg from '../../assets/scaffolding.jpg';
-import pebImg from '../../assets/peb_construction.jpg';
+﻿import Slideshow from '../../components/Slideshow';
+import scaffoldingImg from '../../assets/scaffolding_01.jpg';
+import scaffoldingImg2 from '../../assets/scaffolding_02.jpg';
+import scaffoldingImg3 from '../../assets/scaffolding_03.jpg';
+import scaffoldingImg4 from '../../assets/scaffolding_04.jpg';
 import { useModal } from '../../context/ModalContext';
 import { openWhatsApp } from '../../lib/whatsapp';
 import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../../config/contact';
+
+const slideshowImages = [
+  { src: scaffoldingImg, alt: 'Facade scaffolding on a high-rise structure', tag: 'Facade Access' },
+  { src: scaffoldingImg2, alt: 'Scaffolding system around an industrial silo', tag: 'Plant Access' },
+  { src: scaffoldingImg3, alt: 'Workers on scaffolding at a construction site', tag: 'Site Platforms' },
+  { src: scaffoldingImg4, alt: 'Structural scaffolding viewed from below', tag: 'Structural Erection' },
+];
+
+const products = [
+  { img: scaffoldingImg, name: 'Cuplock Scaffolding', app: 'Slab Support' },
+  { img: scaffoldingImg2, name: 'H-Frame Scaffolding', app: 'Maintenance Access' },
+  { img: scaffoldingImg3, name: 'Adjustable Props', app: 'Formwork Shoring' },
+  { img: scaffoldingImg4, name: 'Walk Planks & Couplers', app: 'Working Platforms' },
+];
 
 export default function ScaffoldingFormwork() {
   const { setIsQuoteOpen } = useModal();
@@ -33,7 +50,7 @@ export default function ScaffoldingFormwork() {
                 <p>For projects that need temporary access without purchasing equipment, the division offers rental services backed by 1,000+ MT of scaffolding inventory.</p>
               </div>
               <div className="grid grid-cols-2 gap-px bg-[#D5D0C7] pt-4">
-                {[{ img: scaffoldingImg, name: 'Cuplock Scaffolding', app: 'Slab Support' }, { img: pebImg, name: 'H-Frame Scaffolding', app: 'Maintenance Access' }, { img: scaffoldingImg, name: 'Adjustable Props', app: 'Formwork Shoring' }, { img: pebImg, name: 'Walk Planks & Couplers', app: 'Working Platforms' }].map((p) => (
+                {products.map((p) => (
                   <div key={p.name} className="bg-[#F3F0E9] overflow-hidden group hover:bg-[#07101A] transition-all duration-500">
                     <div className="h-32 overflow-hidden"><img src={p.img} alt={p.name} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" /></div>
                     <div className="p-4"><h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] transition-colors">{p.name}</h4><span className="text-[9px] font-bold text-[#C66B45] uppercase tracking-[0.1em] block mt-1">{p.app}</span></div>
@@ -42,7 +59,8 @@ export default function ScaffoldingFormwork() {
               </div>
             </div>
             <div className="lg:col-span-5">
-              <img src={scaffoldingImg} alt="Scaffolding" className="w-full aspect-[4/3] object-cover" />
+              <Slideshow images={slideshowImages} interval={4500} className="w-full aspect-[4/5] lg:aspect-[3/4]" />
+              <p className="text-[10px] text-[#6B6560] font-body uppercase tracking-[0.15em] mt-3">Scaffolding systems in the field — looping sequence</p>
             </div>
           </div>
           <div className="mt-12 bg-[#07101A] p-8 flex flex-col sm:flex-row gap-6 items-center justify-between">

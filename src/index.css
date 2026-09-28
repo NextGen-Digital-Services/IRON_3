@@ -196,6 +196,12 @@
   animation-play-state: paused;
 }
 
+/* Slideshow progress line */
+@keyframes slideshow-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 /* Editorial number marker */
 .editorial-num {
   font-family: 'Inter', system-ui, sans-serif;
