@@ -32,6 +32,17 @@ const heroImages = [
   { src: homeHero4, alt: 'Aerial view of an industrial factory' },
 ];
 
+const tickerWords = [
+  'STEEL SUPPLY',
+  'SCRAP PROCUREMENT',
+  'SCAFFOLDING & FORMWORK',
+  'FABRICATION',
+  'CIVIL WORKS',
+  'PEB ERECTION',
+  'MATERIAL RECOVERY',
+  'TURNKEY EXECUTION',
+];
+
 import allcargoLogo from '/logos/allcargo.png';
 import bpclLogo from '/logos/bpcl.png';
 import ongcLogo from '/logos/ongc.png';
@@ -171,6 +182,29 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* DIVIDER — KEYWORD TICKER */}
+      <section className="relative bg-[#0B1520] border-y border-[#C66B45]/30 overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#0B1520] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#0B1520] to-transparent z-10 pointer-events-none" />
+        <div className="animate-marquee items-center py-6 sm:py-8">
+          {[...tickerWords, ...tickerWords].map((word, idx) => (
+            <span key={idx} className="flex items-center shrink-0">
+              <span
+                className={
+                  'text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight whitespace-nowrap px-6 sm:px-10 ' +
+                  (idx % 2 === 0
+                    ? 'text-[#F4F1EA]/80'
+                    : 'text-transparent [-webkit-text-stroke:1px_#C66B45]')
+                }
+              >
+                {word}
+              </span>
+              <span className="w-2 h-2 bg-[#C66B45] rotate-45 shrink-0" />
+            </span>
+          ))}
         </div>
       </section>
 
@@ -339,7 +373,7 @@ export default function Home() {
           <div className="animate-marquee flex gap-14 items-center py-4">
             {[...logos, ...logos].map((client, idx) => (
               <div key={idx} className="flex flex-col items-center gap-2 px-2 select-none whitespace-nowrap">
-                <img src={client.img} alt={client.name} className="max-h-8 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src={client.img} alt={client.name} className="max-h-8 w-auto object-contain transition-transform duration-300 ease-out hover:scale-125" />
               </div>
             ))}
           </div>
