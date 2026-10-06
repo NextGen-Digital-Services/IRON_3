@@ -1,22 +1,17 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  ArrowRight,
-  MapPin,
-} from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 import { useModal } from '../context/ModalContext';
 import Reveal from '../components/Reveal';
+import OperatingMap from '../components/OperatingMap';
 
 
 import heroImg from '../assets/industrial_hero.jpg';
 import factoryImg from '../assets/about_factory.jpg';
-import pebImg from '../assets/peb_construction.jpg';
-import projectImg from '../assets/industrial_project.jpg';
 import scaffoldingImg from '../assets/scaffolding.jpg';
 import demolitionImg from '../assets/demolition.jpg';
 import HeroBackground from '../components/HeroBackground';
@@ -30,17 +25,6 @@ const heroImages = [
   { src: homeHero2, alt: 'Construction site with steel framework and cranes' },
   { src: homeHero3, alt: 'Industrial crane in a steel factory yard' },
   { src: homeHero4, alt: 'Aerial view of an industrial factory' },
-];
-
-const tickerWords = [
-  'STEEL SUPPLY',
-  'SCRAP PROCUREMENT',
-  'SCAFFOLDING & FORMWORK',
-  'FABRICATION',
-  'CIVIL WORKS',
-  'PEB ERECTION',
-  'MATERIAL RECOVERY',
-  'TURNKEY EXECUTION',
 ];
 
 import allcargoLogo from '/logos/allcargo.png';
@@ -144,125 +128,78 @@ export default function Home() {
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-screen flex items-center bg-[#07101A] overflow-hidden">
         <HeroBackground className="absolute inset-0 z-0" images={heroImages} interval={5000} />
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          <div className="absolute left-[8%] top-0 bottom-0 w-px bg-white/[0.04]" />
-          <div className="absolute left-[33%] top-0 bottom-0 w-px bg-white/[0.04]" />
-          <div className="absolute left-[58%] top-0 bottom-0 w-px bg-white/[0.04]" />
-          <div className="absolute left-[83%] top-0 bottom-0 w-px bg-white/[0.04]" />
-        </div>
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-20 sm:py-24 lg:py-32 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            <div className="lg:col-span-7 text-left space-y-8">
-              <span className="hero-reveal eyebrow">IRONEX Steel & Infra LLP</span>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-20 sm:py-24 lg:py-28 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-7 text-left space-y-7">
+              <span className="hero-reveal eyebrow">Recover Value &bull; Enable Work &bull; Supply Progress</span>
               <h1 className="hero-reveal heading-editorial text-[#F4F1EA]">
                 Industry Runs On<br />What Moves.<br />And Pays For<br />
                 <span className="text-[#C66B45]">What Doesn't.</span>
               </h1>
               <div className="hero-reveal space-y-4 max-w-xl">
                 <p className="text-sm text-[#F4F1EA]/60 leading-relaxed font-body">
-                  An integrated industrial company operating across scrap procurement, scaffolding systems, steel and material supply, structural fabrication and civil works.
+                  IRONEX STEEL &amp; INFRA LLP is an industrial company based in Navi Mumbai, Maharashtra, operating across Scrap Procurement &amp; Processing, Scaffolding &amp; Formwork, and Construction Material &amp; Steel Supply.
                 </p>
                 <p className="text-sm text-[#F4F1EA]/40 leading-relaxed font-body">
                   We work at three critical points where material availability, movement and execution directly affect productivity, working capital and project continuity.
                 </p>
               </div>
               <div className="hero-reveal flex flex-col sm:flex-row gap-4 pt-2">
-                <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[10px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#D47B55] transition-colors duration-300">
-                  View Our Requirements
+                <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[11px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#D47B55] transition-colors duration-300">
+                  Discuss Your Requirement
                 </button>
-                <Link to="/capabilities" className="border border-[#F4F1EA]/20 text-[#F4F1EA]/70 font-bold text-[10px] uppercase tracking-[0.15em] px-8 py-4 hover:border-[#C66B45] hover:text-[#C66B45] transition-all duration-300 text-center">
-                  Start a Project
+                <Link to="/capabilities" className="border border-[#F4F1EA]/20 text-[#F4F1EA]/70 font-bold text-[11px] uppercase tracking-[0.15em] px-8 py-4 hover:border-[#C66B45] hover:text-[#C66B45] transition-all duration-300 text-center">
+                  Explore Our Businesses
                 </Link>
               </div>
             </div>
-            <div className="lg:col-span-5 hidden lg:block">
-              <div className="hero-reveal relative">
-                <img src={pebImg} alt="Industrial construction" className="w-full aspect-[4/3] object-cover grayscale-[0.3] contrast-[1.1]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07101A]/60 to-transparent" />
+            <div className="lg:col-span-5 text-left space-y-6 lg:border-l lg:border-[#F4F1EA]/10 lg:pl-14">
+              <div className="hero-reveal">
+                <h2 className="text-2xl sm:text-3xl font-heading leading-[1.15] text-[#F4F1EA]">
+                  Industry Runs On Flow.<br />
+                  <span className="text-[#C66B45]">When Flow Breaks, Cost Begins.</span>
+                </h2>
+                <p className="text-[13px] text-[#F4F1EA]/45 leading-relaxed font-body mt-4 max-w-md">
+                  The real commercial consequence is what happens when that material does not move as required.
+                </p>
+              </div>
+              <div className="hero-reveal pt-2">
+                <div className="w-10 h-px bg-[#C66B45] mb-4" />
+                <h2 className="text-lg sm:text-xl font-heading leading-snug text-[#F4F1EA]/85">
+                  Three Industrial Businesses. <span className="text-[#C66B45]">One Standard of Execution.</span>
+                </h2>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DIVIDER — KEYWORD TICKER */}
-      <section className="relative bg-[#0B1520] border-y border-[#C66B45]/30 overflow-hidden">
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#0B1520] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#0B1520] to-transparent z-10 pointer-events-none" />
-        <div className="animate-marquee items-center py-6 sm:py-8">
-          {[...tickerWords, ...tickerWords].map((word, idx) => (
-            <span key={idx} className="flex items-center shrink-0">
-              <span
-                className={
-                  'text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight whitespace-nowrap px-6 sm:px-10 ' +
-                  (idx % 2 === 0
-                    ? 'text-[#F4F1EA]/80'
-                    : 'text-transparent [-webkit-text-stroke:1px_#C66B45]')
-                }
-              >
-                {word}
-              </span>
-              <span className="w-2 h-2 bg-[#C66B45] rotate-45 shrink-0" />
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* THE WAITING PROBLEM — CINEMATIC STATEMENT */}
-      <section className="relative min-h-[60vh] sm:min-h-[85vh] flex items-center bg-[#07101A] overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img ref={waitingImgRef} src={factoryImg} alt="" className="w-full h-full object-cover opacity-30 origin-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07101A]/90 via-[#07101A]/60 to-[#07101A]/40" />
-        </div>
-
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-16 sm:py-24 lg:py-32 w-full">
-          <Reveal>
-            <span className="eyebrow block mb-6 sm:mb-10 text-[#C66B45]">The Real Cost</span>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-[#F4F1EA] leading-[0.95] tracking-tight">
-              The site stops.
-            </p>
-          </Reveal>
-          <Reveal delay={0.35}>
-            <p className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tight mt-2">
-              <span className="text-[#F4F1EA]">The costs </span>
-              <span className="text-[#C66B45]">don't.</span>
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* THREE DIVISIONS */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
+      {/* 03 — OUR THREE BUSINESSES */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#07101A] border-t border-[#F4F1EA]/10">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="mb-16 lg:mb-24">
               <span className="eyebrow block mb-6">Our Divisions</span>
-              <h2 className="heading-editorial text-[#101820] max-w-4xl">
+              <h2 className="heading-editorial text-[#F4F1EA] max-w-4xl">
                 Three Different<br />Requirements.<br />One Industrial<br />Discipline.
               </h2>
             </div>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D5D0C7]">
+          <div className="flex flex-col md:flex-row gap-px bg-[#F4F1EA]/10 biz-cards">
             {[
-              { num: '01', label: 'RECOVER', title: 'Scrap Procurement & Processing', desc: 'IRONEX procures, lifts, segregates and commercially recovers ferrous, non-ferrous, machinery and other industrial surplus material through direct procurement, corporate disposals, auctions and other commercially viable channels.', path: '/capabilities/scrap', img: demolitionImg },
-              { num: '02', label: 'ACCESS', title: 'Scaffolding & Formwork', desc: 'IRONEX provides scaffolding systems, components and accessories on rental and sale for construction, industrial, infrastructure, warehouse and maintenance requirements.', path: '/capabilities/scaffolding', img: scaffoldingImg },
-              { num: '03', label: 'SUPPLY', title: 'Construction Material & Steel Supply', desc: 'IRONEX supplies steel, structural sections, pipes, plates, TMT, roofing systems and other construction materials for industrial, contractor and project requirements.', path: '/capabilities/steel', img: heroImg },
+              { num: '01', label: 'Material Out', title: 'Scrap Procurement & Processing', desc: 'IRONEX procures, lifts, segregates and commercially recovers ferrous, non-ferrous, machinery and other industrial surplus material through direct procurement, corporate disposals, auctions and other commercially viable channels.', tagline: 'Industrial value does not disappear when equipment becomes scrap. It changes form.', cta: 'Explore Scrap', path: '/capabilities/scrap', img: demolitionImg },
+              { num: '02', label: 'Work Enabled', title: 'Scaffolding & Formwork', desc: 'IRONEX provides scaffolding systems, components and accessories on rental and sale for construction, industrial, infrastructure, warehouse and maintenance requirements.', tagline: 'A working site needs more than tonnes of scaffolding. It needs a complete working system.', cta: 'Explore Scaffolding', path: '/capabilities/scaffolding', img: scaffoldingImg },
+              { num: '03', label: 'Material In', title: 'Construction Material & Steel Supply', desc: 'IRONEX supplies steel, structural sections, pipes, plates, TMT, roofing systems and other construction materials for industrial, contractor and project requirements.', tagline: 'Procurement is not complete when the order is placed. It is complete when the requirement is fulfilled.', cta: 'Explore Material Supply', path: '/capabilities/steel', img: heroImg },
             ].map((biz, idx) => (
-              <Reveal key={idx} delay={idx * 0.1}>
-                <Link to={biz.path} className="group block bg-[#F3F0E9] p-6 sm:p-8 lg:p-10 text-left hover:bg-[#07101A] transition-all duration-500 relative overflow-hidden min-h-[320px] sm:min-h-[420px] flex flex-col">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                    <img src={biz.img} alt="" className="w-full h-full object-cover opacity-15" />
+              <Reveal key={idx} delay={idx * 0.1} className="biz-card md:flex-1">
+                <Link to={biz.path} className="group block h-full bg-[#07101A] p-6 sm:p-8 lg:p-10 text-left transition-all duration-500 relative overflow-hidden min-h-[320px] sm:min-h-[420px] flex flex-col">
+                  <div className="absolute inset-0">
+                    <img src={biz.img} alt="" className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07101A]/55 via-[#07101A]/22 to-[#07101A]/8 group-hover:from-[#07101A]/65 group-hover:via-[#07101A]/28 group-hover:to-[#07101A]/10 transition-all duration-500" />
                   </div>
-                  <div className="relative z-10 flex flex-col h-full">
-                    <span className="editorial-num">{biz.num}</span>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C66B45] mt-2 block">{biz.label}</span>
-                    <h3 className="text-xl lg:text-2xl font-extrabold text-[#101820] group-hover:text-[#F4F1EA] mt-6 mb-4 transition-colors duration-500 leading-tight">{biz.title}</h3>
-                    <p className="text-xs text-[#6B6560] group-hover:text-[#F4F1EA]/50 leading-relaxed font-body flex-1 transition-colors duration-500">{biz.desc}</p>
-                    <div className="flex items-center gap-2 mt-8 text-[10px] font-bold uppercase tracking-[0.15em] text-[#C66B45] group-hover:gap-3 transition-all duration-300">
-                      Explore Division<ArrowRight size={14} />
-                    </div>
+                  <div className="relative z-10 flex flex-col h-full justify-center">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DDAE97] block">{biz.num} / {biz.label}</span>
+                    <h3 className="text-xl lg:text-2xl font-extrabold text-[#F4F1EA] mt-4 leading-tight [text-shadow:0_2px_14px_rgba(7,16,26,0.85)]">{biz.title}</h3>
                   </div>
                 </Link>
               </Reveal>
@@ -271,99 +208,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* INDUSTRIAL IMAGE GRID */}
-      <section className="bg-[#07101A] py-1">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
-          {[{ img: demolitionImg, label: 'RECOVER' }, { img: scaffoldingImg, label: 'ACCESS' }, { img: heroImg, label: 'SUPPLY' }].map((item, idx) => (
-            <div key={idx} className="relative h-64 lg:h-80 overflow-hidden group cursor-pointer">
-              <img src={item.img} alt={item.label} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out" />
-              <div className="absolute inset-0 bg-[#07101A]/40 group-hover:bg-[#07101A]/60 transition-all duration-500" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#F4F1EA]/70 group-hover:text-[#C66B45] transition-colors duration-300">{item.label}</span>
-                <div className="w-8 h-px bg-[#C66B45] mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* 04 — PROOF BEFORE PROMISE */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* LEFT — heading + text */}
+            <div className="lg:col-span-6">
+              <Reveal>
+                <span className="eyebrow block mb-6">Proof Before Promise</span>
+                <h2 className="heading-editorial text-[#101820] max-w-4xl">Industrial Trust<br />Should Be Visible.</h2>
+                <div className="w-10 h-px bg-[#C66B45] my-6" />
+                <p className="text-sm text-[#6B6560] leading-relaxed font-body max-w-xl">
+                  Anyone can describe themselves as reliable, experienced or customer-focused. We would rather make those claims easier to verify.
+                </p>
+              </Reveal>
+            </div>
+            {/* RIGHT — stats + bullets */}
+            <div className="lg:col-span-6">
+              <Reveal delay={0.1}>
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C66B45] block mb-6">IRONEX Is Supported By</span>
+              </Reveal>
+              <div className="grid grid-cols-2 gap-px bg-[#D5D0C7]">
+                {[
+                  { stat: '21+', label: 'YEARS', sub: 'underlying family industrial operating experience' },
+                  { stat: '~1,000+', label: 'MT', sub: 'owned scaffolding inventory*' },
+                  { stat: '~650+', label: 'MT', sub: 'monthly scrap procurement*' },
+                  { stat: '~400+', label: 'MT', sub: 'monthly construction material supply capacity*' },
+                ].map((item, idx) => (
+                  <Reveal key={idx} delay={idx * 0.08}>
+                    <div className="bg-[#F3F0E9] h-full p-5 sm:p-6 text-left">
+                      <span className="text-2xl sm:text-3xl font-extrabold text-[#C66B45] tracking-tight">{item.stat}</span>
+                      <span className="text-base sm:text-lg font-extrabold text-[#101820] ml-1">{item.label}</span>
+                      <p className="text-[10px] sm:text-[11px] text-[#6B6560] uppercase tracking-[0.15em] font-bold mt-3 block leading-relaxed">{item.sub}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mt-8">
+                {[
+                  'Industrial Premises & Yard Infrastructure',
+                  'Operational Vehicles & Material Movement Capability',
+                  'Domestic Procurement Network',
+                  'Developing International Scrap Sourcing Capability within RECOVER',
+                ].map((item, idx) => (
+                  <Reveal key={idx} delay={idx * 0.08}>
+                    <div className="flex items-start gap-3">
+                      <span className="w-2 h-2 bg-[#C66B45] rotate-45 mt-2 shrink-0" />
+                      <span className="text-[13px] text-[#101820] leading-relaxed font-body">{item}</span>
+                    </div>
+                  </Reveal>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* DARK STATEMENT */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-[#07101A] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#C66B45]/[0.03] rounded-full blur-[120px]" />
-        </div>
-        <div className="max-w-[900px] mx-auto px-5 sm:px-8 text-center relative z-10">
-          <Reveal>
-            <span className="eyebrow block mb-8">Our Commitment</span>
-            <h2 className="stmt-line heading-editorial text-[#F4F1EA] text-3xl lg:text-5xl">
-              Understand the requirement.<br />Control the movement.<br />
-              <span className="text-[#C66B45]">Execute the commitment.</span>
-            </h2>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <Reveal>
-            <div className="mb-16">
-              <span className="eyebrow block mb-6">Proof Before Promise</span>
-              <h2 className="heading-editorial text-[#101820] max-w-4xl">Industrial Trust<br />Should Be Visible.</h2>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#D5D0C7]">
-            {[
-              { stat: '21+', label: 'YEARS', sub: 'industry experience' },
-              { stat: '~1,000+', label: 'MT', sub: 'material handled' },
-              { stat: '~650+', label: 'MT', sub: 'monthly sourcing' },
-              { stat: '~400+', label: 'MT', sub: 'monthly supply capacity' },
-            ].map((item, idx) => (
-              <Reveal key={idx} delay={idx * 0.08}>
-                <div className="bg-[#F3F0E9] p-5 sm:p-8 lg:p-10 text-left">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#C66B45] tracking-tight">{item.stat}</span>
-                  <span className="text-base sm:text-lg font-extrabold text-[#101820] ml-1">{item.label}</span>
-                  <p className="text-[9px] sm:text-[10px] text-[#6B6560] uppercase tracking-[0.15em] font-bold mt-3 block">{item.sub}</p>
-                </div>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* PROCESS GRID */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <Reveal>
-            <div className="mb-16">
-              <span className="eyebrow block mb-6">Our Process</span>
-              <h2 className="heading-editorial text-[#101820] max-w-4xl">From Requirement<br />to Execution.</h2>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-[#D5D0C7]" id="rtw-steps">
-            {[
-              { step: '01', title: 'UNDERSTAND', desc: 'Requirement, quantity, specification, location and timeline.' },
-              { step: '02', title: 'EVALUATE', desc: 'Availability, operating requirements, logistics and commercial feasibility.' },
-              { step: '03', title: 'COMMIT', desc: 'Clarify scope, quantity and commercial terms.' },
-              { step: '04', title: 'PREPARE', desc: 'Arrange material, vehicles, manpower and documentation.' },
-              { step: '05', title: 'EXECUTE', desc: 'Supply, mobilisation or lifting takes place.' },
-              { step: '06', title: 'CLOSE', desc: 'Complete delivery, weighment, acknowledgement or reconciliation.' },
-            ].map((st, idx) => (
-              <Reveal key={idx} delay={idx * 0.06}>
-                <div className="rtw-step bg-[#F3F0E9] p-6 sm:p-8 lg:p-10 text-left group hover:bg-[#07101A] transition-all duration-500">
-                  <span className="text-2xl lg:text-3xl font-extrabold text-[#C66B45] block mb-4">{st.step}</span>
-                  <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] mb-3 transition-colors duration-500">{st.title}</h3>
-                  <p className="text-xs text-[#6B6560] group-hover:text-[#F4F1EA]/50 leading-relaxed font-body transition-colors duration-500">{st.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CLIENT LOGOS */}
-      <section className="py-12 sm:py-20 bg-[#F3F0E9] border-t border-[#D5D0C7]">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 mb-8 sm:mb-12 text-center">
+      {/* TRUSTED PARTNERS — LOGO STRIP */}
+      <section className="py-12 sm:py-16 bg-[#F3F0E9] border-t border-[#D5D0C7]">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 mb-8 sm:mb-10 text-center">
           <span className="eyebrow block mb-4">Trusted Partners</span>
           <h2 className="text-xl lg:text-2xl font-extrabold text-[#101820] tracking-tight">Trusted by India's Leading Industrial Companies</h2>
         </div>
@@ -380,91 +283,209 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-[#F3F0E9]">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      {/* 02 — THE PROBLEM WE EXIST TO REDUCE */}
+      <section className="relative bg-[#07101A] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img ref={waitingImgRef} src={factoryImg} alt="" className="w-full h-full object-cover opacity-25 origin-center" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07101A]/95 via-[#07101A]/85 to-[#07101A]/60" />
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10 py-16 sm:py-24 lg:py-32 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24">
+            {/* LEFT — ~40% */}
             <div className="lg:col-span-5">
               <Reveal>
-                <div className="relative">
-                  <img src={factoryImg} alt="IRONEX Facility" className="w-full aspect-[4/3] object-cover" />
-                </div>
+                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#F4F1EA]/55 block">
+                  <span className="text-[#C66B45]">02 /</span> The Problem We Exist To Reduce
+                </span>
+              </Reveal>
+
+              <h2 className="heading-editorial text-[#F4F1EA] leading-[0.9] tracking-tight text-[clamp(2.75rem,7vw,5.5rem)] mt-7">
+                <Reveal as="span" delay={0.08} className="block">WAITING</Reveal>
+                <Reveal as="span" delay={0.16} className="block">IS NOT</Reveal>
+                <Reveal as="span" delay={0.24} className="block text-[#C66B45]">NEUTRAL.</Reveal>
+              </h2>
+
+              <Reveal delay={0.3}>
+                <div className="w-14 h-px bg-[#C66B45] mt-8 mb-8" />
+                <p className="text-sm text-[#F4F1EA]/55 leading-relaxed font-body">
+                  Industrial delays rarely arrive with a separate invoice. Their cost appears elsewhere&mdash;in idle labour, blocked space, extended rentals, additional transport, delayed billing, rehandling and lost productivity.
+                </p>
+                <p className="text-sm text-[#F4F1EA]/40 leading-relaxed font-body mt-5">
+                  A seemingly small operational miss can quietly become a much larger commercial loss.
+                </p>
               </Reveal>
             </div>
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <Reveal>
-                <span className="eyebrow block mb-4">Who We Are</span>
-                <h2 className="heading-editorial text-[#101820] text-3xl lg:text-4xl">
-                  Then Decide Where We Fit.
-                </h2>
-                <div className="w-10 h-px bg-[#C66B45] my-6" />
-                <p className="text-sm text-[#6B6560] leading-relaxed font-body">
-                  IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement, scaffolding systems, steel and construction-material supply, structural fabrication and civil works. Built on more than 21 years of family-led industrial experience, IRONEX combines established operational knowledge with a modern, structured and execution-focused approach — based out of Uran, Maharashtra.
+
+            {/* RIGHT — ~60% */}
+            <div className="lg:col-span-7">
+              <Reveal delay={0.15}>
+                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#C66B45] block mb-6">When operations wait:</span>
+              </Reveal>
+
+              <ul className="grid grid-cols-1 sm:grid-cols-2 border-t border-[#F4F1EA]/15">
+                {[
+                  'Labour continues costing money.',
+                  'Equipment remains committed.',
+                  'Rental continues.',
+                  'Project sequences shift.',
+                  'Billing gets pushed.',
+                  'Working capital remains blocked.',
+                  'Industrial space stays occupied.',
+                  'Management time gets consumed in follow-up.',
+                ].map((item, idx) => (
+                  <Reveal as="li" key={item} delay={0.2 + idx * 0.05} className="flex items-start gap-3 border-b border-[#F4F1EA]/15 py-4 text-[13px] text-[#F4F1EA]/70 font-body leading-relaxed sm:odd:border-r sm:odd:pr-8 sm:even:pl-8">
+                    <span className="w-1.5 h-1.5 bg-[#C66B45] rotate-45 mt-2 shrink-0" />
+                    {item}
+                  </Reveal>
+                ))}
+              </ul>
+
+              <Reveal delay={0.6}>
+                <p className="text-[15px] sm:text-base text-[#F4F1EA]/85 leading-relaxed font-body mt-10">
+                  That is the problem IRONEX is built around.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
-                  <div className="border-l-2 border-[#C66B45] pl-4">
-                    <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#C66B45] mb-1">Mission</h4>
-                    <p className="text-[11px] text-[#6B6560] leading-relaxed">Reduce operational fragmentation through specialised capabilities and responsible execution.</p>
-                  </div>
-                  <div className="border-l-2 border-[#C66B45] pl-4">
-                    <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#C66B45] mb-1">Vision</h4>
-                    <p className="text-[11px] text-[#6B6560] leading-relaxed">Build a trusted industrial platform connecting recovery, access, supply and execution.</p>
-                  </div>
-                  <div className="border-l-2 border-[#C66B45] pl-4">
-                    <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#C66B45] mb-1">Values</h4>
-                    <p className="text-[11px] text-[#6B6560] leading-relaxed">Responsibility before excuses, capability before commitment, clarity before quotation.</p>
-                  </div>
+                <p className="text-sm text-[#F4F1EA]/50 leading-relaxed font-body mt-4">
+                  We operate at three points where timing and material directly affect operational performance:
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-4 sm:gap-0">
+                  {[
+                    'Material that needs to move out.',
+                    'Access that needs to be available.',
+                    'Material that needs to move in.',
+                  ].map((s, i) => (
+                    <p key={s} className={`text-[13px] uppercase tracking-[0.12em] font-bold font-body text-[#F4F1EA]/90 leading-relaxed sm:flex-1 ${i > 0 ? 'sm:border-l sm:border-[#F4F1EA]/15 sm:pl-6' : ''} ${i < 2 ? 'sm:pr-6' : ''}`}>
+                      {s}
+                    </p>
+                  ))}
                 </div>
+                <p className="mt-10 pl-5 border-l border-[#C66B45] text-[15px] sm:text-base leading-relaxed font-body text-[#F4F1EA]/60">
+                  The Objective Is Simple: <span className="text-[#C66B45] font-bold">To Keep industrial requirements commercially controlled and operationally moving.</span>
+                </p>
               </Reveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* WHERE WE OPERATE */}
-      <section className="py-16 sm:py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
+      {/* 05 — HOW IRONEX THINKS ABOUT BUSINESS */}
+      <section className="py-16 sm:py-24 lg:py-28 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <Reveal>
-            <div className="mb-12">
-              <span className="eyebrow block mb-6">Where We Operate</span>
-              <h2 className="heading-editorial text-[#101820] max-w-4xl">Positioned Close<br />To Industrial Movement.</h2>
+            <div className="mb-12 max-w-3xl">
+              <span className="eyebrow block mb-6">How IRONEX Thinks About Business</span>
+              <h2 className="heading-editorial text-[#101820]">The Rate Is Only One Part<br />Of The Transaction.</h2>
+              <div className="w-10 h-px bg-[#C66B45] my-6" />
+              <p className="text-sm text-[#6B6560] leading-relaxed font-body">
+                Industrial transactions are judged by the commercial outcome, not the quotation alone.
+              </p>
+              <p className="text-sm text-[#6B6560] leading-relaxed font-body mt-3">
+                Before committing, we consider the factors that determine whether a requirement can actually be executed properly.
+              </p>
             </div>
           </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#D5D0C7]">
-            {['Nhava Sheva', 'JNPT', 'Navi Mumbai', 'Panvel', 'Raigad', 'Mumbai', 'Thane', 'Bhiwandi'].map((location) => (
-              <div key={location} className="bg-[#F3F0E9] p-5 text-center hover:bg-[#07101A] transition-all duration-500 group">
-                <MapPin size={16} className="text-[#C66B45] mx-auto mb-2" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] transition-colors duration-500">{location}</span>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#D5D0C7]">
+            {[
+              { num: '01', title: 'Availability', q: 'Is the required material genuinely accessible?' },
+              { num: '02', title: 'Specification', q: 'Are the correct product, grade, dimensions and quantity understood?' },
+              { num: '03', title: 'Logistics', q: 'How will the material move from source to destination?' },
+              { num: '04', title: 'Timing', q: 'When is it actually required?' },
+              { num: '05', title: 'Commercial Viability', q: 'Does the transaction make economic sense after the real operating costs are considered?' },
+              { num: '06', title: 'Closure', q: 'How will quantities, weights, returns, acknowledgements and documentation be reconciled?' },
+            ].map((f, idx) => (
+              <Reveal key={f.num} delay={idx * 0.06}>
+                <div className="bg-[#F3F0E9] h-full p-6 sm:p-8 lg:p-10 text-left group hover:bg-[#07101A] transition-all duration-500">
+                  <span className="editorial-num">{f.num}</span>
+                  <h3 className="text-[13px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] mt-3 mb-3 transition-colors duration-500">{f.title}</h3>
+                  <p className="text-xs text-[#6B6560] group-hover:text-[#F4F1EA]/50 leading-relaxed font-body transition-colors duration-500">{f.q}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
+          <Reveal delay={0.15}>
+            <p className="text-sm text-[#6B6560] leading-relaxed font-body mt-10 max-w-3xl">
+              That discipline applies differently across each IRONEX business.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-[#07101A] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img src={projectImg} alt="" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 bg-[#07101A]/70" />
-        <div className="max-w-[900px] mx-auto px-5 sm:px-8 relative z-10 text-center space-y-8">
+      {/* PROCESS GRID */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#07101A]">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <Reveal>
-            <h2 className="heading-editorial text-[#F4F1EA] text-3xl lg:text-4xl">Start With The Details.</h2>
-            <p className="text-sm text-[#F4F1EA]/50 font-body max-w-2xl mx-auto leading-relaxed">
-              Send your BOQ, material schedule, scaffolding quantity, project drawings or scrap-lot information. We will direct the enquiry to the relevant IRONEX division.
-            </p>
-            <p className="text-[10px] text-[#F4F1EA]/30 italic font-body">
-              Not sure which division applies? Send the complete requirement. Internal coordination is our responsibility, not yours.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[10px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#D47B55] transition-colors duration-300">
-                View Our Requirements
-              </button>
-              <Link to="/capabilities" className="border border-[#F4F1EA]/20 text-[#F4F1EA]/70 font-bold text-[10px] uppercase tracking-[0.15em] px-8 py-4 hover:border-[#C66B45] hover:text-[#C66B45] transition-all duration-300 text-center">
-                Start a Project
-              </Link>
+            <div className="mb-16">
+              <span className="eyebrow block mb-6">From Requirement To Execution</span>
+              <h2 className="heading-editorial text-[#F4F1EA] max-w-4xl">Fewer Assumptions<br />Before Work Begins.</h2>
             </div>
           </Reveal>
+          <div className="overflow-x-auto px-1 pt-1 pb-2">
+            <div className="relative flex gap-5 lg:gap-7 min-w-[1040px] lg:min-w-0" id="rtw-steps">
+              <div className="rtw-line absolute left-0 right-0 top-[6px] h-px bg-[#F4F1EA]/20" />
+              {[
+                { step: '01', title: 'UNDERSTAND', desc: 'Requirement, quantity, specification, location and timeline.' },
+                { step: '02', title: 'EVALUATE', desc: 'Availability, operating requirements, logistics and commercial feasibility.' },
+                { step: '03', title: 'COMMIT', desc: 'Clarify scope, quantity and commercial terms.' },
+                { step: '04', title: 'PREPARE', desc: 'Arrange material, vehicles, manpower and documentation.' },
+                { step: '05', title: 'EXECUTE', desc: 'Supply, mobilisation or lifting takes place.' },
+                { step: '06', title: 'CLOSE', desc: 'Complete delivery, weighment, acknowledgement or reconciliation as applicable.' },
+              ].map((st, idx) => (
+                <div key={idx} className="rtw-step flex-1 relative pt-8 min-w-0">
+                  <span className="absolute top-0 left-0 w-3 h-3 rotate-45 bg-[#C66B45]" />
+                  <span className="block text-[11px] font-bold tracking-[0.18em] text-[#DDAE97]">{st.step}</span>
+                  <h3 className="text-[12.5px] font-bold uppercase tracking-[0.15em] text-[#F4F1EA] mt-2">{st.title}</h3>
+                  <p className="text-[11.5px] text-[#F4F1EA]/50 leading-relaxed font-body mt-2 pr-3">{st.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <Reveal delay={0.15}>
+            <p className="text-sm text-[#F4F1EA]/45 leading-relaxed font-body mt-10 max-w-3xl">
+              Execution becomes easier when ambiguity is removed early.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 07 — WHERE WE OPERATE */}
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#07101A] border-t border-[#F4F1EA]/10">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <span className="eyebrow block mb-6">Where We Operate</span>
+                <h2 className="heading-editorial text-[#F4F1EA] max-w-xl">Positioned Close<br />To Industrial<br />Movement.</h2>
+                <div className="w-10 h-px bg-[#C66B45] my-6" />
+                <p className="text-sm text-[#F4F1EA]/45 leading-relaxed font-body max-w-lg">
+                  IRONEX operates from Navi Mumbai, with practical access to the wider industrial, port and logistics ecosystem surrounding:
+                </p>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <div className="flex flex-wrap gap-3 mt-6">
+                  {['Ports & CFS facilities', 'Industrial areas', 'Project corridors'].map((t) => (
+                    <span key={t} className="text-[11px] uppercase tracking-[0.12em] text-[#F4F1EA]/60 border border-[#F4F1EA]/20 px-4 py-2">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <div className="mt-8 space-y-3 max-w-lg">
+                  <p className="text-[13px] text-[#F4F1EA]/45 leading-relaxed font-body">
+                    Our location keeps us close to ports, warehouses, logistics facilities, industrial yards, manufacturing units, construction corridors and infrastructure activity.
+                  </p>
+                  <p className="text-[13px] text-[#F4F1EA]/45 leading-relaxed font-body">
+                    Selected requirements can be evaluated across Maharashtra and beyond depending on business category, quantity and commercial viability.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+            <div className="lg:col-span-7">
+              <Reveal delay={0.1}>
+                <OperatingMap />
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

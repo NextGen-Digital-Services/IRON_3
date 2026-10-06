@@ -103,50 +103,50 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
 
       <div className={`grid grid-cols-1 ${isModal ? 'sm:grid-cols-2' : 'md:grid-cols-2'} gap-5`}>
         <div>
-          <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Full Name <span className="text-[#C66B45]">*</span></label>
+          <label className="block text-[11px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Full Name <span className="text-[#C66B45]">*</span></label>
           <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="John Doe"
             className={`${inputClass} ${errors.fullName ? 'border-red-500' : 'border-[#D5D0C7]'}`} />
-          {errors.fullName && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.fullName}</p>}
+          {errors.fullName && <p className="text-red-500 text-[11px] mt-1 font-semibold">{errors.fullName}</p>}
         </div>
         <div>
-          <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Email <span className="text-[#C66B45]">*</span></label>
+          <label className="block text-[11px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Email <span className="text-[#C66B45]">*</span></label>
           <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@company.com"
             className={`${inputClass} ${errors.email ? 'border-red-500' : 'border-[#D5D0C7]'}`} />
-          {errors.email && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.email}</p>}
+          {errors.email && <p className="text-red-500 text-[11px] mt-1 font-semibold">{errors.email}</p>}
         </div>
         <div>
-          <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Phone <span className="text-[#C66B45]">*</span></label>
+          <label className="block text-[11px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Phone <span className="text-[#C66B45]">*</span></label>
           <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 XXXXX XXXXX"
             className={`${inputClass} ${errors.phone ? 'border-red-500' : 'border-[#D5D0C7]'}`} />
-          {errors.phone && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.phone}</p>}
+          {errors.phone && <p className="text-red-500 text-[11px] mt-1 font-semibold">{errors.phone}</p>}
         </div>
         <div>
-          <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Company</label>
+          <label className="block text-[11px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Company</label>
           <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="e.g. Acme Infra Ltd"
             className={`${inputClass} border-[#D5D0C7]`} />
         </div>
       </div>
 
       <div>
-        <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Requirement Category <span className="text-[#C66B45]">*</span></label>
+        <label className="block text-[11px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Requirement Category <span className="text-[#C66B45]">*</span></label>
         <select name="service" value={formData.service} onChange={handleChange}
           className={`${inputClass} appearance-none ${errors.service ? 'border-red-500' : 'border-[#D5D0C7]'}`}>
           <option value="">Select a division...</option>
           {servicesList.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
-        {errors.service && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.service}</p>}
+        {errors.service && <p className="text-red-500 text-[11px] mt-1 font-semibold">{errors.service}</p>}
       </div>
 
       <div>
-        <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Project Details <span className="text-[#C66B45]">*</span></label>
+        <label className="block text-[11px] font-bold uppercase tracking-[0.12em] text-[#101820] mb-1.5">Project Details <span className="text-[#C66B45]">*</span></label>
         <textarea name="message" rows={isModal ? 3 : 5} value={formData.message} onChange={handleChange}
           placeholder="BOQ, quantities, scaffolding scope, material specifications..."
           className={`${inputClass} resize-y ${errors.message ? 'border-red-500' : 'border-[#D5D0C7]'}`} />
-        {errors.message && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.message}</p>}
+        {errors.message && <p className="text-red-500 text-[11px] mt-1 font-semibold">{errors.message}</p>}
       </div>
 
       <button type="submit" disabled={isSubmitting}
-        className="w-full flex items-center justify-center gap-2 bg-[#C66B45] disabled:opacity-50 text-[#F4F1EA] font-bold text-[10px] uppercase tracking-[0.15em] px-6 py-4 hover:bg-[#D47B55] transition-colors cursor-pointer">
+        className="w-full flex items-center justify-center gap-2 bg-[#C66B45] disabled:opacity-50 text-[#F4F1EA] font-bold text-[11px] uppercase tracking-[0.15em] px-6 py-4 hover:bg-[#D47B55] transition-colors cursor-pointer">
         {isSubmitting ? (
           <>
             <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">

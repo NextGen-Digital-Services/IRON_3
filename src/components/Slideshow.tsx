@@ -108,10 +108,10 @@ export default function Slideshow({
           </div>
           <div className="flex items-end justify-between gap-4 px-4 sm:px-5 py-4">
             <div className="min-w-0">
-              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C66B45] truncate">
+              <span className="block text-[11px] font-bold uppercase tracking-[0.2em] text-[#C66B45] truncate">
                 {images[index].tag ?? ''}
               </span>
-              <span className="mt-1 block text-[10px] font-bold tracking-[0.2em] text-[#F4F1EA] tabular-nums">
+              <span className="mt-1 block text-[11px] font-bold tracking-[0.2em] text-[#F4F1EA] tabular-nums">
                 {String(index + 1).padStart(2, '0')}
                 <span className="text-[#F4F1EA]/40"> / {String(images.length).padStart(2, '0')}</span>
               </span>

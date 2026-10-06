@@ -1,4 +1,4 @@
-﻿import { useModal } from '../../context/ModalContext';
+import { useModal } from '../../context/ModalContext';
 import { openWhatsApp } from '../../lib/whatsapp';
 import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../../config/contact';
 import factoryImg from '../../assets/about_factory.jpg';
@@ -44,7 +44,7 @@ export default function FabricationCivil() {
               <p className="text-sm text-[#6B6560] font-body leading-relaxed">The division takes up steel processing, cutting, assembly and welding to produce structural components — beams, columns, trusses, platforms and purlins — as per drawings and specifications.</p>
               <div className="grid grid-cols-2 gap-3">
                 {['Drawing & Specification Review', 'Steel Cutting & Welding', 'Beams, Columns & Trusses', 'On-Site Fabrication'].map((item) => (
-                  <div key={item} className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C66B45] shrink-0" /><span className="text-[11px] text-[#6B6560] font-semibold">{item}</span></div>
+                  <div key={item} className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C66B45] shrink-0" /><span className="text-[13px] text-[#6B6560] font-semibold">{item}</span></div>
                 ))}
               </div>
               <img src={factoryImg} alt="Fabrication" className="w-full aspect-video object-cover mt-4" />
@@ -56,7 +56,7 @@ export default function FabricationCivil() {
               <p className="text-sm text-[#6B6560] font-body leading-relaxed">The division undertakes civil works and construction execution covering foundations, site works, structural and finishing activities. Scope, material responsibility, site access and timelines are agreed before work begins.</p>
               <div className="grid grid-cols-2 gap-3">
                 {['Foundations & Site Works', 'Structural & Finishing Works', 'Industrial Civil Execution', 'Clear Scope Agreement'].map((item) => (
-                  <div key={item} className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C66B45] shrink-0" /><span className="text-[11px] text-[#6B6560] font-semibold">{item}</span></div>
+                  <div key={item} className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C66B45] shrink-0" /><span className="text-[13px] text-[#6B6560] font-semibold">{item}</span></div>
                 ))}
               </div>
               <img src={pebImg} alt="Civil works" className="w-full aspect-video object-cover mt-4" />
@@ -65,8 +65,8 @@ export default function FabricationCivil() {
           <div className="mt-12 bg-[#07101A] p-8 flex flex-col sm:flex-row gap-6 items-center justify-between">
             <p className="text-sm text-[#F4F1EA]/70 font-body italic">A structure is not complete because it looks correct on paper. It is complete when it performs correctly on site.</p>
             <div className="flex gap-4 shrink-0">
-              <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[10px] uppercase tracking-[0.15em] px-6 py-3 hover:bg-[#D47B55] transition-colors">Submit Project Scope</button>
-              <button onClick={() => openWhatsApp(WHATSAPP_CONTACTS.FABRICATION_CIVIL, WHATSAPP_MESSAGES.FABRICATION_DEFAULT)} className="border border-[#25D366] text-[#25D366] font-bold text-[10px] uppercase tracking-[0.15em] px-6 py-3 hover:bg-[#25D366] hover:text-white transition-all">WhatsApp</button>
+              <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[11px] uppercase tracking-[0.15em] px-6 py-3 hover:bg-[#D47B55] transition-colors">Submit Project Scope</button>
+              <button onClick={() => openWhatsApp(WHATSAPP_CONTACTS.FABRICATION_CIVIL, WHATSAPP_MESSAGES.FABRICATION_DEFAULT)} className="border border-[#25D366] text-[#25D366] font-bold text-[11px] uppercase tracking-[0.15em] px-6 py-3 hover:bg-[#25D366] hover:text-white transition-all">WhatsApp</button>
             </div>
           </div>
         </div>

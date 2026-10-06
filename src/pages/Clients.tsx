@@ -1,4 +1,4 @@
-﻿import HeroBackground from '../components/HeroBackground';
+import HeroBackground from '../components/HeroBackground';
 import clientsHero from '../assets/clients.jpg';
 import { useModal } from '../context/ModalContext';
 import pebImg from '../assets/peb_construction.jpg';
@@ -39,8 +39,8 @@ export default function Clients() {
             <div className="lg:col-span-5 space-y-6">
               <img src={pebImg} alt="PEB Construction" className="w-full aspect-[4/3] object-cover" />
               <div className="p-6 bg-[#F3F0E9] border border-[#D5D0C7] space-y-4">
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C66B45]">Cooperation Guidelines</h4>
-                <ul className="space-y-3 text-[11px] font-body text-[#6B6560]">
+                <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C66B45]">Cooperation Guidelines</h4>
+                <ul className="space-y-3 text-[13px] font-body text-[#6B6560]">
                   {['Transparent, open-book material cost estimation.', '100% compliance with quality standards.', 'On-time project milestones backed by SLAs.'].map((item) => (
                     <li key={item} className="flex items-start gap-2.5"><span className="text-[#C66B45] font-bold mt-0.5">•</span><span>{item}</span></li>
                   ))}
@@ -58,7 +58,7 @@ export default function Clients() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-[#D5D0C7] max-w-5xl mx-auto">
             {clientsList.map((client, idx) => (
               <div key={idx} className="bg-[#F3F0E9] px-6 py-8 flex items-center justify-center hover:bg-[#07101A] transition-all duration-500 group">
-                <span className="text-[11px] font-extrabold text-[#101820] group-hover:text-[#F4F1EA] uppercase tracking-[0.1em] transition-colors">{client}</span>
+                <span className="text-[13px] font-extrabold text-[#101820] group-hover:text-[#F4F1EA] uppercase tracking-[0.1em] transition-colors">{client}</span>
               </div>
             ))}
           </div>
@@ -69,7 +69,7 @@ export default function Clients() {
         <div className="max-w-[900px] mx-auto px-5 sm:px-8 text-center space-y-6">
           <h2 className="heading-editorial text-[#101820] text-3xl">Establish a Reliable<br />Vendor Channel</h2>
           <p className="text-xs text-[#6B6560] font-body leading-relaxed max-w-2xl mx-auto">Do you require continuous supplies of structural materials, access scaffolding rentals, or scheduled site clearing contracts? Get in touch with our partnerships office.</p>
-          <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[10px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#D47B55] transition-colors mt-4">Partner with IRONEX</button>
+          <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[11px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#D47B55] transition-colors mt-4">Partner with IRONEX</button>
         </div>
       </section>
     </div>

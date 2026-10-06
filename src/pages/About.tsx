@@ -1,31 +1,17 @@
-﻿import HeroBackground from '../components/HeroBackground';
+import HeroBackground from '../components/HeroBackground';
 import aboutHero from '../assets/about.jpg';
-import { CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useModal } from '../context/ModalContext';
-import { openWhatsApp } from '../lib/whatsapp';
-import { WHATSAPP_CONTACTS, WHATSAPP_MESSAGES } from '../config/contact';
 import projectImg from '../assets/industrial_project.jpg';
 import heroImg from '../assets/industrial_hero.jpg';
+import Reveal from '../components/Reveal';
 
 export default function About() {
   const { setIsQuoteOpen } = useModal();
 
-  const leadership = [
-    { name: 'Soban Khan', role: 'Business Focus: Industrial Scrap, Fabrication & Civil Works', desc: 'Soban leads the development of IRONEX\'s industrial scrap and project-execution divisions, with responsibility for commercial growth, operational systems, partnerships and long-term strategy.' },
-    { name: 'Adnan Khan', role: 'Business Focus: Scaffolding Manufacturing, Rental & Sales', desc: 'Adnan leads scaffolding operations, including inventory deployment, customer coordination, manufacturing requirements, rental controls and division-level systems.' },
-    { name: 'Hasnan Khan', role: 'Business Focus: Pipes, Steel, Roofing & Material Supply', desc: 'Hasnan supports the development of IRONEX\'s material-supply division, including product sourcing, customer requirements, market development and commercial coordination.' }
-  ];
-
-  const milestones = [
-    { year: '2004', title: 'Foundation', desc: 'Years of practical operating experience began across industrial scrap, scaffolding, building-material supply, structural fabrication and civil execution.' },
-    { year: '2026', title: 'IRONEX Incorporated', desc: 'Incorporated in May 2026 to organise established capabilities under one defined identity and operating structure.' },
-    { year: '2026', title: 'Four Divisions', desc: 'Industrial scrap procurement, scaffolding systems, material supply and fabrication & civil divisions established under one operating standard.' },
-    { year: '2026', title: 'System-Driven', desc: 'Moving from person-dependent execution toward documented systems, specialised leadership and stronger compliance.' }
-  ];
-
   return (
     <div className="bg-[#F3F0E9]">
-      {/* Hero */}
+      {/* 01 — HERO */}
       <section className="bg-[#07101A] py-24 lg:py-32 relative overflow-hidden">
         <HeroBackground images={[{ src: aboutHero, alt: 'Industrial plant under clear sky' }]} />
         <div className="absolute inset-0 pointer-events-none">
@@ -35,95 +21,148 @@ export default function About() {
           <div className="absolute left-[83%] top-0 bottom-0 w-px bg-white/[0.04]" />
         </div>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10">
-          <span className="eyebrow block mb-6">Our Origin. Our Structure. Our Direction.</span>
+          <span className="eyebrow block mb-6">Who We Are</span>
           <h1 className="heading-editorial text-[#F4F1EA] max-w-4xl">
-            IRONEX Began<br />Before The Name Did.
+            Industrial Experience.<br />Built Into A More<br />Structured Business.
           </h1>
-          <p className="text-sm text-[#F4F1EA]/40 mt-6 max-w-2xl font-body leading-relaxed">
-            Built from more than 21 years of family-led industrial experience, IRONEX Steel & Infra LLP was incorporated to bring established capabilities into a structured, scalable and professionally managed organisation.
-          </p>
+          <div className="mt-8 max-w-2xl space-y-4">
+            <p className="text-sm text-[#F4F1EA]/55 font-body leading-relaxed">
+              IRONEX STEEL &amp; INFRA LLP was established to bring long-standing family industrial activities into a professionally structured organization designed for greater accountability, scalability and long-term growth.
+            </p>
+            <p className="text-sm text-[#F4F1EA]/40 font-body leading-relaxed">
+              Our focus is deliberately concentrated around businesses where we understand the material, commercial and operational realities.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Overview */}
-      <section className="py-24 lg:py-32 bg-[#F3F0E9]">
+      {/* 02 — OUR STORY */}
+      <section className="py-24 bg-[#F3F0E9]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-7 space-y-6">
-              <span className="eyebrow block mb-4">Overview</span>
-              <h2 className="heading-editorial text-[#101820] text-3xl lg:text-4xl">Where Industrial Work Comes Together</h2>
+              <span className="eyebrow block mb-4">Our Story</span>
+              <h2 className="heading-editorial text-[#101820] text-3xl lg:text-4xl">IRONEX Began<br />Before The Name Did.</h2>
               <div className="w-10 h-px bg-[#C66B45] my-6" />
-              <div className="text-sm text-[#6B6560] space-y-5 font-body leading-relaxed">
-                <p>IRONEX Steel & Infra LLP is an integrated industrial company operating across industrial scrap procurement and processing, scaffolding systems, steel and construction-material supply, structural fabrication and civil works.</p>
-                <p>That operating experience developed through real industrial environments — where commercial decisions, labour management, material movement, payment cycles and site conditions determine whether work succeeds.</p>
-                <p>IRONEX was incorporated in May 2026 to organise these capabilities under one defined identity and operating structure. The objective is to convert experience into a company that can grow through documented systems, specialised leadership, stronger compliance and disciplined execution.</p>
+              <div className="text-sm text-[#6B6560] font-body space-y-5 leading-relaxed">
+                <p>The company&rsquo;s corporate identity is new. The industrial exposure behind it is not.</p>
+                <p>Our family background includes years of activity across scrap, scaffolding, steel and construction material supply, fabrication and industrial project environments.</p>
+                <p>That experience created a practical understanding of something no brochure teaches particularly well:</p>
+                <p className="text-[#101820] font-semibold">How industrial business behaves after the quotation is accepted.</p>
+                <p>Materials change. Sites change. Quantities change. Schedules change. And margins disappear quickly when operating control is weak.</p>
+                <p>IRONEX represents the next stage of that experience.</p>
               </div>
             </div>
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5">
               <img src={projectImg} alt="Industrial complex" className="w-full aspect-[4/3] object-cover" />
-              <div className="p-6 bg-[#F3F0E9] border border-[#D5D0C7] space-y-3">
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C66B45]">Operating Credentials</h4>
-                <ul className="space-y-2 text-[11px] font-semibold text-[#6B6560]">
-                  {['Four Specialised Business Divisions', '22+ Years of Family-Led Operating Legacy', 'Uran & Nhava Sheva Industrial Presence'].map((item) => (
-                    <li key={item} className="flex items-center gap-2"><CheckCircle2 size={14} className="text-[#C66B45]" /><span>{item}</span></li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why IRONEX Was Created */}
+      {/* 03 — WHY IRONEX WAS CREATED */}
       <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-6 space-y-6">
               <span className="eyebrow block mb-4">Why IRONEX Was Created</span>
-              <h2 className="heading-editorial text-[#101820] text-3xl">The Business Had Experience. It Needed an Institution.</h2>
+              <h2 className="heading-editorial text-[#101820] text-3xl">Experience Is Valuable.<br />Systems Make It Scalable.</h2>
               <div className="w-10 h-px bg-[#C66B45] my-6" />
-              <p className="text-sm text-[#6B6560] font-body leading-relaxed">Family-run industrial businesses often become dependent on individual knowledge, verbal instructions and informal systems. That model creates limits:</p>
-              <div className="space-y-3">
-                {['Information remains with individuals', 'Responsibilities overlap', 'Client communication becomes inconsistent', 'Financial control becomes difficult', 'Growth depends on personal supervision', 'Operational knowledge is not documented'].map((p, i) => (
-                  <div key={i} className="flex items-start gap-3"><span className="text-[#C66B45] font-bold text-sm mt-0.5">→</span><span className="text-xs text-[#6B6560] font-body">{p}</span></div>
-                ))}
+              <div className="text-sm text-[#6B6560] font-body space-y-4 leading-relaxed">
+                <p>Traditional family businesses often grow around personal relationships, owner involvement, memory, informal follow-up and individual decision-making.</p>
+                <p>That can build a business. It cannot build an institution indefinitely.</p>
               </div>
             </div>
             <div className="lg:col-span-6 space-y-6">
-              <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#101820]">Strategic Objectives</h3>
+              <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C66B45]">IRONEX Is Being Structured Around</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#D5D0C7]">
-                {['Define separate business divisions', 'Assign clear leadership responsibility', 'Document operating processes', 'Improve financial and inventory controls', 'Strengthen statutory compliance', 'Build a recognisable industrial brand', 'Prepare for larger corporate and PSU opportunities', 'Create a platform for regional expansion'].map((obj, i) => (
-                  <div key={i} className="bg-[#F3F0E9] p-5">
-                    <span className="text-xl font-extrabold text-[#C66B45] block mb-1">{String(i + 1).padStart(2, '0')}</span>
-                    <p className="text-[11px] font-semibold text-[#101820]">{obj}</p>
+                {['Clear responsibilities', 'Better documentation', 'Commercial controls', 'Procurement systems', 'Inventory visibility', 'Compliance', 'Professional communication', 'Repeatable operating processes'].map((item, i) => (
+                  <div key={i} className="bg-[#F3F0E9] p-5 flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 bg-[#C66B45] rotate-45 mt-2 shrink-0" />
+                    <span className="text-[13px] font-semibold text-[#101820] font-body">{item}</span>
                   </div>
                 ))}
+              </div>
+              <div className="border-l border-[#C66B45] pl-5 pt-2">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C66B45] block mb-2">The Objective</span>
+                <p className="text-sm text-[#6B6560] font-body leading-relaxed">Preserve the practical experience. Remove the dependency on informality.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission, Vision, Values */}
+      {/* 04 — OUR BUSINESS ARCHITECTURE */}
+      <section className="py-24 bg-[#07101A] relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10">
+          <Reveal>
+            <div className="mb-14 max-w-3xl">
+              <span className="eyebrow block mb-6">Our Business Architecture</span>
+              <h2 className="heading-editorial text-[#F4F1EA] text-4xl lg:text-5xl">
+                RECOVER.<br />ACCESS.<br /><span className="text-[#C66B45]">SUPPLY.</span>
+              </h2>
+              <div className="w-10 h-px bg-[#C66B45] my-6" />
+              <p className="text-sm text-[#F4F1EA]/55 font-body leading-relaxed">
+                These are not three random product categories. They represent three recurring requirements across industrial environments.
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#F4F1EA]/10">
+            {[
+              { name: 'RECOVER', desc: 'Remove surplus, obsolete and scrap material while recovering its commercial value.', ext: 'International Scrap Imports extends RECOVER into selected overseas sourcing opportunities, evaluated against specification, compliance and landed cost.' },
+              { name: 'ACCESS', desc: 'Provide temporary systems required for people to execute work safely and productively.', ext: 'Scaffolding Exports extends ACCESS to international buyers through BOQ-led specification, sourcing and shipment evaluation.' },
+              { name: 'SUPPLY', desc: 'Provide steel and construction materials required to build, repair and maintain projects.', ext: '' },
+            ].map((b, i) => (
+              <Reveal key={b.name} delay={i * 0.08}>
+                <div className="bg-[#07101A] h-full p-8">
+                  <h3 className="text-xl font-extrabold text-[#C66B45] tracking-tight">{b.name}</h3>
+                  <p className="text-[13px] text-[#F4F1EA]/60 font-body leading-relaxed mt-4">{b.desc}</p>
+                  {b.ext && <p className="text-[13px] text-[#F4F1EA]/40 font-body leading-relaxed mt-4">{b.ext}</p>}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.2}>
+            <div className="mt-10 max-w-3xl">
+              <p className="text-sm text-[#F4F1EA]/55 font-body leading-relaxed">They are different businesses, but they depend on common operating foundations:</p>
+              <p className="text-[13px] uppercase tracking-[0.12em] font-bold text-[#F4F1EA]/85 font-body mt-4 leading-relaxed">
+                Material knowledge. Procurement. Inventory. Logistics. Commercial judgement. Execution.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 05 — THE WAY WE OPERATE */}
       <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D5D0C7]">
+          <div className="mb-14 max-w-3xl">
+            <span className="eyebrow block mb-6">The Way We Operate</span>
+            <h2 className="heading-editorial text-[#101820] text-3xl lg:text-4xl">Professional Without<br />Becoming Bureaucratic.</h2>
+            <div className="w-10 h-px bg-[#C66B45] my-6" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#D5D0C7]">
             {[
-              { num: '01', title: 'Mission', desc: 'To reduce operational fragmentation for industrial and construction clients through specialised capabilities, transparent communication and responsible execution.' },
-              { num: '02', title: 'Vision', desc: 'To build a trusted industrial platform that connects material recovery, access systems, steel supply and physical execution under one accountable organisation.' },
-              { num: '03', title: 'Core Values', desc: 'Responsibility before excuses, capability before commitment, clarity before quotation, systems before scale, relationships beyond transactions.' }
-            ].map((item) => (
-              <div key={item.num} className="bg-[#F3F0E9] p-8">
-                <span className="editorial-num">{item.num}</span>
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#101820] mt-4 mb-3">{item.title}</h3>
-                <p className="text-xs text-[#6B6560] leading-relaxed font-body">{item.desc}</p>
-              </div>
+              { num: '01', title: 'Commercial Clarity', desc: 'Know what is being bought or sold before execution.' },
+              { num: '02', title: 'Responsiveness', desc: 'Industrial customers should not need five follow-ups for one answer.' },
+              { num: '03', title: 'Discipline', desc: 'Weight, quantity, documentation and commercial terms matter.' },
+              { num: '04', title: 'Accountability', desc: 'The person responsible for a requirement should understand its status.' },
+              { num: '05', title: 'Practical Decision-Making', desc: 'Not every opportunity deserves a \u201Cyes\u201D.' },
+              { num: '06', title: 'Repeat Business', desc: 'A customer\u2019s second order matters more than an impressive first meeting.' },
+            ].map((item, i) => (
+              <Reveal key={item.num} delay={i * 0.06}>
+                <div className="bg-[#F3F0E9] h-full p-8 group hover:bg-[#07101A] transition-all duration-500">
+                  <span className="editorial-num">{item.num}</span>
+                  <h3 className="text-[13px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] mt-3 mb-3 transition-colors duration-500">{item.title}</h3>
+                  <p className="text-xs text-[#6B6560] group-hover:text-[#F4F1EA]/50 leading-relaxed font-body transition-colors duration-500">{item.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Infrastructure */}
+      {/* 06 — OUR GEOGRAPHICAL ADVANTAGE */}
       <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -131,68 +170,66 @@ export default function About() {
               <img src={heroImg} alt="Heavy engineering" className="w-full aspect-[4/3] object-cover" />
             </div>
             <div className="lg:col-span-7 space-y-6">
-              <span className="eyebrow block mb-4">Modern Infrastructure</span>
-              <h2 className="heading-editorial text-[#101820] text-3xl">Operating Around Uran & the Nhava Sheva Industrial Region</h2>
+              <span className="eyebrow block mb-4">Our Geographical Advantage</span>
+              <h2 className="heading-editorial text-[#101820] text-3xl">Built Around An<br />Industrial Ecosystem.</h2>
               <div className="w-10 h-px bg-[#C66B45] my-6" />
-              <p className="text-sm text-[#6B6560] font-body leading-relaxed">IRONEX operates through warehouse, commercial and open-yard infrastructure around Uran and the Nhava Sheva industrial region — supporting material storage, scaffolding inventory, scrap handling and fabrication activity.</p>
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                {['1,000+ MT scaffolding inventory', '350+ MT monthly steel-supply', '300-500 MT monthly scrap handling', '100+ fabrication assignments'].map((item) => (
-                  <div key={item} className="flex items-center gap-2"><span className="w-2 h-2 bg-[#C66B45] shrink-0" /><span className="text-[11px] text-[#6B6560] font-semibold">{item}</span></div>
+              <p className="text-sm text-[#6B6560] font-body leading-relaxed">Our Uran&ndash;Raigad base places IRONEX close to:</p>
+              <div className="grid grid-cols-2 gap-3">
+                {['JNPT / Nhava Sheva', 'Ports', 'Container freight stations', 'Warehousing clusters', 'Logistics parks', 'Industrial facilities', 'Infrastructure development', 'Major construction corridors'].map((item) => (
+                  <div key={item} className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C66B45] shrink-0" /><span className="text-[13px] text-[#6B6560] font-semibold">{item}</span></div>
                 ))}
+              </div>
+              <div className="text-sm text-[#6B6560] font-body space-y-3 leading-relaxed pt-2">
+                <p>For our businesses, geography is more than an address.</p>
+                <p>It directly influences procurement, transport, inventory movement, scrap availability, project access and delivery economics.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Milestones */}
+      {/* 07 — WHERE IRONEX IS HEADED */}
       <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="mb-16">
-            <span className="eyebrow block mb-6">Milestones</span>
-            <h2 className="heading-editorial text-[#101820] max-w-4xl">Building on 22+ Years<br />of Operating Experience</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#D5D0C7]">
-            {milestones.map((mil, idx) => (
-              <div key={idx} className="bg-[#F3F0E9] p-6">
-                <span className="text-3xl font-extrabold text-[#C66B45] block mb-2">{mil.year}</span>
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#101820] mb-2">{mil.title}</h4>
-                <p className="text-[11px] text-[#6B6560] leading-relaxed font-body">{mil.desc}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-5 space-y-6">
+              <span className="eyebrow block mb-4">Where IRONEX Is Headed</span>
+              <h2 className="heading-editorial text-[#101820] text-3xl">Build Depth Before<br />Adding Width.</h2>
+              <div className="w-10 h-px bg-[#C66B45] my-6" />
+              <p className="text-sm text-[#6B6560] font-body leading-relaxed">Our long-term direction includes:</p>
+            </div>
+            <div className="lg:col-span-7 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#D5D0C7]">
+                {['Larger industrial procurement', 'Structured scrap recovery', 'International Scrap Imports within RECOVER', 'Stronger warehousing and yard systems', 'Greater scaffolding utilisation', 'Project-based steel supply', 'Digital inventory and commercial systems', 'Professional management', 'Deeper corporate relationships'].map((item) => (
+                  <div key={item} className="bg-[#F3F0E9] p-5 flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 bg-[#C66B45] rotate-45 mt-2 shrink-0" />
+                    <span className="text-[13px] font-semibold text-[#101820] font-body">{item}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+              <div className="text-sm text-[#6B6560] font-body space-y-3 leading-relaxed pt-2">
+                <p>We are not interested in adding services simply to make the company profile longer.</p>
+                <p className="text-[#101820] font-semibold">Capability should grow before the claim does.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Leadership */}
-      <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="mb-16">
-            <span className="eyebrow block mb-6">Leadership</span>
-            <h2 className="heading-editorial text-[#101820] max-w-4xl">Leadership &<br />Business Focus</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D5D0C7] max-w-5xl">
-            {leadership.map((leader, idx) => (
-              <div key={idx} className="bg-[#F3F0E9] p-8">
-                <span className="text-[10px] font-bold text-[#C66B45] uppercase tracking-[0.15em] block mb-2">{leader.role}</span>
-                <h3 className="text-base font-extrabold text-[#101820] mb-3">{leader.name}</h3>
-                <p className="text-[11px] text-[#6B6560] font-body leading-relaxed">{leader.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
+      {/* 08 — ABOUT CTA */}
       <section className="py-24 bg-[#07101A] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10"><img src={projectImg} alt="" className="w-full h-full object-cover" /></div>
         <div className="absolute inset-0 bg-[#07101A]/70" />
         <div className="max-w-[900px] mx-auto px-5 sm:px-8 relative z-10 text-center space-y-8">
-          <h2 className="heading-editorial text-[#F4F1EA] text-3xl">You Bring the Requirement.<br />We Bring the Right Division.</h2>
-          <p className="text-sm text-[#F4F1EA]/40 font-body max-w-2xl mx-auto">From material recovery and access systems to steel supply and physical execution, IRONEX delivers with defined responsibility across four specialised divisions.</p>
+          <h2 className="heading-editorial text-[#F4F1EA] text-3xl lg:text-4xl">
+            Understand What We Do.<br /><span className="text-[#C66B45]">Then Decide Where We Fit.</span>
+          </h2>
+          <p className="text-sm text-[#F4F1EA]/45 font-body max-w-2xl mx-auto leading-relaxed">
+            Explore our businesses, operating capabilities and commercial approach&mdash;or speak with our team about a specific requirement.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-            <button onClick={() => setIsQuoteOpen(true)} className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[10px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#D47B55] transition-colors">Request a Quote</button>
-            <button onClick={() => openWhatsApp(WHATSAPP_CONTACTS.GENERAL, WHATSAPP_MESSAGES.GENERAL_DEFAULT)} className="border border-[#25D366] text-[#25D366] font-bold text-[10px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#25D366] hover:text-white transition-all">WhatsApp IRONEX</button>
+            <Link to="/capabilities" className="bg-[#C66B45] text-[#F4F1EA] font-bold text-[11px] uppercase tracking-[0.15em] px-8 py-4 hover:bg-[#D47B55] transition-colors text-center">Explore Our Businesses</Link>
+            <button onClick={() => setIsQuoteOpen(true)} className="border border-[#F4F1EA]/20 text-[#F4F1EA]/70 font-bold text-[11px] uppercase tracking-[0.15em] px-8 py-4 hover:border-[#C66B45] hover:text-[#C66B45] transition-all">Start A Business Discussion</button>
           </div>
         </div>
       </section>

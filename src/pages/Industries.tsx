@@ -1,4 +1,4 @@
-﻿import HeroBackground from '../components/HeroBackground';
+import HeroBackground from '../components/HeroBackground';
 import industriesHero from '../assets/industries.jpg';
 import { Building2, Layers, Workflow, Anchor, TrendingUp, Zap, Truck, Cpu, ArrowRight } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
@@ -11,14 +11,16 @@ import demolitionImg from '../assets/demolition.jpg';
 export default function Industries() {
   const { setIsQuoteOpen } = useModal();
   const industriesList = [
-    { name: 'Ports & Logistics', icon: Anchor, image: heroImg, overview: 'Ports, warehouses and logistics operators around the Nhava Sheva and Uran industrial region needing access systems, material supply and civil support.' },
-    { name: 'Industrial Manufacturing', icon: Cpu, image: pebImg, overview: 'Production facilities needing structural fabrication, steel and pipe supply, scrap clearing and civil works.' },
-    { name: 'Warehousing & Distribution', icon: Layers, image: projectImg, overview: 'Distribution centres and storage facilities requiring steel supply, scaffolding and civil execution.' },
-    { name: 'Builders & Developers', icon: TrendingUp, image: factoryImg, overview: 'Developers needing reliable supply of steel, pipes, roofing and scaffolding for residential and commercial projects.' },
-    { name: 'Infrastructure Contractors', icon: Workflow, image: projectImg, overview: 'Contractors executing bridges, over-bridges, foundations and structural works.' },
-    { name: 'EPC & Heavy Engineering', icon: Building2, image: demolitionImg, overview: 'EPC and heavy engineering players needing fabrication, civil works and material procurement support.' },
-    { name: 'Government & PSUs', icon: Zap, image: heroImg, overview: 'Public-sector organisations floating tenders for steel, scrap, scaffolding and civil works.' },
-    { name: 'Fabricators & Contractors', icon: Truck, image: factoryImg, overview: 'Smaller fabricators and contractors sourcing raw material, pipes, roofing and scaffolding.' }
+    { name: 'Ports & Logistics', icon: Anchor, image: heroImg },
+    { name: 'Warehousing', icon: Layers, image: projectImg },
+    { name: 'Manufacturing', icon: Cpu, image: pebImg },
+    { name: 'Construction', icon: Building2, image: factoryImg },
+    { name: 'Infrastructure', icon: Workflow, image: projectImg },
+    { name: 'Industrial Contractors', icon: Truck, image: demolitionImg },
+    { name: 'Developers', icon: TrendingUp, image: factoryImg },
+    { name: 'Fabricators', icon: Zap, image: pebImg },
+    { name: 'Metal Processing & Recycling', icon: Layers, image: heroImg },
+    { name: 'Industrial Maintenance', icon: Workflow, image: projectImg },
   ];
 
   return (
@@ -40,7 +42,7 @@ export default function Industries() {
 
       <section className="py-24 lg:py-32 bg-[#F3F0E9]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#D5D0C7]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-[#D5D0C7]">
             {industriesList.map((ind, idx) => {
               const Icon = ind.icon;
               return (
@@ -52,10 +54,12 @@ export default function Industries() {
                       <Icon size={18} />
                     </div>
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-base font-extrabold text-[#101820] group-hover:text-[#F4F1EA] mb-2 transition-colors duration-500">{ind.name}</h3>
-                    <p className="text-[11px] text-[#6B6560] group-hover:text-[#F4F1EA]/40 font-body leading-relaxed flex-1 transition-colors duration-500">{ind.overview}</p>
-                    <button onClick={() => setIsQuoteOpen(true)} className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#C66B45] mt-4 group-hover:gap-3 transition-all duration-300">
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-base font-extrabold text-[#101820] group-hover:text-[#F4F1EA] transition-colors duration-500">{ind.name}</h3>
+                      <div className="w-8 h-px bg-[#C66B45] mt-4" />
+                    </div>
+                    <button onClick={() => setIsQuoteOpen(true)} className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[#C66B45] mt-6 group-hover:gap-3 transition-all duration-300">
                       Discuss a Requirement<ArrowRight size={12} />
                     </button>
                   </div>

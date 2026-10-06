@@ -328,7 +328,7 @@ export default function ProblemChain() {
 
         {/* ---- Scroll hint ---- */}
         <div ref={hintRef} className="absolute left-1/2 bottom-7 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
-          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-gray-400">
+          <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-gray-400">
             Scroll to trace the chain
           </span>
           <span className="w-px h-8 bg-gradient-to-b from-[#C66B45]/60 to-transparent" />
@@ -336,7 +336,7 @@ export default function ProblemChain() {
 
         {/* ---- Counter ---- */}
         <div className="absolute top-6 left-1/2 -translate-x-1/2 lg:top-7 lg:right-7 lg:left-auto lg:translate-x-0 hidden lg:block pointer-events-none">
-          <span ref={counterRef} className="text-[10px] font-bold tracking-[0.3em] text-secondary">
+          <span ref={counterRef} className="text-[11px] font-bold tracking-[0.3em] text-secondary">
             CHAIN 00 / 08
           </span>
         </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import ContactForm from './ContactForm';
 import { useModal } from '../context/ModalContext';
@@ -25,29 +25,29 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    {
-      name: 'Access',
-      path: '/capabilities/scaffolding',
-    },
-    {
-      name: 'Supply',
-      path: '/capabilities/steel',
-    },
+    { name: 'Recover', path: '/capabilities/scrap' },
+    { name: 'Access', path: '/capabilities/scaffolding' },
+    { name: 'Supply', path: '/capabilities/steel' },
     {
       name: 'Capabilities',
       path: '/capabilities',
       dropdown: [
-        { name: 'Scrap Procurement', path: '/capabilities/scrap' },
-        { name: 'Scaffolding & Formwork', path: '/capabilities/scaffolding' },
-        { name: 'Steel & Material Supply', path: '/capabilities/steel' },
         { name: 'Fabrication & Civil', path: '/capabilities/fabrication' },
       ]
     },
-    { name: 'Industries', path: '/industries' },
     { name: 'Contact', path: '/quote' },
   ];
+
+  const divisionPaths = ['/capabilities/scrap', '/capabilities/scaffolding', '/capabilities/steel'];
+  const isActiveLink = (path: string) => {
+    if (path === '/capabilities') {
+      return location.pathname.startsWith('/capabilities') && !divisionPaths.includes(location.pathname);
+    }
+    return location.pathname === path;
+  };
+  const navFont = "[font-family:'Inter',system-ui,sans-serif]";
+  const navItemBase = `relative flex items-center px-2.5 py-1.5 text-[12px] font-normal uppercase tracking-[0.06em] transition-colors duration-300 ${navFont}`;
 
   return (
     <>
@@ -74,7 +74,7 @@ export default function Navbar() {
                 <span className="text-sm font-extrabold tracking-[-0.02em] text-[#F4F1EA] leading-none">
                   IRONEX
                 </span>
-                <span className="text-[8px] font-semibold tracking-[0.15em] text-[#F4F1EA]/40 uppercase leading-none hidden sm:inline">
+                <span className="text-[9px] font-semibold tracking-[0.15em] text-[#F4F1EA]/40 uppercase leading-none hidden sm:inline">
                   Steel & Infra
                 </span>
               </div>
@@ -82,7 +82,10 @@ export default function Navbar() {
 
             {/* Center: Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
+              {navLinks.map((link) => {
+                const active = isActiveLink(link.path);
+                const activeCls = active ? 'text-[#C66B45]' : 'text-[#F4F1EA]/60 hover:text-[#C66B45]';
+                return (
                 <div
                   key={link.name}
                   className="relative"
@@ -90,23 +93,22 @@ export default function Navbar() {
                   onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
                 >
                   {link.dropdown ? (
-                    <button className="flex items-center gap-1 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F4F1EA]/60 hover:text-[#C66B45] transition-colors duration-300 focus:outline-none">
-                      {link.name}
-                      <ChevronDown size={12} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
-                    </button>
-                  ) : (
-                    <NavLink
+                    <Link
                       to={link.path}
-                      className={({ isActive }) =>
-                        `px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 ${
-                          isActive
-                            ? 'text-[#C66B45]'
-                            : 'text-[#F4F1EA]/60 hover:text-[#C66B45]'
-                        }`
-                      }
+                      className={`${navItemBase} gap-1 ${activeCls}`}
                     >
                       {link.name}
-                    </NavLink>
+                      <ChevronDown size={12} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
+                      {active && <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 h-px w-7 bg-[#C66B45]" />}
+                    </Link>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className={`${navItemBase} ${activeCls}`}
+                    >
+                      {link.name}
+                      {active && <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 h-px w-7 bg-[#C66B45]" />}
+                    </Link>
                   )}
 
                   {/* Dropdown */}
@@ -117,7 +119,7 @@ export default function Navbar() {
                           <Link
                             key={sub.name}
                             to={sub.path}
-                            className="block px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#F4F1EA]/50 hover:text-[#C66B45] hover:bg-white/[0.03] transition-all duration-200"
+                            className={`block px-5 py-2 text-[12px] font-normal uppercase tracking-[0.06em] text-[#F4F1EA]/50 hover:text-[#C66B45] hover:bg-white/[0.03] transition-all duration-200 ${navFont}`}
                           >
                             {sub.name}
                           </Link>
@@ -126,16 +128,17 @@ export default function Navbar() {
                     </div>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </nav>
 
             {/* Right: CTA */}
             <div className="hidden lg:flex items-center">
               <Link
                 to="/quote"
-                className="px-5 py-2 text-[10px] font-bold uppercase tracking-[0.15em] bg-[#C66B45] text-[#F4F1EA] hover:bg-[#D47B55] transition-colors duration-300"
+                className="px-5 py-2 text-[10.5px] font-bold uppercase tracking-[0.12em] bg-[#C66B45] text-[#F4F1EA] hover:bg-[#D47B55] transition-colors duration-300 whitespace-nowrap"
               >
-                Start a Project
+                Discuss Your Requirement
               </Link>
             </div>
 
@@ -175,16 +178,20 @@ export default function Navbar() {
           </div>
 
           <nav className="flex-1 overflow-y-auto py-4">
-            {navLinks.map((link) => (
+            {navLinks.map((link) => {
+              const active = isActiveLink(link.path);
+              const activeCls = active ? 'text-[#C66B45]' : 'text-[#F4F1EA]/60 hover:text-[#C66B45]';
+              return (
               <div key={link.name}>
                 {link.dropdown ? (
                   <>
                     <button
                       onClick={() => setActiveDropdown(activeDropdown === link.name ? null : link.name)}
-                      className="flex justify-between items-center w-full px-5 py-3 text-[11px] font-bold uppercase tracking-[0.12em] text-[#F4F1EA]/60 hover:text-[#C66B45] transition-colors"
+                      className={`relative flex justify-between items-center w-full px-5 py-2.5 text-[12.5px] font-normal uppercase tracking-[0.06em] transition-colors ${activeCls} ${navFont}`}
                     >
                       {link.name}
                       <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
+                      {active && <span className="absolute left-5 -bottom-1 h-px w-7 bg-[#C66B45]" />}
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === link.name ? 'max-h-60' : 'max-h-0'}`}>
                       {link.dropdown.map((sub) => (
@@ -192,7 +199,7 @@ export default function Navbar() {
                           key={sub.name}
                           to={sub.path}
                           onClick={() => setIsOpen(false)}
-                          className="block pl-8 pr-5 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors"
+                          className={`block pl-8 pr-5 py-2 text-[11.5px] font-normal uppercase tracking-[0.06em] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors ${navFont}`}
                         >
                           {sub.name}
                         </Link>
@@ -200,29 +207,27 @@ export default function Navbar() {
                     </div>
                   </>
                 ) : (
-                  <NavLink
+                  <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-5 py-3 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors border-b border-white/[0.04] ${
-                        isActive ? 'text-[#C66B45]' : 'text-[#F4F1EA]/60 hover:text-[#C66B45]'
-                      }`
-                    }
+                    className={`relative block px-5 py-2.5 text-[12.5px] font-normal uppercase tracking-[0.06em] transition-colors border-b border-white/[0.04] ${activeCls} ${navFont}`}
                   >
                     {link.name}
-                  </NavLink>
+                    {active && <span className="absolute left-5 -bottom-1 h-px w-7 bg-[#C66B45]" />}
+                  </Link>
                 )}
               </div>
-            ))}
+              );
+            })}
           </nav>
 
           <div className="px-5 py-5 border-t border-white/[0.06]">
             <Link
               to="/quote"
               onClick={() => setIsOpen(false)}
-              className="block w-full py-3 text-center text-[10px] font-bold uppercase tracking-[0.15em] bg-[#C66B45] text-[#F4F1EA] hover:bg-[#D47B55] transition-colors"
+              className="block w-full py-3 text-center text-[10.5px] font-bold uppercase tracking-[0.12em] bg-[#C66B45] text-[#F4F1EA] hover:bg-[#D47B55] transition-colors"
             >
-              Start a Project
+              Discuss Your Requirement
             </Link>
           </div>
         </div>
@@ -239,7 +244,7 @@ export default function Navbar() {
             <div className="bg-[#07101A] px-6 py-4 flex justify-between items-center border-b border-white/[0.06]">
               <div>
                 <h3 className="text-sm font-extrabold text-[#F4F1EA] uppercase tracking-[0.12em]">Get a Quote</h3>
-                <p className="text-[10px] text-[#F4F1EA]/40 mt-1 tracking-wide">Share your project details and we will connect you with the right division.</p>
+                <p className="text-[11px] text-[#F4F1EA]/40 mt-1 tracking-wide">Share your project details and we will connect you with the right division.</p>
               </div>
               <button onClick={() => setIsQuoteOpen(false)} className="text-[#F4F1EA]/40 hover:text-[#C66B45] transition-colors">
                 <X size={18} />

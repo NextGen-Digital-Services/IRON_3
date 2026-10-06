@@ -51,15 +51,15 @@ export default function ServiceCard({ image, title, description, path, icon, cat
             <div className="space-y-4 pt-4 border-t border-gray-150 text-left">
               {categories.map((cat, cIdx) => (
                 <div key={cIdx} className="space-y-1">
-                  <span className="text-[10px] font-bold text-secondary uppercase tracking-wider block">
+                  <span className="text-[11px] font-bold text-secondary uppercase tracking-wider block">
                     {cat.name}
                   </span>
                   {cat.tagline && (
-                    <span className="text-[9px] text-gray-400 italic block font-semibold">
+                    <span className="text-[10px] text-gray-400 italic block font-semibold">
                       {cat.tagline}
                     </span>
                   )}
-                  <ul className="grid grid-cols-1 gap-1 text-[11px] text-gray-500 font-body mt-1">
+                  <ul className="grid grid-cols-1 gap-1 text-[13px] text-gray-500 font-body mt-1">
                     {cat.services.slice(0, 3).map((s, sIdx) => (
                       <li key={sIdx} className="flex items-start gap-1.5">
                         <span className="text-secondary mt-0.5">•</span>
@@ -67,7 +67,7 @@ export default function ServiceCard({ image, title, description, path, icon, cat
                       </li>
                     ))}
                     {cat.services.length > 3 && (
-                      <li className="text-[9px] text-gray-400 font-medium pl-3">
+                      <li className="text-[10px] text-gray-400 font-medium pl-3">
                         + {cat.services.length - 3} more services
                       </li>
                     )}

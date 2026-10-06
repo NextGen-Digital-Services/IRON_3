@@ -5,6 +5,7 @@ import { ModalProvider } from './context/ModalContext';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import GlobalCTA from './components/GlobalCTA';
 import ScrollToTop from './components/ScrollToTop';
 import LogoIntro from './components/intro/LogoIntro';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -14,7 +15,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Capabilities from './pages/Capabilities';
 import ScrapProcurement from './pages/capabilities/ScrapProcurement';
+import ScrapImports from './pages/capabilities/ScrapImports';
 import ScaffoldingFormwork from './pages/capabilities/ScaffoldingFormwork';
+import ScaffoldingExports from './pages/capabilities/ScaffoldingExports';
 import SteelSupply from './pages/capabilities/SteelSupply';
 import FabricationCivil from './pages/capabilities/FabricationCivil';
 import Industries from './pages/Industries';
@@ -50,7 +53,9 @@ export default function App() {
               <Route path="/about" element={<About />} />
               <Route path="/capabilities" element={<Capabilities />} />
               <Route path="/capabilities/scrap" element={<ScrapProcurement />} />
+              <Route path="/capabilities/scrap-imports" element={<ScrapImports />} />
               <Route path="/capabilities/scaffolding" element={<ScaffoldingFormwork />} />
+              <Route path="/capabilities/scaffolding-exports" element={<ScaffoldingExports />} />
               <Route path="/capabilities/steel" element={<SteelSupply />} />
               <Route path="/capabilities/fabrication" element={<FabricationCivil />} />
               <Route path="/industries" element={<Industries />} />
@@ -61,7 +66,10 @@ export default function App() {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
-          
+
+          {/* Global CTA — end of every page, before footer */}
+          <GlobalCTA />
+
           {/* Footer */}
           <Footer />
 
