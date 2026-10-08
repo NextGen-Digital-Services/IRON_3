@@ -131,17 +131,21 @@ export default function ScrapProcurement() {
             <div className="w-10 h-px bg-[#C66B45] my-6" />
             <p className="text-sm text-[#F4F1EA]/55 font-body leading-relaxed">IRONEX operates primarily as a principal buyer. We purchase material for our own commercial account and take responsibility for evaluating, lifting and monetising it.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#F4F1EA]/10">
-            {businessModel.map((s, i) => (
-              <Reveal key={s.step} delay={i * 0.05}>
-                <div className="bg-[#07101A] h-full p-6">
-                  <span className="text-[11px] font-bold tracking-[0.2em] text-[#C66B45] block mb-3">{String(i + 1).padStart(2, '0')} &rarr;</span>
-                  <h3 className="text-base font-extrabold uppercase tracking-[0.1em] text-[#F4F1EA] mb-3">{s.step}</h3>
-                  <p className="text-[13px] text-[#F4F1EA]/50 font-body leading-relaxed">{s.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <div className="overflow-x-auto px-1 pt-1 pb-2">
+              <div className="relative flex gap-5 lg:gap-7 min-w-[1215px] lg:min-w-0">
+                <div className="rtw-line absolute left-0 right-0 top-[6px] h-px bg-[#F4F1EA]/20" />
+                {businessModel.map((s, i) => (
+                  <div key={s.step} className="rtw-step flex-1 relative pt-8 min-w-0">
+                    <span className="absolute top-0 left-0 w-3 h-3 rotate-45 bg-[#C66B45]" />
+                    <span className="block text-[11px] font-bold tracking-[0.18em] text-[#DDAE97]">{String(i + 1).padStart(2, '0')}</span>
+                    <h3 className="text-[12.5px] font-bold uppercase tracking-[0.15em] text-[#F4F1EA] mt-2">{s.step}</h3>
+                    <p className="text-[11.5px] text-[#F4F1EA]/50 leading-relaxed font-body mt-2 pr-3">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
