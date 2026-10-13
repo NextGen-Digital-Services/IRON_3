@@ -9,13 +9,6 @@ import { openWhatsApp } from '../lib/whatsapp';
 import { useModal } from '../context/ModalContext';
 import Reveal from '../components/Reveal';
 
-const DIVISION_CONTACTS: Record<string, string> = {
-  'Industrial Scrap Procurement & Processing': WHATSAPP_CONTACTS.SCRAP,
-  'Scaffolding & Formwork Systems': WHATSAPP_CONTACTS.SCAFFOLDING,
-  'Steel & Construction-Material Supply': WHATSAPP_CONTACTS.MATERIAL_SUPPLY,
-  'Structural Fabrication & Civil Works': WHATSAPP_CONTACTS.FABRICATION_CIVIL,
-};
-
 const REQUIRED_INFO: Record<string, { title: string; items: string[]; note?: string }> = {
   'Industrial Scrap Procurement & Processing': {
     title: 'Scrap Enquiry Form',
@@ -24,16 +17,16 @@ const REQUIRED_INFO: Record<string, { title: string; items: string[]; note?: str
   },
   'Scaffolding & Formwork Systems': {
     title: 'Scaffolding Enquiry Form',
-    items: ['Company', 'Project name', 'Project location', 'System required', 'Approximate quantity', 'Rental / purchase', 'Required date', 'Rental duration', 'BOQ', 'Contact details'],
+    items: ['Company', 'Project name', 'Project location', 'System required', 'Approximate quantity', 'Rental / purchase', 'Rental duration', 'BOQ', 'Contact details'],
     note: 'For export enquiries, also include destination country / port, buyer type, required standards / certificates, packing requirements and preferred shipping terms.',
   },
   'Steel & Construction-Material Supply': {
     title: 'Material Supply Form',
-    items: ['Company', 'Product', 'Grade', 'Size', 'Quantity', 'Preferred manufacturer', 'Delivery location', 'Required date', 'BOQ', 'Contact details'],
+    items: ['Company', 'Product', 'Grade', 'Size', 'Quantity', 'Preferred manufacturer', 'Delivery location', 'BOQ', 'Contact details'],
   },
   'Structural Fabrication & Civil Works': {
     title: 'Project Scope Enquiry',
-    items: ['Company', 'Contact details', 'Project scope', 'Location', 'Required date', 'Message'],
+    items: ['Company', 'Contact details', 'Project scope', 'Location', 'Message'],
   },
 };
 
@@ -59,17 +52,40 @@ const SELECT_BUSINESS = [
 ];
 
 export default function Quote() {
-  const [formData, setFormData] = useState({ companyName: '', contactPerson: '', email: '', phone: '', serviceRequired: 'Industrial Scrap Procurement & Processing', projectLocation: '', projectSize: '', timeline: '', message: '' });
+  const [formData, setFormData] = useState({ companyName: '', contactPerson: '', email: '', phone: '', serviceRequired: 'Industrial Scrap Procurement & Processing', projectLocation: '', projectSize: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { setIsQuoteOpen } = useModal();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const lines = ['*NEW ENQUIRY — IRONEX*', '', `*Division:* ${formData.serviceRequired}`, `*Company:* ${formData.companyName}`, `*Contact:* ${formData.contactPerson}`, `*Email:* ${formData.email}`, `*Phone:* ${formData.phone}`, `*Location:* ${formData.projectLocation}`, `*Size:* ${formData.projectSize}`, `*Timeline:* ${formData.timeline}`, '', `*Details:*`, formData.message];
-    const phone = DIVISION_CONTACTS[formData.serviceRequired] || WHATSAPP_CONTACTS.GENERAL;
-    openWhatsApp(phone, lines.join('\n'));
-    setSubmitted(true);
-    setTimeout(() => { setSubmitted(false); setFormData({ companyName: '', contactPerson: '', email: '', phone: '', serviceRequired: 'Industrial Scrap Procurement & Processing', projectLocation: '', projectSize: '', timeline: '', message: '' }); }, 4000);
+    setSubmitError('');
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/sobanbusiness80@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `New Enquiry — ${formData.serviceRequired}`,
+          Division: formData.serviceRequired,
+          Company: formData.companyName,
+          Contact: formData.contactPerson,
+          Email: formData.email,
+          Phone: formData.phone,
+          Location: formData.projectLocation,
+          Size: formData.projectSize,
+          Message: formData.message,
+        }),
+      });
+      if (!res.ok) throw new Error('submit failed');
+      setSubmitted(true);
+      setTimeout(() => { setSubmitted(false); setFormData({ companyName: '', contactPerson: '', email: '', phone: '', serviceRequired: 'Industrial Scrap Procurement & Processing', projectLocation: '', projectSize: '', message: '' }); }, 4000);
+    } catch {
+      setSubmitError('Something went wrong. Please try again or call +91 9321318080 directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const selectDivision = (division: string) => {
@@ -143,6 +159,9 @@ export default function Quote() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {submitError && (
+                    <div className="bg-red-50 text-red-700 text-xs p-4 border border-red-200">{submitError}</div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Company Name *</label><input type="text" required value={formData.companyName} onChange={(e) => setFormData({ ...formData, companyName: e.target.value })} className={inputClass} placeholder="Company" /></div>
                     <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Contact Person *</label><input type="text" required value={formData.contactPerson} onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })} className={inputClass} placeholder="Full name" /></div>
@@ -150,13 +169,12 @@ export default function Quote() {
                     <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Phone *</label><input type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={inputClass} placeholder="+91 XXXXX XXXXX" /></div>
                   </div>
                   <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Business *</label><select required value={formData.serviceRequired} onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })} className={inputClass}>{Object.keys(REQUIRED_INFO).map((s) => <option key={s} value={s}>{s}</option>)}</select></div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Location</label><input type="text" value={formData.projectLocation} onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })} className={inputClass} placeholder="City / Site" /></div>
                     <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Quantity / Size</label><input type="text" value={formData.projectSize} onChange={(e) => setFormData({ ...formData, projectSize: e.target.value })} className={inputClass} placeholder="e.g. 50 MT" /></div>
-                    <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Required Date</label><input type="text" value={formData.timeline} onChange={(e) => setFormData({ ...formData, timeline: e.target.value })} className={inputClass} placeholder="e.g. 2 weeks" /></div>
                   </div>
                   <div><label className="text-[11px] font-bold text-[#101820] uppercase tracking-[0.12em] block mb-2">Requirement Details *</label><textarea required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={inputClass + " resize-y"} placeholder="Material category / system / product, specification, BOQ, drawings, scope..." /></div>
-                  <button type="submit" className="w-full bg-[#C66B45] text-[#F4F1EA] font-bold text-[11px] uppercase tracking-[0.15em] px-6 py-4 hover:bg-[#D47B55] transition-colors">Submit Enquiry</button>
+                  <button type="submit" disabled={isSubmitting} className="w-full bg-[#C66B45] disabled:opacity-50 text-[#F4F1EA] font-bold text-[11px] uppercase tracking-[0.15em] px-6 py-4 hover:bg-[#D47B55] transition-colors">{isSubmitting ? 'Sending...' : 'Submit Enquiry'}</button>
                 </form>
               )}
             </div>
@@ -206,8 +224,10 @@ export default function Quote() {
               <div className="w-10 h-px bg-[#C66B45] my-6" />
               <p className="text-sm font-extrabold text-[#101820] uppercase tracking-[0.1em]">IRONEX Steel &amp; Infra LLP</p>
               <div className="text-sm text-[#6B6560] font-body space-y-3 leading-relaxed">
+                <p><strong className="text-[#101820] font-semibold">Office:</strong> Shop No. 08, Sonu Apartment, Kamatha Road, Uran - 400702</p>
+                <p><strong className="text-[#101820] font-semibold">Warehouse:</strong> At Choudhary Market Uttarshiv, Mumbra - Panvel Road, Thane - 400612</p>
                 <p>Other locations can be evaluated according to requirement, quantity and commercial viability.</p>
-                <p className="text-[#101820] font-semibold">Email: <a href="mailto:info@ironex.com" className="hover:text-[#C66B45] transition-colors">info@ironex.com</a><br />Phone: <a href="tel:+919324448080" className="hover:text-[#C66B45] transition-colors">+91 9324448080</a> / <a href="tel:+919321028080" className="hover:text-[#C66B45] transition-colors">+91 9321028080</a></p>
+                <p className="text-[#101820] font-semibold">Email: <a href="mailto:sobanbusiness80@gmail.com" className="hover:text-[#C66B45] transition-colors">sobanbusiness80@gmail.com</a><br />Phone: <a href="tel:+919321318080" className="hover:text-[#C66B45] transition-colors">+91 9321318080</a></p>
               </div>
             </div>
             <div className="lg:col-span-7">

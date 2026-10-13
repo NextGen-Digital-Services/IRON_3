@@ -1,8 +1,16 @@
+import { useEffect, useRef, useState } from 'react';
 import HeroBackground from '../../components/HeroBackground';
 import scaffoldingImg from '../../assets/scaffolding_01.jpg';
 import scaffoldingImg2 from '../../assets/scaffolding_02.jpg';
 import scaffoldingImg3 from '../../assets/scaffolding_03.jpg';
 import scaffoldingImg4 from '../../assets/scaffolding_04.jpg';
+import plantImg from '../../assets/industrial_project.jpg';
+import warehouseImg from '../../assets/pexels_warehouse.jpg';
+import constructionImg from '../../assets/peb_construction.jpg';
+import infraImg from '../../assets/pexels_steel_structure.jpg';
+import commercialImg from '../../assets/home_02.jpg';
+import maintenanceImg from '../../assets/pexels_welding.jpg';
+import shutdownImg from '../../assets/fab_02.jpg';
 import { Link } from 'react-router-dom';
 import Reveal from '../../components/Reveal';
 import { useModal } from '../../context/ModalContext';
@@ -35,8 +43,41 @@ const movementSteps = [
   { name: 'Reconcile', desc: 'Close quantities, damages and applicable rental terms.' },
 ];
 
+const whereWorks = [
+  { name: 'Industrial plants', img: plantImg },
+  { name: 'Warehouses', img: warehouseImg },
+  { name: 'Construction projects', img: constructionImg },
+  { name: 'Infrastructure', img: infraImg },
+  { name: 'Commercial developments', img: commercialImg },
+  { name: 'Maintenance works', img: maintenanceImg },
+  { name: 'Shutdown requirements', img: shutdownImg },
+  { name: 'Structural repair environments', img: scaffoldingImg3 },
+];
+
 export default function ScaffoldingFormwork() {
   const { setIsQuoteOpen } = useModal();
+  const movementRef = useRef<HTMLElement>(null);
+  const [movementProgress, setMovementProgress] = useState(0);
+
+  useEffect(() => {
+    const el = movementRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.85;
+      const end = vh * 0.35;
+      const raw = (start - rect.top) / (start - end);
+      setMovementProgress(Math.min(1, Math.max(0, raw)));
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
   return (
     <div className="bg-[#F3F0E9]">
       {/* 01 — HERO */}
@@ -143,12 +184,18 @@ export default function ScaffoldingFormwork() {
             </div>
             <div className="lg:col-span-7">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-[#F4F1EA]/10">
-                {components.map((item, i) => (
+                {components.slice(0, 15).map((item, i) => (
                   <div key={item} className="bg-[#07101A] p-4 flex items-start gap-3">
                     <span className="text-[11px] font-extrabold text-[#C66B45]">{String(i + 1).padStart(2, '0')}</span>
                     <span className="text-[13px] text-[#F4F1EA]/60 font-body">{item}</span>
                   </div>
                 ))}
+                <div className="bg-[#07101A] hidden sm:block" aria-hidden />
+                <div className="bg-[#07101A] p-4 flex items-start gap-3">
+                  <span className="text-[11px] font-extrabold text-[#C66B45]">{String(components.length).padStart(2, '0')}</span>
+                  <span className="text-[13px] text-[#F4F1EA]/60 font-body">{components[components.length - 1]}</span>
+                </div>
+                <div className="bg-[#07101A] hidden sm:block" aria-hidden />
               </div>
             </div>
           </div>
@@ -186,23 +233,34 @@ export default function ScaffoldingFormwork() {
       </section>
 
       {/* 06 — HOW WE CONTROL THE MOVEMENT */}
-      <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
+      <section ref={movementRef} className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="mb-14 max-w-3xl">
             <span className="eyebrow block mb-6">How We Control The Movement</span>
             <h2 className="heading-editorial text-[#101820] text-3xl lg:text-4xl">Scaffolding Is An Inventory<br />Business Before It Is<br />A Steel Business.</h2>
             <div className="w-10 h-px bg-[#C66B45] my-6" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#D5D0C7]">
-            {movementSteps.map((s, i) => (
-              <Reveal key={s.name} delay={i * 0.05}>
-                <div className="bg-[#F3F0E9] h-full p-6 group hover:bg-[#07101A] transition-all duration-500">
-                  <span className="text-2xl font-extrabold text-[#C66B45] block mb-4">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="text-[13px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] mb-3 transition-colors duration-500">{s.name}</h3>
-                  <p className="text-xs text-[#6B6560] group-hover:text-[#F4F1EA]/50 leading-relaxed font-body transition-colors duration-500">{s.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="overflow-x-auto pb-4 -mx-5 px-5 sm:mx-0 sm:px-0">
+            <div className="relative min-w-[640px] pt-10 pb-2">
+              <div className="absolute left-0 right-0 top-[27px] h-px bg-[#D5D0C7]" />
+              <div className="absolute left-0 top-[27px] h-px bg-[#C66B45] transition-[width] duration-200" style={{ width: `${movementProgress * 100}%` }} />
+              <div className="relative flex justify-between">
+                {movementSteps.map((s, i) => {
+                  const stepAt = i / (movementSteps.length - 1);
+                  const passed = movementProgress >= stepAt;
+                  return (
+                    <div key={s.name} className="flex flex-col items-center gap-4 w-[calc(100%/7)]">
+                      <span className={`w-2.5 h-2.5 rotate-45 transition-colors duration-300 ${passed ? 'bg-[#C66B45]' : 'bg-[#D5D0C7]'}`} />
+                      <span className={`text-[11px] font-extrabold transition-colors duration-300 ${passed ? 'text-[#C66B45]' : 'text-[#6B6560]/50'}`}>{String(i + 1).padStart(2, '0')}</span>
+                      <span className={`text-[11px] font-bold uppercase tracking-[0.12em] text-center leading-tight transition-colors duration-300 ${passed ? 'text-[#101820]' : 'text-[#6B6560]/50'}`}>{s.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-l border-[#C66B45] pl-5 max-w-xl">
+            <p className="text-[13px] text-[#6B6560] font-body leading-relaxed">{movementSteps[Math.min(movementSteps.length - 1, Math.floor(movementProgress * (movementSteps.length - 1) + 0.001))]?.desc}</p>
           </div>
           <p className="text-sm text-[#6B6560] font-body leading-relaxed mt-8 max-w-3xl">Proper reconciliation protects both customer and supplier.</p>
         </div>
@@ -216,9 +274,11 @@ export default function ScaffoldingFormwork() {
             <p className="text-sm text-[#6B6560] font-body leading-relaxed">IRONEX scaffolding can support requirements across:</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#D5D0C7]">
-            {['Industrial plants', 'Warehouses', 'Construction projects', 'Infrastructure', 'Commercial developments', 'Maintenance works', 'Shutdown requirements', 'Structural repair environments'].map((item) => (
-              <div key={item} className="bg-[#F3F0E9] p-5 text-center hover:bg-[#07101A] transition-all duration-500 group">
-                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] transition-colors duration-500">{item}</span>
+            {whereWorks.map((item) => (
+              <div key={item.name} className="relative bg-[#F3F0E9] p-5 text-center overflow-hidden group h-28 flex items-center justify-center">
+                <img src={item.img} alt={item.name} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-[#07101A]/0 group-hover:bg-[#07101A]/65 transition-colors duration-500" />
+                <span className="relative text-[11px] font-bold uppercase tracking-[0.15em] text-[#101820] group-hover:text-[#F4F1EA] transition-colors duration-500 px-2">{item.name}</span>
               </div>
             ))}
           </div>

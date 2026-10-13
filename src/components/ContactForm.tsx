@@ -67,7 +67,20 @@ export default function ContactForm({ isModal = false, onSuccess }: ContactFormP
     if (!validate()) return;
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const res = await fetch('https://formsubmit.co/ajax/sobanbusiness80@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `New Enquiry — ${formData.service}`,
+          Name: formData.fullName,
+          Email: formData.email,
+          Phone: formData.phone,
+          Company: formData.company || '—',
+          Service: formData.service,
+          Message: formData.message,
+        }),
+      });
+      if (!res.ok) throw new Error('submit failed');
       setSubmitSuccess(true);
       setFormData({ fullName: '', email: '', phone: '', company: '', service: '', message: '' });
       if (onSuccess) setTimeout(() => onSuccess(), 2000);

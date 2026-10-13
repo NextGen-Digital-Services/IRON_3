@@ -11,11 +11,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-4 space-y-5">
             <Link to="/" className="flex items-center gap-2.5">
-              <img src="/footer-logo.png" alt="IRONEX" className="h-8 w-auto brightness-125 contrast-125 opacity-80" />
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-sm font-extrabold tracking-[-0.02em] text-[#F4F1EA] leading-none">IRONEX</span>
-                <span className="text-[9px] font-semibold tracking-[0.15em] text-[#F4F1EA]/30 uppercase">Steel & Infra</span>
-              </div>
+              <img
+                src="/ironex-logo.png"
+                alt="IRONEX"
+                className="h-9 w-auto opacity-90"
+                style={{ filter: 'brightness(1.6) contrast(1.1)', mixBlendMode: 'screen' }}
+              />
             </Link>
             <p className="text-[13px] text-[#F4F1EA]/35 leading-relaxed font-body max-w-xs">
               An integrated industrial company operating across scrap procurement, scaffolding systems, steel and material supply, structural fabrication and civil works. Built on 21+ years of family-led industrial experience.
@@ -67,18 +68,18 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-[#C66B45] shrink-0 mt-0.5" />
-                <span className="text-[13px] text-[#F4F1EA]/35 font-body leading-relaxed">Uran, Maharashtra. Operational base: Uttarshiv, Uran region.</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={14} className="text-[#C66B45] shrink-0" />
-                <div className="flex flex-col gap-1">
-                  <a href="tel:+919324448080" className="text-[13px] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors">+91 9324448080</a>
-                  <a href="tel:+919321028080" className="text-[13px] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors">+91 9321028080</a>
+                <div className="text-[13px] text-[#F4F1EA]/35 font-body leading-relaxed space-y-2">
+                  <p><span className="text-[#F4F1EA]/55 font-semibold">Office:</span> Shop No. 08, Sonu Apartment, Kamatha Road, Uran - 400702</p>
+                  <p><span className="text-[#F4F1EA]/55 font-semibold">Warehouse:</span> At Choudhary Market Uttarshiv, Mumbra - Panvel Road, Thane - 400612</p>
                 </div>
               </li>
               <li className="flex items-center gap-3">
+                <Phone size={14} className="text-[#C66B45] shrink-0" />
+                <a href="tel:+919321318080" className="text-[13px] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors">+91 9321318080</a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail size={14} className="text-[#C66B45] shrink-0" />
-                <a href="mailto:info@ironex.com" className="text-[13px] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors">info@ironex.com</a>
+                <a href="mailto:sobanbusiness80@gmail.com" className="text-[13px] text-[#F4F1EA]/35 hover:text-[#C66B45] transition-colors">sobanbusiness80@gmail.com</a>
               </li>
             </ul>
           </div>

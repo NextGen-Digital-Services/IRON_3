@@ -59,25 +59,26 @@ export default function Home() {
       gsap.set('.rtw-line', { scaleX: 0, transformOrigin: 'left center' });
       if (rtwCards.length) {
         gsap.set(rtwCards, { opacity: 0, y: 40 });
-      }
-
-      const rtwTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '#rtw-steps',
-          start: 'top 75%',
-          once: true,
-        },
-      });
-
-      rtwTl
-        .to('.rtw-line', { scaleX: 1, duration: 0.9, ease: 'power2.inOut' })
-        .to(rtwCards, {
+        gsap.to(rtwCards, {
           opacity: 1,
           y: 0,
           duration: 0.5,
           ease: 'power3.out',
           stagger: 0.1,
-        }, '-=0.5');
+          scrollTrigger: { trigger: '#rtw-steps', start: 'top 75%', once: true },
+        });
+      }
+
+      gsap.to('.rtw-line', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#rtw-steps',
+          start: 'top 80%',
+          end: 'bottom 35%',
+          scrub: 0.4,
+        },
+      });
 
       gsap.utils.toArray<HTMLElement>('.stmt-line').forEach((line) => {
         gsap.fromTo(line,
@@ -110,16 +111,16 @@ export default function Home() {
   }, []);
 
   const logos = [
-    { img: allcargoLogo, name: 'Allcargo' },
-    { img: bpclLogo, name: 'BPCL' },
-    { img: ongcLogo, name: 'ONGC' },
-    { img: jpnaLogo, name: 'JNPA' },
-    { img: lodhaLogo, name: 'Lodha' },
-    { img: runwalLogo, name: 'Runwal' },
-    { img: tacImgLogo, name: 'Tata' },
-    { img: relianceLogo, name: 'Reliance' },
-    { img: jswLogo, name: 'JSW' },
-    { img: lntLogo, name: 'L&T' },
+    { img: allcargoLogo, name: 'Allcargo', cls: 'h-12' },
+    { img: bpclLogo, name: 'BPCL', cls: 'h-28' },
+    { img: ongcLogo, name: 'ONGC', cls: 'h-20' },
+    { img: jpnaLogo, name: 'JNPA', cls: 'h-20' },
+    { img: lodhaLogo, name: 'Lodha', cls: 'h-14' },
+    { img: runwalLogo, name: 'Runwal', cls: 'h-16' },
+    { img: tacImgLogo, name: 'Tata', cls: 'h-20' },
+    { img: relianceLogo, name: 'Reliance', cls: 'h-16' },
+    { img: jswLogo, name: 'JSW', cls: 'h-12' },
+    { img: lntLogo, name: 'L&T', cls: 'h-10' },
   ];
 
   return (
@@ -136,12 +137,15 @@ export default function Home() {
                 Industry Runs On<br />What Moves.<br />And Pays For<br />
                 <span className="text-[#C66B45]">What Doesn't.</span>
               </h1>
+              <div className="hero-reveal">
+                <div className="w-10 h-px bg-[#C66B45] mb-4" />
+                <h2 className="text-lg sm:text-xl font-heading leading-snug text-[#F4F1EA]/85">
+                  Three Industrial Businesses. <span className="text-[#C66B45]">One Standard of Execution.</span>
+                </h2>
+              </div>
               <div className="hero-reveal space-y-4 max-w-xl">
                 <p className="text-sm text-[#F4F1EA]/60 leading-relaxed font-body">
                   IRONEX STEEL &amp; INFRA LLP is an industrial company based in Navi Mumbai, Maharashtra, operating across Scrap Procurement &amp; Processing, Scaffolding &amp; Formwork, and Construction Material &amp; Steel Supply.
-                </p>
-                <p className="text-sm text-[#F4F1EA]/40 leading-relaxed font-body">
-                  We work at three critical points where material availability, movement and execution directly affect productivity, working capital and project continuity.
                 </p>
               </div>
               <div className="hero-reveal flex flex-col sm:flex-row gap-4 pt-2">
@@ -151,23 +155,6 @@ export default function Home() {
                 <Link to="/capabilities" className="border border-[#F4F1EA]/20 text-[#F4F1EA]/70 font-bold text-[11px] uppercase tracking-[0.15em] px-8 py-4 hover:border-[#C66B45] hover:text-[#C66B45] transition-all duration-300 text-center">
                   Explore Our Businesses
                 </Link>
-              </div>
-            </div>
-            <div className="lg:col-span-5 text-left space-y-6 lg:border-l lg:border-[#F4F1EA]/10 lg:pl-14">
-              <div className="hero-reveal">
-                <h2 className="text-2xl sm:text-3xl font-heading leading-[1.15] text-[#F4F1EA]">
-                  Industry Runs On Flow.<br />
-                  <span className="text-[#C66B45]">When Flow Breaks, Cost Begins.</span>
-                </h2>
-                <p className="text-[13px] text-[#F4F1EA]/45 leading-relaxed font-body mt-4 max-w-md">
-                  The real commercial consequence is what happens when that material does not move as required.
-                </p>
-              </div>
-              <div className="hero-reveal pt-2">
-                <div className="w-10 h-px bg-[#C66B45] mb-4" />
-                <h2 className="text-lg sm:text-xl font-heading leading-snug text-[#F4F1EA]/85">
-                  Three Industrial Businesses. <span className="text-[#C66B45]">One Standard of Execution.</span>
-                </h2>
               </div>
             </div>
           </div>
@@ -276,7 +263,7 @@ export default function Home() {
           <div className="animate-marquee flex gap-14 items-center py-4">
             {[...logos, ...logos].map((client, idx) => (
               <div key={idx} className="flex flex-col items-center gap-2 px-2 select-none whitespace-nowrap">
-                <img src={client.img} alt={client.name} className="max-h-8 w-auto object-contain transition-transform duration-300 ease-out hover:scale-125" />
+                <img src={client.img} alt={client.name} className={`${client.cls} w-auto object-contain transition-transform duration-300 ease-out hover:scale-125`} />
               </div>
             ))}
           </div>
@@ -307,13 +294,7 @@ export default function Home() {
               </h2>
 
               <Reveal delay={0.3}>
-                <div className="w-14 h-px bg-[#C66B45] mt-8 mb-8" />
-                <p className="text-sm text-[#F4F1EA]/55 leading-relaxed font-body">
-                  Industrial delays rarely arrive with a separate invoice. Their cost appears elsewhere&mdash;in idle labour, blocked space, extended rentals, additional transport, delayed billing, rehandling and lost productivity.
-                </p>
-                <p className="text-sm text-[#F4F1EA]/40 leading-relaxed font-body mt-5">
-                  A seemingly small operational miss can quietly become a much larger commercial loss.
-                </p>
+                <div className="w-14 h-px bg-[#C66B45] mt-8" />
               </Reveal>
             </div>
 
@@ -340,31 +321,34 @@ export default function Home() {
                   </Reveal>
                 ))}
               </ul>
-
-              <Reveal delay={0.6}>
-                <p className="text-[15px] sm:text-base text-[#F4F1EA]/85 leading-relaxed font-body mt-10">
-                  That is the problem IRONEX is built around.
-                </p>
-                <p className="text-sm text-[#F4F1EA]/50 leading-relaxed font-body mt-4">
-                  We operate at three points where timing and material directly affect operational performance:
-                </p>
-                <div className="mt-6 flex flex-col sm:flex-row gap-4 sm:gap-0">
-                  {[
-                    'Material that needs to move out.',
-                    'Access that needs to be available.',
-                    'Material that needs to move in.',
-                  ].map((s, i) => (
-                    <p key={s} className={`text-[13px] uppercase tracking-[0.12em] font-bold font-body text-[#F4F1EA]/90 leading-relaxed sm:flex-1 ${i > 0 ? 'sm:border-l sm:border-[#F4F1EA]/15 sm:pl-6' : ''} ${i < 2 ? 'sm:pr-6' : ''}`}>
-                      {s}
-                    </p>
-                  ))}
-                </div>
-                <p className="mt-10 pl-5 border-l border-[#C66B45] text-[15px] sm:text-base leading-relaxed font-body text-[#F4F1EA]/60">
-                  The Objective Is Simple: <span className="text-[#C66B45] font-bold">To Keep industrial requirements commercially controlled and operationally moving.</span>
-                </p>
-              </Reveal>
             </div>
           </div>
+
+          <Reveal delay={0.3}>
+            <div className="mt-14 sm:mt-20 max-w-3xl mx-auto text-center">
+              <p className="text-[15px] sm:text-base text-[#F4F1EA]/85 leading-relaxed font-body">
+                That is the problem IRONEX is built around.
+              </p>
+              <p className="text-sm text-[#F4F1EA]/50 leading-relaxed font-body mt-4">
+                We operate at three points where timing and material directly affect operational performance:
+              </p>
+              <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4 sm:gap-0">
+                {[
+                  'Material that needs to move out.',
+                  'Access that needs to be available.',
+                  'Material that needs to move in.',
+                ].map((s, i) => (
+                  <p key={s} className={`text-[13px] uppercase tracking-[0.12em] font-bold font-body text-[#F4F1EA]/90 leading-relaxed text-center sm:flex-1 ${i > 0 ? 'sm:border-l sm:border-[#F4F1EA]/15 sm:pl-6' : ''} ${i < 2 ? 'sm:pr-6' : ''}`}>
+                    {s}
+                  </p>
+                ))}
+              </div>
+              <div className="w-10 h-px bg-[#C66B45] mx-auto mt-10 mb-6" />
+              <p className="text-[15px] sm:text-base leading-relaxed font-body text-[#F4F1EA]/60">
+                The Objective Is Simple: <span className="text-[#C66B45] font-bold">To Keep industrial requirements commercially controlled and operationally moving.</span>
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

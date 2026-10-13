@@ -178,70 +178,7 @@ export default function ScrapProcurement() {
         </div>
       </section>
 
-      {/* 06 — AUCTIONS */}
-      <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="eyebrow block mb-4">Auctions</span>
-              <h2 className="heading-editorial text-[#101820] text-3xl lg:text-4xl">Every Auction Lot Needs<br />A Clear Commercial<br />And Execution Plan.</h2>
-              <div className="w-10 h-px bg-[#C66B45] my-6" />
-              <div className="text-sm text-[#6B6560] font-body space-y-4 leading-relaxed">
-                <p>Auction lots require careful evaluation of material, commercial terms and lifting obligations.</p>
-                <p>Our participation is guided by inspection findings and a clear valuation basis.</p>
-              </div>
-              <div className="border-l border-[#C66B45] pl-5 pt-2">
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C66B45] block mb-2">Our Rule</span>
-                <p className="text-sm text-[#101820] font-body font-semibold leading-relaxed">The buying limit and execution requirements are established before bidding begins.</p>
-              </div>
-            </div>
-            <div className="lg:col-span-6">
-              <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C66B45] mb-5">Before Participating, IRONEX Evaluates</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#D5D0C7]">
-                {['Material composition', 'Inspection observations', 'Recoverable quantity', 'Security deposit', 'Auction conditions', 'Lifting period', 'Loading responsibility', 'Penalties', 'Transport', 'Processing requirements', 'Expected downstream value'].map((item) => (
-                  <div key={item} className="bg-[#F3F0E9] p-4 flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 bg-[#C66B45] rotate-45 mt-2 shrink-0" />
-                    <span className="text-[13px] text-[#6B6560] font-body">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 07 — WHY INDUSTRIAL SELLERS NEED EXECUTION */}
-      <section className="py-24 bg-[#07101A] relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="eyebrow block mb-4">Why Industrial Sellers Need Execution</span>
-              <h2 className="heading-editorial text-[#F4F1EA] text-3xl lg:text-4xl">The Highest Bid Is Not<br />Always The Best Buyer.</h2>
-              <div className="w-10 h-px bg-[#C66B45] my-6" />
-              <div className="text-sm text-[#F4F1EA]/55 font-body space-y-4 leading-relaxed">
-                <p>For an industrial seller, the transaction is not complete when the rate is agreed. The material still has to leave.</p>
-                <p>A capable buyer should be able to:</p>
-              </div>
-              <div className="border-l border-[#C66B45] pl-5 pt-2">
-                <p className="text-sm text-[#F4F1EA]/70 font-body leading-relaxed">Scrap occupying your yard after the sale is still your operational problem</p>
-                <p className="text-base font-extrabold text-[#C66B45] uppercase tracking-[0.1em] mt-1">Until it moves.</p>
-              </div>
-            </div>
-            <div className="lg:col-span-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#F4F1EA]/10">
-                {['Mobilise', 'Pay', 'Arrange machinery', 'Place vehicles', 'Coordinate weighment', 'Handle multiple categories', 'Meet lifting timelines', 'Close documentation'].map((item, i) => (
-                  <div key={item} className="bg-[#07101A] p-4 flex items-start gap-3">
-                    <span className="text-[11px] font-extrabold text-[#C66B45]">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="text-[13px] text-[#F4F1EA]/60 font-body">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 08 — SCRAP CTA */}
+      {/* 06 — SCRAP CTA */}
       <section className="py-24 bg-[#F3F0E9] border-t border-[#D5D0C7]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">

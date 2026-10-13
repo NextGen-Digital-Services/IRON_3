@@ -55,8 +55,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#07101A]/95 backdrop-blur-md border-b border-white/[0.06]'
-            : 'bg-[#07101A]'
+            ? 'bg-[#07101A]/80 backdrop-blur-md border-b border-white/[0.06]'
+            : 'bg-[#07101A]/65 backdrop-blur-sm'
         }`}
         style={{ height: isScrolled ? '52px' : '56px' }}
       >
@@ -65,19 +65,12 @@ export default function Navbar() {
             
             {/* Left: Logo */}
             <Link to="/" className="flex items-center gap-2.5 group focus:outline-none shrink-0">
-              <img 
-                src="/logo.png" 
-                alt="IRONEX" 
-                className="h-8 w-auto brightness-125 contrast-125 opacity-95 group-hover:opacity-100 transition-opacity duration-300"
+              <img
+                src="/ironex-logo.png"
+                alt="IRONEX"
+                className="h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ filter: 'brightness(1.6) contrast(1.1)', mixBlendMode: 'screen' }}
               />
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-sm font-extrabold tracking-[-0.02em] text-[#F4F1EA] leading-none">
-                  IRONEX
-                </span>
-                <span className="text-[9px] font-semibold tracking-[0.15em] text-[#F4F1EA]/40 uppercase leading-none hidden sm:inline">
-                  Steel & Infra
-                </span>
-              </div>
             </Link>
 
             {/* Center: Navigation */}
