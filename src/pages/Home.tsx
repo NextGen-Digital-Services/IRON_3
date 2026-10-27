@@ -30,7 +30,6 @@ const heroImages = [
 import allcargoLogo from '/logos/allcargo.png';
 import bpclLogo from '/logos/bpcl.png';
 import ongcLogo from '/logos/ongc.png';
-import jpnaLogo from '/logos/jpna.png';
 import lodhaLogo from '/logos/lodha.png';
 import runwalLogo from '/logos/runwal.png';
 import tacImgLogo from '/logos/tata.svg';
@@ -114,7 +113,7 @@ export default function Home() {
     { img: allcargoLogo, name: 'Allcargo', cls: 'h-12' },
     { img: bpclLogo, name: 'BPCL', cls: 'h-28' },
     { img: ongcLogo, name: 'ONGC', cls: 'h-20' },
-    { img: jpnaLogo, name: 'JNPA', cls: 'h-20' },
+    { img: '/WhatsApp%20Image%202026-10-28%20at%2012.36.57%20AM.jpeg', name: 'JNPT', cls: 'h-20' },
     { img: lodhaLogo, name: 'Lodha', cls: 'h-14' },
     { img: runwalLogo, name: 'Runwal', cls: 'h-16' },
     { img: tacImgLogo, name: 'Tata', cls: 'h-20' },
