@@ -36,6 +36,7 @@ import tacImgLogo from '/logos/tata.svg';
 import relianceLogo from '/logos/reliance.svg';
 import jswLogo from '/logos/jsw.png';
 import lntLogo from '/logos/lnt.png';
+import jnptLogo from '/logos/jnpt.png';
 
 export default function Home() {
   const { setIsQuoteOpen } = useModal();
@@ -113,7 +114,7 @@ export default function Home() {
     { img: allcargoLogo, name: 'Allcargo', cls: 'h-12' },
     { img: bpclLogo, name: 'BPCL', cls: 'h-28' },
     { img: ongcLogo, name: 'ONGC', cls: 'h-20' },
-    { img: '/WhatsApp%20Image%202026-10-28%20at%2012.36.57%20AM.jpeg', name: 'JNPT', cls: 'h-20' },
+    { img: jnptLogo, name: 'JNPT', cls: 'h-20' },
     { img: lodhaLogo, name: 'Lodha', cls: 'h-14' },
     { img: runwalLogo, name: 'Runwal', cls: 'h-16' },
     { img: tacImgLogo, name: 'Tata', cls: 'h-20' },
