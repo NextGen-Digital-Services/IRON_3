@@ -101,8 +101,9 @@ export default function ScrapProcurement() {
           <div className="absolute left-[83%] top-0 bottom-0 w-px bg-white/[0.04]" />
         </div>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10">
-          <span className="eyebrow block mb-6">Domestic &amp; International Scrap Procurement</span>
+          <span className="eyebrow block mb-6">01 / Industrial Scrap Procurement</span>
           <h1 className="heading-editorial text-[#F4F1EA] max-w-4xl">Scrap at Your Site.<br /><span className="text-[#C66B45]">A Buyer at Your Side.</span></h1>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#F4F1EA]/40 mt-5">Domestic &amp; International Scrap Procurement</p>
           <div className="mt-8 max-w-2xl space-y-4">
             <p className="text-sm text-[#F4F1EA]/55 font-body leading-relaxed">IRONEX Recovery purchases ferrous metals, non-ferrous metals, machinery scrap and other industrial recoverables. We buy directly from industrial sellers in India and evaluate overseas supply for import into India.</p>
           </div>
