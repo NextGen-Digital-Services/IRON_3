@@ -15,16 +15,16 @@ import factoryImg from '../assets/about_factory.jpg';
 import scaffoldingImg from '../assets/scaffolding.jpg';
 import demolitionImg from '../assets/demolition.jpg';
 import HeroBackground from '../components/HeroBackground';
-import homeHero1 from '../assets/home_01.jpg';
-import homeHero2 from '../assets/home_02.jpg';
-import homeHero3 from '../assets/home_03.jpg';
-import homeHero4 from '../assets/home_04.jpg';
+import homeRecovery from '../assets/home_recovery_1.jpg';
+import homeAccess from '../assets/home_access_1.jpg';
+import homeSupply from '../assets/home_supply_1.jpg';
+import homeCorporate from '../assets/home_corporate_1.jpg';
 
 const heroImages = [
-  { src: homeHero1, alt: 'Industrial construction site with concrete columns' },
-  { src: homeHero2, alt: 'Construction site with steel framework and cranes' },
-  { src: homeHero3, alt: 'Industrial crane in a steel factory yard' },
-  { src: homeHero4, alt: 'Aerial view of an industrial factory' },
+  { src: homeRecovery, alt: 'Demolition excavator clearing a structure for material recovery' },
+  { src: homeAccess, alt: 'Construction scaffolding systems on a multi-level site' },
+  { src: homeSupply, alt: 'Structural steel stock ready for project supply' },
+  { src: homeCorporate, alt: 'Indian infrastructure construction site' },
 ];
 
 import allcargoLogo from '/logos/allcargo.png';
